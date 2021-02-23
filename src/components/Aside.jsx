@@ -3,7 +3,7 @@ import React from "react";
 const Aside = () => {
     return (
         <aside className="aside">
-            Right side bar
+            Right side bar. Not activate yet
         </aside>
     );
 }
