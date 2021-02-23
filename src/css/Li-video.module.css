@@ -1,5 +1,6 @@
-.li-home {
-    grid-area: home;
+.li {
+    grid-area: video;
+    display: inline;
     opacity: .99;
     cursor: pointer;
     transform: scale(3);
@@ -8,17 +9,17 @@
     border: none;
 }
 
-.div-home {
+.div {
     height: 100%;
     width: 50px;
     margin-left: 50px;
 }
 
-.div-home-text {
+.divText {
     display: none;
 }
 
-.div-home:hover .div-home-text {
+.div:hover .divText {
     display: block;
     opacity: 1;
     position: absolute;
@@ -33,6 +34,9 @@
     color: var(--search-background);
 }
 
-.home-icon {
+.a {
+    display: inline;
+    margin: auto;
+    padding: auto;
     color: var(--search-background);
 }

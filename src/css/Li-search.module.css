@@ -1,16 +1,17 @@
-.li-search {
+.li {
     grid-area: search;
+    display: inline;
     margin: 0 10px;
     text-align: start;
 }
 
-.div-search {
+.div {
     vertical-align: middle;
     white-space: nowrap;
     position: relative;
 }
 
-.div-search input#search {
+.div input#search {
     width: 50px;
     height: 50px;
     background: var(--search-background);
@@ -24,11 +25,11 @@
     transition: width .55s ease;
 }
 
-.div-search input#search::-webkit-input-placeholder {
+.div input#search::-webkit-input-placeholder {
     color: var(--main-text-color);
 }
 
-.div-search .icon {
+.div .span {
     transform: scale(2);
     position: absolute;
     top: 37%;
@@ -37,7 +38,7 @@
     transition: all .55s ease;
 }
 
-.div-search input#search:hover, .div-search input#search:focus, .div-search input#search:active {
+.div input#search:hover, .div input#search:focus, .div input#search:active {
     width: 250px;
     outline: none;
     padding-left: 50px;
@@ -45,14 +46,14 @@
     color: var(--search-background);
 }
 
-.div-search:hover input#search::-webkit-input-placeholder {
+.div:hover input#search::-webkit-input-placeholder {
     color: var(--search-background);
 }
 
- .div-search:hover .icon {
+.div:hover .span {
     top: 37%;
     margin-left: 15px;
     margin-right: 15px;
     transform: scale(2);
     color: var(--search-background);
- }
+}

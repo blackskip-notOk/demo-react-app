@@ -1,0 +1,7 @@
+.aside {
+    grid-area: aside;
+    background-color: var(--main-text-color);
+    color: var(--search-background);
+    font-family: 'Concert One', cursive;
+    font-size: 24px;
+}

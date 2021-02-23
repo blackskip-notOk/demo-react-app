@@ -1,9 +1,10 @@
 import React from "react";
 import Ul from "./Ul";
+import s from "../../css/Navheader.module.css";
 
 const Navheader = () => {
     return (
-        <nav className="header-nav" role="navigation">
+        <nav className={s.nav} role="navigation">
             <Ul />
         </nav>
     );

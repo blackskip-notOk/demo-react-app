@@ -1,5 +1,6 @@
-.li-video {
-    grid-area: video;
+.li {
+    grid-area: home;
+    display: inline;
     opacity: .99;
     cursor: pointer;
     transform: scale(3);
@@ -8,18 +9,24 @@
     border: none;
 }
 
-.div-video {
+.div {
     height: 100%;
     width: 50px;
     margin-left: 50px;
-    /*border: 1px solid white;*/
 }
 
-.div-video-text {
+.a {
+    display: inline;
+    margin: auto;
+    padding: auto;
+    color: var(--search-background);
+}
+
+.divText {
     display: none;
 }
 
-.div-video:hover .div-video-text {
+.div:hover .divText {
     display: block;
     opacity: 1;
     position: absolute;
@@ -31,9 +38,5 @@
     background-color: var(--main-text-color);
     font-family: 'Concert One', cursive;
     font-size: 7px;
-    color: var(--search-background);
-}
-
-.video-icon {
     color: var(--search-background);
 }
