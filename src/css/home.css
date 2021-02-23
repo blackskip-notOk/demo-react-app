@@ -1,0 +1,38 @@
+.li-home {
+    grid-area: home;
+    opacity: .99;
+    cursor: pointer;
+    transform: scale(3);
+    text-align:justify;
+    transition: 0.9s;
+    border: none;
+}
+
+.div-home {
+    height: 100%;
+    width: 50px;
+    margin-left: 50px;
+}
+
+.div-home-text {
+    display: none;
+}
+
+.div-home:hover .div-home-text {
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 18px;
+    margin-left: -2px;
+    padding: 0px 2px 2px 2px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--main-text-color);
+    font-family: 'Concert One', cursive;
+    font-size: 7px;
+    color: var(--search-background);
+}
+
+.home-icon {
+    color: var(--search-background);
+}

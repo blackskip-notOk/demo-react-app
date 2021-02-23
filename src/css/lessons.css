@@ -1,0 +1,39 @@
+.li-lessons {
+    grid-area: lessons;
+    opacity: .99;
+    cursor: pointer;
+    transform: scale(3);
+    text-align:justify;
+    transition: 0.9s;
+    border: none;
+}
+
+.div-lessons {
+    height: 100%;
+    width: 50px;
+    margin-left: 50px;
+    /*border: 1px solid white;*/
+}
+
+.div-lessons-text {
+    display: none;
+}
+
+.div-lessons:hover .div-lessons-text {
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 18px;
+    margin-left: -8px;
+    padding: 0px 2px 2px 2px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--main-text-color);
+    font-family: 'Concert One', cursive;
+    font-size: 7px;
+    color: var(--search-background);
+}
+
+.lessons-icon {
+    color: var(--search-background);
+}
