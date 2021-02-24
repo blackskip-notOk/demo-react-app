@@ -1,0 +1,9 @@
+.aside {
+    grid-area: aside;
+    text-align: right;
+    padding: 10px 10px 0px 10px;
+    background-color: var(--main-text-color);
+    color: var(--search-background);
+    font-family: 'Concert One', cursive;
+    font-size: 24px;
+}

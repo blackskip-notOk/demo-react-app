@@ -1,0 +1,63 @@
+/*.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+.grid-wrapper > * {
+    max-width: 600px;
+    color: #353535;
+    font-size: 1.2em;
+    line-height: 1.5;
+    padding: 20px;
+    background: #d0cfc5;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.header-nav-ul {
+    margin: 0px;
+}
+
+#imageLogo {
+    width: 200px;
+    height: 200px;
+}
+
+#imageBali {
+    width: 200px;
+    height: 200px;
+}
+
+#imageParrot {
+    width: 200px;
+    height: 200px;
+}
+
+@media only screen and (min-width: 600px) {
+*/    .grid-wrapper {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: minmax(100px, auto) 1fr minmax(70px, auto);
+        grid-template-columns: 150px 1fr 150px;
+        grid-template-areas:
+        "header header header"
+        "nav content aside"
+        "footer footer footer";
+        background-color: var(--wrapper-background);
+        border: none;
+}
+/*
+}
+
+
+@media only screen and (max-width: 999px) {
+    .nav-leftside {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        left: -340px;
+        transition: transform .3s ease-in-out;
+    }
+}*/

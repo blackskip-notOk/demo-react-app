@@ -1,0 +1,12 @@
+.section {
+    text-align:start;
+    font-size: 42px;
+    font-family: 'Concert One', cursive;
+    background-color: var(--search-background);
+    color: var(--main-text-color);
+}
+
+.section h1 {
+    margin: 10px;
+    padding: 10px;
+}

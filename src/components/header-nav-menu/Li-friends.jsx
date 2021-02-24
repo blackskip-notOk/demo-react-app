@@ -1,7 +1,7 @@
 import React from "react";
-import s from "../../css/Li-friends.module.css";
+import s from './Li-friends.module.css';
 
-const LiFriends = () => {
+const LiFriends = (props) => {
     return (
         <li className={s.li}>
             <div className={s.div}>
@@ -9,7 +9,7 @@ const LiFriends = () => {
                     <i className="fab fa-old-republic"></i>
                 </a>
                 <div className={s.divText}>
-                    <span>FRIENDS</span>
+                    <span>{props.name}</span>
                 </div>
             </div>
         </li>
