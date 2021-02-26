@@ -1,4 +1,4 @@
-let hrefs = {
+let pathways = {
     home: '/home',
     groups: '/groops',
     video: '/video',
@@ -9,4 +9,4 @@ let hrefs = {
     news: '/news'
 };
 
-export default hrefs;
+export default pathways;

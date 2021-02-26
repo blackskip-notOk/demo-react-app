@@ -10,7 +10,7 @@
 }
 
 .a {
-    color: var(--search-background);
+    color: var(--navigation-icon);
 }
 
 .div:hover {
@@ -28,5 +28,5 @@
     border: none;
     font-family: 'Concert One', cursive;
     font-size: 7px;
-    color: var(--search-background);
+    color: var(--navigation-text);
 }

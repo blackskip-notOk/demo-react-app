@@ -1,12 +1,17 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Li.module.css';
 
 const Li = (props) => {
     return (
         <li className={s.li}>
-            <a href={props.href} target={props.target}>
+            <NavLink
+                to={props.pathway}
+                target={props.target}
+                activeClassName={s.active}
+            >
                 {props.notation}
-            </a>
+            </NavLink>
         </li>
     );
 }

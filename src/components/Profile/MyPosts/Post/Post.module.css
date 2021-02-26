@@ -2,8 +2,6 @@
     margin: 0px 5px 5px 5px;
     padding: 10px;
     text-align: center;
-    background-color: var(--search-background);
-    color: var(--main-text-color);
     font-family: 'Concert One', cursive;
     font-size: 30px;
 }

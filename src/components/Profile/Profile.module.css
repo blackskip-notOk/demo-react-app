@@ -1,35 +1,13 @@
 .item1 {
     grid-area: item-1;
-    text-align: center;
     margin: 0px 5px 5px 5px;
+    text-align: center;
 }
 
 .item2 {
     grid-area: item-2;
-    text-align: center;
     margin: 0px 5px 5px 5px;
-}
-
-.item3 {
-    grid-area: item-3;
-    margin: 0px 5px 5px 5px;
-    padding: 10px;
     text-align: center;
-    background-color: var(--search-background);
-    color: var(--main-text-color);
-    font-family: 'Concert One', cursive;
-    font-size: 30px;
-}
-
-.item4 {
-    grid-area: item-4;
-    margin: 0px 5px;
-    padding: 10px;
-    text-align: center;
-    background-color:var(--search-background);
-    color: var(--main-text-color);
-    font-family: 'Concert One', cursive;
-    font-size: 30px;
 }
 
 .img {

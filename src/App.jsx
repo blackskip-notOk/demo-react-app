@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  Component
+} from 'react';
 import './css/reset.css';
 import './css/app.css'
 import './css/Colors.css';
@@ -11,27 +13,66 @@ import News from './components/News/News';
 import Aside from './components/Aside/Aside';
 import Footer from './components/Footer/Footer';
 import {
-  BrowserRouter, Route
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch,
+  withRouter
 } from 'react-router-dom';
 
 
-const App = (props) => {
+class App extends Component {
+  render() {
+    const {history} = this.props;
+
   return (
     <BrowserRouter>
       <div className = 'grid-wrapper'>
-        <Header />
-        <Nav />
-          <div className = 'content'>
-            <Route path='/profile' component={Profile} />
-            <Route path='/messages' component={Messages} />
-            <Route path='/friends' component={Friends} />
-            <Route path='/news' component={News} />
-          </div>
-        <Aside news = 'Someday there will be fresh news' />
-        <Footer info = 'Someday there will be information about creator' />
+        {/* <Switch> */}
+        <div className = 'header'>
+          <Header />
+        </div>
+        <div className = 'nav'>
+          <Nav />
+        </div>
+        <div className = 'content'>
+          <Route
+            history = {history}
+            path = '/profile'
+            component = {Profile} />
+          <Route
+            history = {history}
+            path = '/messages'
+            component = {Messages}
+          />
+          <Route
+            history = {history}
+            path = '/friends'
+            component = {Friends}
+          />
+          <Route
+            history={history}
+            path = '/news'
+            component = {News}
+          />
+          {/* <Redirect
+            from = '/'
+            to = '/home'
+          / > */}
+        </div>
+        <div className = 'aside'>
+          <Aside
+            news = 'Someday there will be fresh news'/ >
+        </div>
+        <div className = 'footer'>
+          <Footer
+            info = 'Someday there will be information about creator'/ >
+        </div>
+        {/* </Switch> */}
       </div>
     </BrowserRouter>
   );
+  }
 }
 
-export default App;
+export default withRouter(App);

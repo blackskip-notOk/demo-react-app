@@ -3,7 +3,7 @@ import s from './Ul.module.css';
 import Logo from './Logo';
 import Search from './Search';
 import Li from './Li';
-import hrefs from "../../Hrefs/Hrefs";
+import pathways from "../../Pathways/Pathways";
 import icons from "../../Icons/Icons";
 
 const Ul = () => {
@@ -11,10 +11,10 @@ const Ul = () => {
         <ul className={s.ul}>
             <Logo />
             <Search icon={icons.search} />
-            <Li href={hrefs.home} icon={icons.home} notation="Home"  />
-            <Li href={hrefs.groups} icon={icons.groups} notation="Groups"  />
-            <Li href={hrefs.video} icon={icons.video} notation="Video"  />
-            <Li href={hrefs.notifications} icon={icons.notifications} notation="Notifications"  />
+            <Li pathway={pathways.home} icon={icons.home} notation="Home"  />
+            <Li pathway={pathways.groups} icon={icons.groups} notation="Groups"  />
+            <Li pathway={pathways.video} icon={icons.video} notation="Video"  />
+            <Li pathway={pathways.notifications} icon={icons.notifications} notation="Notifications"  />
         </ul>
     );
 }
