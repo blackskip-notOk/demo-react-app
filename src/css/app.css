@@ -34,19 +34,25 @@
     height: 200px;
 }
 
-@media only screen and (min-width: 600px) {
-*/    .grid-wrapper {
-        min-height: 100%;
-        display: grid;
-        grid-template-rows: minmax(100px, auto) 1fr minmax(70px, auto);
-        grid-template-columns: 150px 1fr 150px;
-        grid-template-areas:
+@media only screen and (min-width: 600px) {*/
+.grid-wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: minmax(100px, auto) 1fr minmax(70px, auto);
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-areas:
         "header header header"
         "nav content aside"
         "footer footer footer";
-        background-color: var(--wrapper-background);
-        border: none;
+    background-color: var(--wrapper-background);
+    border: none;
 }
+
+.content {
+    grid-area: content;
+    background-color: var(--content-background);
+}
+
 /*
 }
 

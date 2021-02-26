@@ -1,6 +1,8 @@
 :root {
     --wrapper-background: rgb(6, 24, 34);
     --header-background: rgb(6, 25, 34);
+    --header-text: rgb(15, 57, 44);
     --main-text-color: rgb(85, 37, 130);
     --search-background: rgb(253, 185, 39);
+    --content-background: rgb(7, 82, 133);
 }

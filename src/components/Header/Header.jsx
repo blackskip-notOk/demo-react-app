@@ -1,11 +1,11 @@
 import React from 'react';
-import Navheader from '../header-nav-menu/Navheader';
+import Navheader from './Navigation/Navheader';
 import s from './Header.module.css';
 
 const Header = () => {
     return (
         <header className={s.header}>
-            <Navheader />
+            <Navheader role="navigation"/>
         </header>
     );
 }

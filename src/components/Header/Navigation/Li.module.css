@@ -1,0 +1,32 @@
+.li {
+    cursor: pointer;
+    transform: scale(3.7);
+}
+
+.div {
+    margin-left: 0px;
+    border: none;
+    transition: margin-bottom .1s ease;
+}
+
+.a {
+    color: var(--search-background);
+}
+
+.div:hover {
+    margin-bottom: 5px;
+}
+
+.divText {
+    display: none;
+}
+
+.div:hover .divText {
+    display: block;
+    position: absolute;
+    top: 73%;
+    border: none;
+    font-family: 'Concert One', cursive;
+    font-size: 7px;
+    color: var(--search-background);
+}

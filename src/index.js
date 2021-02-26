@@ -1,27 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./css/reset.css";
-import "./app.css";
-import "./css/Colors.module.css";
-import Header from './components/Header';
-import Nav from './components/Navbar';
-import Profile from './components/Profile';
-import Aside from './components/Aside';
-import Footer from './components/Footer';
+import { createBrowserHistory } from 'history';
+import { Router } from 'react-router-dom';
+import App from "./App";
 
-const App = () => {
-  return (
-    <div className="grid-wrapper">
-      <Header />
-      <Nav />
-      <Profile />
-      <Aside />
-      <Footer />
-    </div>
-  );
-}
+const history = createBrowserHistory();
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("app")
+ReactDOM.render((
+  <Router history={history}>
+    <App />
+  </Router>
+),
+  document.getElementById('app')
 );

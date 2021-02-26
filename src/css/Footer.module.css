@@ -1,8 +1,0 @@
-.footer {
-    grid-area: footer;
-    background-color: var(--header-background);
-    color: var(--search-background);
-    text-align: center;
-    font-family: 'Concert One', cursive;
-    font-size: 30px;
-}

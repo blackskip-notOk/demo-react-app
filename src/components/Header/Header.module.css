@@ -1,5 +1,8 @@
 .header {
     grid-area: header;
-    padding: 5px;
+    margin: 0;
+    border: none;
+    padding: 0;
     background-color: var(--header-background);
+    color: var(--header-text);
 }

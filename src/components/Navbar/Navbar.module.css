@@ -2,17 +2,3 @@
     grid-area: nav;
     background-color:var(--main-text-color);
 }
-
-.ul {
-    text-align:center;
-    font-family: 'Concert One', cursive;
-    font-size: 24px;
-}
-
-.ul li {
-    margin: 10px 100px 10px 10px;
-}
-
-.ul li a {
-    color: var(--search-background);
-}
