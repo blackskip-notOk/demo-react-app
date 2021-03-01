@@ -1,4 +1,5 @@
 .li {
+    /* display:inline-block; */
     cursor: pointer;
     transform: scale(3.7);
 }

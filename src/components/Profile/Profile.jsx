@@ -11,10 +11,14 @@ const Profile = () => {
         <div>
             <section className={s.section} role="main">
                 <article className={s.item1}>
-                    <img className={s.img} src={img_1} alt={"bali beach"} />
+                    <picture>
+                        <img className={s.img} src={img_1} alt={"bali beach"} />
+                    </picture>
                 </article>
                 <article className={s.item2}>
-                    <img className={s.img} src={img_2} alt={"red parrot"} />
+                    <picture>
+                        <img className={s.img} src={img_2} alt={"red parrot"} />
+                    </picture>
                 </article>
             </section>
             <MyPosts myPosts="My Posts" add="Add new post" />

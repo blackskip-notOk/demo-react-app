@@ -1,9 +1,6 @@
-.li {
+.img {
     grid-area: logo;
     padding: 0px;
-}
-
-.img {
     width: 100%;
     height: 100%;
 }

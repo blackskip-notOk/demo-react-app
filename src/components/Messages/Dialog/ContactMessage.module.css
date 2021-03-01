@@ -1,0 +1,25 @@
+.div {
+    justify-self:start;
+	align-self:flex-end;
+	border: 1px dashed #555;
+	width: fit-content;
+	height:fit-content;
+}
+
+.div:nth-of-type(1) {
+	grid-row: 1;
+	grid-column: 1;
+}
+
+.p {
+    margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+    border: 1px solid green;
+    padding: 10px 10px 10px 15px;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    font-family: 'PT Sans', sans-serif;
+    background-color: var(--messages-back);
+    color: var(--dialog-message);
+    text-align: left;
+}

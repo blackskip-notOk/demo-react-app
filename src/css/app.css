@@ -38,13 +38,14 @@
 .grid-wrapper {
     min-height: 100%;
     display: grid;
-    grid-template-rows: 100px minmax(1fr, auto)  minmax(70px, auto);
-    grid-template-columns: 150px minmax(375px, 1fr) 200px;
+    grid-template-rows: 100px 1fr  70px;
+    grid-template-columns: 155px minmax(375px, 1fr) 200px;
     grid-template-areas:
         "header header header"
         "nav content aside"
         "footer footer footer";
     border: none;
+    background-color: var(--main-back);
 }
 
 .header {

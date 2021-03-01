@@ -1,4 +1,11 @@
 nav {
-    border: none;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 100px 0.5fr 1fr;
+    grid-template-areas:
+    "logo search ul";
+    grid-column-gap: 30px;
+    align-items: center;
+    justify-items:center;
 }
 

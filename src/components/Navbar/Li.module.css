@@ -1,32 +1,36 @@
 .li {
-    margin: 0px 0px 30px 8px;
-    padding-top: 10px;
     text-align: left;
+    font-size: 30px;
 }
 
-.li a {
+.div {
+    margin: 30px 10px 15px 60px;
+    transition: margin .6s;
+}
+
+.div:hover {
+    margin: 30px 20px 15px 70px;
+}
+
+.a {
     position: relative;
-    padding: 0px 0px 12px 0px;
     text-transform: lowercase;
-    transition: padding 0.55s;
     color: var(--nav-link-text);
 }
 
-.li a:hover {
-    padding: 2px 0px 12px 15px;
+.a:hover {
     text-transform: uppercase;
 }
 
-.li a.active {
-    padding: 2px 0px 12px 15px;
+.a.active {
     text-transform: capitalize;
     color: var(--anchor-text-active);
 }
 
-.li a::after {
+.a::after {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: -5px;
+    top: 10px;
     height: 100%;
     min-width: 0px;
     content: "";
@@ -34,20 +38,22 @@
     background: var(--anchor-back-decor);
 }
 
-
-
-.li a:hover:after {
-    min-width: 100%;
-    border-radius: 10px;
-    padding: 0 5px 0px 10px;
-    opacity: .5;
+.a:hover:after {
+    width: 100%;
+    height: 125%;
+    border-radius: 20px;
+    margin: -5px 0px 0px -5px;
+    padding-left: 23px;
+    opacity: .4;
     background: var(--anchor-back-decor);
 }
 
-.li a.active:after {
-    min-width: 100%;
-    border-radius: 10px;
-    padding: 0 10px;
-    opacity: .5;
+.a.active:after {
+    width: 100%;
+    height: 130%;
+    border-radius: 15px;
+    margin: -5px 0 0 -5px;
+    padding-left: 23px;
+    opacity: .4;
     background-color: var(--anchor-back-decor);
 }

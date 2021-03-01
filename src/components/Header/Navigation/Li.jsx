@@ -6,11 +6,17 @@ const Li = (props) => {
     return (
         <li className={s.li}>
             <div className={s.div}>
-                <NavLink className={s.a} to={props.pathway}>
-                    <figure className={props.icon} />
+                <NavLink
+                    className={s.a}
+                    to={props.pathway}
+                    target={props.tagret}
+                    activeClassName={s.active}
+                >
+                    <figure className={`${props.icon} ${s.icon}`} />
+                    {props.notation}
                 </NavLink>
                 <div className={s.divText}>
-                    {props.notation}
+                    {props.undertext}
                 </div>
             </div>
         </li>

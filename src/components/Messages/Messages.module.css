@@ -1,10 +1,55 @@
 .container {
     display: grid;
-    grid-template-rows: minmax(100px, auto) 1fr minmax(100px auto);
-    grid-template-columns: minmax(200px 2fr) minmax(200px 4fr);
-    width: 100%;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-columns: 260px 1fr;
+    grid-template-areas:
+        "menu contact"
+        "chats dialogs"
+        "chats message";
     height: 100%;
-    border: 2px solid var(--search-border); 
     color: var(--post-text);
-    background-color: var(--post-back);
+    background-color: var(--messages-back);
+}
+
+.menu {
+    grid-area: menu;
+    border: 1px solid var(--chats-border);
+}
+
+.chats {
+    grid-area: chats;
+    width: 100%;
+    border: 1px solid var(--chats-border);
+}
+
+.chat {
+    padding: 10px;
+}
+
+.chat a{
+    color: var(--chat-text);
+}
+
+.chat.active {
+    background-color: var(--chat-active-back);
+    color: var(--chat-active-text);
+}
+
+.contact {
+    grid-area: contact;
+    border: 1px solid var(--contact-border);
+}
+
+.dialogs {
+    grid-area: dialogs;
+    border: 1px solid var(--search-border);
+}
+
+.dialog {
+    padding: 10px;
+}
+
+.message {
+    grid-area: message;
+    border: 1px solid var(--search-border);
 }
