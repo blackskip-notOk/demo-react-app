@@ -24,7 +24,7 @@ yarn-error.log*
 
 #empty file
 CONTRIBUTING.md
-/src/image
+./src/image
 
 #vscode files
 /.vscode
