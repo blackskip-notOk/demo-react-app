@@ -1,0 +1,25 @@
+.div {
+    padding: 10px;
+}
+
+.div a {
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--chat-text);
+    background-color: var(--chat-back);
+}
+
+.div a:hover {
+    color: var(--chat-text-hover);
+    background-color: var(--chat-back-hover);
+}
+
+.div a:active {
+    color: var(--chat-text-active);
+    background-color: var(--chat-back-active);
+}
+
+.div a:focus {
+    color: var(--chat-text-focus);
+    background-color: var(--chat-back-focus);
+}

@@ -1,0 +1,41 @@
+.div {
+    display:grid;
+    grid-template-columns: min-content;
+    grid-template-rows: min-content min-content;
+    position: relative;
+    border: none;
+    transition: margin-bottom .1s ease;
+}
+
+.a {
+    width: 200%;
+    height: 200%;
+}
+
+.figure {
+    color: var(--figure);
+    transform: scale(3.7);
+}
+
+.div:hover {
+    margin-bottom: 25px;
+}
+
+.divText {
+    display: none;
+}
+
+.div:hover .divText {
+    display: block;
+    justify-self:center;
+    position: absolute;
+    top: 130%;
+    border: none;
+    font-family: 'Concert One', cursive;
+    font-size: 37px;
+    color: var(--navigation-text);
+}
+
+.active .figure {
+    color: var(--figure-active);
+}

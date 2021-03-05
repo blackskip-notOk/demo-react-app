@@ -1,0 +1,17 @@
+.div {
+    /* border: 1px solid red; */
+    text-align:left;
+    font-size: 20px;
+    font-family: 'Concert One', cursive;
+    background-color: var(--profileInfo-back);
+    color: var(--profileInfo-text);
+}
+
+.img {
+    width: 100%;
+    height: 200px;
+}
+
+.divText {
+    padding: 10px 10px 20px 10px;
+}
