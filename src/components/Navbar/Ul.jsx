@@ -2,7 +2,6 @@ import React from 'react';
 import Li from './Li';
 import s from './Ul.module.css';
 import pathways from '../Pathways/Pathways';
-import icons from '../Icons/Icons';
 
 const Ul = (props) => {
     return (
@@ -20,8 +19,7 @@ const Ul = (props) => {
             <Li
                 pathway={pathways.friends}
                 target="_self"
-                notation="Friends"
-            />
+                notation="Friends" />
             <Li
                 pathway={pathways.news}
                 target="_self"

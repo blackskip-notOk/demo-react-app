@@ -1,13 +1,35 @@
-.item {
-    margin: 0px 5px 5px 5px;
-    padding: 10px;
-    text-align: center;
-    font-family: 'Concert One', cursive;
-    font-size: 30px;
+.article {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 10fr 3fr;
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+    border-radius: 20px;
+    background-color: var(--post-back);
+    color: var(--post-text);
 }
 
-.item img {
-    width: 80px;
-    height: 80px;
+.article img {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    width: 50px;
+    height: 50px;
+    margin: 0px 10px;
     border-radius: 40px;
+}
+
+.span {
+    grid-column: 2/span 1;
+    margin: 0px 10px 0px 5px;
+    font-family:'Concert One', cursive;
+    font-size: 18px;
+}
+
+.div {
+    grid-column-start: 3;
+    justify-self:right;
+    margin: 0px 10px 0px 0px;
 }

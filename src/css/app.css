@@ -39,7 +39,7 @@
     min-height: 100%;
     display: grid;
     grid-template-rows: 100px 1fr  70px;
-    grid-template-columns: 155px minmax(375px, 1fr) 200px;
+    grid-template-columns: 165px minmax(375px, 1fr) 200px;
     grid-template-areas:
         "header header header"
         "nav content aside"

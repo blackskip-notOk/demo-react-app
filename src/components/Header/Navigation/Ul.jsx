@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Ul.module.css';
-import Li from './Li';
-import pathways from "../../Pathways/Pathways";
+import Li from './Li/Li';
+import pathways from '../../Pathways/Pathways';
 import icons from "../../Icons/Icons";
 
 const Ul = (props) => {

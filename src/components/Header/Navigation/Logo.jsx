@@ -1,10 +1,10 @@
 import React from "react";
 import s from './Logo.module.css';
-import logo from '../../../image/logo.png';
 
-const Logo = () => {
+const Logo = (props) => {
+    let path = `${props.src}`;
     return (
-        <img className={s.img} src={logo} alt={"site logo"} />
+        <img className={s.img} src={path} alt={props.alt} />
     );
 }
 

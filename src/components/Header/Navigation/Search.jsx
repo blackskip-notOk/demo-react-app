@@ -1,11 +1,18 @@
 import React from "react";
+import Figure from '../../Common/Figure/Figure';
+import Input from '../../Common/Input/Input';
 import s from './Search.module.css';
 
 const Search = (props) => {
     return (
         <div className={s.div}>
-            <figure className={`${props.icon} ${s.figure}`} />
-                <input type="search" className={s.input} id="search" name="search" placeholder="Search..." />
+            <Figure icon={props.icon} className={s.figure}/>
+            <Input
+            type="search"
+            className={s.input}
+            id="search"
+            name="search"
+            placeholder="Search..." />
         </div>
     );
 }

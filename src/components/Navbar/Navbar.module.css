@@ -1,5 +1,15 @@
 .nav {
+    display:block;
     width: 100%;
-    min-height: 350px;
+    min-height: 100%;
+    /* margin-top: -10px; */
     background-color: var(--navbar-back);
+}
+
+.div {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    height: 100%;
+    overflow: hidden;
+    border: 1px dotted blanchedalmond;
 }

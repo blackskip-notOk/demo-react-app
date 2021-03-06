@@ -9,9 +9,10 @@
     height: 60px;
     border: none;
     border-radius: 60px;
-    padding-left: 50px;
+    padding-left: 57px;
     transition: width 1.1s ease;
     background-color: var(--search-back);
+    color: var(--search-text);
 }
 
 input::-webkit-input-placeholder {
@@ -36,11 +37,12 @@ input::-webkit-input-placeholder {
     padding-right: 30px;
     text-align: right;
     font-size: 24px;
-    color: var(--search-text);
+    color: var(--search-text-hover);
     background-color: var(--search-back-hover);
 }
 
 .div:hover .input::-webkit-input-placeholder {
+    font-size: 24px;
     color: var(--search-text-hover);
 }
 

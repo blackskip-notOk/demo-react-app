@@ -1,8 +1,7 @@
 .div {
     position: relative;
     width: 100%;
-    margin: 5px 10px 0px 5px;
-    /* border-right: 1px solid black; */
+    margin: 5px 10px 10px 5px;
 }
 
 .input {
@@ -18,15 +17,6 @@
 input::-webkit-input-placeholder {
     font-size: 16px;
     color: var(--search-text);
-}
-
-.figure {
-    transform: scale(1.2);
-    position: absolute;
-    top: 18%;
-    left: 3%;
-    transition: all .55s ease;
-    color: var(--search-icon);
 }
 
 .input:hover, .input:focus, .input:active {

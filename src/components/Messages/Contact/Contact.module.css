@@ -1,13 +1,20 @@
 .div {
-    height: 100%;
+    display: grid;
+    grid-row: 1fr 1fr;
+    height: 60px;
+    margin: 0px 0px 5px 10px;
     font-family: 'PT Sans', sans-serif;
-    padding: 5px 0px 0px 5px;
-    background-color: var(--contact-back);
 }
 
 .span {
-    margin: 5px 0px 0px 5px;
+    align-self:center;
     font-size: 16px;
     font-weight: 600;
     color: var(--contact-text);
+}
+
+.divData {
+    align-self: center;
+    font-size: 16px;
+    color: var(--data-text);
 }

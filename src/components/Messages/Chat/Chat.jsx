@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Avatar from '../../Common/Avatar/Avatar';
 import s from './Chat.module.css';
 
 const Chat = (props) => {
@@ -8,7 +9,9 @@ const Chat = (props) => {
     return (
         <div className={s.div}>
             <NavLink to={path}>
-                <span>{props.contact}</span>
+                <Avatar src={props.avatar.src} alt={props.avatar.alt}
+                    className={s.img} />
+                <span>{props.name}</span>
             </NavLink>
         </div>
     );

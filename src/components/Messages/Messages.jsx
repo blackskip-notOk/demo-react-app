@@ -1,63 +1,37 @@
 import React from 'react';
 import s from "./Messages.module.css";
+import Chat from './Chat/Chat';
+import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
-// import Chat from './Chats/Chat/Chat';
 import Contact from './Contact/Contact';
-import contacts from './ContactList';
-import { NavLink } from 'react-router-dom';
-// import Dialog from './Dialog/Dialog';
+import Textarea from '../Common/Textarea/Textarea';
 
 const Messages = (props) => {
+    let contact = props.state.contacts.map(c =>  <Chat
+            name={c.name} id={c.id} key={c.id} avatar={c.avatar}
+             />);
+debugger;
+    let dialog = props.state.dialogs.map(d => <Dialog
+            message={d.message} id={d.id} key={d.id} />);
+
     return (
         <div className={s.container}>
             <div className={s.menu}>
                 <Menu />
             </div>
             <div className={s.chats}>
-                <div className={`${s.chat} ${s.active}`}>
-                    <NavLink to="/messages/chats/1">{contacts.yoda}</NavLink>
-                </div>
-                <div className={s.chat}>
-                    <NavLink to="/messages/chats/2">{contacts.vader}</NavLink>
-                </div>
-                <div className={s.chat}>
-                    <NavLink to="/messages/chats/3">{contacts.obiWan}</NavLink>
-                </div>
-                <div className={s.chat}>
-                    <NavLink to="/messages/chats/4">{contacts.maul}</NavLink>
-                </div>
-                <div className={s.chat}>
-                    <NavLink to="/messages/chats/5">{contacts.jarJarBinks}</NavLink>
-                </div>
+                {contact}
             </div>
             <div className={s.contact}>
-                <Contact contact={contacts.yoda} />
+                <Contact contact="active contact" data="last seen yesterday" />
             </div>
             <div className={s.dialogs}>
-                <div className={s.dialog}>
-                    Если вы закончите свое обучение сейчас,
-                    если вы выберете быстрый и легкий путь,
-                    как сделал Вейдер, вы станете агентом зла.
-                </div>
-                <div className={s.dialog}>
-                    Приучите себя отпускать все, что боитесь потерять
-                </div>
-                <div className={s.dialog}>
-                    Страх потери — это путь к Темной стороне
-                </div>
-                <div className={s.dialog}>
-                    Должен быть назван твой страх перед тем, как прогнать его
-                </div>
-                <div className={s.dialog}>
-                    В конце концов, трусы — это те, кто следует Темной стороне
-                </div>
-                <div className={s.dialog}>
-                    Всегда есть два, не больше, не меньше. Мастер и ученик
-                </div>
+                {dialog}
             </div>
-            <div className={s.message}>
-                Write a message
-                <button>Send a message</button>
+            <div className={s.newMessage}>
+                <Textarea
+                placeholder="Write a message..."
+                cols='10' rows='1' />
             </div>
         </div>
     );
