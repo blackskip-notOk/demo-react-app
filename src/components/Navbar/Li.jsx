@@ -1,7 +1,6 @@
 import React from "react";
 import s from './Li.module.css';
 import { NavLink } from 'react-router-dom';
-import Figure from "../Common/Figure/Figure";
 
 const Li = (props) => {
     return (
@@ -12,7 +11,6 @@ const Li = (props) => {
                 to={props.pathway}
                 target={props.tagret}
                 activeClassName={s.active}>
-                    <Figure icon={props.icon} className={s.figure} />
                     {props.notation}
                 </NavLink>
             </div>

@@ -7,9 +7,8 @@ const Li = (props) => {
         <li className={s.li}>
             <NavIcon
                 pathway={props.pathway}
-                target={props.tagret}
                 icon={props.icon}
-                undertext={props.undertext} />
+                undertext={props.undertext}/>
         </li>
     );
 }

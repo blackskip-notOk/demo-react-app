@@ -2,7 +2,6 @@
     display:block;
     width: 100%;
     min-height: 100%;
-    /* margin-top: -10px; */
     background-color: var(--navbar-back);
 }
 
@@ -11,5 +10,4 @@
     margin-bottom: 30px;
     height: 100%;
     overflow: hidden;
-    border: 1px dotted blanchedalmond;
 }

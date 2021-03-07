@@ -21,7 +21,7 @@ const App =(props) => {
   return (
     <div className = 'grid-wrapper'>
       <div className = 'header'>
-        <Header />
+        <Header state = {props.state.common} />
       </div>
       <div className = 'nav'>
         <Nav state = {props.state.navbar} />
@@ -51,6 +51,5 @@ const App =(props) => {
     </div>
   );
 }
-
 
 export default withRouter(App);

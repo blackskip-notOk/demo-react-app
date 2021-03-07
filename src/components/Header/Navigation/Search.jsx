@@ -4,9 +4,11 @@ import Input from '../../Common/Input/Input';
 import s from './Search.module.css';
 
 const Search = (props) => {
+    let figure = props.search.map( f => <Figure icon={f.icon}
+        className={s.figure} /> );
     return (
         <div className={s.div}>
-            <Figure icon={props.icon} className={s.figure}/>
+            {figure}
             <Input
             type="search"
             className={s.input}

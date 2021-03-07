@@ -4,12 +4,12 @@
 }
 
 .div {
-    margin: 0px 10px 15px 13px;
+    margin: 0px 10px 20px 13px;
     transition: margin .6s;
 }
 
 .div:hover {
-    margin: 0px 20px 15px 18px;
+    margin: 0px 20px 20px 18px;
 }
 
 .a {
