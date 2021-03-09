@@ -4,10 +4,8 @@ import Li from './Li/Li';
 
 const Ul = (props) => {
     let li = props.state.map( l => <Li pathway={l.pathway}
-        icon={l.icon}
-        undertext={l.undertext} />
+        icon={l.icon} undertext={l.undertext} key={l.id} />
     );
-debugger;
     return (
         <ul className={s.ul}>
             {li}

@@ -1,5 +1,4 @@
 .section {
-    border: 1px solid red;
     padding: 10px;
     font-family: 'Concert One', cursive;
     background-color: var(--my-posts-back);

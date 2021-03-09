@@ -9,7 +9,7 @@ const Post = (props) => {
     return (
         <article className={s.article}>
             <Avatar src={avatar} alt={props.alt}/>
-            <Message message={props.message} className={s.span} />
+            <Message post={props.post} className={s.span} />
             <Like className={s.div} classNameSpan={s.span} likes={props.likes} />
         </article>
     );

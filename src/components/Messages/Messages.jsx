@@ -4,15 +4,26 @@ import Chat from './Chat/Chat';
 import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
-import Textarea from '../Common/Textarea/Textarea';
+import Button from '../Common/Button/Button';
 
 const Messages = (props) => {
-    let contact = props.state.contacts.map(c =>  <Chat
+    let contact = props.messagesPage.contacts.map(c =>  <Chat
             name={c.name} id={c.id} key={c.id} avatar={c.avatar}
              />);
-debugger;
-    let dialog = props.state.dialogs.map(d => <Dialog
+
+    let dialog = props.messagesPage.dialogs.map(d => <Dialog
             message={d.message} id={d.id} key={d.id} />);
+
+    let newMessageText = React.createRef();
+
+    let addMessage = () => {
+        props.addMessage();
+    };
+
+    let onMessageChange = () => {
+        let text = newMessageText.current.value;
+        props.updateNewMessageText(text);
+    }
 
     return (
         <div className={s.container}>
@@ -29,9 +40,17 @@ debugger;
                 {dialog}
             </div>
             <div className={s.newMessage}>
-                <Textarea
-                placeholder="Write a message..."
-                cols='10' rows='1' />
+                <div>
+                    <textarea
+                        ref={newMessageText}
+                        onChange={onMessageChange}
+                        value={props.messagesPage.newMessageText}
+                        placeholder="Write a message..."
+                        cols='10' rows='1' />
+                </div>
+                <Button onclick={addMessage}
+                    className={s.divButton}
+                    span="Add a new Message" />
             </div>
         </div>
     );

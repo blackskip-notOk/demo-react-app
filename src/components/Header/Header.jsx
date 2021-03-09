@@ -5,9 +5,10 @@ import s from './Header.module.css';
 const Header = (props) => {
     return (
         <header className={s.header}>
-            <Navheader role="navigation" state={props.state.iconsHeader}
-                search={props.state.search}
-                logo={props.state.logo} />
+            <Navheader role="navigation"
+                state={props.common.iconsHeader}
+                search={props.common.search}
+                logo={props.common.logo} />
         </header>
     );
 }

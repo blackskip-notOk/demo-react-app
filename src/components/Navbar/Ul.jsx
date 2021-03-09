@@ -3,15 +3,13 @@ import Li from './Li';
 import s from './Ul.module.css';
 
 const Ul = (props) => {
-    let li = props.lies.map( l => <Li
-        pathway={l.pathway}
-        target={l.target}
-        notation={l.notation} />
+    let link = props.links.map( l => <Li pathway={l.pathway}
+        target={l.target} notation={l.notation} key={l.id} />
     );
 
     return (
         <ul className={s.ul}>
-            {li}
+            {link}
         </ul>
     );
 }

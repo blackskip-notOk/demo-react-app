@@ -21,25 +21,29 @@ const App =(props) => {
   return (
     <div className = 'grid-wrapper'>
       <div className = 'header'>
-        <Header state = {props.state.common} />
+        <Header common = {props.state.common} />
       </div>
       <div className = 'nav'>
-        <Nav state = {props.state.navbar} />
+        <Nav navbar = {props.state.navbar} />
       </div>
       <div className = 'content'>
         <Switch>
           <Route path = '/profile'
                 render = { () => <Profile
-                state = {props.state.profilePage} /> } />
+                profilePage = {props.state.profilePage}
+                addPost = {props.addPost}
+                updateNewPostText = {props.updateNewPostText}  /> } />
           <Route path = '/messages'
                 render = { () => <Messages
-                state = {props.state.messagesPage} /> } />
+                messagesPage = {props.state.messagesPage}
+                addMessage = {props.addMessage}
+                updateNewMessageText = {props.updateNewMessageText} /> } />
           <Route path = '/friends'
                 render = { () => <Friends
-                state = {props.state.friendsPage} /> } />
+                friendsPage = {props.state.friendsPage} /> } />
           <Route path = '/news'
                 render = { () => <News
-                state = {props.state.newsPage} /> } />
+                newsPage = {props.state.newsPage} /> } />
         </Switch>
       </div>
       <div className = 'aside'>
