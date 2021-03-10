@@ -31,13 +31,12 @@ const App =(props) => {
           <Route path = '/profile'
                 render = { () => <Profile
                 profilePage = {props.state.profilePage}
-                addPost = {props.addPost}
-                updateNewPostText = {props.updateNewPostText}  /> } />
+                dispatch = {props.dispatch}
+                background = {props.state.profilePage.background} /> } />
           <Route path = '/messages'
                 render = { () => <Messages
                 messagesPage = {props.state.messagesPage}
-                addMessage = {props.addMessage}
-                updateNewMessageText = {props.updateNewMessageText} /> } />
+                dispatch = {props.dispatch} /> } />
           <Route path = '/friends'
                 render = { () => <Friends
                 friendsPage = {props.state.friendsPage} /> } />

@@ -4,6 +4,7 @@ import maul from '../image/avatars/maul.jpg';
 import obi from '../image/avatars/Obiwan.jpg';
 import jar from '../image/avatars/Jarjarbinks.jpg';
 import logo from '../image/jedi1.png';
+import back from '../image/profile-back.jpg';
 
 let store = {
 
@@ -41,13 +42,14 @@ let store = {
                 {id: 3, src: '../image/avatars/maul.jpg.jpg', alt: 'Darth Maul avatar'},
                 {id: 4, src: '../image/avatars/Obiwan.jpg.jpg', alt: 'Obi-Wan Cenobi avatar'},
                 {id: 5, src: '../image/avatars/Jarjarbinks.jpg.jpg', alt: 'Jar Jar Binks avatar'},
-            ]
+            ],
         },
 
         profilePage: {
+            background: {id: 1, src: back, alt: 'Profile background'},
             posts: [
-                { id: 0, post: "Да пребудет с тобой сила.", likes: 11 },
-                { id: 1, post: "Меньше нас, но больше ума.", likes: 999 },
+                { id: 1, post: "Да пребудет с тобой сила.", likes: 11 },
+                { id: 2, post: "Меньше нас, но больше ума.", likes: 999 },
             ],
             newPostText:'Когда девятьсот лет тебе будет, не сможешь хорошо выглядеть, а?',
         },
@@ -100,48 +102,42 @@ let store = {
         },
     },
 
+    _subscriber() {},
+
     getState() {
         return this._state;
     },
-
-    _subscriber() {},
 
     subscribe(observer) {
         this._subscriber = observer;
     },
 
-    addPost() {
-        let newPost = {
-            id: 3,
-            post: this._state.profilePage.newPostText,
-            likes: 0
-        };
-
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._subscriber(this._state);
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._subscriber(this._state);
-    },
-
-    addMessage() {
-        let newDialog = {
-            id: 7,
-            message: this._state.messagesPage.newMessageText,
-        };
-
-        this._state.messagesPage.dialogs.push(newDialog);
-        this._state.messagesPage.newMessageText = '';
-        this._subscriber(this._state);
-    },
-
-    updateNewMessageText(newText) {
-        this._state.messagesPage.newMessageText = newText;
-        this._subscriber(this._state);
-    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: this._state.profilePage.posts.length + 1,
+                post: this._state.profilePage.newPostText,
+                likes: 0
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._subscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._subscriber(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newDialog = {
+                id: this._state.messagesPage.dialogs.length + 1,
+                message: this._state.messagesPage.newMessageText,
+            };
+            this._state.messagesPage.dialogs.push(newDialog);
+            this._state.messagesPage.newMessageText = '';
+            this._subscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.messagesPage.newMessageText = action.newText;
+            this._subscriber(this._state);
+        }
+    }
 
 };
 
