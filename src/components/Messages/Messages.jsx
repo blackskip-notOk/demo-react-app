@@ -5,6 +5,7 @@ import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
 import Button from '../Common/Button/Button';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/store';
 
 const Messages = (props) => {
     let contact = props.messagesPage.contacts.map(c =>  <Chat
@@ -17,12 +18,14 @@ const Messages = (props) => {
     let newMessageText = React.createRef();
 
     let addMessage = () => {
-        props.dispatch( {type: 'ADD-MESSAGE'} );
+        let action = addMessageActionCreator();
+        props.dispatch(action);
     };
 
     let onMessageChange = () => {
         let text = newMessageText.current.value;
-        props.dispatch( {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text} );
+        let action = updateNewMessageTextActionCreator(text);
+        props.dispatch(action);
     }
 
     return (
