@@ -2,9 +2,6 @@ import React from "react";
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import Button from '../../Common/Button/Button';
-import {addPostActionCreator,
-    updateNewPostTextActionCreator} from '../../../redux/store';
-
 
 const MyPosts = (props) => {
     let post = props.posts.map( p => <Post
@@ -14,15 +11,13 @@ const MyPosts = (props) => {
 
     let newPostText = React.createRef();
 
-    let addPost = () => {
-        let action = addPostActionCreator();
-        props.dispatch(action);
+    let onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = () => {
         let text = newPostText.current.value;
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
     }
 
     return (
@@ -37,7 +32,9 @@ const MyPosts = (props) => {
                         rows='8'
                         cols='10' />
                 </div>
-                <Button onclick={ addPost } className={s.divButton} span="add a new post" />
+                <Button onclick={ onAddPost }
+                    className={s.divButton}
+                    span="add a new post" />
             </div>
             <h1>{props.myPosts}</h1>
             {post}

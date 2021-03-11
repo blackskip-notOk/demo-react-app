@@ -5,27 +5,25 @@ import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
 import Button from '../Common/Button/Button';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/store';
 
 const Messages = (props) => {
-    let contact = props.messagesPage.contacts.map(c =>  <Chat
-            name={c.name} id={c.id} key={c.id} avatar={c.avatar}
-             />);
+    let messagesPage = props.messagesPage;
 
-    let dialog = props.messagesPage.dialogs.map(d => <Dialog
+    let contact = messagesPage.contacts.map(c =>  <Chat
+            name={c.name} id={c.id} key={c.id} avatar={c.avatar} />);
+
+    let dialog = messagesPage.dialogs.map(d => <Dialog
             message={d.message} id={d.id} key={d.id} />);
 
-    let newMessageText = React.createRef();
+    let newMessageText = props.newMessageText;
 
-    let addMessage = () => {
-        let action = addMessageActionCreator();
-        props.dispatch(action);
+    let onAddMessage = () => {
+        props.addMessage()
     };
 
-    let onMessageChange = () => {
-        let text = newMessageText.current.value;
-        let action = updateNewMessageTextActionCreator(text);
-        props.dispatch(action);
+    let onMessageChange = (event) => {
+        let text = event.target.value;
+        props.updateNewMessageText(text);
     }
 
     return (
@@ -45,13 +43,12 @@ const Messages = (props) => {
             <div className={s.newMessage}>
                 <div>
                     <textarea
-                        ref={newMessageText}
                         onChange={onMessageChange}
-                        value={props.messagesPage.newMessageText}
+                        value={newMessageText}
                         placeholder="Write a message..."
                         cols='10' rows='1' />
                 </div>
-                <Button onclick={addMessage}
+                <Button onclick={onAddMessage}
                     className={s.divButton}
                     span="Add a new Message" />
             </div>

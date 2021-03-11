@@ -7,7 +7,7 @@ const Dialog = (props) => {
     return (
         <div className={s.div}>
             <p>
-                {props.message}
+                {props.id} {props.message}
             </p>
         </div>
     );

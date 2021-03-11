@@ -11,7 +11,7 @@ const Chat = (props) => {
             <NavLink to={path}>
                 <Avatar src={props.avatar.src} alt={props.avatar.alt}
                     className={s.img} />
-                <span>{props.name}</span>
+                <span>{props.id} {props.name}</span>
             </NavLink>
         </div>
     );

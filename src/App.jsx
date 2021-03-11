@@ -5,7 +5,7 @@ import './css/Colors.css';
 import Header from './components/Header/Header';
 import Nav from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Messages from './components/Messages/Messages';
+import MessagesContainer from './components/Messages/MessagesContainer';
 import Friends from './components/Friends/Friends';
 import News from './components/News/News';
 import Aside from './components/Aside/Aside';
@@ -29,14 +29,10 @@ const App =(props) => {
       <div className = 'content'>
         <Switch>
           <Route path = '/profile'
-                render = { () => <Profile
-                profilePage = {props.state.profilePage}
-                dispatch = {props.dispatch}
+                render = { () => <Profile store={props.store}
                 background = {props.state.profilePage.background} /> } />
           <Route path = '/messages'
-                render = { () => <Messages
-                messagesPage = {props.state.messagesPage}
-                dispatch = {props.dispatch} /> } />
+                render = { () => <MessagesContainer store={props.store} /> } />
           <Route path = '/friends'
                 render = { () => <Friends
                 friendsPage = {props.state.friendsPage} /> } />

@@ -5,11 +5,12 @@ import obi from '../image/avatars/Obiwan.jpg';
 import jar from '../image/avatars/Jarjarbinks.jpg';
 import logo from '../image/jedi1.png';
 import back from '../image/profile-back.jpg';
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import profilePageReducer from './ProfilePageReducer';
+import messagesPageReducer from './MessagesPageReducer';
+import commonReducer from './CommonReducer';
+import friendsPageReducer from './FriendsPageReducer';
+import navbarReducer from './NavbarReducer';
+import newsPageReducer from './NewsPageReducer';
 
 let store = {
 
@@ -118,47 +119,16 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: this._state.profilePage.posts.length + 1,
-                post: this._state.profilePage.newPostText,
-                likes: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._subscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._subscriber(this._state);
-        } else if (action.type === ADD_MESSAGE) {
-            let newDialog = {
-                id: this._state.messagesPage.dialogs.length + 1,
-                message: this._state.messagesPage.newMessageText,
-            };
-            this._state.messagesPage.dialogs.push(newDialog);
-            this._state.messagesPage.newMessageText = '';
-            this._subscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.messagesPage.newMessageText = action.newText;
-            this._subscriber(this._state);
-        }
-    },
+
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.messagesPage = messagesPageReducer(this._state.messagesPage, action);
+        this._state.common = commonReducer(this._state.common, action);
+        this._state.friendsPage = friendsPageReducer(this._state.friendsPage, action);
+        this._state.navbar = navbarReducer(this._state.navbar, action);
+        this._state.newsPage = newsPageReducer(this._state.newsPage, action);
+        this._subscriber(this._state);
+    }
 
 };
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => (
-    {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-);
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextActionCreator = (text) => (
-    {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text
-    }
-);
 
 export default store;
