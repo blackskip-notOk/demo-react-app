@@ -18,6 +18,7 @@
     --nav-link-text: rgb(255, 185, 40);
     --anchor-text-active: rgb(20, 235, 0);
     --anchor-back-decor: rgb(255, 185, 50);
+    --profile-back: rgb(25, 5, 60);
     --profileInfo-text: rgb(255, 185, 50);
     --profileInfo-back: rgb(85, 40, 130);
     --my-posts-back:rgb(25, 5, 60);
@@ -31,9 +32,10 @@
     --content-back: rgb(25,10,40);
     --navbar-back: rgb(25, 5, 60);
     --main-back: rgb(110, 0, 0);
-    --menu-icon: rgb(150, 150, 150);
-    --menu-back: rgb(25, 5, 60);
+    --menu-icon: rgb(20, 235, 0);
+    --menu-back: rgb(75, 90, 155);
     --messages-back: rgb(25, 25, 90);
+    --newMessage-border: rgb(75, 90, 155);
     --contact-text: rgb(200, 200, 200);
     --message-text: rgb(235, 230, 255);
     --data-text: rgb(180, 180, 180);

@@ -1,7 +1,7 @@
 .header {
     grid-area: header;
-    margin: 0;
-    border: none;
-    padding: 0;
+    position:sticky;
+    top: 0;
+    width: 100%;
     background-color: var(--header-back);
 }

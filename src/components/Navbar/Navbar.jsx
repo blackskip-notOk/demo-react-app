@@ -9,9 +9,11 @@ const Nav = (props) => {
 
     return (
         <nav className={s.nav} role="menu">
-            <Ul links={props.navbar.links} />
-            <div className={s.div}>
-            {friend}
+            <div className={s.innerNav}>
+                <Ul links={props.navbar.links} />
+                <div className={s.div}>
+                {friend}
+                </div>
             </div>
         </nav>
     );

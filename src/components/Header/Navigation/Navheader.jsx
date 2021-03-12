@@ -5,10 +5,9 @@ import Logo from "./Logo";
 import Search from "./Search";
 
 const Navheader = (props) => {
-    let logo = props.logo.map( l => <Logo src={l.src} alt={l.alt} key={l.id} /> );
     return (
         <nav className={s.nav} role={props.role}>
-            {logo}
+            <Logo src={props.logo.src} alt={props.logo.alt} key={props.id} />
             <Search search={props.search} />
             <Ul state={props.state} />
         </nav>

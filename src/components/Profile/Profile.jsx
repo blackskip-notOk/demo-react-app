@@ -6,10 +6,12 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 const Profile = (props) => {
     return (
         <div className={s.div}>
-            <ProfileInfo src={props.background.src}
-                alt={props.background.alt}
-                key={props.background.id}  />
-            <MyPostsContainer store={props.store} />
+            <ProfileInfo src={props.profilePage.background.src}
+                alt={props.profilePage.background.alt}
+                key={props.profilePage.background.id}
+                avatar={props.profilePage.avatar}
+                name={props.profilePage.name} />
+            <MyPostsContainer />
         </div>
     );
 }

@@ -1,10 +1,19 @@
 import React from "react";
 import s from './Aside.module.css';
+import Adversting from './Adversting';
 
 const Aside = (props) => {
+        let adv = props.advs.map( a => <Adversting
+        text={a.text}
+        key={a.id}
+        id={a.id} />
+    );
+
     return (
         <aside className={s.aside}>
-            {props.news}
+            <div className={s.innerAside}>
+                {adv}
+            </div>
         </aside>
     );
 }

@@ -49,6 +49,8 @@
 textarea {
     width: 100%;
     border: none;
+    border-radius: 20px;
+    padding: 10px;
     outline: none;
     resize:none;
 }

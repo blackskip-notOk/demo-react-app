@@ -3,13 +3,10 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     contacts: [
-        { id: 1, name: 'Master Yoda', avatar: {src: '../image/yoda.jpg', alt: 'Master Yoda avatar'} },
+        { id: 1, name: 'Master Yoda', avatar: {src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'} },
     ],
     dialogs: [
         { id: 1, message: "Если вы закончите свое..." },
-    ],
-    avatars: [
-        { id: 1, src: '../image/yoda.jpg', alt: 'Master Yoda avatar' },
     ],
     newMessageText: 'Размер не имеет значения...',
 }

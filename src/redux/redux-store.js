@@ -5,6 +5,7 @@ import commonReducer from './CommonReducer';
 import friendsPageReducer from './FriendsPageReducer';
 import navbarReducer from './NavbarReducer';
 import newsPageReducer from './NewsPageReducer';
+import asideReducer from './AsideReducer';
 
 let reducers = combineReducers({
     profilePage: profilePageReducer,
@@ -13,6 +14,7 @@ let reducers = combineReducers({
     friendsPage: friendsPageReducer,
     navbar: navbarReducer,
     newsPage: newsPageReducer,
+    aside: asideReducer,
 });
 
 let store = createStore(reducers);

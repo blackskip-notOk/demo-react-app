@@ -28,11 +28,12 @@ const Messages = (props) => {
 
     return (
         <div className={s.container}>
-            <div className={s.menu}>
-                <Menu />
-            </div>
             <div className={s.chats}>
-                {contact}
+                <div className={s.innerChats}>
+                    <Menu icons={props.icons}
+                        search={props.search} />
+                    {contact}
+                </div>
             </div>
             <div className={s.contact}>
                 <Contact contact="active contact" data="last seen yesterday" />
@@ -45,12 +46,13 @@ const Messages = (props) => {
                     <textarea
                         onChange={onMessageChange}
                         value={newMessageText}
+                        className={s.textarea}
                         placeholder="Write a message..."
                         cols='10' rows='1' />
                 </div>
                 <Button onclick={onAddMessage}
                     className={s.divButton}
-                    span="Add a new Message" />
+                    span="New Message" />
             </div>
         </div>
     );

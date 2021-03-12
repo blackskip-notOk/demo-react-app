@@ -1,10 +1,10 @@
 let initialState = {
     friends: [
-        { id: 1, name: 'Master Yoda', avatar: {src: '', alt: 'Master Yoda avatar'} },
-        { id: 2, name: 'Darth Vader', avatar: {src: '', alt: 'Darth Vader avatar'} },
-        { id: 3, name: 'Darth Maul', avatar: {src: '', alt: 'Darth Maul avatar'} },
-        { id: 4, name: 'Obi-Wan Cenobi', avatar: {src: '', alt: 'Obi-Wan Cenobi avatar'} },
-        { id: 5, name: 'Jar Jar Binks', avatar: {src: '', alt: 'Jar Jar Binks avatar'} }
+        { id: 1, name: 'Master Yoda', avatar: {src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'} },
+        { id: 2, name: 'Darth Vader', avatar: {src: '../image/avatars/vader.jpg', alt: 'Darth Vader avatar'} },
+        { id: 3, name: 'Darth Maul', avatar: {src: '../image/avatars/maul.jpg', alt: 'Darth Maul avatar'} },
+        { id: 4, name: 'Obi-Wan Cenobi', avatar: {src: '../image/avatars/Obiwan.jpg', alt: 'Obi-Wan Cenobi avatar'} },
+        { id: 5, name: 'Jar Jar Binks', avatar: {src: '../image/avatars/Jarjarbinks.jpg', alt: 'Jar Jar Binks avatar'} }
     ],
 
     links: [

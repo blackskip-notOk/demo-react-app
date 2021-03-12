@@ -1,16 +1,4 @@
-.item1 {
-    grid-area: item-1;
-    margin: 0px 5px 5px 5px;
-    text-align: center;
-}
-
-.item2 {
-    grid-area: item-2;
-    margin: 0px 5px 5px 5px;
-    text-align: center;
-}
-
-.img {
-    width: 400px;
-    height: 450px;
+.div {
+    min-height: 100%;
+    background-color: var(--profile-back);
 }

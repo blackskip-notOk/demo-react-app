@@ -1,13 +1,20 @@
 .nav {
-    display:block;
+    grid-area: nav;
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
     width: 100%;
     min-height: 100%;
     background-color: var(--navbar-back);
 }
 
+.nav .innerNav {
+    position: sticky;
+    top: 10%;
+}
+
 .div {
     margin-top: 50px;
-    margin-bottom: 30px;
-    height: 100%;
+    margin-bottom: 50px;
     overflow: hidden;
 }

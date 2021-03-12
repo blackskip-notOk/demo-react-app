@@ -1,39 +1,36 @@
 .container {
     display: grid;
-    grid-template-rows: 50px 1fr minmax(min-content 1fr);
+    grid-template-rows: 50px 1fr min-content;
     grid-template-columns: 260px 1fr;
     grid-template-areas:
-        "menu contact"
+        "contact contact"
         "chats dialogs"
         "chats message";
     height: 100%;
+    width: 100%;
     background-color: var(--messages-back);
-}
-
-.menu {
-    grid-area: menu;
-    border: 1px solid var(--chats-border);
 }
 
 .chats {
     grid-area: chats;
-    width: 100%;
-    border: 1px solid var(--chats-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-top: 1px solid var(--chats-border);
+    border-right: 1px solid var(--chats-border);
 }
 
-/* .div {
-    grid-column-start: 2;
-    grid-column-end: 3;
-} */
+.chats .innerChats {
+    position: sticky;
+    top: 10%;
+}
 
 .contact {
     grid-area: contact;
-    border: 1px solid var(--contact-border);
 }
 
 .dialogs {
     grid-area: dialogs;
-    border-right: 1px solid var(--search-border);
     border-top: 1px solid var(--search-border);
     font-family: 'Concert One', cursive;
     font-size: 14px;
@@ -41,61 +38,19 @@
 
 .newMessage {
     grid-area: message;
-    border: 1px solid var(--search-border);
+    border-top: 2px solid var(--newMessage-border);
 }
 
-.newMessage textarea {
-    width: 100%;
+.textarea {
+    width: 90%;
+    margin: 5px auto 1px 10px;
+    border-radius: 10px;
     border: none;
     outline: none;
     resize:none;
 }
 
-/* .divButton {
+.divButton {
     text-align: end;
-    margin: 0px 0px 0px 0px;
-}
-
-button {
-    position: relative;
-    outline: none;
-    border: 1px solid var(--button-border);
-    border-radius: 10px;
-    padding: 5px 5px 10px 5px;
-    font-family: 'Concert One', cursive;
-    font-size: 14px;
-    background-color: var(--button-back);
-    color: var(--button-text);
-    text-transform: capitalize;
-}
-
-button::after {
-    position: absolute;
-    left: -5px;
-    top: 0px;
-    height: 100%;
-    min-width: 0px;
-    content: "";
-    transition: .2s ease;
-    background: var(--button-back-decor);
-}
-
-button:hover:after {
-    width: 100%;
-    height: 140%;
-    border-radius: 20px;
-    margin: -5.5px 0px 0px -6px;
-    padding-left: 23px;
-    opacity: .4;
-    background: var(--button-back-decor);
-} */
-
-.section h1 {
-    width: fit-content;
-    margin-top: -20px;
-    margin-bottom: 10px;
-    padding: 10px;
-    text-align: left;
-    font-size: 36px;
-    color: var(--post-head-text);
+    margin: 0px 10px 10px 0px;
 }

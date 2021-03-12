@@ -1,10 +1,9 @@
 import React from "react";
-import s from './Li.module.css';
 import NavIcon from './NavIcon/NanIcon';
 
 const Li = (props) => {
     return (
-        <li className={s.li}>
+        <li>
             <NavIcon
                 pathway={props.pathway}
                 icon={props.icon}

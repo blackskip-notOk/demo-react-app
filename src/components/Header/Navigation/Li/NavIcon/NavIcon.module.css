@@ -3,18 +3,12 @@
     grid-template-columns: min-content;
     grid-template-rows: min-content min-content;
     position: relative;
-    border: none;
-    transition: margin-bottom .1s ease;
-}
-
-.a {
-    width: 200%;
-    height: 200%;
+    transition: margin-bottom .6s ease;
 }
 
 .figure {
     color: var(--figure);
-    transform: scale(3.7);
+    transform: scale(2.7);
 }
 
 .div:hover {
@@ -32,7 +26,7 @@
     top: 130%;
     border: none;
     font-family: 'Concert One', cursive;
-    font-size: 37px;
+    font-size: 30px;
     color: var(--navigation-text);
 }
 

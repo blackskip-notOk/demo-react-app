@@ -1,19 +1,19 @@
 import React from "react";
+import Avatar from "../../Common/Avatar/Avatar";
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
     let path = `${props.src}`
     return (
         <div className={s.div}>
-            <picture>
                 <img className={s.img}
                     src={path}
                     alt={props.alt}
                     key={props.id} />
-            </picture>
-            <div className={s.divText}>
-                Avatar + description
-            </div>
+            <Avatar src={props.avatar.src}
+                alt={props.avatar.alt}
+                className={s.avatar} />
+            <span className={s.span}>{props.name}</span>
         </div>
     );
 }

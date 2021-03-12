@@ -1,7 +1,7 @@
 nav {
     display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 100px 0.5fr 1fr;
+    grid-template-rows: 80px;
+    grid-template-columns: 80px 0.5fr 1fr;
     grid-template-areas:
     "logo search ul";
     grid-column-gap: 30px;

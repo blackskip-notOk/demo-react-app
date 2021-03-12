@@ -3,12 +3,12 @@ import Figure from '../../Common/Figure/Figure';
 import Input from '../../Common/Input/Input';
 import s from './Search.module.css';
 
+
 const Search = (props) => {
-    let figure = props.search.map( f => <Figure icon={f.icon}
-        className={s.figure} key={f.id} /> );
     return (
         <div className={s.div}>
-            {figure}
+            <Figure icon={props.search.icon}
+            className={s.figure} key={props.search.id} />
             <Input
             type="search"
             className={s.input}
