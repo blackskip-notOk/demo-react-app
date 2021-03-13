@@ -6,9 +6,9 @@ const Header = (props) => {
     return (
         <header className={s.header}>
             <Navheader role="navigation"
-                state={props.common.iconsHeader}
-                search={props.common.search}
-                logo={props.common.logo} />
+                iconsHeader={props.iconsHeader}
+                search={props.search}
+                logo={props.logo} />
         </header>
     );
 }

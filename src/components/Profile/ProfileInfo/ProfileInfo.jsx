@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
                     alt={props.alt}
                     key={props.id} />
             <Avatar src={props.avatar.src}
-                alt={props.avatar.alt}
+                alt={props.alt}
                 className={s.avatar} />
             <span className={s.span}>{props.name}</span>
         </div>

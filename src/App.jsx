@@ -1,13 +1,13 @@
 import React from 'react';
 import './css/reset.css';
-import './css/app.css'
+import './css/app.css';
 import './css/Colors.css';
-import Header from './components/Header/Header';
-import Nav from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import HeaderContainer from './components/Header/HeaderContainer';
+import NavbarContainer from './components/Navbar/NavbarContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messages/MessagesContainer';
-import Friends from './components/Friends/Friends';
-import News from './components/News/News';
+import FriendsContainer from './components/Friends/FriendsContainer';
+import NewsContainer from './components/News/NewsContainer';
 import AsideContainer from './components/Aside/AsideContainer';
 import Footer from './components/Footer/Footer';
 import {
@@ -20,24 +20,21 @@ const App =(props) => {
   return (
     <div className = 'grid-wrapper'>
       <div className = 'header'>
-        <Header common = {props.state.common} />
+        <HeaderContainer />
       </div>
       <div className = 'nav'>
-        <Nav navbar = {props.state.navbar} />
+        <NavbarContainer />
       </div>
       <div className = 'content'>
         <Switch>
           <Route path = '/profile'
-                render = { () => <Profile
-                profilePage = {props.state.profilePage} /> } />
+                render = { () => <ProfileContainer /> } />
           <Route path = '/messages'
                 render = { () => <MessagesContainer /> } />
           <Route path = '/friends'
-                render = { () => <Friends
-                friendsPage = {props.state.friendsPage} /> } />
+                render = { () => <FriendsContainer /> } />
           <Route path = '/news'
-                render = { () => <News
-                newsPage = {props.state.newsPage} /> } />
+                render = { () => <NewsContainer /> } />
         </Switch>
       </div>
       <div className = 'aside'>

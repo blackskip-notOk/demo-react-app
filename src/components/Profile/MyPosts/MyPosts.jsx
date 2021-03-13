@@ -36,7 +36,7 @@ const MyPosts = (props) => {
                     className={s.divButton}
                     span="add a new post" />
             </div>
-            <h1>{props.myPosts}</h1>
+            <h1>My Posts</h1>
             {post}
         </section>
     );

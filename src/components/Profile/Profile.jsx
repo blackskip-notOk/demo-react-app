@@ -1,17 +1,20 @@
 import React from "react";
 import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
     return (
         <div className={s.div}>
-            <ProfileInfo src={props.profilePage.background.src}
-                alt={props.profilePage.background.alt}
-                key={props.profilePage.background.id}
-                avatar={props.profilePage.avatar}
-                name={props.profilePage.name} />
-            <MyPostsContainer />
+            <ProfileInfo src={props.background.src}
+                alt={props.background.alt}
+                key={props.background.id}
+                avatar={props.avatar}
+                name={props.name} />
+            <MyPosts posts={props.posts}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText}
+                newPostText={props.newPostText} />
         </div>
     );
 }
