@@ -1,6 +1,6 @@
 import React from "react";
-import Figure from "../../Common/Figure/Figure";
-import Input from '../../Common/Input/Input';
+import Figure from "../../../Common/Figure/Figure";
+import Input from '../../../Common/Input/Input';
 import s from './Search.module.css';
 
 const Search = (props) => {

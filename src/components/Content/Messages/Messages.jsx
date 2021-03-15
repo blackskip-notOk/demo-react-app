@@ -4,15 +4,13 @@ import Chat from './Chat/Chat';
 import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
-import Button from '../Common/Button/Button';
+import Button from '../../Common/Button/Button';
 
 const Messages = (props) => {
-    let messagesPage = props.messagesPage;
-
-    let contact = messagesPage.contacts.map(c =>  <Chat
+    let contact = props.contacts.map(c =>  <Chat
             name={c.name} id={c.id} key={c.id} avatar={c.avatar} />);
 
-    let dialog = messagesPage.dialogs.map(d => <Dialog
+    let dialog = props.dialogs.map(d => <Dialog
             message={d.message} id={d.id} key={d.id} />);
 
     let newMessageText = props.newMessageText;
@@ -50,7 +48,7 @@ const Messages = (props) => {
                         placeholder="Write a message..."
                         cols='10' rows='1' />
                 </div>
-                <Button onclick={onAddMessage}
+                <Button onClick={onAddMessage}
                     className={s.divButton}
                     span="New Message" />
             </div>

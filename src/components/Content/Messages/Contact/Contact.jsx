@@ -1,5 +1,5 @@
 import React from 'react';
-import Data from '../../Common/Data-time/Data';
+import Data from '../../../Common/Data-time/Data';
 import s from './Contact.module.css';
 
 const Contact = (props) => {

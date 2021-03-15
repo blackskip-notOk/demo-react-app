@@ -4,10 +4,10 @@ import './css/app.css';
 import './css/Colors.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import MessagesContainer from './components/Messages/MessagesContainer';
-import FriendsContainer from './components/Friends/FriendsContainer';
-import NewsContainer from './components/News/NewsContainer';
+import ProfileContainer from './components/Content/Profile/ProfileContainer';
+import MessagesContainer from './components/Content/Messages/MessagesContainer';
+import FriendsContainer from './components/Content/Friends/FriendsContainer';
+import NewsContainer from './components/Content/News/NewsContainer';
 import AsideContainer from './components/Aside/AsideContainer';
 import Footer from './components/Footer/Footer';
 import {
@@ -15,6 +15,7 @@ import {
   Switch,
   withRouter
 } from 'react-router-dom';
+import FindUsersContainer from './components/Content/FindUsers/FindUsersContainer';
 
 const App =(props) => {
   return (
@@ -35,6 +36,8 @@ const App =(props) => {
                 render = { () => <FriendsContainer /> } />
           <Route path = '/news'
                 render = { () => <NewsContainer /> } />
+          <Route path = '/users'
+                render = { () => <FindUsersContainer /> } />
         </Switch>
       </div>
       <div className = 'aside'>

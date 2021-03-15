@@ -1,6 +1,6 @@
 import Profile from './Profile';
 import {addPostActionCreator,
-    updateNewPostTextActionCreator} from '../../redux/ProfilePageReducer';
+    updateNewPostTextActionCreator} from '../../../redux/ProfilePageReducer';
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {

@@ -54,4 +54,6 @@
     --contact-back: rgb(20, 15, 60);
     --dialog-back: rgb(77, 77, 139);
     --dialog-message: rgb(255, 255, 255);
+    --findUsers-back: rgb(48, 34, 75);
+    --findUsers-text: rgb(255, 185, 50);
 }
