@@ -15,7 +15,8 @@ const User = (props) => {
         <div className={s.container}>
             <Avatar className={s.img}
                 src={props.src}
-                alt={props.alt} />
+                // alt={props.alt}
+            />
                 { props.followed
                     ?
                     <Button onClick= {unfollow}
@@ -25,11 +26,11 @@ const User = (props) => {
                     <Button onClick={follow}
                         className={s.button} span='Follow' />
                 }
-            <div className={s.fullName}><h2>{props.fullName}</h2></div>
+            <div className={s.name}><h2>{props.name}</h2></div>
             <div className={s.status}>Status: {props.status}</div>
             <div className={s.location}>
-                <span>City: {props.city}</span>
-                <span>Planet: {props.planet}</span>
+                {/* <span>City: {props.city}</span>
+                <span>Planet: {props.planet}</span> */}
             </div>
         </div>
     );

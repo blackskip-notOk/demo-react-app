@@ -86,7 +86,16 @@ let store = {
             newMessageText: 'Размер не имеет значения. Посмотри на меня. По размеру меня судишь, так? Гмм? Гмм. А не должен ты. Ибо мой союзник — Сила, и могущественный союзник она.',
         },
 
-        friendsPage: {},
+        friendsPage: {
+            findUsersPage: [
+                { id: 1, name: 'Luke Skywalker', avatar: { id: 1, src: '../image/avatars/luke.jpg' , alt: 'Luke Skywalker avatar' }, followed: true,  status: 'Тёмная сторона сильнее?', location: { city: 'Mos Espa', planet: 'Tatooine' } },
+                { id: 2, name: 'Master Yoda', avatar: { id: 2, src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar' }, followed: true,  status: 'Да пребудет с тобой сила',  location: { city: 'Swamp', planet: 'Dagobah' } },
+                { id: 3, name: 'Darth Vader', avatar: { id: 3, src: '../image/avatars/vader.jpg', alt: 'Darth Vader avatar' }, followed: false,  status: 'Ты недооцениваешь мою мощь', location: { city: 'Death Star', planet: 'Open Space' }},
+                { id: 4, name: 'Darth Maul', avatar: { id: 4, src: '../image/avatars/maul.jpg', alt: 'Darth Maul avatar' }, followed: false,  status: 'Ситхи будут править вновь', location: { city: 'maverick', planet: 'no' }},
+                { id: 5, name: 'Obi-Wan Cenobi', avatar: { id: 5, src: '../image/avatars/Obiwan.jpg', alt: 'Obi-Wan Cenobi avatar' }, followed: true, status: 'Кто глупее: глупец или глупец, за ним следующий?',  location: { city: 'Mos Espa', planet: 'Tatooine' }},
+                { id: 6, name: 'Jar Jar Binks', avatar: { id: 6, src: '../image/avatars/Jarjarbinks.jpg', alt: 'Jar Jar Binks avatar' }, followed: false,  status: 'Моя говорить.', location: { city: 'Hidden city', planet: 'Naboo' } }
+            ]
+        },
 
         newsPage: {},
 
