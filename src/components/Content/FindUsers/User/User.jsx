@@ -4,6 +4,7 @@ import Button from "../../../Common/Button/Button";
 import s from './User.module.css';
 
 const User = (props) => {
+    debugger;
     let unfollow = () => {
         props.unfollow(props.id);
     };

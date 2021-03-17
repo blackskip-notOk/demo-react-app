@@ -1,37 +1,53 @@
 import React from "react";
-import User from './User/User';
 import s from './FindUsers.module.css';
 import * as axios from "axios";
-import userAvatar from '../../../image/logo1.png';
+import userAvatar from '../../../image/bb-8.png';
+import Avatar from "../../Common/Avatar/Avatar";
+import Button from '../../Common/Button/Button';
 
-const FindUsers = (props) => {
-    debugger;
-    if (props.users.length === 0) {
+class FindUsers extends React.Component {
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
-                props.setUsers(response.data.items);
-        });
+                this.props.setUsers(response.data.items);
+            });
     }
 
-    let user = props.users.map(u => <User key={u.id}
-        id={u.id}
-        src={u.photos.small != null ?
-            u.photos.small :
-            userAvatar}
-        // alt={u.avatar.alt}
-        followed={u.followed}
-        name={u.name}
-        status={u.status}
-        // city={u.location.city}
-        // planet={u.location.planet}
-        follow={props.follow}
-        unfollow={props.unfollow} />);
-
-    return (
-        <div className={s.div}>
-            {user}
-        </div>
-    );
+    render() {
+        return <div className={s.div}>
+            {
+                this.props.users.map(user => <div key={user.id} className={s.container}>
+                    <div className={s.name}>
+                        {user.name}
+                    </div>
+                    <Avatar src={
+                        user.photos.small
+                        ? user.photos.small
+                        : userAvatar}
+                        className={s.img} />
+                    <div className={s.status}>
+                        {user.status
+                            ? user.status
+                            : 'Nothing to say'}
+                    </div>
+                    <div>
+                        {user.followed
+                            ? <Button className={s.button}
+                                span='Unfollow'
+                                onClick={ () => {
+                                    this.props.unfollow(user.id)
+                                } } />
+                            : <Button className={s.button}
+                                span='Follow'
+                                onClick={ () => {
+                                    this.props.follow(user.id)
+                                } } />
+                        }
+                    </div>
+                </div>)
+            }
+            </div>
+    }
 }
 
 export default FindUsers;
