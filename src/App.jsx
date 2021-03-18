@@ -15,7 +15,7 @@ import {
   Switch,
   withRouter
 } from 'react-router-dom';
-import FindUsersContainer from './components/Content/FindUsers/FindUsersContainer';
+import UsersContainer from './components/Content/Users/UsersContainer';
 
 const App =(props) => {
   return (
@@ -37,7 +37,7 @@ const App =(props) => {
           <Route path = '/news'
                 render = { () => <NewsContainer /> } />
           <Route path = '/users'
-                render = { () => <FindUsersContainer /> } />
+                render = { () => <UsersContainer /> } />
         </Switch>
       </div>
       <div className = 'aside'>

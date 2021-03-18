@@ -56,4 +56,7 @@
     --dialog-message: rgb(255, 255, 255);
     --findUsers-back: rgb(48, 34, 75);
     --findUsers-text: rgb(255, 185, 50);
+    --findUsers-page: rgb(255, 185, 50);
+    --findUsers-page-chosen: rgb(20, 235, 0);
+    --status-text:rgb(255, 255, 255);
 }
