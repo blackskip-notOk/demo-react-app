@@ -19,7 +19,7 @@
     align-self: start;
     justify-self: start;
     width: 150px;
-    height: 180px;
+    height: 150px;
     border-radius: 100px;
 }
 
@@ -27,7 +27,7 @@
     grid-area: name;
     text-transform: capitalize;
     justify-self: start;
-    align-self: center;
+    align-self: end;
     font-size: 40px;
     color: var(--profileInfo-text);
 }
@@ -35,15 +35,16 @@
 .spanAbout {
     grid-area: about;
     font-size: 24px;
-    align-self: center;
+    align-self: end;
     justify-self: center;
-    color: var(--profileInfo-about);
+    color: var(--profileInfo-text);
 }
 
 .ul {
     grid-area: contacts;
     font-size: 20px;
     align-self: center;
+    justify-self: right;
     text-align: right;
     color: var(--profileInfo-text);
 }
@@ -52,18 +53,12 @@
     margin: 10px;
 }
 
-.figure {
-    transform: scale(1.5);
-    margin: 10px 10px 10px 10px;
-    color: var(--contact-figure);
-}
-
 .job {
     grid-area: job;
-    transform: scale(5);
-    align-self: center;
-    justify-self: center;
-    color: var(--profileInfo-job);
+    font-size: 40px;
+    align-self: start;
+    justify-self: start;
+    color: var(--profileInfo-text);
 }
 
 .spanDesc {
@@ -71,6 +66,5 @@
     font-size: 24px;
     align-self: center;
     justify-self: center;
-    margin-left: 10px;
     color: var(--profileInfo-text);
 }

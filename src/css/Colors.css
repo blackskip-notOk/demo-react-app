@@ -20,7 +20,9 @@
     --anchor-back-decor: rgb(255, 185, 50);
     --profile-back: rgb(25, 5, 60);
     --profileInfo-text: rgb(255, 185, 50);
+    --profileInfo-about: rgb(0, 155, 70);
     --profileInfo-back: rgb(85, 40, 130);
+    --profileInfo-job: rgb(5, 10, 51);
     --my-posts-back:rgb(25, 5, 60);
     --post-head-text: rgb(0, 150, 0);
     --post-text: rgb(204, 185, 75);
@@ -59,4 +61,5 @@
     --findUsers-page: rgb(255, 185, 50);
     --findUsers-page-chosen: rgb(20, 235, 0);
     --status-text:rgb(255, 255, 255);
+    --contact-figure: rgb(49, 145, 41);
 }

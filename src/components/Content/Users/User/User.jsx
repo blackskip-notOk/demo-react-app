@@ -3,6 +3,7 @@ import s from './User.module.css';
 import userAvatar from '../../../../image/bb-8.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
+import { NavLink } from "react-router-dom";
 
 
 const User = (props) => {
@@ -29,9 +30,12 @@ const User = (props) => {
                     <div className={s.divName}>
                         {u.name}
                     </div>
-                    <Avatar src={u.photos.small
+                    <NavLink to={'/profile/' + u.id}
+                        className={s.link}>
+                        <Avatar src={u.photos.small
                         ? u.photos.small : userAvatar}
                         className={s.img} />
+                    </NavLink>
                     <div className={s.divLocation}>
                         {u.location ? u.location : 'No country, No city'}
                     </div>

@@ -6,11 +6,19 @@ import MyPosts from "./MyPosts/MyPosts";
 const Profile = (props) => {
     return (
         <div className={s.div}>
-            <ProfileInfo src={props.background.src}
+            <ProfileInfo aboutMe={props.profile.aboutMe}
+                contacts={props.profile.contacts}
+                lookingForAJob={props.profile.lookingForAJob}
+                lookingForAJobDescription={props.profile.lookingForAJobDescription}
+                fullName={props.profile.fullName}
+                userId={props.profile.userId}
+                photos={props.profile.photos}
+                icons={props.icons}
+
+                src={props.background.src}
                 alt={props.background.alt}
                 key={props.background.id}
-                avatar={props.avatar}
-                name={props.name} />
+                avatar={props.avatar} />
             <MyPosts posts={props.posts}
                 addPost={props.addPost}
                 updateNewPostText={props.updateNewPostText}

@@ -23,6 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 *.jpg
 *.png
+*.gif
+*.svg
 
 #empty file
 CONTRIBUTING.md
