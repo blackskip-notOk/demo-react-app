@@ -1,32 +1,31 @@
-.li {
+.menu__item {
     font-size: 26px;
 }
 
-.div {
+.item {
     margin: 0px 0px 20px 15px;
     transition: margin .3s;
 }
 
-.div:hover {
+.item:hover {
     margin: 0px 10px 20px 10px;
 }
 
-.a {
+.item__link {
     position: relative;
     text-transform: lowercase;
-    color: var(--nav-link-text);
 }
 
-.a:hover {
+.item__link:hover {
     text-transform: uppercase;
 }
 
-.a.active {
+.item__link.active {
     text-transform: capitalize;
-    color: var(--anchor-text-active);
+    color: var(--navlink__text_active);
 }
 
-.a::after {
+.item__link::after {
     position: absolute;
     left: -5px;
     top: 0%;
@@ -34,21 +33,21 @@
     min-width: 0px;
     content: "";
     transition: all .5s ease-in-out;
-    background: var(--anchor-back-decor);
+    background: var(--navlink__back);
 }
 
-.a:hover:after {
+.item__link:hover:after {
     left: -5px;
     width: 115%;
     border-radius: 20px;
     opacity: .25;
-    background: var(--anchor-back-decor);
+    background: var(--navlink__back);
 }
 
-.a.active:after {
+.item__link.active:after {
     left: -5px;
     width: 115%;
     border-radius: 20px;
     opacity: .4;
-    background-color: var(--anchor-back-decor);
+    background-color: var(--navlink__back);
 }

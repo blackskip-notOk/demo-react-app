@@ -1,12 +1,12 @@
 import React from "react";
-import s from './Li.module.css';
+import s from './NavbarLi.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Li = (props) => {
+const NavbarLi = (props) => {
     return (
-        <li className={s.li}>
-            <div className={s.div}>
-                <NavLink className={s.a}
+        <li className={s.menu__item}>
+            <div className={s.item}>
+                <NavLink className={s.item__link}
                 to={props.pathway}
                 target={props.tagret}
                 activeClassName={s.active}>
@@ -17,4 +17,4 @@ const Li = (props) => {
     );
 }
 
-export default Li;
+export default NavbarLi;

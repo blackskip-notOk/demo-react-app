@@ -10,6 +10,7 @@
         "header header header"
         "nav content aside"
         "footer footer footer";
+    overflow: hidden;
     background-color: var(--main-back);
 }
 

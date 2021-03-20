@@ -1,9 +1,9 @@
 nav {
     display: grid;
     grid-template-rows: 80px;
-    grid-template-columns: 80px 0.5fr 1fr;
+    grid-template-columns: 80px 0.5fr 1fr 80px;
     grid-template-areas:
-    "logo search ul";
+    "logo search ul login";
     grid-column-gap: 30px;
     align-items: center;
     justify-items:center;

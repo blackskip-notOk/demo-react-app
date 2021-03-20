@@ -7,12 +7,6 @@ const mapStateToProps = (state) => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-}
-
-const AsideContainer = connect(mapStateToProps, mapDispatchToProps)(Aside);
+const AsideContainer = connect(mapStateToProps, {})(Aside);
 
 export default AsideContainer;

@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Aside.module.css';
-import Adversting from './Adversting';
+import Adversting from './Adversting/Adversting';
 
 const Aside = (props) => {
         let adv = props.advs.map( a => <Adversting

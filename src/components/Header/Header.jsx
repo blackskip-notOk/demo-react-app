@@ -8,7 +8,10 @@ const Header = (props) => {
             <Navheader role="navigation"
                 iconsHeader={props.iconsHeader}
                 search={props.search}
-                logo={props.logo} />
+                logo={props.logo}
+                isAuth={props.isAuth}
+                login={props.login}
+                avatar={props.profile.photos} />
         </header>
     );
 }

@@ -28,7 +28,7 @@ const App =(props) => {
       </div>
       <div className = 'content'>
         <Switch>
-          <Route path = '/profile'
+          <Route path = '/profile/:userId?'
                 render = { () => <ProfileContainer /> } />
           <Route path = '/messages'
                 render = { () => <MessagesContainer /> } />

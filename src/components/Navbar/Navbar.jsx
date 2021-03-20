@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Navbar.module.css';
-import Ul from "./Ul";
+import NavbarUl from "./NavbarUl/NavbarUl";
 import Friend from './Friends/Friends';
 
 const Navbar = (props) => {
@@ -10,7 +10,7 @@ const Navbar = (props) => {
     return (
         <nav className={s.nav} role="menu">
             <div className={s.innerNav}>
-                <Ul links={props.links} />
+                <NavbarUl links={props.links} />
                 <div className={s.div}>
                 {friend}
                 </div>

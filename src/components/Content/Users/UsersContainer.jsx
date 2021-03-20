@@ -9,24 +9,29 @@ import Preloader from '../../Common/Preloader/Preloader';
 class Users extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(
+            `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
                 this.props.setTotalCount(response.data.totalCount);
-            });
+            }
+        );
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(
+            `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
-            });
+            }
+        );
     }
-
 
     render() {
         return (
@@ -86,7 +91,6 @@ const mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps, {
     follow, unfollow, setUsers, setTotalCount, setCurrentPage,
-    toggleIsFetching
-})(Users);
+    toggleIsFetching})(Users);
 
 export default UsersContainer;

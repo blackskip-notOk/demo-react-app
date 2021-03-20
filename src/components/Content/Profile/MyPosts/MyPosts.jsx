@@ -6,7 +6,7 @@ import Button from '../../../Common/Button/Button';
 const MyPosts = (props) => {
     let post = props.posts.map( p => <Post
         id={p.id} post={p.post} likes={p.likes}
-        key={p.id} avatar={props.avatar}/>
+        key={p.id} photos={props.photos}/>
     );
 
     let newPostText = props.newPostText;

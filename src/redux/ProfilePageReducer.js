@@ -4,8 +4,6 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
     profile: null,
-    avatar: {id: 1, src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'},
-    background: {id: 1, src: '../image/profile-back.jpg', alt: 'Profile background'},
     posts: [
         { id: 1, post: "Да пребудет с тобой сила.", likes: 11 },
     ],
