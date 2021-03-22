@@ -1,27 +1,26 @@
 import Header from './Header';
 import { connect } from 'react-redux';
 import React from 'react';
-import axios from 'axios';
 import { setUserData } from '../../redux/AuthReducer.js';
 import { setUserProfile } from '../../redux/ProfilePageReducer.js';
 import Preloader from '../Common/Preloader/Preloader';
+import { authAPI, profileAPI } from '../../API/API';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
+        authAPI.getAuth()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data;
+                this.props.setUserData(id, email, login);
+                profileAPI.getProfile(data.data.id)
+                .then(data => {
+                    this.props.setUserProfile(data);
+                });
+            }
         })
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data;
-                    this.props.setUserData(id, email, login);
-                    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + response.data.data.id)
-                    .then(response => {
-                    this.props.setUserProfile(response.data);
-                    });
-                }
-            })
     }
+
     render() {
         if (!this.props.profile) {
             return <Preloader />

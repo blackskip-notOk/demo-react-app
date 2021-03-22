@@ -3,9 +3,9 @@ import {addPost, updateNewPostText,
     setUserProfile} from '../../../redux/ProfilePageReducer';
 import { connect } from "react-redux";
 import React from 'react';
-import axios from 'axios';
 import Preloader from '../../Common/Preloader/Preloader';
 import { withRouter } from 'react-router';
+import { profileAPI } from '../../../API/API';
 
 class ProfileContainer extends React.Component {
 
@@ -14,10 +14,10 @@ class ProfileContainer extends React.Component {
 
         if (!userId) userId = 15899;
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                this.props.setUserProfile(response.data);
-            });
+        profileAPI.getProfile(userId)
+        .then(data => {
+            this.props.setUserProfile(data);
+        });
     }
 
     render() {
@@ -39,18 +39,6 @@ const mapStateToProps = (state) => {
     };
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         updateNewPostText: (text) => {
-//             let action = updateNewPostTextActionCreator(text);
-//             dispatch(action);
-//         },
-//         addPost: () => {
-//             let action = addPostActionCreator();
-//             dispatch(action);
-//         }
-//     }
-// }
 let UrlDataProfileContainer = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
