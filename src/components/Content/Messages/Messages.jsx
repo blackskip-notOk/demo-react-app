@@ -5,6 +5,7 @@ import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
 import Button from '../../Common/Button/Button';
+import { Redirect } from 'react-router';
 
 const Messages = (props) => {
     let contact = props.contacts.map(c =>  <Chat
@@ -23,6 +24,8 @@ const Messages = (props) => {
         let text = event.target.value;
         props.updateNewMessageText(text);
     }
+
+    if (!props.isAuth) return <Redirect to={'/login'} />;
 
     return (
         <div className={s.container}>

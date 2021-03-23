@@ -8,7 +8,7 @@ const Login = (props) => {
     return (
         props.isAuth
         ? <div className={s.div}>
-            <NavLink to={'/settings'}>
+            <NavLink to={'/login'}>
                 <Avatar src={props.src ? props.src : userAvatar}
                 alt='User Avatar' className={s.img} />
                 {props.login}

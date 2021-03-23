@@ -4,8 +4,6 @@ import userAvatar from '../../../../image/bb-8.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
 import { NavLink } from "react-router-dom";
-import { followAPI } from "../../../../API/API";
-
 
 const User = (props) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize);
@@ -13,24 +11,6 @@ const User = (props) => {
 
     for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
-    }
-
-    const follow = (id) => {
-        followAPI.postFollow(id)
-        .then(data => {
-            if (data.resultCode === 0) {
-                props.follow(id);
-            }
-        });
-    };
-
-    const unfollow = (id) => {
-        followAPI.deleteFollow(id)
-        .then(data => {
-            if (data.resultCode === 0) {
-                props.unfollow(id);
-            }
-        });
     }
 
     return (
@@ -62,12 +42,14 @@ const User = (props) => {
                 </div>
                 <div className={s.divFollow}>
                     {u.followed ?
-                    <Button onClick={() => unfollow(u.id)}
-                        span='Unfollow'
-                        className={s.buttonFollow} />
-                     : <Button onClick={() => follow(u.id)}
-                        span='Follow'
-                        className={s.buttonFollow} />
+                    <Button disabled={props.followingInProgress
+                    .some(id => id === u.id)}
+                        onClick={() => props.unfollow(u.id)}
+                        span='Unfollow' className={s.buttonFollow} />
+                     : <Button disabled={props.followingInProgress
+                     .some(id => id === u.id)}
+                        onClick={() => props.follow(u.id)}
+                         span='Follow' className={s.buttonFollow} />
                     }
                 </div>
                 </div>

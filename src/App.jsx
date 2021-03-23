@@ -16,6 +16,7 @@ import {
   withRouter
 } from 'react-router-dom';
 import UsersContainer from './components/Content/Users/UsersContainer';
+import Login from './components/Login/Login';
 
 const App =(props) => {
   return (
@@ -38,6 +39,8 @@ const App =(props) => {
                 render = { () => <NewsContainer /> } />
           <Route path = '/users'
                 render = { () => <UsersContainer /> } />
+          <Route path = '/login'
+                render = {() => <Login />} />
         </Switch>
       </div>
       <div className = 'aside'>

@@ -8,22 +8,10 @@ const mapStateToProps = (state) => {
         dialogs: state.messagesPage.dialogs,
         newMessageText: state.messagesPage.newMessageText,
         icons: state.common.icons,
-        search: state.common.search
+        search: state.common.search,
+        isAuth: state.auth.isAuth,
     };
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addMessage: () => {
-//             let action = addMessageActionCreator();
-//             dispatch(action);
-//         },
-//         updateNewMessageText: (text) => {
-//             let action = updateNewMessageTextActionCreator(text);
-//             dispatch(action);
-//         }
-//     }
-// }
 
 const MessagesContainer = connect(mapStateToProps, {
     addMessage, updateNewMessageText

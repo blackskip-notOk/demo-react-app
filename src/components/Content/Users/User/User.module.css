@@ -90,3 +90,9 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+button:disabled {
+    font-size: 20px;
+    color: black;
+    
+}
