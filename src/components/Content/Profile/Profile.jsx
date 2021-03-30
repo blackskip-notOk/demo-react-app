@@ -13,12 +13,13 @@ const Profile = (props) => {
                 fullName={props.profile.fullName}
                 userId={props.profile.userId}
                 photos={props.profile.photos}
-                icons={props.icons} />
+                icons={props.icons}
+                status={props.status}
+                updateUserStatus={props.updateUserStatus} />
             <MyPosts posts={props.posts}
                 addPost={props.addPost}
-                updateNewPostText={props.updateNewPostText}
-                newPostText={props.newPostText}
-                photos={props.profile.photos} />
+                photos={props.profile.photos}
+                icons={props.icons} />
         </div>
     );
 }

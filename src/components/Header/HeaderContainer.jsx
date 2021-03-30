@@ -2,7 +2,7 @@ import Header from './Header';
 import { connect } from 'react-redux';
 import React from 'react';
 import { getAuthUserData } from '../../redux/AuthReducer.js';
-import Preloader from '../Common/Preloader/Preloader';
+import { Redirect } from 'react-router';
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -11,7 +11,11 @@ class HeaderContainer extends React.Component {
 
     render() {
         if (!this.props.profile) {
-            return <Preloader />
+            return (
+                <div>
+                    <Redirect to='/login' />
+                </div>
+            );
         }
         return (
             <Header {...this.props} />

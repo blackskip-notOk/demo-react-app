@@ -4,6 +4,7 @@ import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import Ul from "./Ul";
 import userAvatar from '../../../../image/bb-8.png';
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     return (
@@ -11,7 +12,10 @@ const ProfileInfo = (props) => {
             <Avatar src={props.photos.large ? props.photos.large
                 : userAvatar} alt='User Avatar' className={s.avatar} />
             <span className={s.spanName}>{props.fullName}</span>
-            <span className={s.spanAbout}>{props.aboutMe}</span>
+            <ProfileStatus userId={props.userId}
+                aboutMe={props.aboutMe} status={props.status}
+                updateUserStatus={props.updateUserStatus}
+                className={s.status} />
             <Ul contacts={props.contacts} className={s.ul} />
             {props.lookingForAJob
                 ? <Figure className={s.job} icon={props.icons[21].icon} />

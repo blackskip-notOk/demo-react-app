@@ -34,23 +34,7 @@
     border-top: 1px solid var(--search-border);
     font-family: 'Concert One', cursive;
     font-size: 14px;
-}
-
-.newMessage {
-    grid-area: message;
-    border-top: 2px solid var(--newMessage-border);
-}
-
-.textarea {
-    width: 90%;
-    margin: 5px auto 1px 10px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    resize:none;
-}
-
-.divButton {
-    text-align: end;
-    margin: 0px 10px 10px 0px;
+    white-space:pre-wrap;
+    overflow: hidden;
+    word-wrap:break-word;
 }

@@ -66,6 +66,15 @@
     --status-text:rgb(255, 255, 255);
     --contact-figure: rgb(49, 145, 41);
     --login-text: rgb(70, 168, 154);
-    --login-text-hover:rgb(255, 185, 50);
+    --login-back: rgb(0, 0, 0);
+    --login-back-hover: rgb(155, 153, 153);
+    --login-back-focus: rgb(19, 3, 17);
+    --login-border: rgb(188, 17, 211);
+    --login-border-hover: rgb(70, 168, 154);
+    --login-border-focus: rgb(70, 168, 154);
+    --login-text-hover:rgb(188, 17, 211);
     --login-text-active:rgb(20, 235, 0);
+    --login-text-focus:rgb(219, 214, 214);
+    --error-text: rgb(255, 0, 0);
+    --error-back: rgb(255, 255, 255);
 }

@@ -1,0 +1,26 @@
+.spanAbout {
+    grid-area: about;
+    font-size: 22px;
+    align-self: center;
+    justify-self:right;
+    color: var(--profileInfo-about);
+}
+
+.span {
+    font-size: 32px;
+    color: var(--profileInfo-about);
+}
+
+.input {
+    width:100%;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 32px;
+    border: 1px solid var(--post-back);
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+    resize:none;
+    color: var(--post-text);
+    background-color: var(--my-posts-back);
+}
+

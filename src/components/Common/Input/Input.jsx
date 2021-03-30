@@ -7,7 +7,13 @@ const Input = (props) => {
         className={props.className}
         id={props.id}
         name={props.name}
-        placeholder={props.placeholder} />
+        placeholder={props.placeholder}
+        value={props.value}
+        onBlur={props.onBlur}
+        autoFocus={props.autoFocus}
+        onChange={props.onChange}
+        rows={props.rows}
+        cols={props.cols} />
     );
 }
 

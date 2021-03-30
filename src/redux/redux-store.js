@@ -19,7 +19,7 @@ let reducers = combineReducers({
     newsPage: newsPageReducer,
     aside: asideReducer,
     usersPage: usersPageReducer,
-    auth: authReducer
+    auth: authReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleWare));

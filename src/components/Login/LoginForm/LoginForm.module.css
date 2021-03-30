@@ -1,0 +1,65 @@
+.form {
+    display:grid;
+}
+
+.divInput {
+    display:inline-flex;
+    margin-bottom: 30px;
+}
+
+.divInput label {
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.input{
+    font-size: 20px;
+    border: 1px solid var(--login-border);
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    color: var(--login-text);
+    background-color: var(--login-back);
+}
+
+.input:hover {
+    border: 1px solid var(--login-border-hover);
+    color: var(--login-text-hover);
+    background-color: var(--login-back-hover);
+}
+
+.input:focus {
+    border: 1px solid var(--login-border-focus);
+    color: var(--login-text-focus);
+    background-color: var(--login-back-focus);
+}
+
+input::-webkit-input-placeholder {
+    font-size: 20px;
+    color: var(--login-text);
+}
+
+.error {
+    border: 2px solid var(--error-text);
+}
+
+.divError {
+    display:inline-flex;
+    width:max-content;
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--error-text);
+}
+
+
+.figure {
+    margin-right: 5px;
+    color: var(--error-text);
+}
+
+.checkbox {
+   transform: scale(2);
+   margin: 10px;
+}

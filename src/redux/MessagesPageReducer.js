@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     contacts: [
@@ -7,26 +6,19 @@ let initialState = {
     ],
     dialogs: [
         { id: 1, message: "Если вы закончите свое..." },
-    ],
-    newMessageText: 'Размер не имеет значения...',
+    ]
 }
 
 const messagesPageReducer = (state = initialState, action) => {
     switch(action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newText,
-            }
         case ADD_MESSAGE:
             let newDialog = {
                 id: state.dialogs.length + 1,
-                message: state.newMessageText,
+                message: action.newMessageText,
             };
             return {
                 ...state,
-                dialogs: [...state.dialogs, newDialog],
-                newMessageText: ''
+                dialogs: [...state.dialogs, newDialog]
             }
 
         default:
@@ -35,12 +27,6 @@ const messagesPageReducer = (state = initialState, action) => {
 };
 
 
-export const addMessage = () => ({type: ADD_MESSAGE});
-export const updateNewMessageText = (text) => (
-    {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text
-    }
-);
+export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 
 export default messagesPageReducer;

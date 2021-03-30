@@ -33,6 +33,13 @@ export const usersAPI = {
         .then(response => {
             return response.data;
         });
+    },
+
+    getUserStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+        .then(response => {
+            return response;
+        });
     }
 };
 
@@ -41,6 +48,40 @@ export const authAPI = {
         return instance.get(`auth/me`)
         .then(response => {
             return response.data;
+        });
+    },
+
+    setUserLogin(email, password, rememberMe) {
+        return instance.post(`auth/login`, {
+            email, password, rememberMe})
+        .then(response => {
+            return response.data;
+        })
+    },
+
+    deleteUserLogin(email, password) {
+        return instance.delete(`auth/login`, {
+            email, password
+        });
+    }
+};
+
+export const profileAPI = {
+    getUserProfile(userId) {
+        return instance.get(`profile/` + userId)
+        .then(response => {
+            return response.data;
+        });
+    },
+
+    getUserStatus(userId) {
+        return instance.get(`profile/status/` + userId);
+    },
+
+    updateUserStatus(status) {
+        return instance.put(`profile/status`, {status})
+        .then(response => {
+            return response;
         });
     }
 };

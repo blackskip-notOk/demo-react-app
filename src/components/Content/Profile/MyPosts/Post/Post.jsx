@@ -12,7 +12,7 @@ const Post = (props) => {
                 ? props.photos.small
                 : userAvatar} alt='User Avatar'/>
             <Message post={props.post} className={s.span} id={props.id}/>
-            <Like className={s.div} classNameSpan={s.span} likes={props.likes} />
+            <Like className={s.div} classNameSpan={s.spanLike} likes={props.likes} />
         </article>
     );
 }

@@ -5,7 +5,7 @@
     grid-template-areas:
     'avatar job contacts'
     'avatar desc contacts'
-    'name about contacts';
+    'name status contacts';
     grid-column-gap: 50px;
     max-width: 100%;
     padding: 10px;
@@ -33,12 +33,8 @@
     color: var(--profileInfo-text);
 }
 
-.spanAbout {
-    grid-area: about;
-    font-size: 22px;
-    align-self: center;
-    justify-self:right;
-    color: var(--profileInfo-about);
+.status {
+    grid-area: status;
 }
 
 .ul {

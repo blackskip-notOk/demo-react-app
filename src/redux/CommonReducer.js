@@ -10,7 +10,7 @@ let initialState = {
     icons: [
         { id: 1, pathway: 'menu', icon: 'fas fa-align-justify', },
         { id: 2, pathway: 'menu1', icon: 'fas fa-bars', },
-        { id: 3, pathway: 'menu2', icon: '', },
+        { id: 3, pathway: 'warning', icon: 'fas fa-skull-crossbones', },
         { id: 4, pathway: 'message', icon: 'fas fa-comment', },
         { id: 5, pathway: 'message1', icon: 'far fa-comment', },
         { id: 6, pathway: 'writeMessage', icon: 'fas fa-comment-dots', },

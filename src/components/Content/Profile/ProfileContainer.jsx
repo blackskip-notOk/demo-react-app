@@ -1,19 +1,20 @@
 import Profile from './Profile';
-import {addPost, updateNewPostText, getUserProfile} from '../../../redux/ProfilePageReducer';
+import {addPost, getUserProfile, getUserStatus,
+    updateUserStatus} from '../../../redux/ProfilePageReducer';
 import { connect } from "react-redux";
 import React from 'react';
 import Preloader from '../../Common/Preloader/Preloader';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
-
     componentDidMount() {
-        debugger;
         let userId = this.props.match.params.userId;
 
         if (!userId) userId = 15899;
 
         this.props.getUserProfile(userId);
+        this.props.getUserStatus(userId);
     }
 
     render() {
@@ -21,9 +22,9 @@ class ProfileContainer extends React.Component {
             return <Preloader />
         }
 
-        if (!this.props.isAuth) return <Redirect to = {'/login'} />;
         return (
-            <Profile {...this.props} profile={this.props.profile} />
+            <Profile {...this.props} profile={this.props.profile}
+                status={this.props.status} />
         );
     }
 }
@@ -31,14 +32,13 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText,
         profile: state.profilePage.profile,
         icons: state.common.icons,
-        isAuth: state.auth.isAuth
+        status: state.profilePage.status
     };
 }
 
-let UrlDataProfileContainer = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, {
-    updateNewPostText, addPost, getUserProfile})(UrlDataProfileContainer);
+export default compose(connect(mapStateToProps,
+    {addPost, getUserProfile, getUserStatus,
+        updateUserStatus}),
+    withRouter)(ProfileContainer);

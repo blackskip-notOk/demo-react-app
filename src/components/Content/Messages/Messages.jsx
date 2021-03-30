@@ -4,8 +4,8 @@ import Chat from './Chat/Chat';
 import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
 import Contact from './Contact/Contact';
-import Button from '../../Common/Button/Button';
 import { Redirect } from 'react-router';
+import AddMessageForm from './Message/AddMessageForm';
 
 const Messages = (props) => {
     let contact = props.contacts.map(c =>  <Chat
@@ -13,17 +13,6 @@ const Messages = (props) => {
 
     let dialog = props.dialogs.map(d => <Dialog
             message={d.message} id={d.id} key={d.id} />);
-
-    let newMessageText = props.newMessageText;
-
-    let onAddMessage = () => {
-        props.addMessage()
-    };
-
-    let onMessageChange = (event) => {
-        let text = event.target.value;
-        props.updateNewMessageText(text);
-    }
 
     if (!props.isAuth) return <Redirect to={'/login'} />;
 
@@ -42,19 +31,8 @@ const Messages = (props) => {
             <div className={s.dialogs}>
                 {dialog}
             </div>
-            <div className={s.newMessage}>
-                <div>
-                    <textarea
-                        onChange={onMessageChange}
-                        value={newMessageText}
-                        className={s.textarea}
-                        placeholder="Write a message..."
-                        cols='10' rows='1' />
-                </div>
-                <Button onClick={onAddMessage}
-                    className={s.divButton}
-                    span="New Message" />
-            </div>
+            <AddMessageForm addMessage={props.addMessage}
+                icon={props.icons[2].icon} />
         </div>
     );
 }
