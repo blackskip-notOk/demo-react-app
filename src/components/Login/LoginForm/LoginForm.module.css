@@ -1,15 +1,24 @@
 .form {
     display:grid;
+    overflow: hidden;
+}
+
+.form h1 {
+    text-align: center;
+    font-size: 64px;
+    margin: 10px 0px 30px 0px;
+    border-bottom: 3px dotted var(--login-border);
+    padding-bottom: 10px;
 }
 
 .divInput {
-    display:inline-flex;
-    margin-bottom: 30px;
+    margin: 10px 0px;
 }
 
 .divInput label {
     margin-right: 10px;
     font-size: 26px;
+    text-transform: capitalize;
 }
 
 .input{
@@ -45,16 +54,14 @@ input::-webkit-input-placeholder {
 }
 
 .divError {
-    display:inline-flex;
     width:max-content;
     padding: 10px;
-    text-align: center;
     text-transform: capitalize;
     color: var(--error-text);
 }
 
-
 .figure {
+    display:inline;
     margin-right: 5px;
     color: var(--error-text);
 }
@@ -62,4 +69,9 @@ input::-webkit-input-placeholder {
 .checkbox {
    transform: scale(2);
    margin: 10px;
+}
+
+.formError {
+    border: 1px solid red;
+    color: red;
 }

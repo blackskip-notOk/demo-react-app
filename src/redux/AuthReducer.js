@@ -1,18 +1,19 @@
 import { authAPI, profileAPI } from "../API/API";
-import { getUserProfile, setUserProfile } from "./ProfilePageReducer";
+import { setUserProfile } from "./ProfilePageReducer";
 
 const SET_USER_DATA = 'SET-USER-DATA';
-const SET_USER_LOGIN = 'POST_USER_LOGIN';
-const DELETE_USER_LOGIN = 'DELETE_USER_LOGIN';
+const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 
 let initialState = {
-    id: null,
+    userId: null,
     email: null,
     login: null,
     password: null,
     rememberMe: false,
-    captcha: false,
     isAuth: false,
+    emailErrorMessage: null,
+    passwordErrorMessage: null,
+    errorMessages: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -20,69 +21,76 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload,
             }
-        case SET_USER_LOGIN:
-            return {
+        case SET_ERROR_MESSAGE:
+            let getNewError = (element) => {
+                switch(element.field) {
+                    case 'email':
+                        return {
+                            emailErrorMessage: element.error
+                        }
+                    case 'password':
+                        return {
+                            passwordErrorMessage: element.error
+                        }
+                    default:
+                        return state;
+                }
+            }
+            let errors = action?.fieldsErrors?.map(getNewError);
+           return {
                 ...state,
-                email: action.email,
-                password: action.password,
-                rememberMe: action.rememberMe,
-                captcha: true
+                emailErrorMessage: errors[0].emailErrorMessage,
+                passwordErrorMessage: errors[1].passwordErrorMessage,
+                errorMessages: errors
             }
-        case DELETE_USER_LOGIN: {
-            return {
-                ...state,
-                email: action.email,
-                password: action.password,
-                rememberMe: false
-            }
-        }
         default:
              return state;
     }
 };
 
-export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
-export const setUserLoginData = (email, password, rememberMe) => ({
-    type: SET_USER_LOGIN, email, password, rememberMe});
-export const deleteUserLoginData = (email, password, rememberMe) => ({
-    type: DELETE_USER_LOGIN, email, password, rememberMe});
+export const setAuthUserData = (userId, email, login, isAuth) => ({
+    type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+export const setErrormessage = (fieldsErrors) => ({
+    type: SET_ERROR_MESSAGE, fieldsErrors});
 
-export const getAuthUserData = () => {
-    return (dispatch) => {
-        authAPI.getAuth()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    let {userId, email, login} = data.data;
-                    dispatch(setAuthUserData(userId, email, login));
-                    profileAPI.getUserProfile(data.data.id)
-                        .then(data => {
-                            dispatch(setUserProfile(data));
-                        });
-                }
-            });
-    }
-}
-
-export const setUserLogin = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.setUserLogin(email, password, rememberMe)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(getUserProfile(data.data.userId)
-                    )
-                }
+export const getAuthUserData = () => (dispatch) => {
+    return authAPI.getAuth()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data;
+                dispatch(setAuthUserData(id, email, login, true));
+                // profileAPI.getUserProfile(data.data.id)
+                //     .then(data => {dispatch(setUserProfile(data))});
             }
-        )
-    }
+        });
 }
 
-export const deleteUserLogin = () => {
-    return (dispatch) => {
-        authAPI.deleteUserLogin();
-    }
+export const getAuthError = () => (dispatch) => {
+    authAPI.login().then(data => {
+        dispatch(setErrormessage(data.fieldsErrors))
+    });
+}
+
+export const login = (email, password, rememberMe) => (dispatch) => {
+    authAPI.login(email, password, rememberMe)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(getAuthUserData());
+            } else if (data.resultCode === 1) {
+                dispatch(getAuthError());
+            }
+        });
+}
+
+export const logout = () => (dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
+            }
+    });
 }
 
 export default authReducer;

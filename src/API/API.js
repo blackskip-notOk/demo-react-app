@@ -51,19 +51,15 @@ export const authAPI = {
         });
     },
 
-    setUserLogin(email, password, rememberMe) {
-        return instance.post(`auth/login`, {
-            email, password, rememberMe})
+    login(email, password, rememberMe) {
+        return instance.post(`auth/login`, {email,
+            password, rememberMe})
         .then(response => {
             return response.data;
         })
     },
 
-    deleteUserLogin(email, password) {
-        return instance.delete(`auth/login`, {
-            email, password
-        });
-    }
+    logout() {return instance.delete(`auth/login`);}
 };
 
 export const profileAPI = {

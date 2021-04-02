@@ -11,7 +11,9 @@ const Navheader = (props) => {
             <Logo src={props.logo.src} alt={props.logo.alt} key={props.id} />
             <Search search={props.search} />
             <Ul iconsHeader={props.iconsHeader} />
-            <Login isAuth={props.isAuth} login={props.login} src={props.avatar.small}/>
+            <Login isAuth={props.isAuth} login={props.login}
+                logout={props.logout} src={props?.avatar?.small}
+                userLogin={props.userLogin} />
         </nav>
     );
 }

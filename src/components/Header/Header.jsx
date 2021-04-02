@@ -11,7 +11,9 @@ const Header = (props) => {
                 logo={props.logo}
                 isAuth={props.isAuth}
                 login={props.login}
-                avatar={props.profile.photos} />
+                avatar={props?.profile?.photos}
+                logout={props.logout}
+                userLogin={props.userLogin} />
         </header>
     );
 }

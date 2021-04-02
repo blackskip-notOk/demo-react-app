@@ -5,7 +5,7 @@ export const FormError = (props) => {
     return (
         <div className={props.className}>
             <Figure icon={props.icon} className={props.figure} />
-            <p> {props.message} </p>
+            {props.message}
         </div>
     );
 }

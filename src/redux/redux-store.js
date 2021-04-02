@@ -9,8 +9,10 @@ import asideReducer from './AsideReducer';
 import usersPageReducer from './UsersPageReducer';
 import authReducer from './AuthReducer';
 import thunkMiddleWare from 'redux-thunk';
+import appReducer from './AppReducer';
 
 let reducers = combineReducers({
+    app: appReducer,
     profilePage: profilePageReducer,
     messagesPage: messagesPageReducer,
     common: commonReducer,
