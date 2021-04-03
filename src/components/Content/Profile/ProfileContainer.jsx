@@ -6,6 +6,9 @@ import React from 'react';
 import Preloader from '../../Common/Preloader/Preloader';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
+import { getPosts, getProfile, getStatus } from '../../../redux/ProfilePageSelectors';
+import { getIcons } from '../../../redux/CommonSelectors';
+import { getAuthUserId, getIsAuth } from '../../../redux/AuthSelectors';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -36,12 +39,12 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts,
-        profile: state.profilePage.profile,
-        icons: state.common.icons,
-        status: state.profilePage.status,
-        authUserId: state.auth.userId,
-        isAuth: state.auth.isAuth
+        posts: getPosts(state),
+        profile: getProfile(state),
+        icons: getIcons(state),
+        status: getStatus(state),
+        authUserId: getAuthUserId(state),
+        isAuth: getIsAuth(state)
     };
 }
 

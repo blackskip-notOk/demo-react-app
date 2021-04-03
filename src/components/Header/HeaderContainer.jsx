@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { login, logout } from '../../redux/AuthReducer.js';
 import { Redirect } from 'react-router';
+import { getIconsHeader, getLogo, getSearch } from '../../redux/CommonSelectors';
+import { getIsAuth, getUserLogin } from '../../redux/AuthSelectors';
+import { getProfile } from '../../redux/ProfilePageSelectors';
 
 class HeaderContainer extends React.Component {
     render() {
@@ -21,12 +24,12 @@ class HeaderContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        iconsHeader: state.common.iconsHeader,
-        search: state.common.search,
-        logo: state.common.logo,
-        isAuth: state.auth.isAuth,
-        profile: state.profilePage.profile,
-        userLogin: state.auth.login
+        iconsHeader: getIconsHeader(state),
+        search: getSearch(state),
+        logo: getLogo(state),
+        isAuth: getIsAuth(state),
+        profile: getProfile(state),
+        userLogin: getUserLogin(state)
     };
 }
 

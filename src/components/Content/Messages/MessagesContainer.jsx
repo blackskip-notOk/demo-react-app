@@ -3,13 +3,15 @@ import { addMessage } from '../../../redux/MessagesPageReducer';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getContacts, getDialogs } from '../../../redux/MessagesPageSelectors';
+import { getIcons, getSearch } from '../../../redux/CommonSelectors';
 
 const mapStateToProps = (state) => {
     return {
-        contacts: state.messagesPage.contacts,
-        dialogs: state.messagesPage.dialogs,
-        icons: state.common.icons,
-        search: state.common.search
+        contacts: getContacts(state),
+        dialogs: getDialogs(state),
+        icons: getIcons(state),
+        search: getSearch(state)
     };
 }
 

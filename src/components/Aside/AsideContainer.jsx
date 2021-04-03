@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
+import { getAdvs } from "../../redux/AsideSelectors";
 import Aside from './Aside';
 
 const mapStateToProps = (state) => {
     return {
-        advs: state.aside.advs
+        advs: getAdvs(state)
     };
 }
 
