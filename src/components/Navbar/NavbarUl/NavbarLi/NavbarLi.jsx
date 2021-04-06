@@ -1,6 +1,6 @@
 import React from "react";
-import s from './NavbarLi.module.css';
 import { NavLink } from 'react-router-dom';
+import s from './NavbarLi.module.css';
 
 const NavbarLi = (props) => {
     return (

@@ -1,8 +1,8 @@
 import React from "react";
-import s from './NavIcon.module.css';
 import { NavLink } from 'react-router-dom';
 import Figure from '../../../../Common/Figure/Figure';
 import UnderText from '../UnderText/UnderText';
+import s from './NavIcon.module.css';
 
 const NavIcon = (props) => {
     return (

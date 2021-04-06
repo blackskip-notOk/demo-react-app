@@ -1,7 +1,7 @@
 import React from "react";
-import s from './Login.module.css';
 import { NavLink } from "react-router-dom";
 import Button from "../../Common/Button/Button";
+import s from './Login.module.css';
 
 const Login = (props) => {
     return (

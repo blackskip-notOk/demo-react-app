@@ -1,16 +1,16 @@
-import yoda from '../image/avatars/yoda.jpg';
-import vader from '../image/avatars/vader.jpg';
+import jar from '../image/avatars/Jarjarbinks.jpg';
 import maul from '../image/avatars/maul.jpg';
 import obi from '../image/avatars/Obiwan.jpg';
-import jar from '../image/avatars/Jarjarbinks.jpg';
+import vader from '../image/avatars/vader.jpg';
+import yoda from '../image/avatars/yoda.jpg';
 import logo from '../image/jedi1.png';
 import back from '../image/profile-back.jpg';
-import profilePageReducer from './ProfilePageReducer';
-import messagesPageReducer from './MessagesPageReducer';
 import commonReducer from './CommonReducer';
 import friendsPageReducer from './FriendsPageReducer';
+import messagesPageReducer from './MessagesPageReducer';
 import navbarReducer from './NavbarReducer';
 import newsPageReducer from './NewsPageReducer';
+import profilePageReducer from './ProfilePageReducer';
 
 let store = {
 

@@ -1,14 +1,16 @@
-import Profile from './Profile';
-import {addPost, getUserProfile, getUserStatus,
-    updateUserStatus} from '../../../redux/ProfilePageReducer';
-import { connect } from "react-redux";
 import React from 'react';
-import Preloader from '../../Common/Preloader/Preloader';
+import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
-import { getPosts, getProfile, getStatus } from '../../../redux/ProfilePageSelectors';
-import { getIcons } from '../../../redux/CommonSelectors';
 import { getAuthUserId, getIsAuth } from '../../../redux/AuthSelectors';
+import { getIcons } from '../../../redux/CommonSelectors';
+import {
+    addPost, getUserProfile, getUserStatus,
+    updateUserStatus
+} from '../../../redux/ProfilePageReducer';
+import { getPosts, getProfile, getStatus } from '../../../redux/ProfilePageSelectors';
+import Preloader from '../../Common/Preloader/Preloader';
+import Profile from './Profile';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {

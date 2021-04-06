@@ -1,5 +1,4 @@
 import React from "react";
-import Input from "../../../../Common/Input/Input";
 import s from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
@@ -48,7 +47,8 @@ class ProfileStatus extends React.Component {
                     </div>
                 }
                 {this.state.editMode &&
-                    <Input type='text' name='status'
+                    <input type='text'
+                        name='status'
                         placeholder='Add your status'
                         autoFocus={true}
                         onBlur={this.deactivateEditMode}

@@ -11,6 +11,20 @@
     color: var(--profileInfo-about);
 }
 
+.divError {
+    display:inline-flex;
+    width:max-content;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    color: var(--error-text);
+}
+
+.figure {
+    margin-right: 5px;
+    color: var(--error-text);
+}
+
 .input {
     width:100%;
     font-family: 'PT Sans', sans-serif;
@@ -24,3 +38,10 @@
     background-color: var(--my-posts-back);
 }
 
+.divInput label {
+   display: none;
+}
+
+.error {
+    border: 2px solid var(--error-text);
+}

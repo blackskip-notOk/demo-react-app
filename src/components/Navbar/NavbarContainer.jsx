@@ -1,6 +1,6 @@
-import Navbar from './Navbar';
 import { connect } from "react-redux";
 import { getFriends, getLinks } from '../../redux/NavbarSelectors';
+import Navbar from './Navbar';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,12 +9,6 @@ const mapStateToProps = (state) => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-}
-
-const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
+const NavbarContainer = connect(mapStateToProps, {})(Navbar);
 
 export default NavbarContainer;

@@ -1,5 +1,4 @@
-import { authAPI, profileAPI } from "../API/API";
-import { setUserProfile } from "./ProfilePageReducer";
+import { authAPI } from "../API/API";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
@@ -61,8 +60,6 @@ export const getAuthUserData = () => (dispatch) => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login, true));
-                // profileAPI.getUserProfile(data.data.id)
-                //     .then(data => {dispatch(setUserProfile(data))});
             }
         });
 }

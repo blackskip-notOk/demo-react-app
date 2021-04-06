@@ -1,10 +1,10 @@
-import Messages from './Messages';
-import { addMessage } from '../../../redux/MessagesPageReducer';
 import { connect } from 'react-redux';
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getContacts, getDialogs } from '../../../redux/MessagesPageSelectors';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { getIcons, getSearch } from '../../../redux/CommonSelectors';
+import { addMessage } from '../../../redux/MessagesPageReducer';
+import { getContacts, getDialogs } from '../../../redux/MessagesPageSelectors';
+import Messages from './Messages';
 
 const mapStateToProps = (state) => {
     return {

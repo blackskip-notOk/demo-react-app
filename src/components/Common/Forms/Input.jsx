@@ -1,22 +1,22 @@
 import React from 'react';
-import { FormError } from './FormErrors';
-import s from '../../Login/LoginForm/LoginForm.module.css';
 
-const Input = ({ register, hookFormErrors, name, ...props }) => {
+const Input = ({ register, name, ...props }) => {
     return (
-        <div className={s.divInput}>
+        <div className={props.divInputClass}>
             <label htmlFor={name}>{name}:</label>
-            <input name={name}
+            <input id={props.id}
+                name={name}
                 ref={register}
+                onBlur={props.onBlur}
+                onChange={props.onChange}
+                value={props.value}
+                autoFocus={props.autoFocus}
                 type={props.type}
                 placeholder={props.placeholder}
                 className={`${props.errorClass} ${props.inputClass}`}
+                rows={props.rows}
+                cols={props.cols}
             />
-            {/* {props.serverErrors && <FormError
-                className={s.divError}
-                icon={props.icon}
-                message={props.serverErrorMessage}
-                figure={s.figure} />} */}
         </div>
     );
 }

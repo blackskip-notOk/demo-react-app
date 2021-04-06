@@ -1,7 +1,7 @@
 import React from "react";
+import Friend from './Friends/Friends';
 import s from './Navbar.module.css';
 import NavbarUl from "./NavbarUl/NavbarUl";
-import Friend from './Friends/Friends';
 
 const Navbar = (props) => {
     let friend = props.friends.map(f => <Friend

@@ -1,11 +1,11 @@
 import React from 'react';
-import s from "./Messages.module.css";
+import { Redirect } from 'react-router';
 import Chat from './Chat/Chat';
+import Contact from './Contact/Contact';
 import Dialog from './Dialog/Dialog';
 import Menu from './Menu/Menu';
-import Contact from './Contact/Contact';
-import { Redirect } from 'react-router';
 import AddMessageForm from './Message/AddMessageForm';
+import s from "./Messages.module.css";
 
 const Messages = (props) => {
     let contact = props.contacts.map(c =>  <Chat

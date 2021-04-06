@@ -1,6 +1,6 @@
 import React from 'react';
-import Navheader from './Navigation/Navheader';
 import s from './Header.module.css';
+import Navheader from './Navigation/Navheader';
 
 const Header = (props) => {
     return (

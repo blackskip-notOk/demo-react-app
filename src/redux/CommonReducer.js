@@ -3,7 +3,6 @@ let initialState = {
         { id: 1, pathway: '/home', icon: 'fab fa-galactic-republic', undertext: 'Home', target: '_self' },
         { id: 2, pathway: '/groups', icon: 'fab fa-old-republic', undertext: 'Groups', target: '_self' },
         { id: 3, pathway: '/video', icon: 'fab fa-jedi-order', undertext: 'Video', target: '_self' },
-        // { id: 4, pathway: '/notifications', icon: 'fab fa-galactic-senate', undertext: 'Notifications', target: '_self' },
     ],
     search: { id: 1, icon: "fas fa-jedi", button: "fas fa-jedi", span: 'search'},
     logo: { id: 1, src: '../image/jedi1.png', alt: "site-logo"},
@@ -30,13 +29,6 @@ let initialState = {
         { id: 20, pathway: 'mainLink', icon: 'fab fa-react'},
         { id: 21, pathway: 'job', icon: 'fas fa-user-tie'},
         { id: 22, pathway: 'nojob', icon: 'fas fa-user-slash'},
-    ],
-    avatars: [
-        {id: 1, src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'},
-        {id: 2, src: '../image/avatars/vader.jpg', alt: 'Darth Vader avatar'},
-        {id: 3, src: '../image/avatars/maul.jpg', alt: 'Darth Maul avatar'},
-        {id: 4, src: '../image/avatars/Obiwan.jpg', alt: 'Obi-Wan Cenobi avatar'},
-        {id: 5, src: '../image/avatars/Jarjarbinks.jpg', alt: 'Jar Jar Binks avatar'},
     ],
 }
 

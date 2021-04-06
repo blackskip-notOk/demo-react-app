@@ -1,11 +1,14 @@
 import React from 'react';
-import LoginForm from './LoginForm/LoginForm';
-import { login, logout } from '../../redux/AuthReducer.js';
 import { connect } from 'react-redux';
-import s from './Login.module.css';
-import { getIsAuth, getEmailErrorMessage,
-    getPasswordErrorMessage, getErrorMessages } from '../../redux/AuthSelectors';
+import { login, logout } from '../../redux/AuthReducer.js';
+import {
+    getEmailErrorMessage,
+    getErrorMessages, getIsAuth,
+    getPasswordErrorMessage
+} from '../../redux/AuthSelectors';
 import { getIcons } from '../../redux/CommonSelectors';
+import s from './Login.module.css';
+import LoginForm from './LoginForm/LoginForm';
 
 class Login extends React.Component {
     componentDidMount() {

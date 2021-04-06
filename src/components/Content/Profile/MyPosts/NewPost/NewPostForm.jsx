@@ -1,35 +1,41 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from "react";
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import Button from "../../../../Common/Button/Button";
-import s from './NewPostForm.module.css';
 import { FormError } from "../../../../Common/Forms/FormErrors";
+import Textarea from "../../../../Common/Forms/Textarea";
+import s from './NewPostForm.module.css';
+
+const schema = yup.object().shape({
+    post: yup.string()
+        .required()
+        .max(200)
+});
 
 const NewPostForm = (props) => {
-    const { register, handleSubmit, errors, formState } = useForm();
+    const {register, handleSubmit, errors, formState} = useForm({
+        resolver: yupResolver(schema)
+    });
 
-    const onSubmit = data => props.addPost(data.newPostText);
+    const onSubmit = data => props.addPost(data.post);
 
-    const hasError = formState.isDirty && errors?.newPostText;
-
-    const max = 560;
+    const hasError = formState?.touched?.post && formState?.errors?.post?.type;
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}
             className={s.form}>
-            <textarea name='newPostText'
-                ref={register({
-                    required: 'this field is required',
-                    maxLength: {value: max,
-                        message: `maximum ${max} symbols`}})}
-                className={`${s.textarea}
-                    ${(hasError ? s.error : "")}`}
-                placeholder="Typing here..."
-                rows='8' cols='10' />
-            {errors.newPostText && <FormError
+            <Textarea name='post'
+                register={register}
+                placeholder="Write a new Post..."
+                errorClass={hasError && s.error}
+                textareaClass={s.textarea}
+                rows='10' />
+            {errors?.post && <FormError
                 className={s.divError}
-                icon={props.icon} figure={s.figure}
-                message={errors?.newPostText?.message} />
-            }
+                icon={props.icon}
+                message={errors?.post?.message}
+                figure={s.figure} />}
             <Button span="add a new post" />
         </form>
     )

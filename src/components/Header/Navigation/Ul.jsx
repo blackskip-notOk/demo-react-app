@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './Ul.module.css';
 import Li from './Li/Li';
+import s from './Ul.module.css';
 
 const Ul = (props) => {
     let li = props.iconsHeader.map( l => <Li pathway={l.pathway}

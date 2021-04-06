@@ -1,9 +1,9 @@
 import React from "react";
-import s from './User.module.css';
+import { NavLink } from "react-router-dom";
 import userAvatar from '../../../../image/bb-8.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
-import { NavLink } from "react-router-dom";
+import s from './User.module.css';
 
 const User = (props) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize);

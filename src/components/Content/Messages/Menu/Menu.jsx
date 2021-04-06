@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './Menu.module.css';
 import Figure from '../../../Common/Figure/Figure';
+import s from './Menu.module.css';
 import Search from './Search';
 
 const Menu = (props) => {

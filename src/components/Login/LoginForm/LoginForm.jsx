@@ -1,12 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router';
+import * as yup from 'yup';
 import Button from '../../Common/Button/Button';
 import { FormError } from '../../Common/Forms/FormErrors';
-import s from './LoginForm.module.css';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import Input from '../../Common/Forms/Input';
+import s from './LoginForm.module.css';
 
 const schema = yup.object().shape({
     email: yup.string()
@@ -21,7 +21,7 @@ const schema = yup.object().shape({
 
 const LoginForm = (props) => {
     const {register, handleSubmit, errors,
-        formState, trigger} = useForm({
+        formState} = useForm({
         resolver: yupResolver(schema),
     });
 
@@ -40,12 +40,9 @@ const LoginForm = (props) => {
             <h1>Login Form</h1>
             <Input name='email'
                 register={register}
-                hookFormErrors={errors}
                 type='text'
                 placeholder='enter your email'
-                serverErrors={props.errorMessages}
-                serverErrorMessage={props.emailErrorMessage}
-                icon={props.icons[2].icon}
+                divInputClass={s.divInput}
                 inputClass={s.input}
                 errorClass={hasErrorEmail && s.error}
             />
@@ -56,12 +53,9 @@ const LoginForm = (props) => {
                 figure={s.figure} />}
             <Input name='password'
                 register={register}
-                hookFormErrors={errors}
                 type='password'
                 placeholder='enter your password'
-                serverErrors={props.errorMessages}
-                serverErrorMessage={props.passwordErrorMessage}
-                icon={props.icons[2].icon}
+                divInputClass={s.divInput}
                 inputClass={s.input}
                 errorClass={hasErrorPassword && s.error}
             />
@@ -70,33 +64,6 @@ const LoginForm = (props) => {
                 icon={props.icons[2].icon}
                 message={errors?.password?.message}
                 figure={s.figure} />}
-            {/* {errors?.email?.type} */}
-            {/* <div className={s.divInput}>
-                <label htmlFor='email'>Email:</label>
-                <input name='email'
-                    type='text'
-                    ref={register}
-                    className={`${s.input} ${(hasError && s.error)}`}
-                    placeholder='Enter your Login' />
-                {props.errorMessages && <FormError
-                    className={s.divError}
-                    icon={props.icons[2].icon}
-                    message={props.emailErrorMessage}
-                    figure={s.figure} />}
-            </div>
-            <div className={s.divInput}>
-                <label htmlFor='password'>Password:</label>
-                <input name='password'
-                    type='password'
-                    ref={register}
-                    className={`${s.input} ${(hasError && s.error)}`}
-                    placeholder='Enter your Password' />
-                {props.errorMessages && <FormError
-                    className={s.divError}
-                    icon={props.icons[2].icon}
-                    figure={props.passwordErrorMessage && s.figure}
-                    message={props.passwordErrorMessage} />}
-            </div> */}
             <div className={s.divInput}>
                 <label htmlFor='rememberMe'>Remember Me </label>
                 <input name='rememberMe'
@@ -105,7 +72,6 @@ const LoginForm = (props) => {
                     className={s.checkbox} />
             </div>
             <Button type='submit'
-                // onClick={() => {trigger().then(onSubmit)}}
                 span='Sing in' />
         </form>
     )

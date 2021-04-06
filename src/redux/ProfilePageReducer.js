@@ -43,14 +43,13 @@ const profilePageReducer = (state = initialState, action) => {
              return state;
     }
 };
-//Action Creators
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile) => (
     {type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => (
     {type: SET_USER_STATUS, status}
 );
-//Thunk functions
+
 export const getUserProfile = (userId) => (dispatch) => {
     profileAPI.getUserProfile(userId).then(response => {
         dispatch(setUserProfile(response));

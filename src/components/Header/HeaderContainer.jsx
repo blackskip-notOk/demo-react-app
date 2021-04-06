@@ -1,21 +1,13 @@
-import Header from './Header';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import React from 'react';
 import { login, logout } from '../../redux/AuthReducer.js';
-import { Redirect } from 'react-router';
-import { getIconsHeader, getLogo, getSearch } from '../../redux/CommonSelectors';
 import { getIsAuth, getUserLogin } from '../../redux/AuthSelectors';
+import { getIconsHeader, getLogo, getSearch } from '../../redux/CommonSelectors';
 import { getProfile } from '../../redux/ProfilePageSelectors';
+import Header from './Header';
 
-class HeaderContainer extends React.Component {
+class HeaderContainer extends Component {
     render() {
-        // if (!this.props.profile) {
-        //     return (
-        //         <div>
-        //             <Redirect to='/login' />
-        //         </div>
-        //     );
-        // }
         return (
             <Header {...this.props} />
         );

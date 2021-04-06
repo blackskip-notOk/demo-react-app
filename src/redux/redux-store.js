@@ -1,15 +1,15 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import profilePageReducer from './ProfilePageReducer';
-import messagesPageReducer from './MessagesPageReducer';
-import commonReducer from './CommonReducer';
-import friendsPageReducer from './FriendsPageReducer';
-import navbarReducer from './NavbarReducer';
-import newsPageReducer from './NewsPageReducer';
-import asideReducer from './AsideReducer';
-import usersPageReducer from './UsersPageReducer';
-import authReducer from './AuthReducer';
 import thunkMiddleWare from 'redux-thunk';
 import appReducer from './AppReducer';
+import asideReducer from './AsideReducer';
+import authReducer from './AuthReducer';
+import commonReducer from './CommonReducer';
+import friendsPageReducer from './FriendsPageReducer';
+import messagesPageReducer from './MessagesPageReducer';
+import navbarReducer from './NavbarReducer';
+import newsPageReducer from './NewsPageReducer';
+import profilePageReducer from './ProfilePageReducer';
+import usersPageReducer from './UsersPageReducer';
 
 let reducers = combineReducers({
     app: appReducer,
