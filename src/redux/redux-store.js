@@ -1,30 +1,33 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunkMiddleWare from 'redux-thunk';
-import appReducer from './AppReducer';
-import asideReducer from './AsideReducer';
-import authReducer from './AuthReducer';
-import commonReducer from './CommonReducer';
-import friendsPageReducer from './FriendsPageReducer';
-import messagesPageReducer from './MessagesPageReducer';
-import navbarReducer from './NavbarReducer';
-import newsPageReducer from './NewsPageReducer';
-import profilePageReducer from './ProfilePageReducer';
-import usersPageReducer from './UsersPageReducer';
+import appReducer from './App/AppReducer';
+import profileReducer from './Profile/ProfileReducer';
+import messagesReducer from './Messages/MessagesReducer';
+import commonReducer from './Common/CommonReducer';
+import friendsReducer from './Friends/FriendsReducer';
+import navbarReducer from './Navbar/NavbarReducer';
+import newsReducer from './News/NewsReducer';
+import asideReducer from './Aside/AsideReducer';
+import usersReducer from './Users/UsersReducer';
+import findUserReducer from './FindUser/FindUserReducer';
+import authReducer from './Auth/AuthReducer';
 
 let reducers = combineReducers({
     app: appReducer,
-    profilePage: profilePageReducer,
-    messagesPage: messagesPageReducer,
+    profile: profileReducer,
+    messages: messagesReducer,
     common: commonReducer,
-    friendsPage: friendsPageReducer,
+    friends: friendsReducer,
     navbar: navbarReducer,
-    newsPage: newsPageReducer,
+    news: newsReducer,
     aside: asideReducer,
-    usersPage: usersPageReducer,
+    users: usersReducer,
+    findUser: findUserReducer,
     auth: authReducer,
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleWare));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleWare)));
 
 window.store = store;
 

@@ -3,15 +3,13 @@ import { NavLink } from 'react-router-dom';
 import Avatar from '../../../Common/Avatar/Avatar';
 import s from './Chat.module.css';
 
-const Chat = (props) => {
-    let path = `/messages/chats/${props.id}`;
-
+const Chat = ({id, avatar, name}) => {
     return (
         <div className={s.div}>
-            <NavLink to={path}>
-                <Avatar src={props.avatar.src} alt={props.avatar.alt}
+            <NavLink to={`/messages/chats/${id}`}>
+                <Avatar src={avatar.src} alt={avatar.alt}
                     className={s.img} />
-                <span>{props.id} {props.name}</span>
+                <span>{id} {name}</span>
             </NavLink>
         </div>
     );

@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { login, logout } from '../../redux/AuthReducer.js';
-import { getIsAuth, getUserLogin } from '../../redux/AuthSelectors';
-import { getIconsHeader, getLogo, getSearch } from '../../redux/CommonSelectors';
-import { getProfile } from '../../redux/ProfilePageSelectors';
+import { login, logout } from '../../redux/Auth/AuthReducer';
+import { getIsAuth, getUserLogin } from '../../redux/Auth/AuthSelectors';
+import { getIconsHeader, getLogo, getSearch } from '../../redux/Common/CommonSelectors';
+import { getProfile } from '../../redux/Profile/ProfileSelectors';
 import Header from './Header';
 
-class HeaderContainer extends Component {
-    render() {
-        return (
-            <Header {...this.props} />
-        );
-    }
+const HeaderContainer = (props) => {
+    return <Header {...props} />
 }
 
 const mapStateToProps = (state) => {

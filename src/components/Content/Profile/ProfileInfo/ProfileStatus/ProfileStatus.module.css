@@ -38,10 +38,6 @@
     background-color: var(--my-posts-back);
 }
 
-.divInput label {
-   display: none;
-}
-
 .error {
     border: 2px solid var(--error-text);
 }

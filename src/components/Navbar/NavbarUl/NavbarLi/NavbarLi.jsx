@@ -2,15 +2,15 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 import s from './NavbarLi.module.css';
 
-const NavbarLi = (props) => {
+const NavbarLi = ({pathway, tagret, notation}) => {
     return (
-        <li className={s.menu__item}>
-            <div className={s.item}>
-                <NavLink className={s.item__link}
-                to={props.pathway}
-                target={props.tagret}
-                activeClassName={s.active}>
-                    {props.notation}
+        <li className={s.li}>
+            <div className={s.div}>
+                <NavLink className={s.link}
+                    to={pathway}
+                    target={tagret}
+                    activeClassName={s.active}>
+                        {notation}
                 </NavLink>
             </div>
         </li>

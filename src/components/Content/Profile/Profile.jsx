@@ -15,7 +15,9 @@ const Profile = (props) => {
                 photos={props.profile.photos}
                 icons={props.icons}
                 status={props.status}
-                updateUserStatus={props.updateUserStatus} />
+                updateUserStatus={props.updateUserStatus}
+                isOwner={props.isOwner}
+                savePhoto={props.savePhoto} />
             <MyPosts posts={props.posts}
                 addPost={props.addPost}
                 photos={props.profile.photos}

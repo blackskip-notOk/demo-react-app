@@ -1,9 +1,9 @@
 import React from "react";
 
-const Like = (props) => {
+const Like = ({className, classNameSpan, likes}) => {
     return (
-        <div className={props.className}>
-            <span className={props.classNameSpan}>Like {props.likes}</span>
+        <div className={className}>
+            <span className={classNameSpan}>Like {likes}</span>
         </div>
     );
 }

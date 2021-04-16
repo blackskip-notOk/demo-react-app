@@ -1,10 +1,11 @@
 import React from "react";
 import s from './Footer.module.css';
 
-const Footer = (props) => {
+const Footer = ({info, ...props}) => {
     return (
         <footer className={s.footer}>
-            {props.info}
+            {info}
+            {props.children}
         </footer>
     );
 }

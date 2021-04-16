@@ -1,9 +1,9 @@
 import React from "react";
 
-const Ul = (props) => {
-    let contacts = Array.from(Object.values(props.contacts));
+const Ul = ({contacts, className}) => {
+    let contactsArray = Array.from(Object.values(contacts));
 
-    let contact = contacts.map(contact => {
+    let contact = contactsArray.map(contact => {
         if (contact) {
             return <li><a href={contact} target='_blanc'>
                         {contact}
@@ -12,7 +12,7 @@ const Ul = (props) => {
     });
 
     return (
-        <ul className={props.className}>
+        <ul className={className}>
             {contact}
         </ul>
     );

@@ -1,36 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { compose } from 'redux';
-import { follow, requestUsers, setCurrentPage, unfollow } from '../../../redux/UsersPageReducer';
-import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalCount, getUsers } from '../../../redux/UsersPageSelectors';
+import { follow, requestUsers, setCurrentPage, unfollow } from '../../../redux/Users/UsersReducer';
+import { getCurrentPage, getFollowingInProgress, getIsFetching,
+    getPageSize, getTotalCount, getUsers } from '../../../redux/Users/UsersSelectors';
+import Paginator from '../../Common/Paginator/Paginator';
 import Preloader from '../../Common/Preloader/Preloader';
 import User from './User/User';
+import s from './User/User.module.css';
 
-class Users extends React.Component {
-    componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+const Users = ({currentPage, pageSize, requestUsers,
+    isFetching, totalCount, users, unfollow, follow,
+    followingInProgress}) => {
+    useEffect(() => {
+        requestUsers(currentPage, pageSize)},
+        [currentPage, pageSize, requestUsers]);
+
+    const onPageChanged = (pageNumber) => {
+        requestUsers(pageNumber, pageSize);
     }
 
-    onPageChanged = (pageNumber) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize);
-    }
+    let user = users.map(u => <User key={u.id} user={u}
+        unfollow={unfollow} follow={follow}
+        followingInProgress={followingInProgress} />);
 
-    render() {
-        return (
-            <>
-            {this.props.isFetching ? <Preloader /> : null}
-            <User totalCount={this.props.totalCount}
-                pageSize={this.props.pageSize}
-                onPageChanged={this.onPageChanged}
-                currentPage={this.props.currentPage}
-                users={this.props.users}
-                unfollow={this.props.unfollow}
-                follow={this.props.follow}
-                isFetching={this.props.isFetching}
-                followingInProgress={this.props.followingInProgress} />
-            </>
-        );
-    }
+    return (
+        <div className={s.divUsers}>
+            {isFetching ? <Preloader /> : null}
+            <Paginator totalCount={totalCount}
+                pageSize={pageSize}
+                onPageChanged={onPageChanged}
+                currentPage={currentPage} />
+            {user}
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => {

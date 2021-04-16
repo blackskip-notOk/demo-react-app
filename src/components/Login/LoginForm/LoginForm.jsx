@@ -3,9 +3,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router';
 import * as yup from 'yup';
+import { createFormError, createInput } from '../../../utils/form-helper';
 import Button from '../../Common/Button/Button';
-import { FormError } from '../../Common/Forms/FormErrors';
-import Input from '../../Common/Forms/Input';
 import s from './LoginForm.module.css';
 
 const schema = yup.object().shape({
@@ -16,54 +15,46 @@ const schema = yup.object().shape({
     password: yup.string()
         .required()
         .max(20)
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
+    captcha: yup.string()
+        .required()
 });
 
-const LoginForm = (props) => {
-    const {register, handleSubmit, errors,
-        formState} = useForm({
+const LoginForm = ({login, isAuth, icons, captchaUrl, getCaptchUrl}) => {
+    const {register, handleSubmit, errors: {email, password, captcha},
+        formState: {touched}} = useForm({
         resolver: yupResolver(schema),
     });
 
     const onSubmit = data => {
-        props.login(data.email, data.password, data.rememberMe);
+        login(data.email, data.password, data.rememberMe, data.captcha);
     }
 
-    const hasErrorEmail = formState?.touched?.email && formState?.errors?.email?.type;
-    const hasErrorPassword = formState?.touched?.password && formState?.errors?.password?.type;
+    const hasErrorEmailClass = touched?.email && email && s.error;
+    const hasErrorPasswordClass = touched?.password && password && s.error;
+    const hasErrorCaptchaClass = touched?.captcha && captcha && s.error;
+    const emailError = email?.message;
+    const passwordError = password?.message;
+    const captchaError = captcha?.message;
 
-    if (props.isAuth) return <Redirect to={'/profile'} />;
+    if (isAuth) return <Redirect to={'/profile'} />;
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}
             className={s.form} >
             <h1>Login Form</h1>
-            <Input name='email'
-                register={register}
-                type='text'
-                placeholder='enter your email'
-                divInputClass={s.divInput}
-                inputClass={s.input}
-                errorClass={hasErrorEmail && s.error}
-            />
-            {errors?.email && <FormError
-                className={s.divError}
-                icon={props.icons[2].icon}
-                message={errors?.email?.message}
-                figure={s.figure} />}
-            <Input name='password'
-                register={register}
-                type='password'
-                placeholder='enter your password'
-                divInputClass={s.divInput}
-                inputClass={s.input}
-                errorClass={hasErrorPassword && s.error}
-            />
-            {errors?.password && <FormError
-                className={s.divError}
-                icon={props.icons[2].icon}
-                message={errors?.password?.message}
-                figure={s.figure} />}
+            {createInput('email', register, 'text',
+                'enter your email', s.divInput, s.input,
+                hasErrorEmailClass)}
+            {email && createFormError(s.divError,
+                icons[2].icon, emailError, s.figure)
+            }
+            {createInput('password', register, 'password',
+                'enter your password', s.divInput, s.input,
+                hasErrorPasswordClass)}
+            {password && createFormError(s.divError,
+                icons[2].icon, passwordError, s.figure)
+            }
             <div className={s.divInput}>
                 <label htmlFor='rememberMe'>Remember Me </label>
                 <input name='rememberMe'
@@ -71,6 +62,13 @@ const LoginForm = (props) => {
                     ref={register}
                     className={s.checkbox} />
             </div>
+            {captcha && <img src={captcha} alt='captcha' />}
+            {captcha && createInput('captcha', register, 'text',
+                'enter image symbols', s.divInput, s.input,
+                hasErrorCaptchaClass)}
+            {captcha && createFormError(s.divError,
+                icons[2].icon, captchaError, s.figure)
+            }
             <Button type='submit'
                 span='Sing in' />
         </form>

@@ -1,42 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { compose } from 'redux';
-import { getAuthUserId, getIsAuth } from '../../../redux/AuthSelectors';
-import { getIcons } from '../../../redux/CommonSelectors';
-import {
-    addPost, getUserProfile, getUserStatus,
-    updateUserStatus
-} from '../../../redux/ProfilePageReducer';
-import { getPosts, getProfile, getStatus } from '../../../redux/ProfilePageSelectors';
+import { getAuthUserId, getIsAuth } from '../../../redux/Auth/AuthSelectors';
+import { getIcons } from '../../../redux/Common/CommonSelectors';
+import { addPost, getUserProfile, getUserStatus,
+    updateUserStatus } from '../../../redux/Profile/ProfileReducer';
+import { getPosts, getProfile, getStatus } from '../../../redux/Profile/ProfileSelectors';
 import Preloader from '../../Common/Preloader/Preloader';
 import Profile from './Profile';
 
-class ProfileContainer extends React.Component {
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
+const ProfileContainer = ({match, authUserId, history,
+    getUserProfile, getUserStatus, profile,
+    status, ...props}) => {
+    // const [error, handleClick] = useState(null);
 
-        if (!userId) {
-            userId = this.props.authUserId;
+    useEffect(() => {
+        function refreshProfile() {
+            let userId = match.params.userId;
             if (!userId) {
-                this.props.history.push('/login');
+                userId = authUserId;
+                if (!userId) {
+                    // <Redirect to='/login' />
+                    history.push('/login');
+                }
             }
-        }
-
-        this.props.getUserProfile(userId);
-        this.props.getUserStatus(userId);
+        getUserProfile(userId);
+        getUserStatus(userId);
     }
 
-    render() {
-        if (!this.props.profile) {
-            return <Preloader />
-        }
+    refreshProfile();
+    }, [match, authUserId, history, getUserProfile, getUserStatus]);
 
-        return (
-            <Profile {...this.props} profile={this.props.profile}
-                status={this.props.status} />
-        );
-    }
+    // useEffect(() => {
+    //     getUserProfile(match.params.userId);
+    // }, [match.params.userId, getUserProfile]);
+
+    // useEffect(() => {
+    //     getUserStatus(match.params.userId);
+    // }, [match.params.userId, getUserStatus]);
+
+    return(
+        <>
+            {!profile ? <Preloader />
+            : <Profile {...props} />}
+        </>
+    );
 }
 
 const mapStateToProps = (state) => {
@@ -50,7 +59,6 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default compose(connect(mapStateToProps,
-    {addPost, getUserProfile, getUserStatus,
-        updateUserStatus}),
+export default compose(connect(mapStateToProps, {addPost,
+    getUserProfile, getUserStatus, updateUserStatus}),
     withRouter)(ProfileContainer);

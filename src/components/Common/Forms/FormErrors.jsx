@@ -1,11 +1,11 @@
 import React from 'react';
 import Figure from '../Figure/Figure';
 
-export const FormError = (props) => {
+export const FormError = ({className, icon, figure, message}) => {
     return (
-        <div className={props.className}>
-            <Figure icon={props.icon} className={props.figure} />
-            {props.message}
+        <div className={className}>
+            <Figure icon={icon} className={figure} />
+            {message}
         </div>
     );
 }

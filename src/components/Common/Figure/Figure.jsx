@@ -1,8 +1,8 @@
 import React from "react";
 
-const Figure = (props) => {
+const Figure = ({icon, className}) => {
     return (
-        <figure className={`${props.icon} ${props.className}`} />
+        <figure className={`${icon} ${className}`} />
     );
 }
 

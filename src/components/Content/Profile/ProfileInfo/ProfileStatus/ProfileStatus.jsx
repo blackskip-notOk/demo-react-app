@@ -1,66 +1,70 @@
-import React from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { createFormError, createInput } from '../../../../../utils/form-helper';
 import s from './ProfileStatus.module.css';
 
-class ProfileStatus extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status
+
+const schema = yup.object().shape({
+    status: yup.string().max(20)
+});
+
+const ProfileStatus = (props) => {
+    const [editMode, setEditMode] = useState(false);
+    const [status, setStatus] = useState(props.status);
+
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status, setStatus]);
+
+    const activateEditMode = () => {
+        setEditMode(true);
     }
 
-    activateEditMode = () => {
-        this.setState({
-            editMode: true
-        });
+    const deactivateEditMode = () => {
+        setEditMode(false);
+        props.updateUserStatus(status);
     }
 
-    deactivateEditMode = () => {
-        this.setState({
-            editMode: false
-        });
-        this.props.updateUserStatus(this.state.status);
+    const onStatusChange = (e) => {
+        setStatus(e.currentTarget.value);
     }
 
-    onStatusChange = (e) => {
-        this.setState({
-            status: e.currentTarget.value
-        });
-    }
+    const {register, errors, formState: {touched}} = useForm({
+        mode: 'onBlur',
+        resolver: yupResolver(schema),
+    });
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.status !== this.props.status) {
-            this.setState({
-                status: this.props.status
-            });
-        }
-    }
-
-    render() {
-        return (
-            <div className={this.props.className} key={this.props.userId}>
-                <span className={s.spanAbout}>{this.props.aboutMe}</span>
-                {!this.state.editMode &&
-                    <div>
-                        <span onDoubleClick={this.activateEditMode}
-                            className={s.span}>
-                            {this.props.status || "No Status"}
-                        </span>
-                    </div>
-                }
-                {this.state.editMode &&
-                    <input type='text'
-                        name='status'
-                        placeholder='Add your status'
-                        autoFocus={true}
-                        onBlur={this.deactivateEditMode}
-                        value={this.state.status}
-                        onChange={this.onStatusChange}
-                        className={s.input}
-                        rows='8'
-                        cols='10' />
-                }
-            </div>
-        );
-    }
+    const hasErrorStatus = touched?.status && errors?.status?.type && s.error;
+    const statusError = errors?.status?.message;
+    return (
+        <div className={props.className} key={props.userId}>
+            <p className={s.spanAbout}>{props.aboutMe}</p>
+            {!editMode &&
+            <>
+                <span onDoubleClick={activateEditMode}
+                    className={s.span}>
+                    {props.status || "No Status"}
+                </span>
+                {errors?.status && createFormError(s.divError,
+                    props.icon, statusError, s.figure)}
+            </>
+            }
+            {editMode && createInput('status', register,
+                {type: 'text',
+                    autoFocus: true,
+                    placeholder: "What's new?",
+                    onBlur: deactivateEditMode,
+                    onChange: onStatusChange,
+                    value: status,
+                    errorClass: hasErrorStatus,
+                    inputClass: s.input
+                })}
+            {errors?.status && createFormError(s.divError,
+                props.icon, statusError, s.figure)}
+        </div>
+    );
 }
 
 export default ProfileStatus;

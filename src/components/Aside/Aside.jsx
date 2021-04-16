@@ -14,6 +14,7 @@ const Aside = (props) => {
             <div className={s.innerAside}>
                 {adv}
             </div>
+            {props.children}
         </aside>
     );
 }

@@ -1,31 +1,31 @@
-.menu__item {
+.li {
     font-size: 26px;
 }
 
-.item {
+.div {
     margin: 0px 0px 20px 15px;
     transition: margin .3s;
 }
 
-.item:hover {
+.div:hover {
     margin: 0px 10px 20px 10px;
 }
 
-.item__link {
+.link {
     position: relative;
     text-transform: lowercase;
 }
 
-.item__link:hover {
+.link:hover {
     text-transform: uppercase;
 }
 
-.item__link.active {
+.link.active {
     text-transform: capitalize;
     color: var(--navlink__text_active);
 }
 
-.item__link::after {
+.link::after {
     position: absolute;
     left: -5px;
     top: 0%;
@@ -36,7 +36,7 @@
     background: var(--navlink__back);
 }
 
-.item__link:hover:after {
+.link:hover:after {
     left: -5px;
     width: 115%;
     border-radius: 20px;
@@ -44,7 +44,7 @@
     background: var(--navlink__back);
 }
 
-.item__link.active:after {
+.link.active:after {
     left: -5px;
     width: 115%;
     border-radius: 20px;

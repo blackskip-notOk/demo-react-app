@@ -1,18 +1,18 @@
 import React from "react";
+import { createListFromArray } from "../../utils/object-helpers";
 import Friend from './Friends/Friends';
 import s from './Navbar.module.css';
 import NavbarUl from "./NavbarUl/NavbarUl";
 
-const Navbar = (props) => {
-    let friend = props.friends.map(f => <Friend
-        name={f.name} id={f.id} key={f.id} avatar={f.avatar} />);
+const Navbar = ({friends, links}) => {
+    let friend = createListFromArray(friends, Friend);
 
     return (
         <nav className={s.nav} role="menu">
             <div className={s.innerNav}>
-                <NavbarUl links={props.links} />
+                <NavbarUl links={links} />
                 <div className={s.div}>
-                {friend}
+                    {friend}
                 </div>
             </div>
         </nav>

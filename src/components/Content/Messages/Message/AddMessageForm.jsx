@@ -2,9 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { createFormError, createTextarea } from '../../../../utils/form-helper';
 import Button from '../../../Common/Button/Button';
-import { FormError } from '../../../Common/Forms/FormErrors';
-import Textarea from '../../../Common/Forms/Textarea';
 import s from "./AddMessageForm.module.css";
 
 const schema = yup.object().shape({
@@ -13,29 +12,23 @@ const schema = yup.object().shape({
         .max(100),
 });
 
-const AddMessageForm = (props) => {
-    const {register, handleSubmit, errors, formState} = useForm({
+const AddMessageForm = ({addMessage, icon}) => {
+    const {register, handleSubmit, errors, formState: {touched}} = useForm({
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = data => props.addMessage(data.message);
+    const onSubmit = data => addMessage(data.message);
 
-    const hasError = formState?.touched?.message && formState?.errors?.message?.type;
-
+    const hasErrorMessage = touched?.message && errors?.message && s.error ;
+    const messageError = errors?.message?.message;
     return (
         <form onSubmit={handleSubmit(onSubmit)}
             className={s.form}>
-
-        <Textarea name='message'
-            register={register}
-            placeholder='Write a message...'
-            errorClass={hasError && s.error}
-            textareaClass={s.textarea} />
-        {errors?.message && <FormError
-            className={s.divError}
-            icon={props.icon}
-            message={errors?.message?.message}
-            figure={s.figure} />}
+            {createTextarea('message', register,
+                'Write a message...', hasErrorMessage,
+                s.textarea, 1)}
+            {errors?.message && createFormError(s.divError,
+                icon, messageError, s.figure)}
             <Button span="New Message" />
         </form>
     )

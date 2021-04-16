@@ -1,9 +1,9 @@
 import React from "react";
 
-const Avatar = (props) => {
+const Avatar = ({src, alt, className}) => {
     return (
-        <img src={props.src} alt={props.alt}
-        className={props.className} />
+        <img src={src} alt={alt}
+        className={className} />
     );
 }
 

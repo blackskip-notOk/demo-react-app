@@ -5,58 +5,37 @@ import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
 import s from './User.module.css';
 
-const User = (props) => {
-    let pagesCount = Math.ceil(props.totalCount / props.pageSize);
-    let pages= [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-    }
-
+const User = ({user, followingInProgress, unfollow, follow}) => {
     return (
-        <div className={s.divUsers}>
-            <div className={s.divPages}>
-                {pages.map(p => <span onClick={() => {
-                    props.onPageChanged(p)}}
-                    key={p}
-                    className={props.currentPage === p
-                        ? s.spanChosen : s.spanUnchosen}>
-                        {p}
-                    </span>
-                )}
+        <div className={s.divUser}>
+            <div className={s.divName}>
+                {user.name}
             </div>
-            {props.users.map(u => <div key={u.id}
-                className={s.divUser}>
-                <div className={s.divName}>
-                    {u.name}
-                </div>
-                <NavLink to={'/profile/' + u.id} className={s.link}>
-                    <Avatar src={u.photos.small
-                        ? u.photos.small : userAvatar}
-                        className={s.img} />
-                </NavLink>
-                <div className={s.divLocation}>
-                    {u.location ? u.location : 'No country, No city'}
-                </div>
-                <div className={s.divStatus}>
-                    {u.status ? u.status : '"Nothing to say"'}
-                </div>
-                <div className={s.divFollow}>
-                    {u.followed ?
-                    <Button disabled={props.followingInProgress
-                    .some(id => id === u.id)}
-                        onClick={() => props.unfollow(u.id)}
-                        span='Unfollow' className={s.buttonFollow} />
-                     : <Button disabled={props.followingInProgress
-                     .some(id => id === u.id)}
-                        onClick={() => props.follow(u.id)}
-                         span='Follow' className={s.buttonFollow} />
-                    }
-                </div>
-                </div>
-            )}
+            <NavLink to={'/profile/' + user.id} className={s.link}>
+                <Avatar src={user.photos.small
+                    ? user.photos.small : userAvatar}
+                    className={s.img} />
+            </NavLink>
+            <div className={s.divLocation}>
+                {user.location ? user.location : 'No country, No city'}
+            </div>
+            <div className={s.divStatus}>
+                {user.status ? user.status : '"Nothing to say"'}
+            </div>
+            <div className={s.divFollow}>
+                {user.followed ?
+                <Button disabled={followingInProgress
+                    .some(id => id === user.id)}
+                    onClick={() => unfollow(user.id)}
+                    span='Unfollow' className={s.buttonFollow} />
+                : <Button disabled={followingInProgress
+                    .some(id => id === user.id)}
+                    onClick={() => follow(user.id)}
+                    span='Follow' className={s.buttonFollow} />
+                }
+            </div>
         </div>
-    );
+    )
 }
 
 export default User;

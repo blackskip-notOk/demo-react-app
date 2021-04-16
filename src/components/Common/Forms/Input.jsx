@@ -2,22 +2,38 @@ import React from 'react';
 
 const Input = ({ register, name, ...props }) => {
     return (
-        <div className={props.divInputClass}>
-            <label htmlFor={name}>{name}:</label>
-            <input id={props.id}
+        <>
+            <label htmlFor={props.id} form={props.form}>{name}:</label>
+            <input ref={register}
+                type={props.type}
+                accept={props.accept}
+                autocomplete={props.autocomplete}
+                autoFocus={props.autoFocus}
+                autosave={props.autosave}
+                checked={props.checked}
+                className={`${props.errorClass} ${props.inputClass}`}
+                disabled={props.disabled}
+                form={props.form}
+                formAction={props.formAction}
+                formEncType={props.formEncType}
+                formMethod={props.formMethod}
+                formNoValidate={props.formNoValidate}
+                formTarget={props.formTarget}
+                hidden={props.hidden}
+                id={props.id}
+                inputMode={props.inputMode}
+                list={props.list}
+                multiple={props.multiple}
                 name={name}
-                ref={register}
+                placeholder={props.placeholder}
+                readOnly={props.readOnly}
+                src={props.src}
+                title={props.title}
+                value={props.value}
                 onBlur={props.onBlur}
                 onChange={props.onChange}
-                value={props.value}
-                autoFocus={props.autoFocus}
-                type={props.type}
-                placeholder={props.placeholder}
-                className={`${props.errorClass} ${props.inputClass}`}
-                rows={props.rows}
-                cols={props.cols}
             />
-        </div>
+        </>
     );
 }
 
