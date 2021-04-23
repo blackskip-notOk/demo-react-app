@@ -6,9 +6,10 @@ import { FOLLOW, SET_CURRENT_PAGE, SET_TOTAL_COUNT,
 
 let initialState = {
     users:[],
-    pageSize: 4,
+    pageSize: 10,
     totalCount: 0,
     currentPage: 1,
+    portionSize: 10,
     isFetching: false,
     followingInProgress: []
 };

@@ -27,3 +27,14 @@ export const getFollowingInProgress = (state) => {
 export const getUsers = createSelector(getUsersSElector, getIsFetching, (users, isFetching) => {
     return users.filter(u => true);
 });
+
+export const getPagesInfo = state => {
+    const pages = [];
+    const pagesCount = Math.ceil(state.users.totalCount / state.users.pageSize);
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
+    }
+    const portionSize = state.users.portionSize
+    const portionCount = Math.ceil(pagesCount / portionSize);
+    return {pages, portionCount, portionSize};
+}

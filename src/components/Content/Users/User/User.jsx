@@ -6,7 +6,7 @@ import Button from "../../../Common/Button/Button";
 import s from './User.module.css';
 
 const User = ({user, followingInProgress, unfollow, follow}) => {
-    let avatar = user.photos.small ? user.photos.small : userAvatar;
+    let avatar = user.photos.small || userAvatar;
     return (
         <div className={s.divUser}>
             <div className={s.divName}>

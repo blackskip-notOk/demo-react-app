@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { compose } from 'redux';
 import { follow, requestUsers, setCurrentPage, unfollow } from '../../../redux/Users/UsersReducer';
 import { getCurrentPage, getFollowingInProgress, getIsFetching,
-    getPageSize, getTotalCount, getUsers } from '../../../redux/Users/UsersSelectors';
+    getPageSize, getTotalCount, getUsers, getPagesInfo } from '../../../redux/Users/UsersSelectors';
 import Paginator from '../../Common/Paginator/Paginator';
 import Preloader from '../../Common/Preloader/Preloader';
 import User from './User/User';
@@ -11,7 +11,7 @@ import s from './User/User.module.css';
 
 const Users = ({currentPage, pageSize, requestUsers,
     isFetching, totalCount, users, unfollow, follow,
-    followingInProgress}) => {
+    followingInProgress, pagesInfo}) => {
     useEffect(() => {
         requestUsers(currentPage, pageSize)},
         [currentPage, pageSize, requestUsers]);
@@ -27,10 +27,11 @@ const Users = ({currentPage, pageSize, requestUsers,
     return (
         <div className={s.divUsers}>
             {isFetching ? <Preloader /> : null}
-            <Paginator totalCount={totalCount}
-                pageSize={pageSize}
-                onPageChanged={onPageChanged}
-                currentPage={currentPage} />
+            <Paginator onPageChanged={onPageChanged}
+                currentPage={currentPage}
+                pages={pagesInfo.pages}
+                portionCount={pagesInfo.portionCount}
+                portionSize={pagesInfo.portionSize} />
             {user}
         </div>
     )
@@ -43,7 +44,8 @@ const mapStateToProps = (state) => {
         totalCount: getTotalCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        pagesInfo: getPagesInfo(state),
     };
 }
 

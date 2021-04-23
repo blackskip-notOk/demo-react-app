@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import s from './Paginator.module.css';
 
-const Paginator = ({totalCount, pageSize, onPageChanged,
-    currentPage, portionSize = 10}) => {
+const Paginator = ({portionSize, onPageChanged, pages,
+    currentPage, portionCount}) => {
     const [portionNumber, setPortionNumber] = useState(1);
-    const pagesCount = Math.ceil(totalCount / pageSize);
-    const pages= [];
 
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-
-    const portionCount = Math.ceil(pagesCount / portionSize);
     const leftPortionPageNumber = (portionNumber - 1) * (portionSize + 1);
     const rightPortionPageNumber = portionNumber * portionSize;
 
