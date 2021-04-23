@@ -6,19 +6,15 @@ import Button from "../../../Common/Button/Button";
 import s from './User.module.css';
 
 const User = ({user, followingInProgress, unfollow, follow}) => {
+    let avatar = user.photos.small ? user.photos.small : userAvatar;
     return (
         <div className={s.divUser}>
             <div className={s.divName}>
                 {user.name}
             </div>
-            <NavLink to={'/profile/' + user.id} className={s.link}>
-                <Avatar src={user.photos.small
-                    ? user.photos.small : userAvatar}
-                    className={s.img} />
+            <NavLink to={`/profile/${user.id}`} className={s.link}>
+                <Avatar src={avatar} className={s.img} />
             </NavLink>
-            <div className={s.divLocation}>
-                {user.location ? user.location : 'No country, No city'}
-            </div>
             <div className={s.divStatus}>
                 {user.status ? user.status : '"Nothing to say"'}
             </div>

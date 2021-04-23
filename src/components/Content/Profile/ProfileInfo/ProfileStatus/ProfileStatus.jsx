@@ -2,15 +2,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { createFormError, createInput } from '../../../../../utils/form-helper';
+import { createFormError } from '../../../../../utils/form-helper';
 import s from './ProfileStatus.module.css';
 
 
 const schema = yup.object().shape({
-    status: yup.string().max(20)
+    status: yup.string()
+        .trim()
+        .max(20, 'too long status')
 });
-
-const ProfileStatus = (props) => {
+const ProfileStatus = ({updateUserStatus, userId, aboutMe,
+    errorIcon, ...props}) => {
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
 
@@ -24,45 +26,43 @@ const ProfileStatus = (props) => {
 
     const deactivateEditMode = () => {
         setEditMode(false);
-        props.updateUserStatus(status);
+        updateUserStatus(status);
     }
 
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value);
     }
 
-    const {register, errors, formState: {touched}} = useForm({
+    const {register, formState: {errors, touchedFields}} = useForm({
         mode: 'onBlur',
         resolver: yupResolver(schema),
     });
 
-    const hasErrorStatus = touched?.status && errors?.status?.type && s.error;
+    const errorStatusClass = touchedFields?.status && errors?.status && s.error;
     const statusError = errors?.status?.message;
     return (
-        <div className={props.className} key={props.userId}>
-            <p className={s.spanAbout}>{props.aboutMe}</p>
-            {!editMode &&
-            <>
-                <span onDoubleClick={activateEditMode}
+        <div className={props.className}>
+            <p className={s.spanAbout}>{aboutMe}</p>
+            {!editMode
+            ? <> <span onDoubleClick={activateEditMode}
                     className={s.span}>
                     {props.status || "No Status"}
                 </span>
+            {errors?.status && createFormError(s.divError,
+                errorIcon, statusError, s.figure)}
+            </>
+            : <> <input {...register('status')}
+                    type='text'
+                    className={`${s.input} ${errorStatusClass}`}
+                    placeholder="What's up?"
+                    autoFocus={true}
+                    onBlur={deactivateEditMode}
+                    onChange={onStatusChange}
+                    value={status} />
                 {errors?.status && createFormError(s.divError,
-                    props.icon, statusError, s.figure)}
+                    errorIcon, statusError, s.figure)}
             </>
             }
-            {editMode && createInput('status', register,
-                {type: 'text',
-                    autoFocus: true,
-                    placeholder: "What's new?",
-                    onBlur: deactivateEditMode,
-                    onChange: onStatusChange,
-                    value: status,
-                    errorClass: hasErrorStatus,
-                    inputClass: s.input
-                })}
-            {errors?.status && createFormError(s.divError,
-                props.icon, statusError, s.figure)}
         </div>
     );
 }

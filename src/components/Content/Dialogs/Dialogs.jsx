@@ -1,18 +1,15 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { createListFromArray, createReverseListFromArray } from '../../../utils/object-helpers';
 import Search from '../../Common/Search/Search';
 import Chat from './Chat/Chat';
 import Dialog from './Dialog/Dialog';
 import AddMessageForm from './Message/AddMessageForm';
-import s from "./Messages.module.css";
+import s from "./Dialogs.module.css";
 
-const Messages = ({contacts, dialogs, isAuth, icons, search,
+const Dialogs = ({contacts, dialogs, icon, search,
     addMessage}) => {
     let contact = createListFromArray(contacts, Chat);
-    let dialog = createReverseListFromArray([...dialogs], Dialog);
-
-    if (!isAuth) return <Redirect to={'/login'} />;
+    let dialog = createReverseListFromArray(dialogs, Dialog);
 
     return (
         <div className={s.container}>
@@ -26,10 +23,9 @@ const Messages = ({contacts, dialogs, isAuth, icons, search,
             <div className={s.dialogs}>
                 {dialog}
             </div>
-            <AddMessageForm addMessage={addMessage}
-                icon={icons[2].icon} />
+            <AddMessageForm addMessage={addMessage} icon={icon} />
         </div>
     );
 }
 
-export default Messages;
+export default Dialogs;

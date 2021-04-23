@@ -1,3 +1,7 @@
+p {
+    color: red;
+}
+
 .form {
     display:grid;
     overflow: hidden;
@@ -32,17 +36,17 @@
     background-color: var(--login-back);
 }
 
-.input:hover {
+/* .input:hover {
     border: 1px solid var(--login-border-hover);
     color: var(--login-text-hover);
     background-color: var(--login-back-hover);
-}
+} */
 
-.input:focus {
+/* .input:focus {
     border: 1px solid var(--login-border-focus);
     color: var(--login-text-focus);
     background-color: var(--login-back-focus);
-}
+} */
 
 input::-webkit-input-placeholder {
     font-size: 20px;
@@ -50,7 +54,7 @@ input::-webkit-input-placeholder {
 }
 
 .error {
-    border: 2px solid var(--error-text);
+    border: 5px solid var(--error-text);
 }
 
 .divError {

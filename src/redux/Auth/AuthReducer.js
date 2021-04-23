@@ -1,8 +1,6 @@
 import { authAPI, securityApi } from "../../API/API";
-
-const SET_USER_DATA = 'my-app/auth/SET-USER-DATA';
-const SET_ERROR_MESSAGE = 'my-app/auth/SET_ERROR_MESSAGE';
-const GET_CAPTCHA_URL_SUCCESS = 'my-app/auth/GET_CAPTCHA_URL_SUCCESS';
+import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
+    SET_USER_DATA } from "../Actions/actionsTypes";
 
 let initialState = {
     userId: null,
@@ -61,45 +59,51 @@ export const getCaptchaUrlSuccess = (captchaUrl) => ({
 export const setErrormessage = (fieldsErrors) => ({
     type: SET_ERROR_MESSAGE, fieldsErrors});
 
-export const getAuthUserData = () => async (dispatch) => {
-    let response = await authAPI.getAuth();
-
-    if (response.resultCode === 0) {
-        let {id, email, login} = response.data;
-        dispatch(setAuthUserData(id, email, login, true));
-    }
+export const getAuthUserData = () => dispatch => {
+    return authAPI.getAuth()
+        .then(response => {
+            if (response.resultCode === 0) {
+                let {id, email, login} = response.data;
+                dispatch(setAuthUserData(id, email, login, true));
+            }
+        });
 }
 
-export const getAuthError = () => async (dispatch) => {
-    let response = await authAPI.login();
-
-    dispatch(setErrormessage(response.fieldsErrors))
+export const getAuthError = () => dispatch => {
+    return authAPI.login()
+        .then(response => {
+            dispatch(setErrormessage(response.fieldsErrors));
+        });
 }
 
-export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
-    let response = await authAPI.login(email, password, rememberMe, captcha);
-
-    if (response.resultCode === 0) {
-        dispatch(getAuthUserData());
-    } else if (response.resultCode === 1) {
-        dispatch(getAuthError());
-    } else if (response.resultCode === 10) {
-        dispatch(getCaptchaUrl());
-    }
+export const login = (email, password, rememberMe, captcha) => dispatch => {
+    return authAPI.login(email, password, rememberMe, captcha)
+        .then(response => {
+            if (response.resultCode === 0) {
+                dispatch(getAuthUserData());
+            } else if (response.resultCode === 1) {
+                dispatch(getAuthError());
+            } else if (response.resultCode === 10) {
+                dispatch(getCaptchaUrl());
+            }
+        });
 }
 
-export const logout = () => async (dispatch) => {
-    let response = await authAPI.logout();
-
-    if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
-    }
+export const logout = () => dispatch => {
+    return authAPI.logout()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
+            }
+        });
 }
 
-export const getCaptchaUrl = () => async (dispatch) => {
-    const response = await securityApi.getCaptchaURL();
-    const captchaUrl = response.url;
-    dispatch(getCaptchaUrlSuccess(captchaUrl));
+export const getCaptchaUrl = () => dispatch => {
+    return securityApi.getCaptchaURL()
+        .then(response => {
+            const captchaUrl = response.url;
+            dispatch(getCaptchaUrlSuccess(captchaUrl));
+        });
 }
 
 export default authReducer;

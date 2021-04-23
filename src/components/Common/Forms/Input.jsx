@@ -7,9 +7,9 @@ const Input = ({ register, name, ...props }) => {
             <input ref={register}
                 type={props.type}
                 accept={props.accept}
-                autocomplete={props.autocomplete}
+                autoComplete={props.autoComplete}
                 autoFocus={props.autoFocus}
-                autosave={props.autosave}
+                autoSave={props.autoSave}
                 checked={props.checked}
                 className={`${props.errorClass} ${props.inputClass}`}
                 disabled={props.disabled}

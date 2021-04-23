@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useReducer } from 'react';
 import withConsoleLog from '../../../hoc/withConsoleLog';
 import ThemedButton from '../../../utils/context/ThemeButton';
 
@@ -39,20 +39,44 @@ class Clock extends Component {
     }
 }
 
-const Counter = (props) => {
-    const [count, setCount] = useState(0);
+const INCREMENT = 'INCREMENT';
+const DECREMENT ='DECREMENT';
+const RESET = 'RESET';
 
-    useEffect(() => {
-        document.title = `You clicked ${count} times`;
-    })
+function init(initialCount) {
+    return {count: initialCount};
+}
 
+function reducer(state, action) {
+    switch (action.type) {
+        case INCREMENT:
+            return {count: state.counr + 1};
+        case DECREMENT:
+            return {count: state.count - 1};
+        case RESET:
+            return init(action.payload);
+        default:
+            throw new Error();
+    }
+}
+
+const Counter = ({initialCount}) => {
+    const [state, dispatch] = useReducer(reducer, initialCount,
+        init);
     return (
-        <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>
-                Click On Me!
+        <>
+            Count: {state.count}
+            <button onClick={() => dispatch({type: RESET,
+                payload: initialCount})}>
+                Reset
             </button>
-        </div>
+            <button onClick={() => dispatch({type: DECREMENT})}>
+                minus 1
+            </button>
+            <button onClick={() => dispatch({type: INCREMENT})}>
+                plus 1
+            </button>
+        </>
     );
 }
 

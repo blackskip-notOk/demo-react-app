@@ -1,5 +1,4 @@
-
-const FIND_USER = 'my-app/app/FIND_USER';
+import { FIND_USER } from "../Actions/actionsTypes";
 
 let initialState = {name: ''};
 

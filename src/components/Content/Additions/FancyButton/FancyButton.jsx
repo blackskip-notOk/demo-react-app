@@ -1,5 +1,5 @@
 import React from 'react';
-import withConsoleLog from '../../../hoc/withConsoleLog';
+import withConsoleLog from '../../../../hoc/withConsoleLog';
 
 const FancyButton = React.forwardRef((props, ref) => (
     <button ref={ref} className='FancyButton'>

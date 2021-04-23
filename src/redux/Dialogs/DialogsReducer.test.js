@@ -1,4 +1,4 @@
-import messagesReducer, { addMessage, deleteMessage } from "./MessagesReducer";
+import dialogsReducer, { addMessage, deleteMessage } from "./DialogsReducer";
 
 let state = {
     contacts: [
@@ -11,14 +11,14 @@ let state = {
 
 it('dialogs length should be increment', () => {
     let action = addMessage('test message');
-    let newState = messagesReducer(state, action);
+    let newState = dialogsReducer(state, action);
 
     expect(newState.dialogs.length).toBe(2);
 });
 
 it('after deleted dialogs length should be decrement', () => {
     let action = deleteMessage(1);
-    let newState = messagesReducer(state, action);
+    let newState = dialogsReducer(state, action);
 
     expect(newState.dialogs.length).toBe(0);
 });

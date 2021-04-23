@@ -1,27 +1,25 @@
 import React from "react";
+import Preloader from "../../Common/Preloader/Preloader";
 import MyPosts from "./MyPosts/MyPosts";
 import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = (props) => {
+const Profile = ({photos, isOwner, status, updateUserStatus,
+    errorIcon, jobIcons, posts, addPost, profile}) => {
+    if (!profile) return <Preloader />
+
     return (
         <div className={s.div}>
-            <ProfileInfo aboutMe={props.profile.aboutMe}
-                contacts={props.profile.contacts}
-                lookingForAJob={props.profile.lookingForAJob}
-                lookingForAJobDescription={props.profile.lookingForAJobDescription}
-                fullName={props.profile.fullName}
-                userId={props.profile.userId}
-                photos={props.profile.photos}
-                icons={props.icons}
-                status={props.status}
-                updateUserStatus={props.updateUserStatus}
-                isOwner={props.isOwner}
-                savePhoto={props.savePhoto} />
-            <MyPosts posts={props.posts}
-                addPost={props.addPost}
-                photos={props.profile.photos}
-                icons={props.icons} />
+            <ProfileInfo {...profile}
+                isOwner={isOwner}
+                status={status}
+                updateUserStatus={updateUserStatus}
+                errorIcon={errorIcon}
+                jobIcons={jobIcons} />
+            <MyPosts errorIcon={errorIcon}
+                posts={posts}
+                addPost={addPost}
+                photos={photos} />
         </div>
     );
 }

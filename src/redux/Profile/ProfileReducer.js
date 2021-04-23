@@ -1,10 +1,6 @@
 import { profileAPI } from "../../API/API";
-
-const ADD_POST = 'my-app/profile/ADD_POST';
-const DELETE_POST = 'my-app/profile/DELETE_POST';
-const SET_USER_PROFILE = 'my-app/profile/SET_USER_PROFILE';
-const SET_USER_STATUS = 'my-app/profile/SET_USER_STATUS';
-const SAVE_PHOTO_SUCCESS = 'my-app/profile/SAVE_PHOTO_SUCCESS';
+import { ADD_POST, DELETE_POST, SAVE_PHOTO_SUCCESS,
+    SET_USER_PROFILE, SET_USER_STATUS } from "../Actions/actionsTypes";
 
 let initialState = {
     profile: null,
@@ -69,15 +65,13 @@ export const setUserStatus = (status) => (
 export const savePhotoSuccess = (photos) => (
     {type: SAVE_PHOTO_SUCCESS, photos}
 );
-export const getUserProfile = (userId) => async (dispatch) => {
-    let response = await profileAPI.getUserProfile(userId);
-
-    dispatch(setUserProfile(response));
+export const getUserProfile = userId => dispatch => {
+    return profileAPI.getUserProfile(userId)
+        .then(response => {dispatch(setUserProfile(response));});
 };
-export const getUserStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getUserStatus(userId);
-
-    dispatch(setUserStatus(response.data));
+export const getUserStatus = userId => dispatch => {
+    return profileAPI.getUserStatus(userId)
+        .then(response => {dispatch(setUserStatus(response.data));});
 };
 export const updateUserStatus = (status) => async (dispatch) => {
     try {

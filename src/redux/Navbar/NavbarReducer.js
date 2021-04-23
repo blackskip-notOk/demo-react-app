@@ -9,9 +9,9 @@ let initialState = {
 
     links: [
         { id: 1, pathway: '/profile', target: '_self', notation: 'Profile' },
-        { id: 2, pathway: '/messages', target: '_self', notation: 'Messages' },
+        { id: 2, pathway: '/dialogs', target: '_self', notation: 'Messages' },
         { id: 3, pathway: '/friends', target: '_self', notation: 'Friends' },
-        { id: 4, pathway: '/news', target: '_self', notation: 'News' },
+        { id: 4, pathway: '/additions', target: '_self', notation: 'Additions' },
         { id: 5, pathway: '/users', target: '_self', notation: 'Find Users'},
         { id: 6, pathway: '/settings', target: '_self', notation: 'Settings'}
     ],

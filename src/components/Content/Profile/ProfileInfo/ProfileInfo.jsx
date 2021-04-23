@@ -4,11 +4,11 @@ import Avatar from "../../../Common/Avatar/Avatar";
 import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import Ul from "./Ul";
+import Ul from "./ProfileInfoUl/Ul";
 
-const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName, aboutMe,
-    status, updateUserStatus, icons, contacts, lookingForAJob,
-    lookingForAJobDescription, ...props}) => {
+const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName,
+    aboutMe, status, updateUserStatus, icons, contacts, errorIcon,
+    lookingForAJob, lookingForAJobDescription, jobIcons}) => {
 
     const onUserAvatarChanged = (e) => {
         let avatarSrc = e.target.file;
@@ -26,11 +26,11 @@ const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName, aboutMe,
             <ProfileStatus userId={userId}
                 aboutMe={aboutMe} status={status}
                 updateUserStatus={updateUserStatus}
-                className={s.status} icon={icons[2].icon}/>
+                className={s.status} errorIcon={errorIcon}/>
             <Ul contacts={contacts} className={s.ul} />
             {lookingForAJob
-                ? <Figure className={s.job} icon={icons[21].icon} />
-                : <Figure className={s.job} icon={icons[20].icon} /> }
+                ? <Figure className={s.job} icon={jobIcons[1]} />
+                : <Figure className={s.job} icon={jobIcons[0]} /> }
             <span className={s.spanDesc}>
                 {lookingForAJobDescription}
             </span>

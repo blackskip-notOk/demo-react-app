@@ -3,7 +3,7 @@ import React from "react";
 const Button = (props) => {
     return (
             <button
-                autofocus={props.autofocus}
+                autoFocus={props.autoFocus}
                 disabled={props.disabled}
                 form={props.form}
                 formAction={props.formAction}

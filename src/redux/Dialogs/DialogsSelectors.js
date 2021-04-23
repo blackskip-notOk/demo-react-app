@@ -1,7 +1,7 @@
 export const getContacts = (state) => {
-    return state.messages.contacts;
+    return state.dialogs.contacts;
 }
 
 export const getDialogs = (state) => {
-    return state.messages.dialogs;
+    return state.dialogs.dialogs;
 }

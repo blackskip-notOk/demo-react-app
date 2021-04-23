@@ -6,7 +6,7 @@ import s from './Chat.module.css';
 const Chat = ({id, avatar, name}) => {
     return (
         <div className={s.div}>
-            <NavLink to={`/messages/chats/${id}`}>
+            <NavLink to={`/dialogs/chats/${id}`}>
                 <Avatar src={avatar.src} alt={avatar.alt}
                     className={s.img} />
                 <span>{id} {name}</span>

@@ -1,5 +1,4 @@
-const ADD_MESSAGE = 'my-app/message/ADD-MESSAGE';
-const DELETE_MESSAGE = 'my-app/message/DELETE_MESSAGE';
+import { ADD_MESSAGE, DELETE_MESSAGE } from "../Actions/actionsTypes";
 
 let initialState = {
     contacts: [
@@ -10,7 +9,7 @@ let initialState = {
     ]
 }
 
-const messagesReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_MESSAGE:
             let newDialog = {
@@ -38,4 +37,4 @@ const messagesReducer = (state = initialState, action) => {
 export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 export const deleteMessage = (messageId) => ({type: DELETE_MESSAGE, messageId});
 
-export default messagesReducer;
+export default dialogsReducer;

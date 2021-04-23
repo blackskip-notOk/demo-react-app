@@ -1,13 +1,10 @@
 import React from 'react';
-import { createFormError, createInput } from '../../../utils/form-helper';
-import Button from '../../Common/Button/Button';
+import Button from '../../../Common/Button/Button';
 
-const NewsForm = (pprops) => {
+const NewsForm = (props) => {
     return (
         <form>
             <h1>Login Form</h1>
-            {createInput()}
-            {createInput()}
             <div>
                 <label htmlFor='rememberMe'>Remember Me </label>
                 <input name='rememberMe' type='checkbox'/>

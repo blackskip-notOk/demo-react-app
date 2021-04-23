@@ -2,24 +2,24 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunkMiddleWare from 'redux-thunk';
 import appReducer from './App/AppReducer';
 import profileReducer from './Profile/ProfileReducer';
-import messagesReducer from './Messages/MessagesReducer';
+import dialogsReducer from './Dialogs/DialogsReducer';
 import commonReducer from './Common/CommonReducer';
 import friendsReducer from './Friends/FriendsReducer';
 import navbarReducer from './Navbar/NavbarReducer';
-import newsReducer from './News/NewsReducer';
+import additionsReducer from './Additions/AdditionsReducer';
 import asideReducer from './Aside/AsideReducer';
 import usersReducer from './Users/UsersReducer';
 import findUserReducer from './FindUser/FindUserReducer';
 import authReducer from './Auth/AuthReducer';
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     app: appReducer,
     profile: profileReducer,
-    messages: messagesReducer,
+    dialogs: dialogsReducer,
     common: commonReducer,
     friends: friendsReducer,
     navbar: navbarReducer,
-    news: newsReducer,
+    additions: additionsReducer,
     aside: asideReducer,
     users: usersReducer,
     findUser: findUserReducer,
