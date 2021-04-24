@@ -19,8 +19,8 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
                 {user.status ? user.status : '"Nothing to say"'}
             </div>
             <div className={s.divFollow}>
-                {user.followed ?
-                <Button disabled={followingInProgress
+                {user.followed
+                ? <Button disabled={followingInProgress
                     .some(id => id === user.id)}
                     onClick={() => unfollow(user.id)}
                     span='Unfollow' className={s.buttonFollow} />

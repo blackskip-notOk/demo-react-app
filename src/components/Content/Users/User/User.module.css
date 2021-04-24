@@ -1,26 +1,14 @@
-.divUsers {
-    display: grid;
-    padding: 10px 10px 10px 10px;
-    font-family: 'Concert One', cursive;
-    color: var(--findUsers-text);
-    background-color: var(--findUsers-back);
-}
-
-.spanUnchosen {
-    padding: 0px 3px 0px 3px;
-}
-
 .divUser {
     display: grid;
     grid-template-areas:
-    'avatar name location'
-    'avatar status button';
+        'avatar name location'
+        'avatar status button';
     grid-template-rows: 100px 100px;
     grid-template-columns: 150px minmax(200px, 1fr) minmax(min-content, max-content);
     grid-gap: 20px;
     max-width: 100%;
     margin: 10px 10px 10px 10px;
-    border: 1px solid gold;
+    border: 1px solid var(--user-border);
     border-radius: 20px;
     padding: 10px 10px 10px 10px;
     align-items: center;
@@ -28,6 +16,12 @@
     font-family: 'Concert One', cursive;
     color: var(--findUsers-text);
     background-color: var(--findUsers-back);
+}
+
+.divName {
+    grid-area: name;
+    align-self: flex-start;
+    font-size: 40px;
 }
 
 .link {
@@ -38,19 +32,6 @@
     width: 150px;
     height: 200px;
     border-radius: 100px;
-}
-
-.divName {
-    grid-area: name;
-    align-self: flex-start;
-    font-size: 40px;
-}
-
-.divLocation {
-    grid-area: location;
-    align-self: flex-start;
-    text-align: right;
-    font-size: 30px;
 }
 
 .divStatus {
@@ -65,15 +46,19 @@
     justify-self: end;
 }
 
-button {
+.buttonFollow {
     font-size: 28px;
 }
 
-button:hover {
+.buttonFollow:hover {
     cursor: pointer;
 }
 
-button:disabled {
+.buttonFollow:disabled {
     font-size: 20px;
-    color: black;
+    color: var(--button-disable);
+}
+
+.spanUnchosen {
+    padding: 0px 3px 0px 3px;
 }

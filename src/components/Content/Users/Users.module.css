@@ -1,0 +1,7 @@
+.divUsers {
+    display: grid;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Concert One', cursive;
+    color: var(--findUsers-text);
+    background-color: var(--findUsers-back);
+}

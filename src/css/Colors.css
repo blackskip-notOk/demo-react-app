@@ -34,6 +34,7 @@
     --button-back: rgb(85, 40, 130);
     --button-border: rgb(153, 84, 223);
     --button-back-decor: rgb(255, 185, 50);
+    --button-disable: rgb(77, 74, 74);
     --content-back: rgb(25,10,40);
     --navbar-back: rgb(25, 5, 60);
     --main-back: rgb(110, 0, 0);
@@ -77,4 +78,5 @@
     --login-text-focus:rgb(219, 214, 214);
     --error-text: rgb(255, 0, 0);
     --error-back: rgb(255, 255, 255);
+    --user-border: rgb(255, 185, 50);
 }

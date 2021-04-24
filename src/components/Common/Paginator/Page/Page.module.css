@@ -1,0 +1,11 @@
+.spanChosen {
+    padding: 0px 10px 0px 10px;
+    font-weight:bolder;
+    color: var(--findUsers-page-chosen);
+    list-style:none;
+}
+
+.spanUnchosen {
+    padding: 0px 3px 0px 3px;
+    list-style:none;
+}
