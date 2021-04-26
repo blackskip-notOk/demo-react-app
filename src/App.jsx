@@ -17,8 +17,8 @@ import { getInitialized } from './redux/App/AppSelectors';
 import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
 import ToolbarFlow from './components/Common/ToolBar/Toolbar';
-import Home from './components/Home/Home';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
+import { getIsAuth } from './redux/Auth/AuthSelectors';
 
 const FriendsContainer = lazy(() => import('./components/Content/Friends/FriendsContainer'));
 const AdditionsContainer = lazy(() => import('./components/Content/Additions/AdditionsContainer'));
@@ -34,8 +34,18 @@ class App extends React.Component {
       return <Preloader />
     }
 
+    if (!this.props.isAuth) {
+      return <div className = 'login'>
+       <Route path = '/'
+           render = {() => <Login />} />
+    </div>
+    }
     return (
       <div className = 'grid-wrapper'>
+        {/* <div className = 'login'>
+        <Route path = '/login'
+            render = {() => <Login />} />
+        </div> */}
         <div className = 'header'>
           <HeaderContainer />
         </div>
@@ -44,9 +54,6 @@ class App extends React.Component {
         </div>
         <div className = 'content'>
         <Switch>
-          <Route exact path = '/'
-            render = { () => <Home />
-            } />
           <Route path = '/profile/:userId?'
             render = { () => <ProfileContainer />
             } />
@@ -58,8 +65,6 @@ class App extends React.Component {
             render = {withSuspense(AdditionsContainer)} /> */}
           <Route path = '/users'
             render = { () => <UsersContainer /> } />
-          <Route path = '/login'
-            render = {() => <Login />} />
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>
@@ -79,7 +84,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    initialized: getInitialized(state)
+    initialized: getInitialized(state),
+    isAuth: getIsAuth(state)
   }
 }
 

@@ -4,6 +4,7 @@ export const INITIALIZED_SUCCESS = 'my-app/app/INITIALIZED_SUCCESS';
 export const SET_USER_DATA = 'my-app/auth/SET-USER-DATA';
 export const SET_ERROR_MESSAGE = 'my-app/auth/SET_ERROR_MESSAGE';
 export const GET_CAPTCHA_URL_SUCCESS = 'my-app/auth/GET_CAPTCHA_URL_SUCCESS';
+export const TOGGLE_LOGIN_PROGRESS = 'my-app/auth/TOGGLE_LOGIN_PROGRESS'; 
 //DialogsReducer
 export const ADD_MESSAGE = 'my-app/dialogs/ADD-MESSAGE';
 export const DELETE_MESSAGE = 'my-app/dialogs/DELETE_MESSAGE';

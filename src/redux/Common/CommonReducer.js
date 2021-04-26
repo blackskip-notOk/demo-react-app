@@ -1,6 +1,6 @@
 let initialState = {
     iconsHeader: [
-        { id: 1, pathway: '/home', icon: 'fab fa-galactic-republic', undertext: 'Home', target: '_self' },
+        { id: 1, pathway: '/', icon: 'fab fa-galactic-republic', undertext: 'Home', target: '_self' },
         { id: 2, pathway: '/groups', icon: 'fab fa-old-republic', undertext: 'Groups', target: '_self' },
         { id: 3, pathway: '/video', icon: 'fab fa-jedi-order', undertext: 'Video', target: '_self' },
     ],

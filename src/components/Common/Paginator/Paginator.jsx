@@ -1,49 +1,43 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
+import Page from "./Page/Page";
 import s from './Paginator.module.css';
+/*
+problem: after update page url stay with page=p, but load current page =1.
+When page updated i want to stay on page=p, or url stay with page=currentPage.  
+*/
+const Paginator = ({portionSize, requestUsers, pageSize, pages,
+    currentPage, portionCount}) => {
+    const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
 
-const Paginator = ({totalCount, pageSize, onPageChanged,
-    currentPage, portionSize = 10}) => {
-    const [portionNumber, setPortionNumber] = useState(1);
-    const pagesCount = Math.ceil(totalCount / pageSize);
-    const pages= [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
+    const leftPortion = (portionNumber - 1) * portionSize + 1;
+    const rightPortion = portionNumber * portionSize;
+    const onPageChanged = (pageNumber) => {
+        requestUsers(pageNumber, pageSize);
     }
-
-    const portionCount = Math.ceil(pagesCount / portionSize);
-    const leftPortionPageNumber = (portionNumber - 1) * (portionSize + 1);
-    const rightPortionPageNumber = portionNumber * portionSize;
-
     return (
         <div className={s.divPages}>
-            {portionNumber > 1 &&
-                <Button type='button'
-                    onClick={() => {
-                        setPortionNumber(portionNumber - 1);
-                    }}
-                    span='back' />
+            {portionNumber >= 2 && <Button type='button' onClick={() => {
+                setPortionNumber(1);}} span='first page' />}
+            {portionNumber > 1 && <Button type='button' onClick={() => {
+                setPortionNumber(portionNumber - 1);}} span='back' />
             }
             {pages
-                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                .map((p) => {
-                    return <span key={p}
-                        className={currentPage === p
-                        ? s.spanChosen : s.spanUnchosen}
-                        onClick={(e) => {
-                            onPageChanged(p)}} >
-                            {p}
-                        </span>
+                .filter(p => p >= leftPortion && p <= rightPortion)
+                .map(p => {return <Page key={p} path={`/users/page=${p}`}
+                    currentPage={currentPage}
+                    chosenPage={p}
+                    onPageChanged ={onPageChanged} />
                 })
             }
-            {portionCount > portionNumber &&
-                <Button type='button'
-                    onClick={() => {
-                        setPortionNumber(portionNumber + 1)
-                    }}
-                    span='next' />
+            {portionCount > portionNumber && <Button type='button'
+                onClick={() => {setPortionNumber(portionNumber + 1)}}
+                span='next' />
             }
+            {portionCount > portionNumber && <Button type='button'
+                onClick={() => {setPortionNumber(portionCount);}}
+                span='last page' />}
         </div>
     );
 }

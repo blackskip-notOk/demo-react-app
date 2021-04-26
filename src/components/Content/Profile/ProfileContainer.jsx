@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, PureComponent, useEffect } from 'react';
 import { connect } from "react-redux";
 import { useHistory, withRouter } from 'react-router';
 import { compose } from 'redux';
@@ -45,7 +45,9 @@ class ProfileContainer extends Component {
         this.refreshProfile()
     }
     componentDidUpdate() {
+        if (!this.props.profile) {
         this.refreshProfile()
+        }
     }
 
     refreshProfile() {

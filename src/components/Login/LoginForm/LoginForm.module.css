@@ -1,80 +1,164 @@
-p {
-    color: red;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 .form {
-    display:grid;
-    overflow: hidden;
+    display: grid;
+    align-self: flex-start;
+    width: 500px;
+    border: 1px solid var(--login-form-shadow);
+    box-shadow: 0px 0px 30px 10px var(--login-form-shadow);
+    padding: 1rem;
 }
 
 .form h1 {
     text-align: center;
-    font-size: 64px;
-    margin: 10px 0px 30px 0px;
-    border-bottom: 3px dotted var(--login-border);
-    padding-bottom: 10px;
-}
-
-.divInput {
-    margin: 10px 0px;
-}
-
-.divInput label {
-    margin-right: 10px;
-    font-size: 26px;
     text-transform: capitalize;
+    font-size: 24px;
+    padding-bottom: 20px;
+    color: var(--loginform-header-dark);
 }
 
-.input{
-    font-size: 20px;
+.inputDiv {
+    display: grid;
+    grid-template-columns: 0.6fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+    margin: 10px;
+}
+
+.label {
+    display: flex;
+    text-transform: capitalize;
+    font-size: 24px;
+    color: var(--login-text-dark);
+}
+
+.input {
+    display: flex;
+    text-align: center;
     border: 1px solid var(--login-border);
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 5px;
     outline: none;
     font-size: 20px;
-    color: var(--login-text);
+    color: var(--login-text-dark);
     background-color: var(--login-back);
 }
 
-/* .input:hover {
-    border: 1px solid var(--login-border-hover);
-    color: var(--login-text-hover);
-    background-color: var(--login-back-hover);
-} */
-
-/* .input:focus {
-    border: 1px solid var(--login-border-focus);
-    color: var(--login-text-focus);
-    background-color: var(--login-back-focus);
-} */
-
-input::-webkit-input-placeholder {
+.input::-webkit-input-placeholder {
     font-size: 20px;
-    color: var(--login-text);
+    color: var(--login-placeholder-dark);
+    text-transform: lowercase;
+}
+
+.input:focus {
+    border: 1px solid var(--login-border-focus);
 }
 
 .error {
-    border: 5px solid var(--error-text);
+    border: 1px solid var(--error-text);
 }
 
 .divError {
-    width:max-content;
+    display: flex;
+    justify-self: flex-end;
+    width: max-content;
     padding: 10px;
     text-transform: capitalize;
     color: var(--error-text);
 }
 
 .figure {
-    display:inline;
+    display: inline;
     margin-right: 5px;
     color: var(--error-text);
 }
 
 .checkbox {
-   transform: scale(2);
-   margin: 10px;
+    transform: scale(2);
+}
+
+.captchaDiv {
+    display: grid;
+    grid-template-columns: 0.6fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+    margin: 20px 0px 10px 0px;
+}
+
+.captcha {
+    border: 1px solid var(--error-text);
+}
+
+.captchaDiv>input {
+    display: flex;
+    width: 90%;
+    height: max-content;
+    text-align: center;
+    align-self: flex-end;
+}
+
+.singinButton {
+    display: flex;
+    justify-self: center;
+    width: max-content;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    margin: 20px 0px 10px 0;
+    border: 1px solid var(--login-border);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--button-login-shadow);
+    background-color: var(--button-login-back);
+}
+
+.singinButton::after {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    min-width: 0px;
+    content: "";
+    transition: .2s ease;
+    background: var(--button-login-decor);
+}
+
+.singinButton:hover:after {
+    width: 110%;
+    height: 125%;
+    border-radius: 20px;
+    margin: -5% 0 0px -5%;
+    padding-left: 0px;
+    opacity: .5;
+}
+
+.singinButton:disabled {
+    background-color: var(--button-login-disable);
+    color: var(--login-text-disable);
+}
+
+.singinSpan {
+    text-align: center;
+    padding: 0px 5px;
+    text-transform: capitalize;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: var(--login-text-dark);
 }
 
 .formError {
     border: 1px solid var(--error-text);
+}
+
+.preloaderDiv{
+    position:fixed;
+    top: 50%;
+    left: 35%;
+}
+
+.img {
+    width: 300px;
+    height: 250px;
+    border-radius: 200px;
 }

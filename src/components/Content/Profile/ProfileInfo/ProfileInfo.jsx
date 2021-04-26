@@ -7,7 +7,7 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import Ul from "./ProfileInfoUl/Ul";
 
 const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName,
-    aboutMe, status, updateUserStatus, icons, contacts, errorIcon,
+    aboutMe, status, updateUserStatus, contacts, errorIcon,
     lookingForAJob, lookingForAJobDescription, jobIcons}) => {
 
     const onUserAvatarChanged = (e) => {
@@ -29,8 +29,8 @@ const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName,
                 className={s.status} errorIcon={errorIcon}/>
             <Ul contacts={contacts} className={s.ul} />
             {lookingForAJob
-                ? <Figure className={s.job} icon={jobIcons[1]} />
-                : <Figure className={s.job} icon={jobIcons[0]} /> }
+                ? <Figure className={s.job} icon={jobIcons[0]} />
+                : <Figure className={s.job} icon={jobIcons[1]} /> }
             <span className={s.spanDesc}>
                 {lookingForAJobDescription}
             </span>
