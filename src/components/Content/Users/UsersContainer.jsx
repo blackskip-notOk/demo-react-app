@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { compose } from 'redux';
 import { follow, requestUsers, unfollow } from '../../../redux/Users/UsersReducer';
 import { getFollowingInProgress, getIsFetching, getUsers, getPagesInfo } from '../../../redux/Users/UsersSelectors';
+import Preloader from '../../Common/Preloader/Preloader';
 import Users from './Users';
 
 const UsersContainer = ({requestUsers, isFetching, users, unfollow,
@@ -11,6 +12,8 @@ const UsersContainer = ({requestUsers, isFetching, users, unfollow,
         requestUsers(pagesInfo.currentPage, pagesInfo.pageSize)},
         [pagesInfo.currentPage, pagesInfo.pageSize, requestUsers]);
     return (
+        <>
+        {isFetching ? <Preloader /> : null}
         <Users users={users}
             unfollow={unfollow}
             follow={follow}
@@ -22,6 +25,7 @@ const UsersContainer = ({requestUsers, isFetching, users, unfollow,
             portionSize={pagesInfo.portionSize}
             requestUsers={requestUsers}
             pageSize={pagesInfo.pageSize} />
+        </>
     )
 }
 

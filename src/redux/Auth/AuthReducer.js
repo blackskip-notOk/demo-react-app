@@ -1,6 +1,6 @@
 import { authAPI, securityApi } from "../../API/API";
 import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
-    SET_USER_DATA } from "../Actions/actionsTypes";
+    SET_USER_DATA, TOGGLE_LOGIN_PROGRESS } from "../Actions/actionsTypes";
 
 let initialState = {
     userId: null,
@@ -9,10 +9,9 @@ let initialState = {
     password: null,
     rememberMe: false,
     isAuth: false,
+    loginInProgress: false,
     captcha: null,
-    emailErrorMessage: null,
-    passwordErrorMessage: null,
-    errorMessages: null
+    errorMessage: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -24,26 +23,14 @@ const authReducer = (state = initialState, action) => {
                 ...action.payload,
             }
         case SET_ERROR_MESSAGE:
-            let getNewError = (element) => {
-                switch(element.field) {
-                    case 'email':
-                        return {
-                            emailErrorMessage: element.error
-                        }
-                    case 'password':
-                        return {
-                            passwordErrorMessage: element.error
-                        }
-                    default:
-                        return state;
-                }
-            }
-            let errors = action?.fieldsErrors?.map(getNewError);
-           return {
+            return {
                 ...state,
-                emailErrorMessage: errors[0].emailErrorMessage,
-                passwordErrorMessage: errors[1].passwordErrorMessage,
-                errorMessages: errors
+                errorMessage: action.messages[0]
+            }
+        case TOGGLE_LOGIN_PROGRESS:
+            return {
+                ...state,
+                loginInProgress: action.loginInProgress
             }
         default:
              return state;
@@ -53,11 +40,14 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login, isAuth) => ({
     type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
-export const getCaptchaUrlSuccess = (captchaUrl) => ({
-    type:  GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}});
+export const getCaptchaUrlSuccess = (captcha) => ({
+    type:  GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
 
-export const setErrormessage = (fieldsErrors) => ({
-    type: SET_ERROR_MESSAGE, fieldsErrors});
+export const setErrormessage = (messages) => ({
+    type: SET_ERROR_MESSAGE, messages});
+
+export const toggleLoginProgress = (loginInProgress) => ({
+    type: TOGGLE_LOGIN_PROGRESS, loginInProgress});
 
 export const getAuthUserData = () => dispatch => {
     return authAPI.getAuth()
@@ -69,23 +59,19 @@ export const getAuthUserData = () => dispatch => {
         });
 }
 
-export const getAuthError = () => dispatch => {
-    return authAPI.login()
-        .then(response => {
-            dispatch(setErrormessage(response.fieldsErrors));
-        });
-}
-
 export const login = (email, password, rememberMe, captcha) => dispatch => {
+    dispatch(toggleLoginProgress(true));
     return authAPI.login(email, password, rememberMe, captcha)
         .then(response => {
             if (response.resultCode === 0) {
                 dispatch(getAuthUserData());
             } else if (response.resultCode === 1) {
-                dispatch(getAuthError());
+                dispatch(setErrormessage(response.messages));
             } else if (response.resultCode === 10) {
                 dispatch(getCaptchaUrl());
+                dispatch(setErrormessage(response.messages));
             }
+            dispatch(toggleLoginProgress(false));
         });
 }
 
@@ -101,8 +87,7 @@ export const logout = () => dispatch => {
 export const getCaptchaUrl = () => dispatch => {
     return securityApi.getCaptchaURL()
         .then(response => {
-            const captchaUrl = response.url;
-            dispatch(getCaptchaUrlSuccess(captchaUrl));
+            dispatch(getCaptchaUrlSuccess(response.url));
         });
 }
 

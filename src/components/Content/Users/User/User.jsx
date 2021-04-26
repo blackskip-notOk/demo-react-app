@@ -9,10 +9,10 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
     let avatar = user.photos.small || userAvatar;
     return (
         <div className={s.divUser}>
-            <div className={s.divName}>
-                {user.name}
-            </div>
             <NavLink to={`/profile/${user.id}`} className={s.link}>
+                <div className={s.divName}>
+                    {user.name}
+                </div>
                 <Avatar src={avatar} className={s.img} />
             </NavLink>
             <div className={s.divStatus}>

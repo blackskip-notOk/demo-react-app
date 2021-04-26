@@ -6,17 +6,8 @@ export const getCaptcha = (state) => {
     return state.auth.captcha;
 }
 
-
-export const getEmailErrorMessage = (state) => {
-    return state.auth.emailErrorMessage;
-}
-
-export const getPasswordErrorMessage = (state) => {
-    return state.auth.passwordErrorMessage;
-}
-
-export const getErrorMessages = (state) => {
-    return state.auth.errorMessages;
+export const getServerErrorMessage = (state) => {
+    return state.auth.errorMessage;
 }
 
 export const getUserLogin = (state) => {
@@ -25,4 +16,8 @@ export const getUserLogin = (state) => {
 
 export const getAuthUserId = (state) => {
     return state.auth.userId;
+}
+
+export const getLoginInProgress = state => {
+    return state.auth.loginInProgress;
 }

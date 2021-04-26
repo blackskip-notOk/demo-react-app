@@ -40,12 +40,14 @@ import Profile from './Profile';
 //         }
 
 //         refreshProfile();
-class ProfileContainer extends PureComponent {
+class ProfileContainer extends Component {
     componentDidMount() {
         this.refreshProfile()
     }
     componentDidUpdate() {
+        if (!this.props.profile) {
         this.refreshProfile()
+        }
     }
 
     refreshProfile() {

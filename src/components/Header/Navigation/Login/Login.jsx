@@ -17,7 +17,7 @@ const Login = ({isAuth, login, logout, avatar, userLogin, ...props}) => {
                         span='log out' />
                 </div>
             : <div className={s.div}>
-                <NavLink to={'./login'}>
+                <NavLink to={'/login'}>
                     <Button onClick = {login}
                         type='button'
                         className={s.button}
