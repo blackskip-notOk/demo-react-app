@@ -55,12 +55,13 @@ export const profileAPI = {
     },
 
     getUserStatus(userId) {
-        return instance.get(`profile/status/${userId}`);
+        return instance.get(`profile/status/${userId}`)
+            .then(response => {return response.data});
     },
 
     updateUserStatus(status) {
         return instance.put(`profile/status`, {status})
-            .then(response => {return response;});
+            .then(response => {return response.data;});
     },
 
     savePhoto(photoFile) {

@@ -1,3 +1,5 @@
+import { SET_AUTH_USER_LINK } from '../Actions/actionsTypes';
+
 let initialState = {
     friends: [
         { id: 1, name: 'Master Yoda', avatar: {src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'} },
@@ -8,7 +10,6 @@ let initialState = {
     ],
 
     links: [
-        { id: 1, pathway: '/profile', target: '_self', notation: 'Profile' },
         { id: 2, pathway: '/dialogs', target: '_self', notation: 'Messages' },
         { id: 3, pathway: '/friends', target: '_self', notation: 'Friends' },
         { id: 4, pathway: '/additions', target: '_self', notation: 'Additions' },
@@ -18,7 +19,22 @@ let initialState = {
 }
 
 const navbarReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_AUTH_USER_LINK:
+            const link = {
+                id: 1,
+                pathway: action.pathway,
+                target: '_self',
+                notation: 'Profile' }
+
+            return {
+                ...state,
+                links: [link, ...state.links]
+            }
+        default: return state;
+    }
 }
+//action creator
+export const setAuthUserLink = (pathway) => ({type: SET_AUTH_USER_LINK, pathway});
 
 export default navbarReducer;

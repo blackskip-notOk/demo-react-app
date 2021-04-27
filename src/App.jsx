@@ -3,7 +3,7 @@ import './css/app.css';
 import './css/Colors.css';
 import React, { lazy, useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import AsideContainer from './components/Aside/AsideContainer';
 import Preloader from './components/Common/Preloader/Preloader';
@@ -36,16 +36,12 @@ class App extends React.Component {
 
     if (!this.props.isAuth) {
       return <div className = 'login'>
-       <Route path = '/'
+          <Route path = '/'
            render = {() => <Login />} />
-    </div>
+      </div>
     }
     return (
       <div className = 'grid-wrapper'>
-        {/* <div className = 'login'>
-        <Route path = '/login'
-            render = {() => <Login />} />
-        </div> */}
         <div className = 'header'>
           <HeaderContainer />
         </div>
@@ -65,6 +61,10 @@ class App extends React.Component {
             render = {withSuspense(AdditionsContainer)} /> */}
           <Route path = '/users'
             render = { () => <UsersContainer /> } />
+          <Route path = '/login'
+            render = { () => <><div className = 'login'><Login /></div></> } />
+          <Route path = '/'
+            render = { () => <Redirect to = '/profile' /> } />
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>

@@ -7,12 +7,14 @@ export const updateObjectInArray = (items, itemId, objPropName, newObjProps) => 
     });
 }
 
-export const createListFromArray = (items, Component, callBack) => {
+export const createListFromArray = (items, Component, callBack, authUserId,
+    getProfileData, props) => {
     return items.map(i => <Component pathway={i.pathway}
         icon={i.icon} undertext={i.undertext} key={i.id}
         name={i.name} id={i.id} avatar={i.avatar}
         target={i.target} notation={i.notation} friend={i}
-        onClick={() => callBack(i.id)} />);
+        onClick={() => callBack(i.id)} authUserId={authUserId}
+        getProfileData={getProfileData} props={props} />);
 }
 
 export const createReverseListFromArray = (items, Component, photos) => {

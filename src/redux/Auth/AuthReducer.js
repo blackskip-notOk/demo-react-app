@@ -1,6 +1,7 @@
 import { authAPI, securityApi } from "../../API/API";
 import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
     SET_USER_DATA, TOGGLE_LOGIN_PROGRESS } from "../Actions/actionsTypes";
+import { setAuthUserLink } from "../Navbar/NavbarReducer";
 
 let initialState = {
     userId: null,
@@ -55,6 +56,7 @@ export const getAuthUserData = () => dispatch => {
             if (response.resultCode === 0) {
                 let {id, email, login} = response.data;
                 dispatch(setAuthUserData(id, email, login, true));
+                dispatch(setAuthUserLink(`/profile/${id}`));
             }
         });
 }

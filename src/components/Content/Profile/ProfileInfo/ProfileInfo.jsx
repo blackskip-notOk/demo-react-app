@@ -1,25 +1,22 @@
 import React from "react";
-import userAvatar from '../../../../image/bb-8.png';
+import userAvatar from '../../../../image/avatars/noAvatar.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import Ul from "./ProfileInfoUl/Ul";
 
-const ProfileInfo = ({savePhoto, userId, photos, isOwner, fullName,
-    aboutMe, status, updateUserStatus, contacts, errorIcon,
-    lookingForAJob, lookingForAJobDescription, jobIcons}) => {
-
+const ProfileInfo = ({savePhoto, userId, photos, fullName, aboutMe, status,
+    updateUserStatus, contacts, errorIcon, lookingForAJob, lookingForAJobDescription,
+    jobIcons, isOwner}) => {
     const onUserAvatarChanged = (e) => {
-        let avatarSrc = e.target.file;
-        if (avatarSrc.length) {
-            savePhoto(avatarSrc[0]);
-        }
+        let avatarSrc = e.target.files;
+        if (avatarSrc.length) savePhoto(avatarSrc[0]);
     }
-
     return (
         <div className={s.div} key={userId}>
-            <Avatar src={photos.large || userAvatar} alt='User Avatar' className={s.avatar} />
+            <Avatar src={photos.large || userAvatar} alt='User Avatar'
+                className={s.avatar} />
             {isOwner && <input type='file'
                 onChange={onUserAvatarChanged}/>}
             <span className={s.spanName}>{fullName}</span>

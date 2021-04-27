@@ -1,3 +1,7 @@
+const getIcon = (state, name) => {
+    return state.common.icons.filter(i => i.name === name)[0].icon;
+}
+
 export const getIcons = (state) => {
     return state.common.icons;
 }
@@ -15,7 +19,7 @@ export const getLogo = (state) => {
 }
 
 export const getErrorIcon = (state) => {
-    return state.common.icons.filter(i => i.name === 'error')[0].icon;
+    return getIcon(state, 'error');
 }
 
 export const getJobIcons = state => {

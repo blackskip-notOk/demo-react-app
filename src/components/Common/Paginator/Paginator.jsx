@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import Page from "./Page/Page";
 import s from './Paginator.module.css';
