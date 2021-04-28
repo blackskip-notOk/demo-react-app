@@ -1,5 +1,11 @@
 import { SET_AUTH_USER_LINK } from '../Actions/actionsTypes';
-
+let links = new Set([
+    { id: 2, pathway: '/dialogs', target: '_self', notation: 'Messages' },
+    { id: 3, pathway: '/friends', target: '_self', notation: 'Friends' },
+    { id: 4, pathway: '/additions', target: '_self', notation: 'Additions' },
+    { id: 5, pathway: '/users/page=1', target: '_self', notation: 'Find Users'},
+    { id: 6, pathway: '/settings', target: '_self', notation: 'Settings'}
+]);
 let initialState = {
     friends: [
         { id: 1, name: 'Master Yoda', avatar: {src: '../image/avatars/yoda.jpg', alt: 'Master Yoda avatar'} },
@@ -9,13 +15,14 @@ let initialState = {
         { id: 5, name: 'Jar Jar Binks', avatar: {src: '../image/avatars/Jarjarbinks.jpg', alt: 'Jar Jar Binks avatar'} }
     ],
 
-    links: [
-        { id: 2, pathway: '/dialogs', target: '_self', notation: 'Messages' },
-        { id: 3, pathway: '/friends', target: '_self', notation: 'Friends' },
-        { id: 4, pathway: '/additions', target: '_self', notation: 'Additions' },
-        { id: 5, pathway: '/users/page=1', target: '_self', notation: 'Find Users'},
-        { id: 6, pathway: '/settings', target: '_self', notation: 'Settings'}
-    ],
+    links: links
+    // [
+    //     { id: 2, pathway: '/dialogs', target: '_self', notation: 'Messages' },
+    //     { id: 3, pathway: '/friends', target: '_self', notation: 'Friends' },
+    //     { id: 4, pathway: '/additions', target: '_self', notation: 'Additions' },
+    //     { id: 5, pathway: '/users/page=1', target: '_self', notation: 'Find Users'},
+    //     { id: 6, pathway: '/settings', target: '_self', notation: 'Settings'}
+    // ],
 }
 
 const navbarReducer = (state = initialState, action) => {
@@ -35,6 +42,10 @@ const navbarReducer = (state = initialState, action) => {
     }
 }
 //action creator
+
+//need to call this action creator after component navbar li did mount
+//othewise there will be an error in console - try to change DOM before 
+//rendering cycle will end
 export const setAuthUserLink = (pathway) => ({type: SET_AUTH_USER_LINK, pathway});
 
 export default navbarReducer;

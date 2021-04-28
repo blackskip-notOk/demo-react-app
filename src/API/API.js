@@ -39,10 +39,10 @@ export const authAPI = {
         .then(response => {return response.data;});
     },
 
-    login(email, password, rememberMe=false, captcha=null) {
-        return instance.post(`auth/login`, {
-            email, password, rememberMe, captcha})
-            .then(response => {return response.data;});
+    async login(email, password, rememberMe=false, captcha=null) {
+        const response = await instance.post(`auth/login`, {
+            email, password, rememberMe, captcha});
+        return response.data;
     },
 
     logout() {return instance.delete(`auth/login`);}

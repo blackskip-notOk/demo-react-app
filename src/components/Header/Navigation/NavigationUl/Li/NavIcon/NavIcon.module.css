@@ -27,6 +27,7 @@
     border: none;
     font-family: 'Concert One', cursive;
     font-size: 30px;
+    text-transform: capitalize;
     color: var(--navigation-text);
 }
 

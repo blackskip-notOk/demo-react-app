@@ -1,5 +1,6 @@
 .article {
-    
+    position: inherit;
+    z-index: inherit;
 }
 
 .span {

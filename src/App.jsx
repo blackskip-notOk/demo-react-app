@@ -31,12 +31,12 @@ class App extends React.Component {
 
   render() {
     if (!this.props.initialized) {
-      return <Preloader />
+      return <Preloader type='app'/>
     }
 
     if (!this.props.isAuth) {
       return <div className = 'login'>
-          <Route path = '/'
+          <Route path = '/:login?'
            render = {() => <Login />} />
       </div>
     }
@@ -50,7 +50,7 @@ class App extends React.Component {
         </div>
         <div className = 'content'>
         <Switch>
-          <Route path = '/profile/:userId?'
+          <Route path = '/profile/:userId'
             render = { () => <ProfileContainer />
             } />
           <Route path = '/dialogs'
@@ -64,7 +64,7 @@ class App extends React.Component {
           <Route path = '/login'
             render = { () => <><div className = 'login'><Login /></div></> } />
           <Route path = '/'
-            render = { () => <Redirect to = '/profile' /> } />
+            render = { () => <Redirect to = '/profile/:authUserId?' /> } />
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>

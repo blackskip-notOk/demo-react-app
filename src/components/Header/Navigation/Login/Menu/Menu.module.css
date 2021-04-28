@@ -1,0 +1,72 @@
+.menuUl {
+    position:absolute;
+    z-index: 200000;
+    width: 180px;
+    height: max-content;
+    top: 100%;
+    left: auto;
+    text-align: center;
+    border: 1px solid var(--login-border);
+    border-radius: 10px;
+    background-color: var(--main-back-dark);
+}
+
+.menuUl:hover {
+    border: 1px solid var(--login-border-hover);
+}
+
+.menuUl>li {
+    margin: 20px 0px;
+    font-size: 24px;
+}
+
+span {
+    color: var(--login-text-dark);
+}
+
+span:hover {
+    text-decoration: underline 1px;
+}
+
+span:active {
+    color: var(--login-text-disable);
+}
+
+.logoutButton {
+    width: max-content;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid var(--login-border);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--button-login-shadow);
+    background-color: var(--button-login-back);
+}
+
+.logoutButton::after {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    min-width: 0px;
+    content: "";
+    transition: .2s ease;
+    background: var(--button-login-decor);
+}
+
+.logoutButton:hover:after {
+    width: 110%;
+    height: 125%;
+    border-radius: 20px;
+    margin: -6% 0 0px -5%;
+    padding-left: 0px;
+    opacity: .5;
+}
+
+.logoutSpan {
+    padding: 0px 5px;
+    text-transform: capitalize;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: var(--login-text-dark);
+}

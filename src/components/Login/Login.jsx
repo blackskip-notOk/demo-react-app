@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { compose } from 'redux';
 import { login, logout, getCaptchaUrl } from '../../redux/Auth/AuthReducer';
 import { getCaptcha, getServerErrorMessage, getIsAuth,
     getLoginInProgress } from '../../redux/Auth/AuthSelectors';
@@ -9,6 +11,10 @@ import s from './Login.module.css';
 import LoginForm from './LoginForm/LoginForm';
 
 const Login = (props) => {
+    //do know yet why this can be usefull
+    
+    // props.match.params.login = props.isAuth ?
+    //     'login=true' : 'login=false';
     return (
         <div className={s.loginDiv}>
             <h1>demo react app</h1>
@@ -43,4 +49,5 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, {login, logout, getCaptchaUrl})(Login);
+export default compose(connect(mapStateToProps,
+    {login, logout, getCaptchaUrl}), withRouter)(Login);

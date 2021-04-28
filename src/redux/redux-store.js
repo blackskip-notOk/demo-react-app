@@ -11,6 +11,7 @@ import asideReducer from './Aside/AsideReducer';
 import usersReducer from './Users/UsersReducer';
 import findUserReducer from './FindUser/FindUserReducer';
 import authReducer from './Auth/AuthReducer';
+import headerReducer from './Header/HeaderReducer';
 
 const reducers = combineReducers({
     app: appReducer,
@@ -24,6 +25,7 @@ const reducers = combineReducers({
     users: usersReducer,
     findUser: findUserReducer,
     auth: authReducer,
+    header: headerReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

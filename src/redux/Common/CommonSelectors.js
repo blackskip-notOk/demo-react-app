@@ -14,10 +14,6 @@ export const getSearch = (state) => {
     return state.common.search;
 }
 
-export const getLogo = (state) => {
-    return state.common.logo;
-}
-
 export const getErrorIcon = (state) => {
     return getIcon(state, 'error');
 }

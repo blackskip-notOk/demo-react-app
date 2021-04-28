@@ -1,11 +1,45 @@
 .div {
     grid-area: login;
-    display:inline-flex;
-    align-self: center;
-    justify-self:center;
+    display: flexbox;
+    align-items: center;
+    justify-items:center;
     margin-right: 20px;
-    margin-left: 10px;
-    color: red;
+}
+
+.profileDiv{
+    display: flex;
+    align-self: center;
+    cursor: pointer;
+}
+
+.profileDiv>span {
+    color: var(--login-text-dark);
+    text-transform: capitalize;
+    align-self: center;
+    text-align: center;
+    font-size: 16px;
+}
+
+.avatar {
+    height: 60px;
+    border-radius: 100%;
+    margin: 0px 10px 0px 10px;
+}
+
+.logoutButton {
+
+}
+
+.logoutSpan {
+
+}
+
+.loginButton {
+
+}
+
+.loginSpan {
+
 }
 
 /* .div button {

@@ -37,60 +37,53 @@ const authReducer = (state = initialState, action) => {
              return state;
     }
 };
-
-export const setAuthUserData = (userId, email, login, isAuth) => ({
-    type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
-
-export const getCaptchaUrlSuccess = (captcha) => ({
-    type:  GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
-
-export const setErrormessage = (messages) => ({
-    type: SET_ERROR_MESSAGE, messages});
-
+//action creators
 export const toggleLoginProgress = (loginInProgress) => ({
     type: TOGGLE_LOGIN_PROGRESS, loginInProgress});
-
-export const getAuthUserData = () => dispatch => {
-    return authAPI.getAuth()
-        .then(response => {
-            if (response.resultCode === 0) {
-                let {id, email, login} = response.data;
-                dispatch(setAuthUserData(id, email, login, true));
-                dispatch(setAuthUserLink(`/profile/${id}`));
-            }
-        });
-}
-
-export const login = (email, password, rememberMe, captcha) => dispatch => {
+export const setAuthUserData = (userId, email, login, isAuth) => ({
+    type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+export const setErrormessage = (messages) => ({
+    type: SET_ERROR_MESSAGE, messages});
+export const getCaptchaUrlSuccess = (captcha) => ({
+    type:  GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
+//thunk creators
+export const login = (email, password, rememberMe, captcha) => async dispatch => {
     dispatch(toggleLoginProgress(true));
-    return authAPI.login(email, password, rememberMe, captcha)
-        .then(response => {
-            if (response.resultCode === 0) {
-                dispatch(getAuthUserData());
-            } else if (response.resultCode === 1) {
-                dispatch(setErrormessage(response.messages));
-            } else if (response.resultCode === 10) {
-                dispatch(getCaptchaUrl());
-                dispatch(setErrormessage(response.messages));
-            }
-            dispatch(toggleLoginProgress(false));
-        });
+    const response = await authAPI.login(email, password, rememberMe, captcha);
+    switch (response.resultCode) {
+        case 0:
+            dispatch(getAuthUserData());
+            break;
+        case 1:
+            dispatch(setErrormessage(response.messages));
+            break;
+        case 10:
+            dispatch(getCaptchaUrl());
+            dispatch(setErrormessage(response.messages));
+            break;
+        default: break;
+    }
+    dispatch(toggleLoginProgress(false));
 }
-
-export const logout = () => dispatch => {
-    return authAPI.logout()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
-            }
-        });
+export const getAuthUserData = () => async dispatch => {
+    const response = await authAPI.getAuth();
+    if (response.resultCode === 0) {
+        const {id, email, login} = response.data;
+        dispatch(setAuthUserData(id, email, login, true));
+        // dispatch(setAuthUserLink(`/profile/${id}`));
+    } else if (response.resultCode === 1) {
+        dispatch(setErrormessage(response.messages));
+    }
 }
-
-export const getCaptchaUrl = () => dispatch => {
-    return securityApi.getCaptchaURL()
-        .then(response => {
-            dispatch(getCaptchaUrlSuccess(response.url));
-        });
+export const logout = () => async dispatch => {
+    const response = authAPI.logout();
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
+    }
+}
+export const getCaptchaUrl = () => async dispatch => {
+    const response = securityApi.getCaptchaURL();
+    dispatch(getCaptchaUrlSuccess(response.url));
 }
 
 export default authReducer;

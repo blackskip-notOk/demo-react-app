@@ -1,0 +1,1 @@
+export const getIsVisible = state => state.header.isVisible;

@@ -4,15 +4,15 @@ import s from './NavbarLi.module.css';
 
 const NavbarLi = ({pathway, target, notation, authUserId, getProfileData,
     ...props}) => {
-    const refreshProfile = () => {
-        let userId = authUserId;
-        if (notation === 'Profile') {
-            if (!userId) {
-                props.history.push('/login');
-            }
-        }
-        getProfileData(userId, userId);
-    }
+    // const refreshProfile = () => {
+    //     let userId = authUserId;
+    //     if (notation === 'Profile') {
+    //         if (!userId) {
+    //             props.history.push('/login');
+    //         }
+    //     }
+    //     getProfileData(userId, userId);
+    // }
 
     return (
         <li className={s.li}>
@@ -21,7 +21,8 @@ const NavbarLi = ({pathway, target, notation, authUserId, getProfileData,
                     to={pathway}
                     target={target}
                     activeClassName={s.active}
-                    onClick={refreshProfile}>
+                    // onClick={refreshProfile}
+                    >
                         {notation}
                 </NavLink>
             </div>
