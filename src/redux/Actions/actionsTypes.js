@@ -34,7 +34,6 @@ export const SET_CURRENT_PAGE = 'my-app/users/SET_CURRENT_PAGE';
 export const SET_TOTAL_COUNT = 'my-app/users/SET_TOTAL_COUNT';
 export const TOGGLE_IS_FETCHING = 'my-app/users/TOGGLE_IS_FETCHING';
 export const TOGGLE_IS_FOLLOWING_PROGRESS = 'my-app/users/TOGGLE_IS_FOLLOWING_PROGRESS';
-//NavbarReducer
-export const SET_AUTH_USER_LINK = 'my-app/navbar/SET_AUTH_USER_LINK';
 //HeaderReducer
 export const TOGGLE_IS_VISIBLE = 'my-app/header/TOGGLE_IS_VISIBLE';
+export const SET_AUTH_USER_AVATAR = 'my-app/header/SET_AUTH_USER_AVATAR';

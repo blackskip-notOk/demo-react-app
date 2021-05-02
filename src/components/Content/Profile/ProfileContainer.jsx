@@ -15,7 +15,7 @@ class ProfileContainer extends Component {
     }
     componentDidUpdate() {
         if (!this.props.profile) {
-        this.refreshProfile()
+        this.refreshProfile();
         }
     }
     refreshProfile() {
@@ -26,7 +26,6 @@ class ProfileContainer extends Component {
                     this.props.history.push('/login');
                 }
         }
-        // this.props.match.params.userId = userId;
         this.props.getProfileData(userId, this.props.authUserId);
     }
     render() {

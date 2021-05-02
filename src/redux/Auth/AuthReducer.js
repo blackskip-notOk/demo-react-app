@@ -1,7 +1,6 @@
 import { authAPI, securityApi } from "../../API/API";
 import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
     SET_USER_DATA, TOGGLE_LOGIN_PROGRESS } from "../Actions/actionsTypes";
-import { setAuthUserLink } from "../Navbar/NavbarReducer";
 
 let initialState = {
     userId: null,
@@ -70,16 +69,18 @@ export const getAuthUserData = () => async dispatch => {
     if (response.resultCode === 0) {
         const {id, email, login} = response.data;
         dispatch(setAuthUserData(id, email, login, true));
-        // dispatch(setAuthUserLink(`/profile/${id}`));
     } else if (response.resultCode === 1) {
         dispatch(setErrormessage(response.messages));
     }
 }
-export const logout = () => async dispatch => {
-    const response = authAPI.logout();
-    if (response.data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
-    }
+export const logout = () => dispatch => {
+    return (
+        authAPI.logout()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAuthUserData(null, null, null, false));
+                }}
+            ));
 }
 export const getCaptchaUrl = () => async dispatch => {
     const response = securityApi.getCaptchaURL();

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, logout } from '../../redux/Auth/AuthReducer';
-import { getIsAuth, getUserLogin } from '../../redux/Auth/AuthSelectors';
-import { getIconsHeader, getSearch } from '../../redux/Common/CommonSelectors';
+import { logout } from '../../redux/Auth/AuthReducer';
+import { getAuthUserId, getUserLogin } from '../../redux/Auth/AuthSelectors';
+import { getIconsHeader, getAvatar } from '../../redux/Header/HeaderSelectors';
 import { getIsVisible } from '../../redux/Header/HeaderSelectors';
-import { getProfile } from '../../redux/Profile/ProfileSelectors';
-import { toggleVisibility } from '../../redux/Header/HeaderReducer';
+import { getProfileAvatar } from '../../redux/Profile/ProfileSelectors';
+import { toggleVisibility, getAuthUserAvatar } from '../../redux/Header/HeaderReducer';
 import Header from './Header';
+import { compose } from 'redux';
 
 const HeaderContainer = (props) => {
     return <Header {...props} />
@@ -15,13 +16,13 @@ const HeaderContainer = (props) => {
 const mapStateToProps = (state) => {
     return {
         iconsHeader: getIconsHeader(state),
-        search: getSearch(state),
-        isAuth: getIsAuth(state),
-        profile: getProfile(state),
+        avatar: getProfileAvatar(state),
         userLogin: getUserLogin(state),
-        isVisible: getIsVisible(state)
+        isVisible: getIsVisible(state),
+        authUserId: getAuthUserId(state),
+        authUserAvatar: getAvatar(state)
     };
 }
 
-export default connect(mapStateToProps, {login, logout,
-    toggleVisibility})(HeaderContainer);
+export default compose(connect(mapStateToProps, {logout,
+    toggleVisibility, getAuthUserAvatar}))(HeaderContainer);

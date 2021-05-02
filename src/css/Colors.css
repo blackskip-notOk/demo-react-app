@@ -16,22 +16,22 @@
     --button-login-decor:#C9D1C8;
     --button-login-disable:#4D648D;
     --error-text:#ff0000;
-
-
-
+    --header-back:#002C54;
+    --header-figure-dark:#8fa1b4;
+    --header-figure-active: #46a89a;
+    --header-text-dark:#F5CA99;
+    --header-shadow: #4D648D;
+    --header-menu-border:#5B7065;
+    --header-border-hover:#46a89a;
+    --header-text-disable:#211F30;
 
     --login-back-hover: rgb(155, 153, 153);
     --login-back-focus: rgb(19, 3, 17);
-    
     --login-border-hover: rgb(70, 168, 154);
-    
     --login-text-hover:rgb(188, 17, 211);
     --login-text-active:rgb(20, 235, 0);
     --login-text-focus:rgb(219, 214, 214);
     --button-text: rgb(255,185, 50);
-    
-    
-    
     --button-disable: rgb(77, 74, 74);
     /*
     #04202C dark green
@@ -84,7 +84,7 @@
     --search-border: rgb(255, 185, 40);
     --figure: rgb(255, 185, 40);
     --figure-active: rgb(20, 235, 0);
-    --header-back:rgb(10, 25, 35);
+   
     --navlink__text: rgb(255, 185, 40);
     --navlink__text_active: rgb(20, 235, 0);
     --navlink__back: rgb(255, 185, 50);

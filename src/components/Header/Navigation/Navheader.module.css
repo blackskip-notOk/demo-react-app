@@ -1,11 +1,11 @@
 nav {
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 80px 1fr 200px;
+    grid-template-columns: 80px 1fr 250px;
     grid-template-areas:
     "logo ul login";
     grid-column-gap: 30px;
     align-items: center;
-    justify-items:center;
+    justify-items: center;
 }
 

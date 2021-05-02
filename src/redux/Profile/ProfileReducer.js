@@ -1,4 +1,5 @@
 import { profileAPI } from "../../API/API";
+import { setAuthUserAvatar } from '../Header/HeaderReducer';
 import { ADD_POST, DELETE_POST, SAVE_PHOTO_SUCCESS, SET_IS_OWNER,
     SET_USER_PROFILE, SET_USER_STATUS, SWITCH_IS_FETCHING} from "../Actions/actionsTypes";
 
@@ -78,14 +79,15 @@ export const setIsOwner = (isOwner) => ({type: SET_IS_OWNER, isOwner});
 export const switchIsFetching = (isFetching) => ({type: SWITCH_IS_FETCHING, isFetching});
 //thunk creators
 export const getProfileData = (userId, authUserId) => async dispatch => {
-    let promise = new Set([profileAPI.getUserProfile(userId, authUserId),
-        profileAPI.getUserStatus(userId)]);
+    let promise = [profileAPI.getUserProfile(userId, authUserId),
+        profileAPI.getUserStatus(userId)];
     let response = await Promise.all(promise)
         dispatch(switchIsFetching(false));
         dispatch(setUserProfile(response[0]));
         dispatch(setUserStatus(response[1]));
         userId === authUserId ?
         dispatch(setIsOwner(true)) :
+        // dispatch(setAuthUserAvatar(response[0].photos)) :
         dispatch(setIsOwner(false));
 };
 

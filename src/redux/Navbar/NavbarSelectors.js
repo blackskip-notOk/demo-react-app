@@ -1,7 +1,3 @@
-export const getFriends = (state) => {
-    return state.navbar.friends;
-}
+export const getFriends = state => state.navbar.friends;
 
-export const getLinks = (state) => {
-    return state.navbar.links;
-}
+export const getLinks = state => state.navbar.links;

@@ -36,9 +36,8 @@ class App extends React.Component {
 
     if (!this.props.isAuth) {
       return <div className = 'login'>
-          <Route path = '/:login?'
-           render = {() => <Login />} />
-      </div>
+              <Login />
+            </div>
     }
     return (
       <div className = 'grid-wrapper'>
@@ -50,7 +49,7 @@ class App extends React.Component {
         </div>
         <div className = 'content'>
         <Switch>
-          <Route path = '/profile/:userId'
+          <Route path = '/profile/:userId?'
             render = { () => <ProfileContainer />
             } />
           <Route path = '/dialogs'
@@ -62,9 +61,9 @@ class App extends React.Component {
           <Route path = '/users'
             render = { () => <UsersContainer /> } />
           <Route path = '/login'
-            render = { () => <><div className = 'login'><Login /></div></> } />
+            render = { () => <Login /> } />
           <Route path = '/'
-            render = { () => <Redirect to = '/profile/:authUserId?' /> } />
+            render = { () => <Redirect to = '/profile' /> } />
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>

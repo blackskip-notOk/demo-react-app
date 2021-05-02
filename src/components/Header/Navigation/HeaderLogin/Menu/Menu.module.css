@@ -1,27 +1,28 @@
 .menuUl {
     position:absolute;
-    z-index: 200000;
-    width: 180px;
+    width: 250px;
     height: max-content;
     top: 100%;
     left: auto;
     text-align: center;
-    border: 1px solid var(--login-border);
+    border: 1px solid var(--header-menu-border);
     border-radius: 10px;
     background-color: var(--main-back-dark);
 }
 
 .menuUl:hover {
-    border: 1px solid var(--login-border-hover);
+    border: 1px solid var(--header-border-hover);
 }
 
 .menuUl>li {
     margin: 20px 0px;
     font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
 }
 
 span {
-    color: var(--login-text-dark);
+    color: var(--header-text-dark);
 }
 
 span:hover {
@@ -29,7 +30,7 @@ span:hover {
 }
 
 span:active {
-    color: var(--login-text-disable);
+    color: var(--header-text-disable);
 }
 
 .logoutButton {
@@ -39,28 +40,21 @@ span:active {
     cursor: pointer;
     border: 1px solid var(--login-border);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--button-login-shadow);
     background-color: var(--button-login-back);
 }
 
 .logoutButton::after {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    height: 100%;
-    min-width: 0px;
-    content: "";
-    transition: .2s ease;
-    background: var(--button-login-decor);
+    width: 0%;
+    height: 0%;
 }
 
-.logoutButton:hover:after {
-    width: 110%;
-    height: 125%;
-    border-radius: 20px;
-    margin: -6% 0 0px -5%;
-    padding-left: 0px;
-    opacity: .5;
+.logoutButton:hover {
+    box-shadow: 0px 0px 10px var(--button-login-shadow);
+}
+
+.logoutButton:hover::after {
+    width: 0%;
+    height: 0%;
 }
 
 .logoutSpan {
@@ -68,5 +62,9 @@ span:active {
     text-transform: capitalize;
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
-    color: var(--login-text-dark);
+    color: var(--header-text-dark);
+}
+
+.logoutSpan:hover {
+    text-decoration: none;
 }

@@ -68,6 +68,15 @@
     color: var(--error-text);
 }
 
+.divNotAuth {
+    display: flex;
+    justify-self: center;
+    padding: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var(--error-text);
+}
+
 .figure {
     display: inline;
     margin-right: 5px;
@@ -109,28 +118,21 @@
     margin: 20px 0px 10px 0;
     border: 1px solid var(--login-border);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--button-login-shadow);
     background-color: var(--button-login-back);
 }
 
+.singinButton:hover {
+    box-shadow: 0px 0px 10px var(--button-login-shadow);
+}
+
 .singinButton::after {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    height: 100%;
-    min-width: 0px;
-    content: "";
-    transition: .2s ease;
-    background: var(--button-login-decor);
+    width: 0%;
+    height: 0%;
 }
 
 .singinButton:hover:after {
-    width: 110%;
-    height: 125%;
-    border-radius: 20px;
-    margin: -5% 0 0px -5%;
-    padding-left: 0px;
-    opacity: .5;
+    width: 0%;
+    height: 0%;
 }
 
 .singinButton:disabled {
@@ -145,6 +147,10 @@
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
     color: var(--login-text-dark);
+}
+
+.singinSpan:hover {
+    text-decoration: none;
 }
 
 .formError {
