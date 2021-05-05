@@ -6,7 +6,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
     jobIcons, posts, addPost, profile, isAuth, authUserId, isOwner,
-    savePhoto}) => {
+    savePhoto, photoIcon, contactsIcons}) => {
 
     if (!profile) return <Preloader type='login' />
 
@@ -21,7 +21,9 @@ const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
                 status={status}
                 updateUserStatus={updateUserStatus}
                 errorIcon={errorIcon}
-                jobIcons={jobIcons} />
+                jobIcons={jobIcons}
+                photoIcon={photoIcon}
+                contactsIcons={contactsIcons} />
             <MyPosts errorIcon={errorIcon}
                 posts={posts}
                 addPost={addPost}

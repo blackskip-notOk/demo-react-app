@@ -1,10 +1,19 @@
 import { profileAPI } from "../../API/API";
-import { setAuthUserAvatar } from '../Header/HeaderReducer';
 import { ADD_POST, DELETE_POST, SAVE_PHOTO_SUCCESS, SET_IS_OWNER,
     SET_USER_PROFILE, SET_USER_STATUS, SWITCH_IS_FETCHING} from "../Actions/actionsTypes";
 
 let initialState = {
     profile: null,
+    contactsIcons: [
+        { id: 1, name: 'github', icon: 'fab fa-github'},
+        { id: 2, name: 'vk', icon: 'fab fa-vk'},
+        { id: 3, name: 'facebook', icon: 'fab fa-facebook'},
+        { id: 4, name: 'instagram', icon: 'fab fa-instagram'},
+        { id: 5, name: 'twitter', icon: 'fab fa-twitter'},
+        { id: 6, name: 'website', icon: 'fab fa-earlybirds'},
+        { id: 7, name: 'youtube', icon: 'fab fa-youtube'},
+        { id: 8, name: 'mainLink', icon: 'fab fa-react'},
+    ],
     posts: [
         { id: 1, post: "Да пребудет с тобой сила.", likes: 1111 },
     ],
@@ -87,7 +96,6 @@ export const getProfileData = (userId, authUserId) => async dispatch => {
         dispatch(setUserStatus(response[1]));
         userId === authUserId ?
         dispatch(setIsOwner(true)) :
-        // dispatch(setAuthUserAvatar(response[0].photos)) :
         dispatch(setIsOwner(false));
 };
 

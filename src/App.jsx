@@ -36,7 +36,8 @@ class App extends React.Component {
 
     if (!this.props.isAuth) {
       return <div className = 'login'>
-              <Login />
+                <Route path = '/'
+                  component = {Login} />
             </div>
     }
     return (

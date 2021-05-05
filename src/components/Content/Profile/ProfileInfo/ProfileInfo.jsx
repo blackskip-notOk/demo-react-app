@@ -8,29 +8,59 @@ import Ul from "./ProfileInfoUl/Ul";
 
 const ProfileInfo = ({savePhoto, userId, photos, fullName, aboutMe, status,
     updateUserStatus, contacts, errorIcon, lookingForAJob, lookingForAJobDescription,
-    jobIcons, isOwner}) => {
+    jobIcons, isOwner, photoIcon, contactsIcons}) => {
     const onUserAvatarChanged = (e) => {
         let avatarSrc = e.target.files;
         if (avatarSrc.length) savePhoto(avatarSrc[0]);
     }
     return (
         <div className={s.div} key={userId}>
-            <Avatar src={photos.large || userAvatar} alt='User Avatar'
-                className={s.avatar} />
-            {isOwner && <input type='file'
-                onChange={onUserAvatarChanged}/>}
-            <span className={s.spanName}>{fullName}</span>
+            <div className={s.avatarDiv}>
+                <Avatar src={photos.large || userAvatar} alt='User Avatar'
+                    className={s.avatar} />
+                {isOwner &&
+                    <div  className={s.photoDiv}>
+                        <label htmlFor='photo'>
+                            <Figure className={s.photo} icon={photoIcon} />
+                        </label>
+                        <input type='file' id='photo'
+                            onChange={onUserAvatarChanged}/>
+                    </div>
+                }
+            </div>
+            <h1 className={s.nameH1}>{fullName}</h1>
             <ProfileStatus userId={userId}
                 aboutMe={aboutMe} status={status}
                 updateUserStatus={updateUserStatus}
-                className={s.status} errorIcon={errorIcon}/>
-            <Ul contacts={contacts} className={s.ul} />
-            {lookingForAJob
-                ? <Figure className={s.job} icon={jobIcons[0]} />
-                : <Figure className={s.job} icon={jobIcons[1]} /> }
-            <span className={s.spanDesc}>
-                {lookingForAJobDescription}
-            </span>
+                className={s.statusDiv} errorIcon={errorIcon}
+                isOwner={isOwner} />
+            <div className={s.aboutMeDiv}>About me: {aboutMe ?
+                aboutMe : <span>no information</span>}</div>
+            <div className={s.infoDiv}>
+                {lookingForAJob ?
+                    <div className={s.jobDiv}>
+                        <span className={s.jobSpan}>i'm looking for a job!</span>
+                        <span className={s.descSpan}>{lookingForAJobDescription}</span>
+                        <Figure className={s.jobFigure} icon={jobIcons[0]} />
+                    </div> :
+                    <div className={s.jobDiv}>
+                        <span className={s.jobSpan}>i'm not looking for a job!</span>
+                        <span className={s.descSpan}>
+                            {lookingForAJobDescription ?
+                                lookingForAJobDescription :
+                                <span>no information</span>
+                            }
+                        </span>
+                        <Figure className={s.jobFigure} icon={jobIcons[1]} />
+                    </div>
+                }
+                <div className={s.contactsDiv}>
+                    <h2>My contacts:</h2>
+                    <Ul contacts={contacts}
+                    className={s.contactsUl}
+                    contactsIcons={contactsIcons} />
+                </div>
+            </div>
         </div>
     );
 }

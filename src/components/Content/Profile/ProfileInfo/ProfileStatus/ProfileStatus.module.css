@@ -1,14 +1,10 @@
-.spanAbout {
-    grid-area: about;
-    font-size: 22px;
-    align-self: center;
-    justify-self:right;
-    color: var(--profileInfo-about);
+.statusSpan {
+    font-size: 32px;
+    color: var(--profileInfo-status);
 }
 
-.span {
-    font-size: 32px;
-    color: var(--profileInfo-about);
+.statusSpan:hover {
+    text-decoration: none;
 }
 
 .divError {
@@ -26,16 +22,19 @@
 }
 
 .input {
-    width:100%;
-    font-family: 'PT Sans', sans-serif;
+    display: flex;
+    justify-self: center;
     font-size: 32px;
-    border: 1px solid var(--post-back);
-    border-radius: 20px;
     padding: 10px;
     outline: none;
-    resize:none;
-    color: var(--post-text);
-    background-color: var(--my-posts-back);
+    border: 1px solid var(--header-menu-border);
+    border-radius: 10px;
+    color: var(--login-text-dark);
+    background-color: var(--login-back);
+}
+
+.input:focus {
+    border: 1px solid var(--header-border-hover);
 }
 
 .error {

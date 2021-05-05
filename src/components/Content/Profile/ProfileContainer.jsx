@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { getAuthUserId, getIsAuth } from '../../../redux/Auth/AuthSelectors';
-import { getErrorIcon, getJobIcons } from '../../../redux/Common/CommonSelectors';
+import { getErrorIcon, getJobIcons, getPhotoIcon } from '../../../redux/Common/CommonSelectors';
 import { addPost, updateUserStatus, getProfileData, savePhoto } from '../../../redux/Profile/ProfileReducer';
-import { getPosts, getProfile, getStatus, getIsOwner, getIsFetching } from '../../../redux/Profile/ProfileSelectors';
+import { getPosts, getProfile, getStatus, getIsOwner,
+    getIsFetching, getContactsIcons } from '../../../redux/Profile/ProfileSelectors';
 import Preloader from '../../Common/Preloader/Preloader';
 import Profile from './Profile';
 
@@ -41,8 +42,10 @@ const mapStateToProps = (state) => {
     return {
         posts: getPosts(state),
         profile: getProfile(state),
+        contactsIcons: getContactsIcons(state),
         errorIcon: getErrorIcon(state),
         jobIcons: getJobIcons(state),
+        photoIcon: getPhotoIcon(state),
         status: getStatus(state),
         authUserId: getAuthUserId(state),
         isAuth: getIsAuth(state),

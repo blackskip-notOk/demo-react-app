@@ -30,7 +30,7 @@ body {
     grid-area: content;
     display: flex;
     justify-content: flex-start;
-    border: 1px solid var(--contact-border);
+    /* border: 1px solid var(--contact-border); */
 }
 
 .aside {

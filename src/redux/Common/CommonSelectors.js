@@ -22,3 +22,8 @@ export const getJobIcons = state => {
     const jobIcons = state.common.icons.filter(i => i.name === 'job');
     return [jobIcons[0].icon, jobIcons[1].icon];
 }
+
+export const getPhotoIcon = state => {
+    const photoIcon = state.common.icons.filter(i => i.name === 'photo');
+    return photoIcon[0].icon;
+}
