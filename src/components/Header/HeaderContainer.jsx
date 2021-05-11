@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../redux/Auth/AuthReducer';
 import { getAuthUserId, getUserLogin } from '../../redux/Auth/AuthSelectors';
 import { getIconsHeader, getAvatar } from '../../redux/Header/HeaderSelectors';
+import { getProfileData } from '../../redux/Profile/ProfileReducer';
 import { getIsVisible } from '../../redux/Header/HeaderSelectors';
 import { toggleVisibility, getAuthUserAvatar } from '../../redux/Header/HeaderReducer';
 import Header from './Header';
@@ -23,4 +24,4 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(connect(mapStateToProps, {logout,
-    toggleVisibility, getAuthUserAvatar}))(HeaderContainer);
+    toggleVisibility, getAuthUserAvatar, getProfileData}))(HeaderContainer);

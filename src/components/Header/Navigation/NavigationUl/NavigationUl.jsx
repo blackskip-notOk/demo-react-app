@@ -6,18 +6,25 @@ import Li from './Li/Li';
 import UnderText from './Li/UnderText/UnderText';
 import s from './NavigationUl.module.css';
 import st from './Li/NavIcon/NavIcon.module.css';
-/*
-Problem: 1 - how organize FLUX flow of /profile/${...} to Redux state and return pathway with Id
-    2 - how refresh profile when onClick on Profile icon and URL id is changed
-*/
-const NavigationUl = ({iconsHeader, authUserId}) => {
+
+const NavigationUl = ({iconsHeader, authUserId, getProfileData, ...props}) => {
     let li = createListFromArray(iconsHeader, Li);
+
+    const refreshProfile = () => {
+        let userId = authUserId;
+            if (!userId) {
+                props.history.push('/login');
+            }
+        getProfileData(userId, authUserId);
+    }
+
     return (
         <ul className={s.ul}>
             <div className={st.div}>
                 <NavLink className={st.a}
                     to={`/profile/${authUserId}`}
-                    activeClassName={st.active}>
+                    activeClassName={st.active}
+                    onClick={refreshProfile}>
                     <Figure icon={'fas fa-user-circle'}
                         className={st.figure}/>
                 </NavLink>

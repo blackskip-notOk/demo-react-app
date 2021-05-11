@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-
 .form {
     display: grid;
     align-self: flex-start;
     width: 500px;
-    border: 1px solid var(--login-form-shadow);
-    box-shadow: 0px 0px 30px 10px var(--login-form-shadow);
+    border: 1px solid var(--form-shadow);
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px 10px var(--form-shadow);
     padding: 1rem;
 }
 
@@ -14,7 +13,11 @@
     text-transform: capitalize;
     font-size: 24px;
     padding-bottom: 20px;
-    color: var(--loginform-header-dark);
+    color: var(--header-small-color);
+}
+
+.form h1:hover {
+    cursor: default;
 }
 
 .inputDiv {
@@ -30,33 +33,33 @@
     display: flex;
     text-transform: capitalize;
     font-size: 24px;
-    color: var(--login-text-dark);
+    color: var(--text-color);
 }
 
 .input {
     display: flex;
     text-align: center;
-    border: 1px solid var(--login-border);
-    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    border-radius: 15px;
     padding: 5px;
     outline: none;
+    font-family: var(--input-text-font);
     font-size: 20px;
-    color: var(--login-text-dark);
-    background-color: var(--login-back);
-}
-
-.input::-webkit-input-placeholder {
-    font-size: 20px;
-    color: var(--login-placeholder-dark);
-    text-transform: lowercase;
+    color: var(--input-text-color);
+    background-color: var(--input-back);
 }
 
 .input:focus {
-    border: 1px solid var(--login-border-focus);
+    border: 1px solid var(--input-border-focus);
+}
+
+.input::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+    text-transform: lowercase;
 }
 
 .error {
-    border: 1px solid var(--error-text);
+    border: 1px solid var(--error-color);
 }
 
 .divError {
@@ -64,23 +67,30 @@
     justify-self: flex-end;
     width: max-content;
     padding: 10px;
-    text-transform: capitalize;
-    color: var(--error-text);
+    cursor: default;
+    text-transform: lowercase;
+    font-family: var(--error-font);
+    font-size: 18px;
+    color: var(--error-color);
 }
 
 .divNotAuth {
     display: flex;
     justify-self: center;
     padding: 10px;
-    font-size: 20px;
-    text-transform: capitalize;
-    color: var(--error-text);
+    font-size: 18px;
+    text-transform: lowercase;
+    font-family: var(--error-font);
+    color: var(--error-color);
+}
+
+.divNotAuth:hover {
+    cursor: default;
 }
 
 .figure {
-    display: inline;
     margin-right: 5px;
-    color: var(--error-text);
+    color: var(--error-color);
 }
 
 .checkbox {
@@ -97,7 +107,7 @@
 }
 
 .captcha {
-    border: 1px solid var(--error-text);
+    border: 1px solid var(--error-color);
 }
 
 .captchaDiv>input {
@@ -116,55 +126,47 @@
     outline: none;
     cursor: pointer;
     margin: 20px 0px 10px 0;
-    border: 1px solid var(--login-border);
+    border: 1px solid var(--button-border);
     border-radius: 10px;
-    background-color: var(--button-login-back);
+    padding: 5px;
+    background-color: var(--button-back);
 }
 
 .singinButton:hover {
-    box-shadow: 0px 0px 10px var(--button-login-shadow);
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
 }
 
-.singinButton::after {
-    width: 0%;
-    height: 0%;
+.singinButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
 }
 
-.singinButton:hover:after {
-    width: 0%;
-    height: 0%;
-}
 
 .singinButton:disabled {
-    background-color: var(--button-login-disable);
-    color: var(--login-text-disable);
+    background-color: var(--button-back-disable);
+    color: var(--button-text-color-disable);
 }
 
 .singinSpan {
     text-align: center;
     padding: 0px 5px;
     text-transform: capitalize;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--button-text-font);
     font-size: 24px;
-    color: var(--login-text-dark);
+    color: var(--button-text-color);
 }
 
 .singinSpan:hover {
     text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.singinSpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
 }
 
 .formError {
-    border: 1px solid var(--error-text);
-}
-
-.preloaderDiv{
-    position:fixed;
-    top: 50%;
-    left: 35%;
-}
-
-.img {
-    width: 300px;
-    height: 250px;
-    border-radius: 200px;
+    border: 1px solid var(--error-color);
 }

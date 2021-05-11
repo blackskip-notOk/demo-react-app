@@ -9,7 +9,8 @@ import Ul from "./ProfileInfoUl/Ul";
 const ProfileInfo = ({savePhoto, userId, photos, fullName, aboutMe, status,
     updateUserStatus, contacts, errorIcon, lookingForAJob, lookingForAJobDescription,
     jobIcons, isOwner, photoIcon, contactsIcons}) => {
-    const onUserAvatarChanged = (e) => {
+
+        const onUserAvatarChanged = (e) => {
         let avatarSrc = e.target.files;
         if (avatarSrc.length) savePhoto(avatarSrc[0]);
     }
@@ -58,7 +59,8 @@ const ProfileInfo = ({savePhoto, userId, photos, fullName, aboutMe, status,
                     <h2>My contacts:</h2>
                     <Ul contacts={contacts}
                     className={s.contactsUl}
-                    contactsIcons={contactsIcons} />
+                    contactsIcons={contactsIcons}
+                    figureClass={s.contactIcon} />
                 </div>
             </div>
         </div>

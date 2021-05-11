@@ -8,7 +8,7 @@ const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
     jobIcons, posts, addPost, profile, isAuth, authUserId, isOwner,
     savePhoto, photoIcon, contactsIcons}) => {
 
-    if (!profile) return <Preloader type='login' />
+    if (!profile) return <Preloader type='profile' />
 
     return (
         <div className={s.div}>

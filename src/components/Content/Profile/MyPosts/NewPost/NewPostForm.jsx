@@ -8,7 +8,7 @@ import s from './NewPostForm.module.css';
 
 const schema = yup.object().shape({
     post: yup.string()
-        .required('your message is empty')
+        .required('your post is empty')
         .max(200, 'maximum 200 symbols')
 });
 
@@ -22,15 +22,16 @@ const NewPostForm = ({addPost, errorIcon}) => {
     const errorPostClass = touchedFields?.post && errors?.post && s.error;
     const postError = errors?.post?.message;
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
+        <form id='post' onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <textarea {...register('post')}
                 placeholder='Write a new Post...'
-                className={`${s.textarea} ${errorPostClass}`}
-                cols={10}
-                rows={10} />
+                className={`${s.textarea} ${errorPostClass}`} />
             {errors?.post && createFormError(s.divError, errorIcon,
                 postError, s.figure)}
-            <Button span="add a new post" />
+            <Button form='post'
+                className={s.addPostButton}
+                spanClass={s.addPostSpan}
+                span="add a new post" />
         </form>
     )
 }

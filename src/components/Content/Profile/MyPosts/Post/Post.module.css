@@ -1,43 +1,67 @@
-.article {
+.postArticle {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 10fr 3fr;
-    width: 100%;
-    margin: 10px 0px 10px 0px;
-    padding: 10px 0px 10px 0px;
-    border-radius: 20px;
-    background-color: var(--post-back);
-    color: var(--post-text);
+    width: inherit;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    background-color: var(--main-back-color);
+    color: var(--input-text-color);
 }
 
-.article img {
+.postArticle img {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 1;
     grid-column-end: 1;
     height: 50px;
     margin: 0px 10px;
-    border-radius: 40px;
+    border-radius: 100%;
 }
 
-.span {
+.messageSpan {
     grid-column: 2/span 1;
-    margin: 0px 10px 0px 5px;
-    font-family:'Concert One', cursive;
+    align-self: center;
+    padding: 10px;
+    font-family:var(--input-text-font);
     font-size: 18px;
+    font-weight:400;
     white-space:pre-wrap;
     overflow: hidden;
     word-wrap:break-word;
 }
 
-.div {
+.messageSpan:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.likeDiv {
+    display: flex;
     grid-column-start: 3;
     text-align: right;
     align-self: center;
-    margin: 0px 10px 0px 0px;
 }
 
-.spanLike {
-    font-family:'Concert One', cursive;
+.likeSpan {
+    margin: 0px 10px 0px 10px;
+    font-family: var(--input-text-font);
+    font-weight: bolder;
     font-size: 18px;
+}
+
+.likeSpan:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.likeIcon {
+    transform: scale(1.5);
+    color: var(--input-text-color-active)
+}
+
+.likeIcon:hover {
+    cursor: pointer;
 }

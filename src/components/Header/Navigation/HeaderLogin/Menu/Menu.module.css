@@ -5,32 +5,32 @@
     top: 100%;
     left: auto;
     text-align: center;
-    border: 1px solid var(--header-menu-border);
-    border-radius: 10px;
-    background-color: var(--main-back-dark);
+    border: 1px solid var(--input-border);
+    border-radius: 15px;
+    background-color: var(--main-back-color);
 }
 
 .menuUl:hover {
-    border: 1px solid var(--header-border-hover);
+    border: 1px solid var(--input-border-focus);
 }
 
 .menuUl>li {
     margin: 20px 0px;
     font-size: 24px;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--input-text-font);
     letter-spacing: 1px;
 }
 
 span {
-    color: var(--header-text-dark);
+    color: var(--input-text-color);
 }
 
 span:hover {
-    text-decoration: underline 1px;
+    text-decoration: underline dotted 1px;
 }
 
 span:active {
-    color: var(--header-text-disable);
+    color: var(--input-text-color-active);
 }
 
 .logoutButton {
@@ -38,33 +38,41 @@ span:active {
     position: relative;
     outline: none;
     cursor: pointer;
-    border: 1px solid var(--login-border);
+    border: 1px solid var(--button-border);
     border-radius: 10px;
-    background-color: var(--button-login-back);
-}
-
-.logoutButton::after {
-    width: 0%;
-    height: 0%;
+    padding: 5px;
+    background-color: var(--button-back);
 }
 
 .logoutButton:hover {
-    box-shadow: 0px 0px 10px var(--button-login-shadow);
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
 }
 
-.logoutButton:hover::after {
-    width: 0%;
-    height: 0%;
+.logoutButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
+}
+
+.logoutButton:disabled {
+    background-color: var(--button-back-disable);
+    color: var(--button-text-color-disable);
 }
 
 .logoutSpan {
     padding: 0px 5px;
     text-transform: capitalize;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--button-text-font);
     font-size: 24px;
-    color: var(--header-text-dark);
+    color: var(--button-text-color);
 }
 
 .logoutSpan:hover {
     text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.logoutSpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
 }

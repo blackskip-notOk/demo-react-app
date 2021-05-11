@@ -5,12 +5,14 @@ import s from './Navheader.module.css';
 import NavigationUl from "./NavigationUl/NavigationUl";
 
 const Navheader = ({iconsHeader, logout, userLogin, isVisible,
-    toggleVisibility, authUserAvatar, authUserId, getAuthUserAvatar}) => {
+    toggleVisibility, authUserAvatar, authUserId, getAuthUserAvatar,
+    getProfileData}) => {
     return (
         <nav className={s.nav} role='navigation'>
             <Logo />
             <NavigationUl iconsHeader={iconsHeader}
-                authUserId={authUserId} />
+                authUserId={authUserId}
+                getProfileData={getProfileData} />
             <HeaderLogin logout={logout}
                 userLogin={userLogin}
                 isVisible={isVisible}

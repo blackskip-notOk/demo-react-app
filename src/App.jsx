@@ -1,6 +1,6 @@
 import './css/reset.css';
 import './css/app.css';
-import './css/Colors.css';
+import './css/variables.css';
 import React, { lazy, useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom';

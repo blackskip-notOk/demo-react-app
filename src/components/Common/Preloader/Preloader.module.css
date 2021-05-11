@@ -1,0 +1,11 @@
+.preloaderDiv {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+}
+
+.preloaderImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}

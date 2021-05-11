@@ -1,8 +1,9 @@
 import React from 'react';
 import preloader from '../../../image/preloader/earth-gif-preloader.gif';
-import appLoader from '../../../image/preloader/appLoader.gif';
-import profileLoader from '../../../image/preloader/profileLoader.gif';
-import loginLoader from '../../../image/preloader/loginLoader.gif';
+import appLoader from '../../../image/preloader/common.gif';
+import profileLoader from '../../../image/preloader/common.gif';
+import loginLoader from '../../../image/preloader/common.gif';
+import s from './Preloader.module.css';
 
 const Preloader = (props) => {
     let path = null;
@@ -18,15 +19,11 @@ const Preloader = (props) => {
             break;
         default:
             path = appLoader;
-    // if (props.type === 'login') {
-        // path = loginLoader;
-    // } else if (props.type === 'profile') {
-        // path = profileLoader;
     }
 
     return (
-        <div className={props.className}>
-            <img src={path} alt='preloader' className={props.imgClass} />
+        <div className={s.preloaderDiv}>
+            <img src={path} alt='preloader' className={s.preloaderImg} />
         </div>
     )
 }

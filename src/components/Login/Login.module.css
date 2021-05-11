@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-
 .loginDiv {
     display: grid;
     max-width: 600px;
     height: 100vh;
     margin: auto;
     justify-items: center;
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--main-back-dark);
+    font-family: var(--headers-font);
+    background-color: var(--main-back-color);
 }
 
 .loginDiv > h1 {
@@ -15,12 +13,12 @@
     margin-top: 1vh;
     text-transform: capitalize;
     font-size: 48px;
-    color: var(--login-header-dark);
+    color: var(--header-color);
 }
 
 .loginDiv>p {
     font-size: 18px;
-    color: var(--login-text-dark);
+    color: var(--text-color);
     line-height: 1.8rem;
 }
 
@@ -40,40 +38,44 @@
     height: max-content;
     margin-right: 20px;
     font-size: 28px;
-    color: var(--loginform-header-dark);
+    color: var(--header-small-color);
 }
 
 .createButton {
     outline: none;
     cursor: pointer;
-    border: 1px solid var(--login-border);
+    margin: 10px 0px 0px 0px;
+    border: 1px solid var(--button-border);
     border-radius: 10px;
-    background-color: var(--button-login-back);
+    padding: 5px;
+    background-color: var(--button-back);
 }
 
 .createButton:hover {
-    box-shadow: 0px 0px 10px var(--button-login-shadow);
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
 }
 
-.createButton::after {
-    width: 0%;
-    height: 0%;
-}
-
-.createButton:hover:after {
-    width: 0%;
-    height: 0%;
+.createButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
 }
 
 .createSpan {
     text-align: center;
     padding: 0px 5px;
     text-transform: capitalize;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--button-text-font);
     font-size: 24px;
-    color: var(--login-text-dark);
+    color: var(--button-text-color);
 }
 
 .createSpan:hover {
     text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.createpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
 }
