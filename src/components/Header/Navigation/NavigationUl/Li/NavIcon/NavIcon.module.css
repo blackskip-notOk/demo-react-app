@@ -7,8 +7,8 @@
 }
 
 .figure {
-    color: var(--figure);
-    transform: scale(2.7);
+    color: var(--figure-color);
+    transform: scale(3);
 }
 
 .div:hover {
@@ -23,13 +23,14 @@
     display: block;
     justify-self:center;
     position: absolute;
-    top: 130%;
-    border: none;
-    font-family: 'Concert One', cursive;
-    font-size: 30px;
-    color: var(--navigation-text);
+    top: 200%;
+    font-family: var(--button-text-font);
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color);
 }
 
 .active .figure {
-    color: var(--figure-active);
+    color: var(--figure-color-active);
 }

@@ -1,0 +1,42 @@
+.div {
+    grid-area: login;
+    display: flexbox;
+    width: 100%;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.profileDiv{
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    border-radius: 15px;
+    padding: 5px;
+    cursor:context-menu;
+}
+
+.profileDiv:hover {
+    box-shadow: 0px 0px 10px var(--panels-shadow);
+}
+
+.profileDiv>span {
+    text-transform: lowercase;
+    align-self: center;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 16px;
+    font-family: var(--headers-font);
+    letter-spacing: 1px;
+    color: var(--input-text-color);
+}
+
+.profileDiv>span:hover {
+    text-decoration: none;
+}
+
+.avatar {
+    height: 60px;
+    border-radius: 100%;
+    margin: 0px 10px;
+    color: var(--input-text-color);
+}

@@ -1,8 +1,8 @@
 import React from "react";
 
-const Message =({className, id, post}) => {
+const Message =({className, post}) => {
     return (
-        <span className={className}>{id} {post}</span>
+        <span className={className}>{post}</span>
     );
 }
 

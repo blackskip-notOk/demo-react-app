@@ -40,9 +40,10 @@ const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
     const emailError = errors?.email?.message;
     const passwordError = errors?.password?.message;
     if (isAuth) return <Redirect to={'/profile'} />;
-
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={s.form} >
+            {serverErrorMessage === 'You are not authorized' && createFormError(s.divNotAuth, icon,
+                serverErrorMessage, s.figure)}
             <h1>You can login</h1>
             <div className={s.inputDiv}>
                 <label htmlFor={'email'} className={s.label}>email:</label>
@@ -75,7 +76,7 @@ const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
                     className={`${s.input} ${errorCaptchaClass}`}
                     placeholder='enter symbols from image' />
             </div>}
-            {serverErrorMessage && createFormError(s.divError, icon,
+            {serverErrorMessage !== 'You are not authorized' && createFormError(s.divError, icon,
                 serverErrorMessage, s.figure)}
             <Button type='submit' span='Sing in' className={s.singinButton}
                 spanClass={s.singinSpan} disabled={loginInProgress} />

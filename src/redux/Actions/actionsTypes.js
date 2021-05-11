@@ -15,7 +15,9 @@ export const ADD_POST = 'my-app/profile/ADD_POST';
 export const DELETE_POST = 'my-app/profile/DELETE_POST';
 export const SET_USER_PROFILE = 'my-app/profile/SET_USER_PROFILE';
 export const SET_USER_STATUS = 'my-app/profile/SET_USER_STATUS';
+export const SET_IS_OWNER = 'my-app/profile/SET_IS_OWNER';
 export const SAVE_PHOTO_SUCCESS = 'my-app/profile/SAVE_PHOTO_SUCCESS';
+export const SWITCH_IS_FETCHING = 'my-app/profile/SWITCH_IS_FETCHING';
 //AdditionsReducer
 export const ADD_TODO = 'my-app/toDo/ADD_TODO';
 export const REMOVE_TODO = 'my-app/toDo/REMOVE_TODO';
@@ -32,3 +34,6 @@ export const SET_CURRENT_PAGE = 'my-app/users/SET_CURRENT_PAGE';
 export const SET_TOTAL_COUNT = 'my-app/users/SET_TOTAL_COUNT';
 export const TOGGLE_IS_FETCHING = 'my-app/users/TOGGLE_IS_FETCHING';
 export const TOGGLE_IS_FOLLOWING_PROGRESS = 'my-app/users/TOGGLE_IS_FOLLOWING_PROGRESS';
+//HeaderReducer
+export const TOGGLE_IS_VISIBLE = 'my-app/header/TOGGLE_IS_VISIBLE';
+export const SET_AUTH_USER_AVATAR = 'my-app/header/SET_AUTH_USER_AVATAR';

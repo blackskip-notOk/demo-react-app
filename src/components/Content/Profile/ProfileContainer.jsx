@@ -1,69 +1,39 @@
-import React, { Component, PureComponent, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { useHistory, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { getAuthUserId, getIsAuth } from '../../../redux/Auth/AuthSelectors';
-import { getErrorIcon, getJobIcons } from '../../../redux/Common/CommonSelectors';
-import { addPost, getUserProfile, getUserStatus, updateUserStatus,
-    savePhoto } from '../../../redux/Profile/ProfileReducer';
-import { getPosts, getProfile, getStatus } from '../../../redux/Profile/ProfileSelectors';
+import { getErrorIcon, getJobIcons, getPhotoIcon } from '../../../redux/Common/CommonSelectors';
+import { addPost, updateUserStatus, getProfileData, savePhoto } from '../../../redux/Profile/ProfileReducer';
+import { getPosts, getProfile, getStatus, getIsOwner,
+    getIsFetching, getContactsIcons } from '../../../redux/Profile/ProfileSelectors';
+import Preloader from '../../Common/Preloader/Preloader';
 import Profile from './Profile';
 
-// const ProfileContainer = ({match, authUserId, ...props}) => {
-//     const history = useHistory();
-//     useEffect(() => {
-//         function refreshProfile() {
-//             let userId = match.params.userId;
-//             if (!userId) {
-//                 userId = authUserId;
-//                 if (!userId) {
-//                     history.push('/login');
-//                 }
-//             }
-//         getUserProfile(userId);
-//         getUserStatus(userId);
-//     }
-
-//     refreshProfile();
-//     }, [history, match, authUserId, props.profile]);
-
-//     function refreshProfile() {
-//                 let userId = match.params.userId;
-//                 if (!userId) {
-//                     userId = authUserId;
-//                     if (!userId) {
-//                         history.push('/login');
-//                     }
-//                 }
-//             getUserProfile(userId);
-//             getUserStatus(userId);
-//         }
-
-//         refreshProfile();
 class ProfileContainer extends Component {
     componentDidMount() {
-        this.refreshProfile()
+        this.refreshProfile();
     }
     componentDidUpdate() {
         if (!this.props.profile) {
-        this.refreshProfile()
+        this.refreshProfile();
         }
     }
-
     refreshProfile() {
-        let userId = this.props.match.params.userId;
+        let userId = parseInt(this.props.match.params.userId, 10);
         if (!userId) {
             userId = this.props.authUserId;
                 if (!userId) {
                     this.props.history.push('/login');
                 }
         }
-        this.props.getUserProfile(userId);
-        this.props.getUserStatus(userId);
+        this.props.getProfileData(userId, this.props.authUserId);
     }
     render() {
         return(
+            <>{this.props.isFetching ? <Preloader type='profile' /> : null}
             <Profile {...this.props.profile} {...this.props} />
+            </>
         );
     }
 }
@@ -72,14 +42,17 @@ const mapStateToProps = (state) => {
     return {
         posts: getPosts(state),
         profile: getProfile(state),
+        contactsIcons: getContactsIcons(state),
         errorIcon: getErrorIcon(state),
         jobIcons: getJobIcons(state),
+        photoIcon: getPhotoIcon(state),
         status: getStatus(state),
         authUserId: getAuthUserId(state),
-        isAuth: getIsAuth(state)
+        isAuth: getIsAuth(state),
+        isOwner: getIsOwner(state),
+        isFetching: getIsFetching(state)
     };
 }
 
-export default compose(connect(mapStateToProps, {addPost,
-    getUserProfile, getUserStatus, updateUserStatus, savePhoto}),
-    withRouter)(ProfileContainer);
+export default compose(connect(mapStateToProps, {addPost, getProfileData,
+    updateUserStatus, savePhoto}), withRouter)(ProfileContainer);

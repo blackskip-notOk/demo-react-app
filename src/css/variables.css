@@ -1,0 +1,43 @@
+:root {
+    /*colors*/
+    --main-back-color:#283655;
+    --panels-back:#002C54;
+    --panels-border: #211F30;
+    --panels-shadow: #4D648D;
+
+    --header-color:#D8412F;
+    --text-color:#F5CA99;
+    --header-small-color:#FE7A47;
+    --form-shadow:#4D648D;
+    --figure-color:#8fa1b4;
+    --figure-color-active: #46a89a;
+
+    --input-border:#5B7065;
+    --input-border-focus:#46a89a;
+    --input-back:#211F30;
+    --input-text-color:#F5CA99;
+    --placeholder-color:#8fa1b4;
+    --input-text-color-active:#D8412F;
+
+    --button-border:#5B7065;
+    --button-border-hover:#46a89a;
+    --button-border-active:#5B7065;
+    --button-back:#211F30;
+    --button-back-disable:#4D648D;
+    --button-shadow: #C9D1C8;
+    --button-text-color:#F5CA99;
+    --button-text-color-hover:#C9D1C8;
+    --button-text-color-active:#D8412F;
+    --button-text-color-disable:#211F30;
+
+    --error-color:#ff0000;
+
+    --page-back: #16253D;
+    --page-inner-border:#4D648D;
+
+    /*fonts*/
+    --headers-font: 'Roboto', sans-serif;
+    --input-text-font: 'Roboto', sans-serif;
+    --button-text-font: 'Rubik', sans-serif;
+    --error-font: 'Lora', serif;
+}

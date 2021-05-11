@@ -1,9 +1,10 @@
 import React from "react";
 
-const Like = ({className, classNameSpan, likes}) => {
+const Like = ({className, classNameSpan, likes, likeIconClass}) => {
     return (
         <div className={className}>
-            <span className={classNameSpan}>Like {likes}</span>
+            <i className={`${'fas fa-heart'} ${likeIconClass}`}></i>
+            <span className={classNameSpan}>{likes}</span>
         </div>
     );
 }

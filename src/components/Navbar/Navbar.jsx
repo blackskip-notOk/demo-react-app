@@ -6,7 +6,6 @@ import NavbarUl from "./NavbarUl/NavbarUl";
 
 const Navbar = ({friends, links}) => {
     let friend = createListFromArray(friends, Friend);
-
     return (
         <nav className={s.nav} role="menu">
             <div className={s.innerNav}>

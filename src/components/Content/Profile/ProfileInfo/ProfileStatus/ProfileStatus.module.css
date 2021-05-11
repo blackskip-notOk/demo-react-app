@@ -1,14 +1,19 @@
-.spanAbout {
-    grid-area: about;
-    font-size: 22px;
-    align-self: center;
-    justify-self:right;
-    color: var(--profileInfo-about);
+.statusSpan {
+    font-size: 32px;
+    font-family: var(--button-text-font);
+    text-decoration: underline dotted 1px;
+    color: var(--header-small-color);
 }
 
-.span {
-    font-size: 32px;
-    color: var(--profileInfo-about);
+.statusSpan:hover {
+    text-shadow: 0px 0px 10px var(--button-shadow);
+    text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.statusSpan:active {
+    color: var(--button-text-color-active);
+    text-shadow: none;
 }
 
 .divError {
@@ -17,27 +22,37 @@
     margin-bottom: 10px;
     padding: 10px;
     text-align: center;
-    color: var(--error-text);
+    font-family: var(--error-font);
+    color: var(--error-color);
 }
 
 .figure {
     margin-right: 5px;
-    color: var(--error-text);
+    color: var(--error-color);
 }
 
 .input {
-    width:100%;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 32px;
-    border: 1px solid var(--post-back);
-    border-radius: 20px;
-    padding: 10px;
+    display: flex;
+    justify-self: center;
     outline: none;
-    resize:none;
-    color: var(--post-text);
-    background-color: var(--my-posts-back);
+    border: 1px solid var(--input-border);
+    border-radius: 15px;
+    padding: 10px;
+    font-family: var(--input-text-font);
+    font-size: 32px;
+    color: var(--input-text-color);
+    background-color: var(--input-back);
+}
+
+.input:focus {
+    border: 1px solid var(--input-border-focus);
+}
+
+.input::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+    text-transform: lowercase;
 }
 
 .error {
-    border: 2px solid var(--error-text);
+    border: 1px solid var(--error-color);
 }

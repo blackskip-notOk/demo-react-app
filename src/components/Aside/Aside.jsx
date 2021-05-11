@@ -12,7 +12,7 @@ const Aside = (props) => {
     return (
         <aside className={s.aside}>
             <div className={s.innerAside}>
-                {adv}
+                {/* {adv} */}
             </div>
             {props.children}
         </aside>

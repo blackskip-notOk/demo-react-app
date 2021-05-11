@@ -1,70 +1,29 @@
-.div {
-    display:grid;
-    grid-template-rows: 100px 100px 100px;
-    grid-template-columns: 150px minmax(150px, 1fr) 1fr;
-    grid-template-areas:
-    'avatar job contacts'
-    'avatar desc contacts'
-    'name about contacts';
-    grid-column-gap: 10px;
-    max-width: 100%;
-    padding: 10px;
-    overflow: hidden;
-    font-family: 'Concert One', cursive;
-    background-color: var(--profileInfo-back);
+.contactLi {
+    margin: 15px 10px 0px 10px;
 }
 
-.avatar {
-    grid-area: avatar;
-    align-self: start;
-    justify-self: start;
-    width: 150px;
-    height: 150px;
-    border-radius: 100px;
+.figure {
+    transform: scale(1.1);
+    margin-right: 10px;
+    color: var(--figure-color);
 }
 
-.spanName {
-    grid-area: name;
-    text-transform: capitalize;
-    justify-self: start;
-    align-self: end;
-    font-size: 40px;
-    color: var(--profileInfo-text);
-}
-
-.spanAbout {
-    grid-area: about;
-    font-size: 24px;
-    align-self: end;
-    justify-self: center;
-    color: var(--profileInfo-text);
-}
-
-.ul {
-    grid-area: contacts;
+.contactLink {
+    cursor: alias;
+    text-decoration: underline dotted 1px;
+    text-transform: lowercase;
+    font-family: var(--button-text-font);
     font-size: 20px;
-    align-self: center;
-    justify-self: right;
-    text-align: right;
-    color: var(--profileInfo-text);
+    color: var(--button-text-color);
 }
 
-.ul li {
-    margin: 10px;
+.contactLink:hover {
+    color: var(--button-text-color-hover);
+    text-shadow: 0px 0px 10px var(--button-shadow);
+    text-decoration: none;
 }
 
-.job {
-    grid-area: job;
-    font-size: 40px;
-    align-self: start;
-    justify-self: start;
-    color: var(--profileInfo-text);
-}
-
-.spanDesc {
-    grid-area: desc;
-    font-size: 24px;
-    align-self: center;
-    justify-self: center;
-    color: var(--profileInfo-text);
+.contactLink:active {
+    color: var(--button-text-color-active);
+    text-shadow: none;
 }

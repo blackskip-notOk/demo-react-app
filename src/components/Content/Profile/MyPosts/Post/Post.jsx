@@ -5,14 +5,14 @@ import Message from './Message';
 import Like from './Like';
 import userAvatar from '../../../../../image/bb-8.png';
 
-const Post = ({photos, post, id, likes}) => {
+const Post = ({photos, post, likes}) => {
     return (
-        <article className={s.article}>
+        <article className={s.postArticle}>
             <Avatar src={photos.small
                 ? photos.small
                 : userAvatar} alt='User Avatar'/>
-            <Message post={post} className={s.span} id={id}/>
-            <Like className={s.div} classNameSpan={s.spanLike} likes={likes} />
+            <Message post={post} className={s.messageSpan} />
+            <Like className={s.likeDiv} classNameSpan={s.likeSpan} likes={likes} likeIconClass={s.likeIcon} />
         </article>
     );
 }

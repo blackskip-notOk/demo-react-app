@@ -5,10 +5,10 @@ import Navbar from './Navbar';
 const mapStateToProps = (state) => {
     return {
         friends: getFriends(state),
-        links: getLinks(state)
+        links: getLinks(state),
     };
 }
 
-const NavbarContainer = connect(mapStateToProps, {})(Navbar);
+const NavbarContainer = connect(mapStateToProps,{})(Navbar);
 
 export default NavbarContainer;

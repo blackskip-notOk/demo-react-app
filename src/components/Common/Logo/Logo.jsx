@@ -1,13 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from './Logo.module.css';
-import logotype from '../../../image/logo.png';
+import logo from '../../../image/logo/logo.png';
 
 const Logo = (props) => {
     return (
         <NavLink to='/' target='_self'>
-            <img className={s.img} src={logotype}
-                alt='site-logo' title='Move to Home Page'/>
+            <img className={s.img} src={logo} alt='site-logo' />
         </NavLink>
     );
 }

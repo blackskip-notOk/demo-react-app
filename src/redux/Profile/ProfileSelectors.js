@@ -1,11 +1,17 @@
-export const getProfile = (state) => {
-    return state.profile.profile;
-}
+export const getProfile = state => state.profile.profile;
 
-export const getPosts = (state) => {
-    return state.profile.posts;
-}
+export const getPosts = state => state.profile.posts;
 
-export const getStatus = (state) => {
-    return state.profile.status;
-}
+export const getStatus = state => state.profile.status;
+
+export const getIsOwner = state => state.profile.isOwner;
+
+export const getIsFetching = state => state.profile.getIsFetching;
+
+export const getProfileAvatar = state => state.profile?.profile?.photos;
+
+export const getContactsIcons = state => state.profile.contactsIcons;
+
+
+
+

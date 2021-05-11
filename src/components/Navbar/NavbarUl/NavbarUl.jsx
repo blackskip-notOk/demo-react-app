@@ -5,7 +5,6 @@ import s from './NavbarUl.module.css';
 
 const NavbarUl = ({links}) => {
     let link = createListFromArray(links, NavbarLi);
-
     return (
         <ul className={s.ul}>
             {link}
