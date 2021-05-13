@@ -1,3 +1,5 @@
+import * as yup from 'yup';
+
 export const required = value => {
     if (value) return undefined;
 
@@ -9,3 +11,42 @@ export const maxLengthCreator = (max) => (value) => {
 
     return undefined;
 }
+
+export const settingsSchema =  yup.object().shape({
+    aboutMe: yup.string()
+        .required('this field is required')
+        .trim()
+        .max(500, 'too long text'),
+    jobDescription: yup.string()
+        .required('this field is required')
+        .max(500, 'too long text'),
+    fullName: yup.string()
+        .trim()
+        .required('nickname is required')
+        .max(20, 'too long nick'),
+    github: yup.string()
+        .trim()
+        .url('URL is not valid')
+        .max(100, 'too long URL'),
+    vk: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    facebook: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    instagram: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    twitter: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    website: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    youtube: yup.string()
+        .trim()
+        .url('URL is not valid'),
+    mainLink: yup.string()
+        .trim()
+        .url('URL is not valid')
+});

@@ -4,7 +4,7 @@ export const INITIALIZED_SUCCESS = 'my-app/app/INITIALIZED_SUCCESS';
 export const SET_USER_DATA = 'my-app/auth/SET-USER-DATA';
 export const SET_ERROR_MESSAGE = 'my-app/auth/SET_ERROR_MESSAGE';
 export const GET_CAPTCHA_URL_SUCCESS = 'my-app/auth/GET_CAPTCHA_URL_SUCCESS';
-export const TOGGLE_LOGIN_PROGRESS = 'my-app/auth/TOGGLE_LOGIN_PROGRESS'; 
+export const TOGGLE_LOGIN_PROGRESS = 'my-app/auth/TOGGLE_LOGIN_PROGRESS';
 //DialogsReducer
 export const ADD_MESSAGE = 'my-app/dialogs/ADD-MESSAGE';
 export const DELETE_MESSAGE = 'my-app/dialogs/DELETE_MESSAGE';
@@ -18,6 +18,10 @@ export const SET_USER_STATUS = 'my-app/profile/SET_USER_STATUS';
 export const SET_IS_OWNER = 'my-app/profile/SET_IS_OWNER';
 export const SAVE_PHOTO_SUCCESS = 'my-app/profile/SAVE_PHOTO_SUCCESS';
 export const SWITCH_IS_FETCHING = 'my-app/profile/SWITCH_IS_FETCHING';
+export const SET_PROFILE_PROPERTIES = 'my-app/profile/SET_PROFILE_PROPERTIES';
+export const SET_PROFILE_ERROR_MESSAGE = 'my-app/profile/SET_PROFILE_ERROR_MESSAGE';
+export const UPDADTE_PROFILE_SUCCESS = 'my-app/profile/UPDADTE_PROFILE_SUCCESS';
+export const SWITCH_IS_SETTING_MODE = 'my-app/profile/SWITCH_IS_SETTING_MODE';
 //AdditionsReducer
 export const ADD_TODO = 'my-app/toDo/ADD_TODO';
 export const REMOVE_TODO = 'my-app/toDo/REMOVE_TODO';

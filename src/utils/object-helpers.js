@@ -21,11 +21,11 @@ export const createReverseListFromArray = (items, Component, photos) => {
         message={i.message} />);
 }
 
-export const addIdInObject = function(object, icons) {
-    object.icons = icons;
+export const addPropsInObject = function(object, addedIcons) {
+    object.icons = addedIcons;
     let result, obj, arr = [];
     for (let prop in object) {
-        for (let i = 0; i < icons.length; i++) {
+        for (let i = 0; i < addedIcons.length; i++) {
             if (prop === object.icons[i]['name']) {
                 obj = {[prop] : object[prop], icon: object.icons[i].icon};
             }

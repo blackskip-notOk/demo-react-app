@@ -19,6 +19,7 @@ import { withSuspense } from './hoc/withSuspense';
 import ToolbarFlow from './components/Common/ToolBar/Toolbar';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import { getIsAuth } from './redux/Auth/AuthSelectors';
+import SettingsContainer from './components/Content/Settings/SettingsContainer';
 
 const FriendsContainer = lazy(() => import('./components/Content/Friends/FriendsContainer'));
 const AdditionsContainer = lazy(() => import('./components/Content/Additions/AdditionsContainer'));
@@ -57,10 +58,12 @@ class App extends React.Component {
             render = {withSuspense(DialogsContainer)} />
           <Route path = '/friends'
             render = {withSuspense(FriendsContainer)} />
-          {/* <Route path = '/additions'
-            render = {withSuspense(AdditionsContainer)} /> */}
           <Route path = '/users'
             render = { () => <UsersContainer /> } />
+          {/* <Route path = '/additions'
+            render = {withSuspense(AdditionsContainer)} /> */}
+          {/* <Route path = '/settings'
+            render = { () => <SettingsContainer /> } /> */}
           <Route path = '/login'
             render = { () => <Login /> } />
           <Route path = '/'

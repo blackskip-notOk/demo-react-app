@@ -27,7 +27,8 @@ const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
             <MyPosts errorIcon={errorIcon}
                 posts={posts}
                 addPost={addPost}
-                photos={photos} />
+                photos={photos}
+                isOwner={isOwner} />
         </div>
     );
 }

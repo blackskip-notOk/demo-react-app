@@ -4,7 +4,8 @@ import s from './HeaderLogin.module.css';
 import Menu from "./Menu/Menu";
 
 const HeaderLogin = ({logout, userLogin, isVisible, authUserId,
-    toggleVisibility, authUserAvatar, getAuthUserAvatar}) => {
+    toggleVisibility, authUserAvatar, getAuthUserAvatar,
+    isSettingsMode, switchIsSettingsMode}) => {
 
 useEffect(() => {
     getAuthUserAvatar(authUserId)}, [authUserId, getAuthUserAvatar]);
@@ -18,7 +19,11 @@ const onVisibilityChange = () => toggleVisibility(!isVisible);
                 <Avatar src={authUserAvatar} alt='avatar'
                     className={s.avatar} />
             </div>
-        {isVisible && <Menu logout={logout} />}
+        {isVisible && <Menu logout={logout}
+            isSettingsMode={isSettingsMode}
+            switchIsSettingsMode={switchIsSettingsMode}
+            toggleVisibility={toggleVisibility}
+            isVisible={isVisible} />}
         </div>
     );
 }

@@ -4,10 +4,13 @@ import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { getAuthUserId, getIsAuth } from '../../../redux/Auth/AuthSelectors';
 import { getErrorIcon, getJobIcons, getPhotoIcon } from '../../../redux/Common/CommonSelectors';
-import { addPost, updateUserStatus, getProfileData, savePhoto } from '../../../redux/Profile/ProfileReducer';
+import { addPost, updateUserStatus, getProfileData, savePhoto,
+    updateProfileProperties } from '../../../redux/Profile/ProfileReducer';
 import { getPosts, getProfile, getStatus, getIsOwner,
-    getIsFetching, getContactsIcons } from '../../../redux/Profile/ProfileSelectors';
+    getIsFetching, getContactsIcons, getIsSettingsMode, getServerErrorMessage, getProfileInfo, getisProfileUpdate } from '../../../redux/Profile/ProfileSelectors';
 import Preloader from '../../Common/Preloader/Preloader';
+import Settings from '../Settings/Settings';
+import SettingsContainer from '../Settings/SettingsContainer';
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
@@ -29,15 +32,25 @@ class ProfileContainer extends Component {
         }
         this.props.getProfileData(userId, this.props.authUserId);
     }
+
     render() {
-        return(
-            <>{this.props.isFetching ? <Preloader type='profile' /> : null}
-            <Profile {...this.props.profile} {...this.props} />
+        return (
+        this.props.isSettingsMode ?
+            <Settings authUserId={this.props.authUserId}
+                isFetching={this.props.isFetching}
+                updateProfileProperties={this.props.updateProfileProperties}
+                serverErrorMessages={this.props.serverErrorMessages}
+                icon={this.props.errorIcon}
+                profileInfo={this.props.profileInfo}
+                isProfileUpdate={this.props.isProfileUpdate}
+                profile={this.props.profile} /> :
+            <>
+                {this.props.isFetching ? <Preloader type='profile' /> : null}
+                <Profile {...this.props.profile} {...this.props} />
             </>
-        );
+        )
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         posts: getPosts(state),
@@ -50,9 +63,13 @@ const mapStateToProps = (state) => {
         authUserId: getAuthUserId(state),
         isAuth: getIsAuth(state),
         isOwner: getIsOwner(state),
-        isFetching: getIsFetching(state)
+        isFetching: getIsFetching(state),
+        isSettingsMode: getIsSettingsMode(state),
+        settingsErrorMessage: getServerErrorMessage(state),
+        profileInfo: getProfileInfo(state),
+        isProfileUpdate: getisProfileUpdate(state)
     };
 }
 
 export default compose(connect(mapStateToProps, {addPost, getProfileData,
-    updateUserStatus, savePhoto}), withRouter)(ProfileContainer);
+    updateUserStatus, savePhoto, updateProfileProperties}), withRouter)(ProfileContainer);

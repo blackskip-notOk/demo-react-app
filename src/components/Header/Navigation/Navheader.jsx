@@ -6,7 +6,7 @@ import NavigationUl from "./NavigationUl/NavigationUl";
 
 const Navheader = ({iconsHeader, logout, userLogin, isVisible,
     toggleVisibility, authUserAvatar, authUserId, getAuthUserAvatar,
-    getProfileData}) => {
+    getProfileData, isSettingsMode, switchIsSettingsMode}) => {
     return (
         <nav className={s.nav} role='navigation'>
             <Logo />
@@ -19,7 +19,9 @@ const Navheader = ({iconsHeader, logout, userLogin, isVisible,
                 toggleVisibility={toggleVisibility}
                 authUserAvatar={authUserAvatar}
                 authUserId={authUserId}
-                getAuthUserAvatar={getAuthUserAvatar} />
+                getAuthUserAvatar={getAuthUserAvatar}
+                isSettingsMode={isSettingsMode}
+                switchIsSettingsMode={switchIsSettingsMode} />
         </nav>
     );
 }

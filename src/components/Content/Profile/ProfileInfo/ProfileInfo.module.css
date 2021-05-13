@@ -80,6 +80,7 @@
     grid-area: status;
     display: flex;
     justify-self: center;
+    width: 100%;
     cursor: text;
 }
 

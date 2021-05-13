@@ -1,4 +1,10 @@
 .statusSpan {
+    width: inherit;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: inset 0px 0px 10px var(--panels-shadow);
+    word-wrap: break-word;
+    text-align: center;
     font-size: 32px;
     font-family: var(--button-text-font);
     text-decoration: underline dotted 1px;
@@ -16,28 +22,15 @@
     text-shadow: none;
 }
 
-.divError {
-    display:inline-flex;
-    width:max-content;
-    margin-bottom: 10px;
-    padding: 10px;
-    text-align: center;
-    font-family: var(--error-font);
-    color: var(--error-color);
-}
-
-.figure {
-    margin-right: 5px;
-    color: var(--error-color);
-}
-
 .input {
     display: flex;
     justify-self: center;
+    width: inherit;
     outline: none;
     border: 1px solid var(--input-border);
     border-radius: 15px;
     padding: 10px;
+    text-align: center;
     font-family: var(--input-text-font);
     font-size: 32px;
     color: var(--input-text-color);
@@ -51,8 +44,4 @@
 .input::-webkit-input-placeholder {
     color: var(--placeholder-color);
     text-transform: lowercase;
-}
-
-.error {
-    border: 1px solid var(--error-color);
 }

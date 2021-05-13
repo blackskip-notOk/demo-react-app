@@ -20,9 +20,9 @@ export const createTextarea = (name, register, placeholder,
 }
 
 export const createFormError = (className, icon,
-    message, figureClass) => {
+    message, figureClass, index) => {
     return(
-        <FormError className={className}
+        <FormError key={index} className={className}
             icon={icon}
             message={message}
             figure={figureClass} />

@@ -71,6 +71,12 @@ export const profileAPI = {
         return instance.put(`profile/photo`, formData, {
             headers: {'Content-TYpe': 'multipart/form-data'}})
             .then(response => {return response.data;});
+    },
+    updateProfileProperties(userId, aboutMe, lookingForAJob, lookingForAJobDescription,
+        fullName, contacts) {
+        return instance.put('profile', {userId, aboutMe, lookingForAJob,
+            lookingForAJobDescription, fullName, contacts})
+            .then(response => {return response.data;});
     }
 };
 

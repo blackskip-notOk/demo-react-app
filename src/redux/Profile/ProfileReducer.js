@@ -1,6 +1,8 @@
 import { profileAPI } from "../../API/API";
 import { ADD_POST, DELETE_POST, SAVE_PHOTO_SUCCESS, SET_IS_OWNER,
-    SET_USER_PROFILE, SET_USER_STATUS, SWITCH_IS_FETCHING} from "../Actions/actionsTypes";
+    SET_PROFILE_PROPERTIES, SET_PROFILE_ERROR_MESSAGE,
+    SET_USER_PROFILE, SET_USER_STATUS, SWITCH_IS_FETCHING,
+    UPDADTE_PROFILE_SUCCESS, SWITCH_IS_SETTING_MODE } from "../Actions/actionsTypes";
 
 let initialState = {
     profile: null,
@@ -19,7 +21,10 @@ let initialState = {
     ],
     status: '',
     isOwner: false,
-    isFetching: true
+    isFetching: true, //isFetching true because false create a cycle
+    isProfileUpdate: false,
+    errorMessage: null,
+    isSettingsMode: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -73,7 +78,28 @@ const profileReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
-
+        case SET_PROFILE_PROPERTIES: {
+            return {
+                ...state,
+                profile: {...state.profile, Properties: action.Properties}
+            }
+        }
+        case UPDADTE_PROFILE_SUCCESS: {
+            return {
+                ...state,
+                isProfileUpdate: action.isProfileUpdate
+            }
+        }
+        case SET_PROFILE_ERROR_MESSAGE:
+            return {
+                ...state,
+                errorMessage: action.messages
+            }
+        case SWITCH_IS_SETTING_MODE:
+            return {
+                ...state,
+                isSettingsMode: action.isSettingsMode
+            }
         default:
              return state;
     }
@@ -86,9 +112,13 @@ export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 export const setIsOwner = (isOwner) => ({type: SET_IS_OWNER, isOwner});
 export const switchIsFetching = (isFetching) => ({type: SWITCH_IS_FETCHING, isFetching});
+export const setProfileProperties = (Properties) => ({type: SET_PROFILE_PROPERTIES, Properties});
+export const updateProfileSuccess = (isProfileUpdate) => ({type: UPDADTE_PROFILE_SUCCESS, isProfileUpdate});
+export const setProfileErrormessage = (messages) => ({type: SET_PROFILE_ERROR_MESSAGE, messages});
+export const switchIsSettingsMode = (isSettingsMode) => ({type: SWITCH_IS_SETTING_MODE, isSettingsMode});
 //thunk creators
 export const getProfileData = (userId, authUserId) => async dispatch => {
-    let promise = [profileAPI.getUserProfile(userId, authUserId),
+    let promise = [profileAPI.getUserProfile(userId),
         profileAPI.getUserStatus(userId)];
     let response = await Promise.all(promise)
         dispatch(switchIsFetching(false));
@@ -99,16 +129,15 @@ export const getProfileData = (userId, authUserId) => async dispatch => {
         dispatch(setIsOwner(false));
 };
 
-export const updateUserStatus = (status) => async (dispatch) => {
-    try {
-        let response = await profileAPI.updateUserStatus(status);
+export const getUserProfile = userId => async dispatch => {
+    let response = await profileAPI.getUserProfile(userId);
+    dispatch(setUserProfile(response));
+}
 
-        if (response.resultCode === 0) {
-            dispatch(setUserStatus(status));
-        }
-    }
-    catch(error) {
-        // dispatch error action
+export const updateUserStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateUserStatus(status);
+    if (response.resultCode === 0) {
+        dispatch(setUserStatus(status));
     }
 };
 export const savePhoto = (file) => async (dispatch) => {
@@ -116,6 +145,24 @@ export const savePhoto = (file) => async (dispatch) => {
     if (response.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.photos));
     }
-}
+};
+export const updateProfileProperties = (userId, aboutMe, lookingForAJob,
+    lookingForAJobDescription, fullName, contacts) => async dispatch => {
+        dispatch(switchIsFetching(true));
+    let response = await profileAPI.updateProfileProperties(userId,
+        aboutMe, lookingForAJob, lookingForAJobDescription, fullName, contacts);
+        dispatch(switchIsFetching(false));
+    if (response.resultCode === 0) {
+        dispatch(updateProfileSuccess(true));
+        // profileAPI.getUserProfile(userId, userId);
+        // dispatch(setProfileProperties(response.data.Properties));
+    } else if (response.resultCode === 1) {
+        dispatch(setProfileErrormessage(response.messages));
+    }
+
+    setTimeout(function() {
+            dispatch(updateProfileSuccess(false));
+    }, 5000);
+};
 
 export default profileReducer;

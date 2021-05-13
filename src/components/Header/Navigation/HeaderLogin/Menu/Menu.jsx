@@ -3,13 +3,19 @@ import { NavLink } from 'react-router-dom';
 import Button from '../../../../Common/Button/Button';
 import s from './Menu.module.css'
 
-const Menu = ({logout}) => {
+const Menu = ({logout, isSettingsMode, switchIsSettingsMode,
+    toggleVisibility, isVisible}) => {
+    const onChangesettingsMode = () => {
+        switchIsSettingsMode(!isSettingsMode);
+        toggleVisibility(!isVisible);
+    }
+
     return (
         <ul className={s.menuUl}>
             <li>
-                <NavLink to='/settings' target='_self'>
-                    <span>Settings</span>
-                </NavLink>
+                {/* <NavLink to='/settings' target='_self'> */}
+                    <span onClick={onChangesettingsMode}>Settings</span>
+                {/* </NavLink> */}
             </li>
             <li>
                 <NavLink to={'/login'}>
