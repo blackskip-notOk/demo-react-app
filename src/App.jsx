@@ -1,11 +1,10 @@
 import './css/reset.css';
 import './css/app.css';
 import './css/variables.css';
-import React, { lazy, useEffect } from 'react';
+import React, { lazy } from 'react';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import AsideContainer from './components/Aside/AsideContainer';
 import Preloader from './components/Common/Preloader/Preloader';
 import UsersContainer from './components/Content/Users/UsersContainer';
 import Footer from './components/Footer/Footer';
@@ -16,13 +15,13 @@ import { initializeApp } from './redux/App/AppReducer';
 import { getInitialized } from './redux/App/AppSelectors';
 import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
-import ToolbarFlow from './components/Common/ToolBar/Toolbar';
+// import ToolbarFlow from './components/Common/ToolBar/Toolbar';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import { getIsAuth } from './redux/Auth/AuthSelectors';
-import SettingsContainer from './components/Content/Settings/SettingsContainer';
+// import SettingsContainer from './components/Content/Settings/SettingsContainer';
 
 const FriendsContainer = lazy(() => import('./components/Content/Friends/FriendsContainer'));
-const AdditionsContainer = lazy(() => import('./components/Content/Additions/AdditionsContainer'));
+// const AdditionsContainer = lazy(() => import('./components/Content/Additions/AdditionsContainer'));
 const DialogsContainer = lazy(() => import('./components/Content/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
@@ -71,11 +70,6 @@ class App extends React.Component {
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>
-        </div>
-        <div className = 'aside'>
-          <AsideContainer>
-            <ToolbarFlow />
-          </AsideContainer>
         </div>
         <div className = 'footer'>
           <Footer info = 'Someday there will be information about creator' />

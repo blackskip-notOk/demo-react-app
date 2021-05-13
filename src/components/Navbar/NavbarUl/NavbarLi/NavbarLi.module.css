@@ -1,53 +1,51 @@
-.li {
-    font-size: 26px;
-}
-
-.div {
-    margin: 0px 0px 20px 15px;
-    transition: margin .3s;
-}
-
-.div:hover {
-    margin: 0px 10px 20px 10px;
+.linkLi {
+    margin: 20px 0px 20px 0px;
 }
 
 .link {
+    display: grid;
     position: relative;
-    text-transform: lowercase;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--headers-font);
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--button-text-color);
 }
 
 .link:hover {
-    text-transform: uppercase;
+    text-shadow: 0px 0px 5px var(--button-shadow);
+    color: var(--button-text-color-hover);
 }
 
-.link.active {
-    text-transform: capitalize;
-    color: var(--navlink__text_active);
+.link.linkActive {
+    color: var(--figure-color-active);
+    text-shadow: none;
 }
 
-.link::after {
+.link::before {
     position: absolute;
-    left: -5px;
-    top: 0%;
-    min-height: 160%;
-    min-width: 0px;
+    min-height: 100%;
     content: "";
     transition: all .5s ease-in-out;
-    background: var(--navlink__back);
 }
 
-.link:hover:after {
+.link:hover::before {
+    width: 100%;
+    top: -5px;
     left: -5px;
-    width: 115%;
-    border-radius: 20px;
-    opacity: .25;
-    background: var(--navlink__back);
+    padding: 5px 5px 5px 5px;
+    border-radius: 15px;
+    opacity: .3;
+    background: var(--navlink-decor-hover);
 }
 
-.link.active:after {
+.link.linkActive::before {
+    width: 100%;
+    top: -5px;
     left: -5px;
-    width: 115%;
-    border-radius: 20px;
-    opacity: .4;
-    background-color: var(--navlink__back);
+    padding: 5px 5px 5px 5px;
+    border-radius: 15px;
+    opacity: .1;
+    background-color: var(--navlink-decor-active);
 }

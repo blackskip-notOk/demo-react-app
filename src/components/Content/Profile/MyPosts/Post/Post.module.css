@@ -41,7 +41,7 @@
 .likeDiv {
     display: flex;
     grid-column-start: 3;
-    text-align: right;
+    justify-self: flex-end;
     align-self: center;
 }
 

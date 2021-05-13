@@ -1,5 +1,4 @@
-.div {
-    min-width: 100%;
-    min-height: 100%;
-    margin-top: 10px;
+.profileDiv {
+    width: 100%;
+    margin: 10px 10px 10px 0px;
 }

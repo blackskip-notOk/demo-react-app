@@ -10,7 +10,7 @@ const Navbar = ({friends, links}) => {
         <nav className={s.nav} role="menu">
             <div className={s.innerNav}>
                 <NavbarUl links={links} />
-                <div className={s.div}>
+                <div className={s.friendsDiv}>
                     {friend}
                 </div>
             </div>

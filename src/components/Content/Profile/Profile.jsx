@@ -11,7 +11,7 @@ const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
     if (!profile) return <Preloader type='profile' />
 
     return (
-        <div className={s.div}>
+        <div className={s.profileDiv}>
             <ProfileInfo {...profile}
                 isAuth={isAuth}
                 authUserId={authUserId}

@@ -4,15 +4,13 @@ import s from './NavbarLi.module.css';
 
 const NavbarLi = ({pathway, target, notation}) => {
     return (
-        <li className={s.li}>
-            <div className={s.div}>
-                <NavLink className={s.link}
-                    to={pathway}
-                    target={target}
-                    activeClassName={s.active}>
-                        {notation}
-                </NavLink>
-            </div>
+        <li className={s.linkLi}>
+            <NavLink className={s.link}
+                to={pathway}
+                target={target}
+                activeClassName={s.linkActive}>
+                {notation}
+            </NavLink>
         </li>
     );
 }

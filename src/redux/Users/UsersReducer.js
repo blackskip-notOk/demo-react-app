@@ -75,7 +75,7 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleIsFollowingProgress = (followingInProgress, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress, userId});
 //thunk creators
-export const requestUsers  = (page, pageSize) => async (dispatch) => {
+export const requestUsers  = (page, pageSize) => async dispatch => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
@@ -97,12 +97,12 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
     dispatch(toggleIsFollowingProgress(false, userId));
 };
 
-export const follow  = (userId) => async (dispatch) => {
+export const follow  = userId => async dispatch => {
     followUnfollowFlow(dispatch, userId,
         usersAPI.follow.bind(usersAPI), followSuccess);
 };
 
-export const unfollow  = (userId) => async (dispatch) => {
+export const unfollow  = userId => async dispatch => {
     followUnfollowFlow(dispatch, userId,
         usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
 };

@@ -35,9 +35,14 @@
     --page-back: #16253D;
     --page-inner-border:#4D648D;
 
+    --navlink-decor: #F5CA99;
+    --navlink-decor-hover:#46a89a;
+    --navlink-decor-active: #C9D1C8;
+
     /*fonts*/
     --headers-font: 'Roboto', sans-serif;
     --input-text-font: 'Roboto', sans-serif;
     --button-text-font: 'Rubik', sans-serif;
     --error-font: 'Lora', serif;
+    --alternative-font: 'Montserrat', sans-serif;
 }

@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
         isOwner: getIsOwner(state),
         isFetching: getIsFetching(state),
         isSettingsMode: getIsSettingsMode(state),
-        settingsErrorMessage: getServerErrorMessage(state),
+        serverErrorMessage: getServerErrorMessage(state),
         profileInfo: getProfileInfo(state),
         isProfileUpdate: getisProfileUpdate(state)
     };

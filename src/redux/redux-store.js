@@ -7,7 +7,6 @@ import commonReducer from './Common/CommonReducer';
 import friendsReducer from './Friends/FriendsReducer';
 import navbarReducer from './Navbar/NavbarReducer';
 import additionsReducer from './Additions/AdditionsReducer';
-import asideReducer from './Aside/AsideReducer';
 import usersReducer from './Users/UsersReducer';
 import findUserReducer from './FindUser/FindUserReducer';
 import authReducer from './Auth/AuthReducer';
@@ -21,7 +20,6 @@ const reducers = combineReducers({
     friends: friendsReducer,
     navbar: navbarReducer,
     additions: additionsReducer,
-    aside: asideReducer,
     users: usersReducer,
     findUser: findUserReducer,
     auth: authReducer,

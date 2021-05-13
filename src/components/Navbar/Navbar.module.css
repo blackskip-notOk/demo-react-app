@@ -1,20 +1,20 @@
 .nav {
     grid-area: nav;
     display: flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    width: 100%;
-    min-height: 100%;
-    background-color: var(--navbar-back);
 }
 
 .nav .innerNav {
-    position: sticky;
+    position:fixed;
     top: 10%;
+    margin: 0px 0px 0px 10px;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
+    background-color: var(--panels-back);
 }
 
-.div {
+.friendsDiv {
     margin-top: 50px;
     margin-bottom: 50px;
     overflow: hidden;
+    border: 1px solid magenta;
 }
