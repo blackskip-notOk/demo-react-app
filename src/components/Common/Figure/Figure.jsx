@@ -1,8 +1,8 @@
 import React from "react";
 
-const Figure = ({icon, className}) => {
+const Figure = ({icon, className, onClick}) => {
     return (
-        <figure className={`${icon} ${className}`} />
+        <figure onClick={onClick} className={`${icon} ${className}`} />
     );
 }
 

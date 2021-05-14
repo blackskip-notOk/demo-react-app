@@ -1,23 +1,27 @@
 .container {
     display: grid;
-    grid-template-rows: 50px 1fr min-content;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 260px 1fr;
     grid-template-areas:
-        "contact contact"
-        "chats dialogs"
-        "chats message";
+        "search contact"
+        "chats dialogs";
+    grid-row-gap: 10px;
     height: 100%;
     width: 100%;
-    background-color: var(--messages-back);
+    margin: 10px 10px 10px 0px;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--page-back);
 }
 
 .chats {
     grid-area: chats;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    border-top: 1px solid var(--chats-border);
-    border-right: 1px solid var(--chats-border);
+    margin: 0px 10px 10px 0px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--main-back-color);
 }
 
 .chats .innerChats {
@@ -30,11 +34,14 @@
 }
 
 .dialogs {
+    display: grid;
     grid-area: dialogs;
-    border-top: 1px solid var(--search-border);
-    font-family: 'Concert One', cursive;
-    font-size: 14px;
     white-space:pre-wrap;
     overflow: hidden;
     word-wrap:break-word;
+    margin: 0px 0px 10px 10px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--main-back-color);
 }

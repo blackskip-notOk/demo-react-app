@@ -1,7 +1,11 @@
-.div {
+.dialogDiv {
+    width: 50%;
+    height: max-content;
     margin: 10px;
-    border-radius: 25px;
-    padding: 15px;
-    background-color: var(--dialog-back);
-    color: var(--dialog-message);
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    cursor: default;
+    background-color: var(--page-back);
+    color: var(--button-text-color-hover);
 }

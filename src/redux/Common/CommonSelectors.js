@@ -10,9 +10,7 @@ export const getIconsHeader = (state) => {
     return state.common.iconsHeader;
 }
 
-export const getSearch = (state) => {
-    return state.common.search;
-}
+export const getSearch = state => state.common.search.icon;
 
 export const getErrorIcon = (state) => {
     return getIcon(state, 'error');

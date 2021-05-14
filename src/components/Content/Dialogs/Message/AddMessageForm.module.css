@@ -1,36 +1,88 @@
 .form {
-    grid-area: message;
-    padding: 5px 20px 0px 10px;
-    border-top: 2px solid var(--newMessage-border);
-    text-align: right;
+    display: grid;
+    height: max-content;
+    align-self: flex-end;
 }
 
 .textarea {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--newMessage-border);
-    padding: 10px 0px 10px 10px;
+    height: max-content;
+    margin: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--input-border);
+    padding: 10px 0px 0px 10px;
     outline: none;
     resize:none;
-    font-family: 'Concert One', cursive;
+    font-family: var(--input-text-font);
     font-size: 16px;
-    color: var(--message-text);
-    background-color: var(--messages-back);
+    color: var(--text-color);
+    background-color: var(--input-back);
+}
+
+.textarea:focus {
+    border: 1px solid var(--input-border-focus);
+}
+
+.textarea::placeholder {
+    color: var(--placeholder-color);
 }
 
 .error {
-    border: 1px solid var(--error-text);
+    border: 1px solid var(--error-color);
+}
+
+.addMessageButton {
+    width: max-content;
+    justify-self: flex-end;
+    margin: 0px 10px 10px 10px;
+    outline: none;
+    border: 1px solid var(--button-border);
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: var(--button-back);
+}
+
+.addMessageButton:hover {
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
+}
+
+.addMessageButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
+}
+
+.addMessageSpan {
+    text-align: center;
+    padding: 0px 5px;
+    text-transform: capitalize;
+    font-family: var(--button-text-font);
+    font-size: 24px;
+    color: var(--button-text-color);
+}
+
+.addMessageSpan:hover {
+    text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.addMessageSpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
 }
 
 .divError {
-    display:inline-flex;
+    display:flex;
     width:max-content;
-    padding: 10px;
-    text-transform: capitalize;
-    color: var(--error-text);
+    margin: 5px 20px 5px 10px;
+    justify-self: flex-end;
+    cursor: default;
+    text-transform: lowercase;
+    font-family: var(--error-font);
+    color: var(--error-color);
 }
 
 .figure {
     margin-right: 5px;
-    color: var(--error-text);
+    color: var(--error-color);
 }

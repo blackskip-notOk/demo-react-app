@@ -1,39 +1,56 @@
-.div {
-    margin: 10px 10px 10px 10px;
+.chatDiv {
+    margin: 10px 5px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 10px var(--panels-shadow);
+    background-color: var(--page-back);
 }
 
-.div a {
-    display:inline-flex;
-    width:100%;
-    border-radius: 10px;
-    font-size: 20px;
-    font-family: 'Concert One', cursive;
-    color: var(--chat-text);
-    background-color: var(--chat-back);
+.chatLink {
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.chatLink:hover {
+    cursor: pointer;
 }
 
 .img {
-    width: 55px;
+    width: 50px;
     height: 50px;
-    margin: 5px 0px 5px 5px;
-    border-radius: 30px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
 }
 
-.div span {
-    margin: 15px 0px 0px 15px;
+.img:hover {
+    cursor:pointer;
+    box-shadow: 0px 0px 10px var(--button-shadow);
 }
 
-.div a:hover {
-    color: var(--chat-text-hover);
-    background-color: var(--chat-back-hover);
+.img:active {
+    box-shadow: none;
 }
 
-.div a:active {
-    color: var(--chat-text-active);
-    background-color: var(--chat-back-active);
+.chatSpan {
+    align-self: center;
+    margin: 0px 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-family: var(--headers-font);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
 }
 
-.div a:focus {
-    color: var(--chat-text-focus);
-    background-color: var(--chat-back-focus);
+.chatSpan:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 5px var(--button-shadow);
+    text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.chatSpan:active {
+    color: var(--button-text-color-active);
+    text-shadow: none;
 }

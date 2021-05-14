@@ -9,21 +9,22 @@ import s from "./Dialogs.module.css";
 const Dialogs = ({contacts, dialogs, icon, search,
     addMessage}) => {
     let contact = createListFromArray(contacts, Chat);
-    let dialog = createReverseListFromArray(dialogs, Dialog);
+    let dialog = createListFromArray(dialogs, Dialog);
 
     return (
         <div className={s.container}>
+            <Search search={search} title='Find dialog' />
             <div className={s.chats}>
                 <div className={s.innerChats}>
-                    <Search search={search}
-                        title='Find dialog' />
                     {contact}
                 </div>
             </div>
             <div className={s.dialogs}>
-                {dialog}
+                <div className={s.innerDialogs}>
+                    {dialog}
+                </div>
+                <AddMessageForm addMessage={addMessage} icon={icon} />
             </div>
-            <AddMessageForm addMessage={addMessage} icon={icon} />
         </div>
     );
 }

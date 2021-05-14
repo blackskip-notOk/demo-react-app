@@ -12,7 +12,7 @@ export const createListFromArray = (items, Component, callBack) => {
         icon={i.icon} undertext={i.undertext} key={i.id}
         name={i.name} id={i.id} avatar={i.avatar}
         target={i.target} notation={i.notation} friend={i}
-        onClick={() => callBack(i.id)} />);
+        onClick={() => callBack(i.id)} message={i.message} />);
 }
 
 export const createReverseListFromArray = (items, Component, photos) => {

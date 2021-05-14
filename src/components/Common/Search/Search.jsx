@@ -1,21 +1,31 @@
-import React from "react";
-import { createInput } from "../../../utils/form-helper";
+import React, { useState } from "react";
 import Figure from "../Figure/Figure";
 import s from './Search.module.css';
 
 
-const Search = ({search, title}) => {
+const Search = ({search}) => {
+    const [searchValue, setSearchValue] = useState('');
+    const [visibility, setVisibility] = useState(false);
+
+    const switchSearch = () => {
+        setVisibility(!visibility);
+    };
+
+    const onSearchChange = (e) => {
+        setSearchValue(e.currentTarget.value);
+    }
     const inputClass = s.input;
     return (
-        <div className={s.div}>
-            <Figure icon={search.icon}
-                className={s.figure} />
-            {createInput (null, null, {type: 'search',
-                inputClass: inputClass,
-                id: 'search',
-                placeholder: 'Search...',
-                title: title,
-            })}
+        <div className={s.searchDiv}>
+            <Figure icon={search}
+                className={s.figure}
+                onClick={switchSearch} />
+            {visibility && <input type='search'
+                value={searchValue}
+                onChange={onSearchChange}
+                className={s.searchInput}
+                placeholder='Search...' />
+            }
         </div>
     );
 }

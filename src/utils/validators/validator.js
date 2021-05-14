@@ -12,6 +12,12 @@ export const maxLengthCreator = (max) => (value) => {
     return undefined;
 }
 
+export const addMessageSchema = yup.object().shape({
+    message: yup.string()
+        .required('your message empty')
+        .max(150, 'maximum 150 symbols'),
+});
+
 export const settingsSchema =  yup.object().shape({
     aboutMe: yup.string()
         .required('this field is required')

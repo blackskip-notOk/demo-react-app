@@ -4,7 +4,7 @@ let initialState = {
         { id: 2, pathway: '/friends', icon: 'fas fa-users', undertext: 'friends', target: '_self' },
         { id: 3, pathway: '/dialogs', icon: 'fas fa-comment', undertext: 'dialogs', target: '_self' },
     ],
-    search: { id: 1, icon: "fas fa-jedi", button: "fas fa-jedi", span: 'search'},
+    search: { id: 1, name: 'search', icon: 'fas fa-search'},
     icons: [
         { id: 0, name: 'error', icon: 'fas fa-exclamation-triangle' },
         { id: 1, name: 'job', icon: 'fas fa-thumbs-up'},

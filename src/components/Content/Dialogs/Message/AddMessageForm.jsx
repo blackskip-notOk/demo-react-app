@@ -1,20 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import { createFormError } from '../../../../utils/form-helper';
+import { addMessageSchema } from '../../../../utils/validators/validator';
 import Button from '../../../Common/Button/Button';
 import s from "./AddMessageForm.module.css";
 
-const schema = yup.object().shape({
-    message: yup.string()
-        .required('your message empty')
-        .max(150, 'maximum 150 symbols'),
-});
-
 const AddMessageForm = ({addMessage, icon}) => {
     const {register, handleSubmit, formState: {touchedFields, errors}} = useForm({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(addMessageSchema)
     });
 
     const onSubmit = data => addMessage(data.message);
@@ -23,12 +17,14 @@ const AddMessageForm = ({addMessage, icon}) => {
     const messageError = errors?.message?.message;
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-            <textarea {...register('message')}
-                className={`${s.input} ${errorMessageClass}`}
-                placeholder='Write new message...' />
             {errors?.message && createFormError(s.divError, icon,
                 messageError, s.figure)}
-            <Button span="New Message" />
+            <textarea {...register('message')}
+                className={`${s.textarea} ${errorMessageClass}`}
+                placeholder='Write new message...' />
+            <Button span="New Message"
+                className={s.addMessageButton}
+                spanClass={s.addMessageSpan} />
         </form>
     )
 }
