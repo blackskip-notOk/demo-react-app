@@ -11,7 +11,10 @@ let initialState = {
         { id: 2, name: 'job', icon: 'fas fa-thumbs-down'},
         { id: 3, name: 'photo', icon: 'fas fa-camera-retro'}
     ],
-   
+    iconsPaginator: [
+        { id: 1, name: 'left', icon: 'fas fa-angle-left' },
+        { id: 2, name: 'right', icon: 'fas fa-angle-right' },
+    ],
         // { id: 0, name: 'menu', icon: 'fas fa-align-justify', },
         // { id: 1, name: 'menu1', icon: 'fas fa-bars', },
         // { id: 2, name: 'danger', icon: 'fas fa-skull-crossbones', },

@@ -22,6 +22,7 @@
     --button-border:#5B7065;
     --button-border-hover:#46a89a;
     --button-border-active:#5B7065;
+    --button-border-disable:#211F30;
     --button-back:#211F30;
     --button-back-disable:#4D648D;
     --button-shadow: #C9D1C8;
@@ -39,10 +40,26 @@
     --navlink-decor-hover:#46a89a;
     --navlink-decor-active: #C9D1C8;
 
+    --paginator-border: #D8412F;
+    --paginator-border-hover: #FE7A47;
+    --paginator-border-active: #F5CA99;
+    --paginator-shadow: #D8412F;
+    --paginator-shadow-hover:#FE7A47;
+    --paginator-shadow-active: #F5CA99;
+    --paginator-back: #211F30;
+    --paginator-back-hover: #002C54;
+    --paginator-back-active:#4D648D;
+    --paginator-text-color: #F5CA99;
+    --paginator-text-hover: #FE7A47;
+    --paginator-text-active: #D8412F;
+
+
     /*fonts*/
     --headers-font: 'Roboto', sans-serif;
     --input-text-font: 'Roboto', sans-serif;
     --button-text-font: 'Rubik', sans-serif;
     --error-font: 'Lora', serif;
+    --paginator-font: 'Lora', serif;
+    --paginator-page-font: 'Montserrat', sans-serif;
     --alternative-font: 'Montserrat', sans-serif;
 }

@@ -27,5 +27,6 @@ export const getPagesInfo = state => {
     }
     const portionSize = state.users.portionSize
     const portionCount = Math.ceil(pagesCount / portionSize);
-    return {pageSize, currentPage, pages, portionCount, portionSize};
-}
+    return {pageSize, currentPage, pages, portionCount,
+        portionSize};
+};

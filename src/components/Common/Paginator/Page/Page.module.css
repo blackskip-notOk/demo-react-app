@@ -1,11 +1,30 @@
 .spanChosen {
-    padding: 0px 10px 0px 10px;
-    font-weight:bolder;
-    color: var(--findUsers-page-chosen);
+    margin: 0px 5px;
+    border: 1px solid var(--paginator-border);
+    border-radius: 15px;
+    padding: 5px;
     list-style:none;
+    font-family: var(--paginator-page-font);
+    font-size: 14px;
+    font-weight:bold;
+    background-color: var(--paginator-back);
+    color: var(--paginator-text-color);
 }
 
 .spanUnchosen {
-    padding: 0px 3px 0px 3px;
+    margin: 0px 5px;
     list-style:none;
+    font-family: var(--paginator-page-font);
+    font-size: 13px;
+    font-weight:bold;
+    color: var(--panels-back);
+}
+
+.spanUnchosen:hover {
+    color: var(--paginator-text-color);
+}
+
+.spanUnchosen:active {
+    font-size: 13px;
+    color: var(--paginator-text-active);
 }

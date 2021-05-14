@@ -1,79 +1,129 @@
 .divUser {
     display: grid;
-    grid-template-rows: 100px 100px;
-    grid-template-columns: 150px minmax(200px, 1fr) minmax(min-content, max-content);
+    grid-template-rows: max-content max-content;
+    grid-template-columns: 100px minmax(200px, 1fr) minmax(min-content, max-content);
     grid-template-areas:
-        'avatar name name'
+        'avatar name empty'
         'avatar status button';
-    grid-gap: 20px;
-    /* max-width: 100%; */
-    margin: 10px 10px 10px 10px;
+    grid-gap: 10px;
+    margin: 10px;
     border: 1px solid var(--page-inner-border);
     border-radius: 15px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     align-items: center;
-    /* justify-content: space-between; */
     background-color: var(--main-back-color);
 }
 
 .nameLink {
     grid-area: name;
-    display: grid;
-    width: 100%;
-    text-align: center;
-    /* justify-self: center; */
+    justify-self: center;
     align-self: flex-start;
-    border: 1px solid forestgreen;
-    font-size: 40px;
+    margin: 10px 0px;
 }
 
-.divName {
-    /* grid-area: name; */
-    /* display: flex; */
-    /* width: 100%; */
-    /* text-align: center; */
-    /* justify-self: center; */
-    /* align-self: flex-start; */
-    /* border: 1px solid forestgreen; */
-    /* font-size: 40px; */
+.nameSpan {
+    font-family: var(--headers-font);
+    font-size: 36px;
+    font-weight: normal;
+    color: var(--header-small-color);
+}
 
+.nameSpan:hover {
+    text-decoration: none;
+    text-shadow: 0px 0px 10px var(--button-shadow);
+    color: var(--button-text-color-hover);
+}
+
+.nameSpan:active {
+    color: var(--button-text-color-active);
+    text-shadow: none;
 }
 
 .avatarLink {
     grid-area: avatar;
+    width: max-content;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
+}
+
+.avatarLink:hover {
+    box-shadow: 0px 0px 10px var(--button-shadow);
+}
+
+.avatarLink:active {
+    box-shadow: none;
 }
 
 .img {
-    width: 150px;
-    height: 200px;
-    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
 }
 
-.divStatus {
+.statusSpan {
     grid-area: status;
     align-self: stretch;
+    justify-self: center;
+    font-family: var(--input-text-font);
     font-size: 24px;
-    color: var(--status-text);
+    font-weight: normal;
+    color: var(--input-text-color);
 }
 
-.divFollow {
+.statusSpan:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.followDiv{
     grid-area: button;
+    display: grid;
     justify-self: end;
 }
 
 .followButton {
-    font-size: 28px;
+    outline: none;
+    border: 1px solid var(--button-border);
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: var(--button-back);
 }
 
 .followButton:hover {
-    cursor: pointer;
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
+}
+
+.followButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
 }
 
 .followButton:disabled {
-    font-size: 20px;
-    color: var(--button-disable);
+    background-color: var(--button-back-disable);
+    border: 1px solid var(--button-border-disable);
 }
 
-.spanUnchosen {
-    padding: 0px 3px 0px 3px;
+.followButton:disabled .followSpan {
+    color: var(--button-text-color-disable);
+}
+
+.followSpan {
+    text-align: center;
+    padding: 0px 5px;
+    text-transform: capitalize;
+    font-family: var(--button-text-font);
+    font-size: 20px;
+    color: var(--button-text-color);
+}
+
+.followSpan:hover {
+    text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.followSpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
 }

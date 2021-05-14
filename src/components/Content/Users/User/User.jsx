@@ -10,26 +10,30 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
     return (
         <div className={s.divUser}>
             <NavLink to={`/profile/${user.id}`} className={s.nameLink}>
-                <div className={s.divName}>
+                <span className={s.nameSpan}>
                     {user.name}
-                </div>
+                </span>
             </NavLink>
             <NavLink to={`/profile/${user.id}`} className={s.avatarLink}>
                 <Avatar src={avatar} className={s.img} />
             </NavLink>
-            <div className={s.divStatus}>
+            <span className={s.statusSpan}>
                 {user.status ? user.status : '"Nothing to say"'}
-            </div>
-            <div className={s.divFollow}>
+            </span>
+            <div className={s.followDiv}>
                 {user.followed
                 ? <Button disabled={followingInProgress
                     .some(id => id === user.id)}
                     onClick={() => unfollow(user.id)}
-                    span='Unfollow' className={s.followButton} />
+                    span='Unfollow'
+                    className={s.followButton}
+                    spanClass={s.followSpan} />
                 : <Button disabled={followingInProgress
                     .some(id => id === user.id)}
                     onClick={() => follow(user.id)}
-                    span='Follow' className={s.followButton} />
+                    span='Follow'
+                    className={s.followButton}
+                    spanClass={s.followSpan} />
                 }
             </div>
         </div>

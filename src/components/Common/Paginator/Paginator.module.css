@@ -1,19 +1,139 @@
 .divPages {
-    display:inline-flex;
-    width: 100%;
-    padding-bottom: 10px;
-    overflow: hidden;
-    font-size: 20px;
-    color: var(--findUsers-page);
+    display:flex;
+    margin: 10px;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
+    padding: 10px 0px;
+    background-color: var(--figure-color);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backButtons {
+    display: flex;
+    justify-self: flex-start;
+}
+
+.edgePageLink {
+    margin: 0px 5px;
+}
+
+.edgePageButton {
+    outline: none;
+    width: max-content;
+    height: 100%;
+    margin: 0px 10px;
+    border: 1px solid var(--paginator-border);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px var(--paginator-shadow);
+    background-color: var(--paginator-back);
+}
+
+.edgePageButton:hover {
     cursor: pointer;
+    box-shadow: 0px 0px 5px var(--paginator-shadow-hover);
+    border: 1px solid var(--paginator-border-hover);
+    background-color: var(--paginator-back-hover);
 }
 
-.spanChosen {
-    padding: 0px 10px 0px 10px;
-    font-weight:bolder;
-    color: var(--findUsers-page-chosen);
+.edgePageButton:active {
+    box-shadow: inset 0px 0px 5px var(--paginator-shadow-active);
+    border: 1px solid var(--paginator-border-active);
+    background-color: var(--paginator-back-active);
 }
 
-.spanUnchosen {
-    padding: 0px 3px 0px 3px;
+.edgePageSpan {
+    text-align: center;
+    padding: 0px 5px;
+    text-transform: lowercase;
+    font-family: var(--paginator-font);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--paginator-text-color);
+}
+
+.edgePageSpan:hover {
+    text-decoration: none;
+    color: var(--paginator-text-hover);
+}
+
+.edgePageSpan:active {
+    text-decoration: none;
+    color: var(--paginator-text-active);
+}
+
+.portionButton {
+    outline: none;
+    width: max-content;
+    border: 1px solid var(--paginator-border-hover);
+    border-radius: 10px;
+    background-color: var(--paginator-back-hover);
+}
+
+.portionButton:hover {
+    cursor: pointer;
+    border: 1px solid var(--paginator-border-active);
+    background-color: var(--paginator-back-active);
+}
+
+.portionButton:active {
+    border: 1px solid var(--paginator-border);
+    background-color: var(--paginator-back);
+}
+
+.portionSpan {
+    text-align: center;
+    padding: 10px 5px;
+    text-transform: lowercase;
+    font-family: var(--paginator-font);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--paginator-text-hover);
+}
+
+.portionSpan:hover {
+    text-decoration: none;
+    color: var(--paginator-text-active);
+}
+
+.portionSpan:active {
+    text-decoration: none;
+    color: var(--paginator-text-color);
+}
+
+.switchPageLink {
+    margin: 0px 5px 0px 10px;
+}
+
+.switchButton {
+    outline: none;
+    width: max-content;
+    border: 1px solid var(--paginator-border-hover);
+    border-radius: 100%;
+    background-color: var(--paginator-back);
+}
+
+.switchButton:hover {
+    cursor: pointer;
+    border: 1px solid var(--paginator-border-active);
+    background-color: var(--paginator-back-active);
+}
+
+.switchButton:active {
+    border: 1px solid var(--paginator-border);
+    background-color: var(--paginator-back);
+}
+
+.switchSpan {
+    padding: 0px 0px;
+}
+
+.switchSpan > i {
+    transform: scale(2);
+    padding: 5px;
+}
+
+.nextButtons {
+    display: flex;
+    justify-self: flex-end;
 }

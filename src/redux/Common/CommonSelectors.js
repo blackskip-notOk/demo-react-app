@@ -26,4 +26,12 @@ export const getJobIcons = state => {
 export const getPhotoIcon = state => {
     const photoIcon = state.common.icons.filter(i => i.name === 'photo');
     return photoIcon[0].icon;
+};
+
+
+export const getPaginatorIcons = state => {
+    const prevPage = state.common.iconsPaginator.filter(i => i.name === 'left');
+    const nextPage = state.common.iconsPaginator.filter(i => i.name === 'right');
+    const paginatorIcons = {prevPage: prevPage[0].icon, nextPage: nextPage[0].icon};
+    return paginatorIcons;
 }
