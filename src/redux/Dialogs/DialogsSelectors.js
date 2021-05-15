@@ -1,7 +1,3 @@
-export const getContacts = (state) => {
-    return state.dialogs.contacts;
-}
+export const getContacts = state => state.dialogs.contacts;
 
-export const getDialogs = (state) => {
-    return state.dialogs.dialogs;
-}
+export const getDialogs = state => state.dialogs.dialogs;

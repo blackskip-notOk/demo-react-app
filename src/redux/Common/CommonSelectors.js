@@ -1,34 +1,29 @@
-const getIcon = (state, name) => {
-    return state.common.icons.filter(i => i.name === name)[0].icon;
-}
+import { createSelector } from "reselect";
 
-export const getPhotoIcon = state => {
-    return getIcon(state, 'photo');
-}
-
-export const getErrorIcon = (state) => {
-    return getIcon(state, 'error');
-}
-
-// export const getIcons = (state) => {
-//     return state.common.icons;
-// }
-
-export const getIconsHeader = (state) => {
-    return state.common.iconsHeader;
-}
+export const getIconsHeader = state => state.common.iconsHeader;
 
 export const getSearch = state => state.common.search.icon;
 
+const getIcons = state => state.common.icons;
 
-export const getJobIcons = state => {
-    const jobIcons = state.common.icons.filter(i => i.name === 'job');
+const getPagIcons = state => state.common.iconsPaginator;
+//created selectors
+export const getPhotoIcon = createSelector(getIcons, (icons) => {
+    return icons.find(i => i.name === 'photo').icon;
+});
+
+export const getErrorIcon = createSelector(getIcons, (icons) => {
+    return icons.find(i => i.name === 'error').icon;
+});
+
+export const getJobIcons = createSelector(getIcons, (icons) => {
+    const jobIcons = icons.filter(i => i.name === 'job');
     return [jobIcons[0].icon, jobIcons[1].icon];
-}
+});
 
-export const getPaginatorIcons = state => {
-    const prevPage = state.common.iconsPaginator.filter(i => i.name === 'left');
-    const nextPage = state.common.iconsPaginator.filter(i => i.name === 'right');
-    const paginatorIcons = {prevPage: prevPage[0].icon, nextPage: nextPage[0].icon};
+export const getPaginatorIcons = createSelector(getPagIcons, (icons) => {
+    const prevPage = icons.find(i => i.name === 'left');
+    const nextPage = icons.find(i => i.name === 'right');
+    const paginatorIcons = {prevPage: prevPage.icon, nextPage: nextPage.icon};
     return paginatorIcons;
-}
+});

@@ -1,23 +1,11 @@
-export const getIsAuth = (state) => {
-    return state.auth.isAuth;
-}
+export const getIsAuth = state => state.auth.isAuth;
 
-export const getCaptcha = (state) => {
-    return state.auth.captcha;
-}
+export const getCaptcha = state => state.auth.captcha;
 
-export const getServerErrorMessage = (state) => {
-    return state.auth.errorMessage;
-}
+export const getServerErrorMessage = state => state.auth.errorMessage;
 
-export const getUserLogin = (state) => {
-    return state.auth.login;
-}
+export const getUserLogin = state => state.auth.login;
 
-export const getAuthUserId = (state) => {
-    return state.auth.userId;
-}
+export const getAuthUserId = state => state.auth.userId;
 
-export const getLoginInProgress = state => {
-    return state.auth.loginInProgress;
-}
+export const getLoginInProgress = state => state.auth.loginInProgress;

@@ -1,32 +1,33 @@
 import { createSelector } from 'reselect';
-
-const getUsersSelector = (state) => {
-    return state.users.users
-}
-
 export const getIsFetching = (state) => {
     return state.users.isFetching;
 }
+export const getUsers = state => state.users.users;
 
-export const getFollowingInProgress = (state) => {
-    return state.users.followingInProgress;
-}
-
-export const getUsers = createSelector(getUsersSelector, getIsFetching, (users, isFetching) => {
-    return users.filter(u => true);
+export const getFollowingInProgress = state => state.users.followingInProgress;
+//simple selectors
+const getPageSize = state => state.users.pageSize;
+const getTotalCount = state => state.users.totalCount;
+const getCurrentPage = state => state.users.currentPage;
+const getPortionSize = state => state.users.portionSize;
+//created selectors
+const getPagesCount = createSelector(
+    getTotalCount, getPageSize, (totalCount, pageSize) => {
+    return Math.ceil(totalCount / pageSize);
 });
 
-export const getPagesInfo = state => {
-    const pageSize = state.users.pageSize;
-    const totalCount = state.users.totalCount;
-    const currentPage = state.users.currentPage;
+const getPortionCount = createSelector(
+    getPagesCount, getPortionSize, (pagesCount, portionSize) => {
+    return Math.ceil(pagesCount / portionSize);
+});
+
+export const getPagesInfo = createSelector(
+    getPagesCount, getPageSize, getCurrentPage, getPortionCount, getPortionSize,
+    (pagesCount, pageSize, currentPage, portionCount, portionSize) => {
     const pages = [];
-    const pagesCount = Math.ceil(totalCount / pageSize);
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    const portionSize = state.users.portionSize
-    const portionCount = Math.ceil(pagesCount / portionSize);
     return {pageSize, currentPage, pages, portionCount,
         portionSize};
-};
+});
