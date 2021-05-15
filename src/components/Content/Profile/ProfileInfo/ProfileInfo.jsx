@@ -33,7 +33,7 @@ const ProfileInfo = ({savePhoto, userId, photos, fullName, aboutMe, status,
             <ProfileStatus userId={userId}
                 aboutMe={aboutMe} status={status}
                 updateUserStatus={updateUserStatus}
-                className={s.statusDiv} errorIcon={errorIcon}
+                errorIcon={errorIcon}
                 isOwner={isOwner} />
             <div className={s.aboutMeDiv}>About me: {aboutMe ?
                 aboutMe : <span>no information</span>}</div>

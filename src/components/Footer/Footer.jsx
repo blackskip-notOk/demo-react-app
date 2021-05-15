@@ -1,11 +1,10 @@
 import React from "react";
 import s from './Footer.module.css';
 
-const Footer = ({info, ...props}) => {
+const Footer = (props) => {
     return (
         <footer className={s.footer}>
-            {info}
-            {props.children}
+            <span className={s.footerSpan}>Someday there will be information about creator</span>
         </footer>
     );
 }

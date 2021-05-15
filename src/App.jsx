@@ -72,7 +72,7 @@ class App extends React.Component {
         </Switch>
         </div>
         <div className = 'footer'>
-          <Footer info = 'Someday there will be information about creator' />
+          <Footer />
         </div>
       </div>
     );

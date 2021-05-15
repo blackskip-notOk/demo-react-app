@@ -10,7 +10,6 @@ import { getPosts, getProfile, getStatus, getIsOwner,
     getIsFetching, getContactsIcons, getIsSettingsMode, getServerErrorMessage, getProfileInfo, getisProfileUpdate } from '../../../redux/Profile/ProfileSelectors';
 import Preloader from '../../Common/Preloader/Preloader';
 import Settings from '../Settings/Settings';
-import SettingsContainer from '../Settings/SettingsContainer';
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
@@ -45,7 +44,7 @@ class ProfileContainer extends Component {
                 isProfileUpdate={this.props.isProfileUpdate}
                 profile={this.props.profile} /> :
             <>
-                {this.props.isFetching ? <Preloader type='profile' /> : null}
+                {this.props.isFetching && <Preloader type='profile' />}
                 <Profile {...this.props.profile} {...this.props} />
             </>
         )

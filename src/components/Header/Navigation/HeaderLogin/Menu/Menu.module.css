@@ -1,5 +1,6 @@
 .menuUl {
     position:absolute;
+    z-index: 2000000;
     width: 250px;
     height: max-content;
     top: 100%;

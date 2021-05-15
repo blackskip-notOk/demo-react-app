@@ -1,9 +1,15 @@
 .footer {
     grid-area: footer;
+    margin: 10px 10px 10px 10px;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
     padding: 10px;
     text-align: center;
-    font-family: 'Concert One', cursive;
+    background-color: var(--panels-back);
+}
+
+.footerSpan {
+    font-family: var(--headers-font);
     font-size: 12px;
-    color: var(--footer-text);
-    background-color: var(--footer-back);
+    color: var(--placeholder-color);
 }

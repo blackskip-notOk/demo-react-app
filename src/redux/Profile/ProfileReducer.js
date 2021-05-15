@@ -154,6 +154,7 @@ export const updateProfileProperties = (userId, aboutMe, lookingForAJob,
         dispatch(switchIsFetching(false));
     if (response.resultCode === 0) {
         dispatch(updateProfileSuccess(true));
+        //it's for settings page. Need to Fix it!
         // profileAPI.getUserProfile(userId, userId);
         // dispatch(setProfileProperties(response.data.Properties));
     } else if (response.resultCode === 1) {

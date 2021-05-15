@@ -14,7 +14,7 @@ const UsersContainer = ({requestUsers, isFetching, users, unfollow,
         [pagesInfo.currentPage, pagesInfo.pageSize, requestUsers]);
     return (
         <>
-        {isFetching ? <Preloader /> : null}
+        {isFetching && <Preloader />}
         <Users users={users}
             unfollow={unfollow}
             follow={follow}

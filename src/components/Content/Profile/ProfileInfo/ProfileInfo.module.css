@@ -76,14 +76,6 @@
     text-decoration: none;
 }
 
-.statusDiv {
-    grid-area: status;
-    display: flex;
-    justify-self: center;
-    width: 100%;
-    cursor: text;
-}
-
 .aboutMeDiv {
     grid-area: aboutMe;
     display: flex;
