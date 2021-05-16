@@ -1,7 +1,5 @@
 .divPages {
     display:flex;
-    /* position: relative; */
-    /* z-index: 1; */
     margin: 10px;
     border: 1px solid var(--panels-border);
     border-radius: 15px;
@@ -127,7 +125,7 @@
 }
 
 .switchSpan {
-    padding: 0px 0px;
+    padding: 0px;
 }
 
 .switchSpan > i {

@@ -6,7 +6,7 @@ import { addMessageSchema } from '../../../../utils/validators/validator';
 import Button from '../../../Common/Button/Button';
 import s from "./AddMessageForm.module.css";
 
-const AddMessageForm = ({addMessage, icon}) => {
+const AddMessageForm = React.memo(({addMessage, icon}) => {
     const {register, handleSubmit, formState: {touchedFields, errors}} = useForm({
         resolver: yupResolver(addMessageSchema)
     });
@@ -27,6 +27,6 @@ const AddMessageForm = ({addMessage, icon}) => {
                 spanClass={s.addMessageSpan} />
         </form>
     )
-}
+});
 
 export default AddMessageForm;

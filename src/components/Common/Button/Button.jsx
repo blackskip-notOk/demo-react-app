@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = (props) => {
+const Button = React.memo((props) => {
     return (
             <button
                 autoFocus={props.autoFocus}
@@ -20,6 +20,6 @@ const Button = (props) => {
             <span className={props.spanClass}>{props.span}</span>
             </button>
     );
-}
+});
 
 export default Button;

@@ -1,9 +1,9 @@
 import React from "react";
 import { addPropsInObject } from '../../../../../utils/object-helpers';
 import Figure from "../../../../Common/Figure/Figure";
-import s from './Ul.module.css';
+import s from './ProfileInfoUl.module.css';
 
-const Ul = ({contacts, className, contactsIcons}) => {
+const ProfileInfoUl = React.memo(({contacts, className, contactsIcons}) => {
 
     const contactsArray = addPropsInObject(contacts, contactsIcons);
 
@@ -25,6 +25,6 @@ const Ul = ({contacts, className, contactsIcons}) => {
             {contact}
         </ul>
     );
-}
+});
 
-export default Ul;
+export default ProfileInfoUl;

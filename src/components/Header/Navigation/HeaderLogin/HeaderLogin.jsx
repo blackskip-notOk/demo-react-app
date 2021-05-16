@@ -3,15 +3,14 @@ import Avatar from "../../../Common/Avatar/Avatar";
 import s from './HeaderLogin.module.css';
 import Menu from "./Menu/Menu";
 
-const HeaderLogin = ({logout, userLogin, isVisible, authUserId,
+const HeaderLogin = React.memo(({logout, userLogin, isVisible, authUserId,
     toggleVisibility, authUserAvatar, getAuthUserAvatar,
     isSettingsMode, switchIsSettingsMode}) => {
 
-useEffect(() => {
-    getAuthUserAvatar(authUserId)}, [authUserId, getAuthUserAvatar]);
+    useEffect(() => {
+        getAuthUserAvatar(authUserId)}, [authUserId, getAuthUserAvatar]);
 
-const onVisibilityChange = () => toggleVisibility(!isVisible);
-
+    const onVisibilityChange = () => toggleVisibility(!isVisible);
     return (
         <div className={s.div}>
             <div className={s.profileDiv} onClick={onVisibilityChange}>
@@ -26,6 +25,6 @@ const onVisibilityChange = () => toggleVisibility(!isVisible);
             isVisible={isVisible} />}
         </div>
     );
-}
+});
 
 export default HeaderLogin;

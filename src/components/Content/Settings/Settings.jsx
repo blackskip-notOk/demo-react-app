@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createFormError } from '../../../utils/form-helper';
 import Button from '../../Common/Button/Button';
-import Preloader from '../../Common/Preloader/Preloader';
 import s from './Settings.module.css';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { settingsSchema } from '../../../utils/validators/validator';
 
-const Settings = ({authUserId, isFetching, updateProfileProperties,
+const Settings = React.memo(({authUserId, isFetching, updateProfileProperties,
     serverErrorMessages, icon, profileInfo, isProfileUpdate, ...props}) => {
     const {register, handleSubmit, formState: {touchedFields, errors}} = useForm({
         resolver: yupResolver(settingsSchema)
@@ -121,7 +119,6 @@ const Settings = ({authUserId, isFetching, updateProfileProperties,
 
     const serverErrorMessage = serverErrorMessages?.map((error, index) => createFormError(s.divServerError, icon,
         error, s.figure, index));
-
     return (
         <div className={s.formContainer}>
         {/* {!isFetching && <Preloader type='profile' />} */}
@@ -275,6 +272,6 @@ const Settings = ({authUserId, isFetching, updateProfileProperties,
             </form>
             </div>
     );
-}
+});
 
 export default Settings;

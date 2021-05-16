@@ -2,22 +2,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { createListFromArray } from '../../../../utils/object-helpers';
 import Figure from '../../../Common/Figure/Figure';
-import Li from './Li/Li';
-import UnderText from './Li/UnderText/UnderText';
+import NavigationLi from './NavigationLi/NavigationLi';
+import UnderText from './NavigationLi/UnderText/UnderText';
 import s from './NavigationUl.module.css';
 import st from './Li/NavIcon/NavIcon.module.css';
 
-const NavigationUl = ({iconsHeader, authUserId, getProfileData, ...props}) => {
-    let li = createListFromArray(iconsHeader, Li);
+const NavigationUl = React.memo(({iconsHeader, authUserId,
+    getProfileData, ...props}) => {
+    let li = createListFromArray(iconsHeader, NavigationLi);
 
     const refreshProfile = () => {
         let userId = authUserId;
-            if (!userId) {
-                props.history.push('/login');
-            }
+            if (!userId) props.history.push('/login');
         getProfileData(userId, authUserId);
     }
-
     return (
         <ul className={s.ul}>
             <div className={st.div}>
@@ -34,6 +32,6 @@ const NavigationUl = ({iconsHeader, authUserId, getProfileData, ...props}) => {
             {li}
         </ul>
     );
-}
+});
 
 export default NavigationUl;

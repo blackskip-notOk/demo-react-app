@@ -5,7 +5,7 @@ import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
 import s from './User.module.css';
 
-const User = ({user, followingInProgress, unfollow, follow}) => {
+const User = React.memo(({user, followingInProgress, unfollow, follow}) => {
     let avatar = user.photos.small || userAvatar;
     return (
         <div className={s.divUser}>
@@ -38,6 +38,6 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
             </div>
         </div>
     )
-}
+});
 
 export default User;

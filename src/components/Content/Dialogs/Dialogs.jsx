@@ -1,16 +1,15 @@
 import React from 'react';
-import { createListFromArray, createReverseListFromArray } from '../../../utils/object-helpers';
+import { createListFromArray } from '../../../utils/object-helpers';
 import Search from '../../Common/Search/Search';
 import Chat from './Chat/Chat';
 import Dialog from './Dialog/Dialog';
 import AddMessageForm from './Message/AddMessageForm';
 import s from "./Dialogs.module.css";
 
-const Dialogs = ({contacts, dialogs, icon, search,
+const Dialogs = React.memo(({contacts, dialogs, icon, search,
     addMessage}) => {
     let contact = createListFromArray(contacts, Chat);
     let dialog = createListFromArray(dialogs, Dialog);
-
     return (
         <div className={s.container}>
             <Search search={search} title='Find dialog' />
@@ -27,6 +26,6 @@ const Dialogs = ({contacts, dialogs, icon, search,
             </div>
         </div>
     );
-}
+});
 
 export default Dialogs;

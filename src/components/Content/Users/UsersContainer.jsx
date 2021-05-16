@@ -7,7 +7,7 @@ import { getFollowingInProgress, getIsFetching, getUsers, getPagesInfo } from '.
 import Preloader from '../../Common/Preloader/Preloader';
 import Users from './Users';
 
-const UsersContainer = ({requestUsers, isFetching, users, unfollow,
+const UsersContainer = React.memo(({requestUsers, isFetching, users, unfollow,
     follow, followingInProgress, pagesInfo, paginatorIcons}) => {
     useEffect(() => {
         requestUsers(pagesInfo.currentPage, pagesInfo.pageSize)},
@@ -29,7 +29,7 @@ const UsersContainer = ({requestUsers, isFetching, users, unfollow,
             paginatorIcons={paginatorIcons} />
         </>
     )
-}
+});
 
 const mapStateToProps = (state) => {
     return {

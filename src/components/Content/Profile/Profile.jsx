@@ -4,18 +4,14 @@ import MyPosts from "./MyPosts/MyPosts";
 import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
-    jobIcons, posts, addPost, profile, isAuth, authUserId, isOwner,
-    savePhoto, photoIcon, contactsIcons}) => {
+const Profile = React.memo(({photos, status, updateUserStatus, errorIcon,
+    jobIcons, posts, addPost, profile, isOwner, savePhoto,
+    photoIcon, contactsIcons}) => {
 
     if (!profile) return <Preloader type='profile' />
-
     return (
         <div className={s.profileDiv}>
             <ProfileInfo {...profile}
-                isAuth={isAuth}
-                authUserId={authUserId}
-                userId={userId}
                 isOwner={isOwner}
                 savePhoto={savePhoto}
                 status={status}
@@ -31,6 +27,6 @@ const Profile = ({photos, status, updateUserStatus, userId, errorIcon,
                 isOwner={isOwner} />
         </div>
     );
-}
+});
 
 export default Profile;

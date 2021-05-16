@@ -2,7 +2,7 @@ import { ADD_MESSAGE, DELETE_MESSAGE } from "../Actions/actionsTypes";
 
 let initialState = {
     contacts: [
-        { id: 1, name: 'Master Yoda MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM', avatar: {src: null, alt: 'Master Yoda avatar'} },
+        { id: 1, name: 'Fake Friend', avatar: {src: null, alt: 'Master Yoda avatar'} },
     ],
     dialogs: [
         { id: 1, message: "диалоги в процессе разработки..." },

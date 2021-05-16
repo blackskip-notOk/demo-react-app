@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
-import { getAuthUserId, getIsAuth } from '../../../redux/Auth/AuthSelectors';
+import { getAuthUserId } from '../../../redux/Auth/AuthSelectors';
 import { getErrorIcon, getJobIcons, getPhotoIcon } from '../../../redux/Common/CommonSelectors';
 import { addPost, updateUserStatus, getProfileData, savePhoto,
     updateProfileProperties } from '../../../redux/Profile/ProfileReducer';
@@ -31,7 +31,6 @@ class ProfileContainer extends Component {
         }
         this.props.getProfileData(userId, this.props.authUserId);
     }
-
     render() {
         return (
         this.props.isSettingsMode ?
@@ -60,7 +59,6 @@ const mapStateToProps = (state) => {
         photoIcon: getPhotoIcon(state),
         status: getStatus(state),
         authUserId: getAuthUserId(state),
-        isAuth: getIsAuth(state),
         isOwner: getIsOwner(state),
         isFetching: getIsFetching(state),
         isSettingsMode: getIsSettingsMode(state),

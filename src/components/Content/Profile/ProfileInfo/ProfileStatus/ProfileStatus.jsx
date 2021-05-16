@@ -6,8 +6,7 @@ import { statusSchema } from "../../../../../utils/validators/validator";
 import Button from "../../../../Common/Button/Button";
 import s from './ProfileStatus.module.css';
 
-const ProfileStatus = ({updateUserStatus, userId, aboutMe,
-    errorIcon, isOwner, ...props}) => {
+const ProfileStatus = React.memo(({updateUserStatus, errorIcon, isOwner, ...props}) => {
 
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
@@ -41,7 +40,6 @@ const ProfileStatus = ({updateUserStatus, userId, aboutMe,
 
     const errorStatusClass = touchedFields?.status && errors?.status && s.error;
     const statusError = errors?.status?.message;
-
     return (
         <form id='status'
             autoComplete='false'
@@ -73,6 +71,6 @@ const ProfileStatus = ({updateUserStatus, userId, aboutMe,
             }
         </form>
     );
-}
+});
 
 export default ProfileStatus;

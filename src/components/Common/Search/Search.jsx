@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Figure from "../Figure/Figure";
 import s from './Search.module.css';
 
-
-const Search = ({search}) => {
+const Search = React.memo(({search}) => {
     const [searchValue, setSearchValue] = useState('');
     const [visibility, setVisibility] = useState(false);
 
@@ -14,7 +13,6 @@ const Search = ({search}) => {
     const onSearchChange = (e) => {
         setSearchValue(e.currentTarget.value);
     }
-    const inputClass = s.input;
     return (
         <div className={s.searchDiv}>
             <Figure icon={search}
@@ -28,6 +26,6 @@ const Search = ({search}) => {
             }
         </div>
     );
-}
+});
 
 export default Search;

@@ -11,10 +11,16 @@ export const maxLengthCreator = (max) => (value) => {
 
     return undefined;
 }
-
+//yup schemas
 export const statusSchema = yup.object().shape({
     status: yup.string()
     .max(300, 'maximum 300 symbols')
+});
+
+export const newPostSchema = yup.object().shape({
+    post: yup.string()
+        .required('your post is empty')
+        .max(200, 'maximum 200 symbols')
 });
 
 export const addMessageSchema = yup.object().shape({

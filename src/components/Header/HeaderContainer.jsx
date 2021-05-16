@@ -11,9 +11,9 @@ import Header from './Header';
 import { compose } from 'redux';
 import { getIsSettingsMode } from '../../redux/Profile/ProfileSelectors';
 
-const HeaderContainer = (props) => {
+const HeaderContainer = React.memo((props) => {
     return <Header {...props} />
-}
+});
 
 const mapStateToProps = (state) => {
     return {

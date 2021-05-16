@@ -4,7 +4,7 @@ import Logo from "../../Common/Logo/Logo";
 import s from './Navheader.module.css';
 import NavigationUl from "./NavigationUl/NavigationUl";
 
-const Navheader = ({iconsHeader, logout, userLogin, isVisible,
+const Navheader = React.memo(({iconsHeader, logout, userLogin, isVisible,
     toggleVisibility, authUserAvatar, authUserId, getAuthUserAvatar,
     getProfileData, isSettingsMode, switchIsSettingsMode}) => {
     return (
@@ -24,6 +24,6 @@ const Navheader = ({iconsHeader, logout, userLogin, isVisible,
                 switchIsSettingsMode={switchIsSettingsMode} />
         </nav>
     );
-}
+});
 
 export default Navheader;

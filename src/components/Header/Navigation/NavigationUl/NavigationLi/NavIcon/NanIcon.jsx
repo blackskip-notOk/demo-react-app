@@ -4,7 +4,7 @@ import Figure from "../../../../../Common/Figure/Figure";
 import Undertext from '../UnderText/UnderText';
 import s from './NavIcon.module.css';
 
-const NavIcon = ({pathway, icon, undertext}) => {
+const NavIcon = React.memo(({pathway, icon, undertext}) => {
     return (
     <div className={s.div}>
         <NavLink className={s.a} to={pathway} activeClassName={s.active}>
@@ -13,6 +13,6 @@ const NavIcon = ({pathway, icon, undertext}) => {
         <Undertext undertext={undertext} className={s.divText}/>
     </div>
     );
-}
+});
 
 export default NavIcon;

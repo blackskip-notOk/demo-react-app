@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import Page from "./Page/Page";
@@ -7,9 +7,13 @@ import s from './Paginator.module.css';
 problem: after update page url stay with page=p, but load current page =1.
 When page updated i want to stay on page=p, or url stay with page=currentPage.
 */
-const Paginator = ({portionSize, requestUsers, pageSize, pages,
+const Paginator = React.memo(({portionSize, requestUsers, pageSize, pages,
     currentPage, portionCount, paginatorIcons}) => {
     const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
+
+    useEffect(() => {
+        setPortionNumber(portionNumber)
+    }, [portionNumber]);
 
     const leftPortion = (portionNumber - 1) * portionSize + 1;
     const rightPortion = portionNumber * portionSize;
@@ -86,6 +90,6 @@ const Paginator = ({portionSize, requestUsers, pageSize, pages,
             </div>
         </div>
     );
-}
+});
 
 export default Paginator;

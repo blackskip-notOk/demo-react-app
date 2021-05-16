@@ -4,7 +4,7 @@ import Avatar from '../../../Common/Avatar/Avatar';
 import s from './Chat.module.css';
 import userAvatar from '../../../../image/avatars/noAvatar.png';
 
-const Chat = ({id, avatar, name}) => {
+const Chat = React.memo(({id, avatar, name}) => {
     return (
         <div className={s.chatDiv}>
             <NavLink to={`/dialogs/chats/${id}`}
@@ -15,6 +15,6 @@ const Chat = ({id, avatar, name}) => {
             </NavLink>
         </div>
     );
-}
+});
 
 export default Chat;

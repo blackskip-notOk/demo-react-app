@@ -1,7 +1,7 @@
 import React from "react";
 import NavIcon from './NavIcon/NanIcon';
 
-const Li = ({pathway, icon, undertext}) => {
+const NavigationLi = React.memo(({pathway, icon, undertext}) => {
     return (
         <li>
             <NavIcon
@@ -10,5 +10,6 @@ const Li = ({pathway, icon, undertext}) => {
                 undertext={undertext}/>
         </li>
     );
-}
-export default Li;
+});
+
+export default NavigationLi;
