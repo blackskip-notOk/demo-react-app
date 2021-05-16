@@ -3,10 +3,9 @@ import './css/app.css';
 import './css/variables.css';
 import React, { lazy } from 'react';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
+import { HashRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import Preloader from './components/Common/Preloader/Preloader';
-// import UsersContainer from './components/Content/Users/UsersContainer';
 import Footer from './components/Footer/Footer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -83,11 +82,11 @@ const AppCompose = compose(withRouter,
   connect(mapStateToProps, {initializeApp}))(App);
 const AppContainer = props => {
   return (
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppCompose />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 export default AppContainer;
