@@ -2,32 +2,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router';
-import * as yup from 'yup';
 import { createFormError } from '../../../utils/form-helper';
+import { loginFormSchema } from '../../../utils/validators/validator';
 import Button from '../../Common/Button/Button';
 import Preloader from '../../Common/Preloader/Preloader';
 import s from './LoginForm.module.css';
 
-const schema = yup.object().shape({
-    email: yup.string()
-        .trim()
-        .required('email is required')
-        .max(50, 'too long email')
-        .email('enter correct email'),
-    password: yup.string()
-        .required('password is required')
-        .min(4, 'too short password')
-        .max(20, 'too long password')
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-            'password is incorrect: example NkC6i4wL'),
-    captcha: yup.string()
-});
 
 const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
     loginInProgress}) => {
     const {register, handleSubmit, formState: {errors, touchedFields}
     } = useForm({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(loginFormSchema)
     });
 
     const onSubmit = data => {
@@ -80,6 +66,13 @@ const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
                 serverErrorMessage, s.figure)}
             <Button type='submit' span='Sing in' className={s.singinButton}
                 spanClass={s.singinSpan} disabled={loginInProgress} />
+            {serverErrorMessage === 'You are not authorized' &&
+                <div className={s.employerDiv}>
+                    <span className={s.employerSpan}>Данные тестового аккаунта:</span>
+                    <span className={s.employerSpan}>Email: <b>free@samuraijs.com</b></span>
+                    <span className={s.employerSpan}>Password: <b>free</b></span>
+                </div>
+            }
             {loginInProgress && <Preloader type='login'
                 className={s.preloaderDiv} imgClass={s.img} />}
         </form>

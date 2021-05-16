@@ -170,3 +170,37 @@
 .formError {
     border: 1px solid var(--error-color);
 }
+
+.employerDiv {
+    display: grid;
+    justify-self: center;
+}
+
+.employerSpan {
+    cursor: default;
+    padding: 5px 0px;
+    font-family: var(--alternative-font);
+    font-size: 14px;
+    color: var(--header-small-color);
+}
+
+.employerSpan:hover {
+    text-decoration: none;
+}
+
+.employerSpan:active {
+    cursor: default;
+    padding: 5px 0px;
+    font-family: var(--alternative-font);
+    font-size: 14px;
+    color: var(--header-small-color);
+}
+
+.employerSpan > b {
+    cursor: default;
+    padding: 5px 5px;
+    font-family: var(--alternative-font);
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--header-small-color);
+}

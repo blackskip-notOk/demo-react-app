@@ -12,6 +12,21 @@ export const maxLengthCreator = (max) => (value) => {
     return undefined;
 }
 //yup schemas
+export const loginFormSchema = yup.object().shape({
+    email: yup.string()
+        .trim()
+        .required('email is required')
+        .max(50, 'too long email')
+        .email('enter correct email'),
+    password: yup.string()
+        .required('password is required')
+        .min(4, 'too short password')
+        .max(20, 'too long password')
+        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+            'password is incorrect: example NkC6i4wL'),
+    captcha: yup.string()
+});
+
 export const statusSchema = yup.object().shape({
     status: yup.string()
     .max(300, 'maximum 300 symbols')
