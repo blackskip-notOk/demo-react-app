@@ -3,7 +3,7 @@ import s from './Post.module.css';
 import Avatar from '../../../../Common/Avatar/Avatar';
 import Message from './Message';
 import Like from './Like';
-import userAvatar from '../../../../../image/bb-8.png';
+import userAvatar from '../../../../../image/avatars/noAvatar.png';
 
 const Post = ({photos, post, likes}) => {
     return (

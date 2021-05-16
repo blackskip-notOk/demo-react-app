@@ -3,10 +3,10 @@ import './css/app.css';
 import './css/variables.css';
 import React, { lazy } from 'react';
 import { connect, Provider } from 'react-redux';
-import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import Preloader from './components/Common/Preloader/Preloader';
-import UsersContainer from './components/Content/Users/UsersContainer';
+// import UsersContainer from './components/Content/Users/UsersContainer';
 import Footer from './components/Footer/Footer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -15,14 +15,12 @@ import { initializeApp } from './redux/App/AppReducer';
 import { getInitialized } from './redux/App/AppSelectors';
 import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
-// import ToolbarFlow from './components/Common/ToolBar/Toolbar';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import { getIsAuth } from './redux/Auth/AuthSelectors';
-// import SettingsContainer from './components/Content/Settings/SettingsContainer';
 
 const FriendsContainer = lazy(() => import('./components/Content/Friends/FriendsContainer'));
-// const AdditionsContainer = lazy(() => import('./components/Content/Additions/AdditionsContainer'));
 const DialogsContainer = lazy(() => import('./components/Content/Dialogs/DialogsContainer'));
+const UsersContainer = lazy(() => import('./components/Content/Users/UsersContainer'));
 
 class App extends React.Component {
   componentDidMount() {
@@ -50,23 +48,18 @@ class App extends React.Component {
         </div>
         <div className = 'content'>
         <Switch>
+          <Route exact strict path = '/'
+            render = { () => <ProfileContainer />} />
           <Route path = '/profile/:userId?'
-            render = { () => <ProfileContainer />
-            } />
+            render = { () => <ProfileContainer /> } />
           <Route path = '/dialogs'
             render = {withSuspense(DialogsContainer)} />
           <Route path = '/friends'
             render = {withSuspense(FriendsContainer)} />
           <Route path = '/users'
-            render = { () => <UsersContainer /> } />
-          {/* <Route path = '/additions'
-            render = {withSuspense(AdditionsContainer)} /> */}
-          {/* <Route path = '/settings'
-            render = { () => <SettingsContainer /> } /> */}
+            render = {withSuspense(UsersContainer)} />
           <Route path = '/login'
             render = { () => <Login /> } />
-          <Route path = '/'
-            render = { () => <Redirect to = '/profile' /> } />
           <Route path = '*'
             render = {() => <div>404 PAGE NOT FOUND</div>} />
         </Switch>

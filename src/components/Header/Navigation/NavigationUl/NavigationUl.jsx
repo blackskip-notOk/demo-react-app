@@ -5,7 +5,7 @@ import Figure from '../../../Common/Figure/Figure';
 import NavigationLi from './NavigationLi/NavigationLi';
 import UnderText from './NavigationLi/UnderText/UnderText';
 import s from './NavigationUl.module.css';
-import st from './Li/NavIcon/NavIcon.module.css';
+import st from './NavigationLi/NavIcon/NavIcon.module.css';
 
 const NavigationUl = React.memo(({iconsHeader, authUserId,
     getProfileData, ...props}) => {

@@ -3,7 +3,7 @@ import Preloader from "../components/Common/Preloader/Preloader";
 
 export const withSuspense = (Component) => {
     return (props) => {
-        return <Suspense fallback={<Preloader />}>
+        return <Suspense fallback={<Preloader type='app' />}>
                 <Component {...props} />
             </Suspense>
     }
