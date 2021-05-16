@@ -21,9 +21,7 @@ export const loginFormSchema = yup.object().shape({
     password: yup.string()
         .required('password is required')
         .min(4, 'too short password')
-        .max(20, 'too long password')
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-            'password is incorrect: example NkC6i4wL'),
+        .max(20, 'too long password'),
     captcha: yup.string()
 });
 
