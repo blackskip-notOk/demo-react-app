@@ -41,7 +41,9 @@ class ProfileContainer extends Component {
                 icon={this.props.errorIcon}
                 profileInfo={this.props.profileInfo}
                 isProfileUpdate={this.props.isProfileUpdate}
-                profile={this.props.profile} /> :
+                profile={this.props.profile}
+                savePhoto={this.props.savePhoto}
+                photoIcon={this.props.photoIcon} /> :
             <>
                 {this.props.isFetching && <Preloader type='profile' />}
                 <Profile {...this.props.profile} {...this.props} />

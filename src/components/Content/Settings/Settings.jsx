@@ -5,9 +5,11 @@ import Button from '../../Common/Button/Button';
 import s from './Settings.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { settingsSchema } from '../../../utils/validators/validator';
+import Figure from '../../Common/Figure/Figure';
 
 const Settings = React.memo(({authUserId, isFetching, updateProfileProperties,
-    serverErrorMessages, icon, profileInfo, isProfileUpdate, ...props}) => {
+    serverErrorMessages, icon, profileInfo, isProfileUpdate,
+    savePhoto, photoIcon, ...props}) => {
     const {register, handleSubmit, formState: {touchedFields, errors}} = useForm({
         resolver: yupResolver(settingsSchema)
     });
@@ -32,6 +34,11 @@ const Settings = React.memo(({authUserId, isFetching, updateProfileProperties,
     const onFullNameChange = (e) => {
         setFullName(e.currentTarget.value);
     };
+
+    const onAvatarChanged = (e) => {
+        let avatarSrc = e.target.files;
+        if (avatarSrc.length) savePhoto(avatarSrc[0]);
+    }
 
     const onAboutMeChange = (e) => {
         setAboutMe(e.currentTarget.value);
@@ -96,6 +103,7 @@ const Settings = React.memo(({authUserId, isFetching, updateProfileProperties,
     const errorAboutMeClass = touchedFields?.aboutMe && errors?.aboutMe && s.error;
     const errorJobDescriptionClass = touchedFields?.jobDescription && errors?.jobDescription && s.error;
     const errorFullNameClass = touchedFields?.fullName && errors?.fullName && s.error;
+    const errorAvatarClass = touchedFields?.avatar && errors?.avatar && s.error;
     const errorGithubClass = touchedFields?.github && errors?.github && s.error;
     const errorVkClass = touchedFields?.vk && errors?.vk && s.error;
     const errorFacebookClass = touchedFields?.facebook && errors?.facebook && s.error;
@@ -121,40 +129,48 @@ const Settings = React.memo(({authUserId, isFetching, updateProfileProperties,
         error, s.figure, index));
     return (
         <div className={s.formContainer}>
-        {/* {!isFetching && <Preloader type='profile' />} */}
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <h1 className={s.idSpan}>Your ID: {authUserId}</h1>
             <div className={s.aboutMeDiv}>
-            <div className={s.nicknameDiv}>
-                <label htmlFor={'fullName'} className={s.label}>nickname:</label>
-                <input {...register('fullName')}
-                    type='text'
-                    className={`${s.input} ${errorFullNameClass}`}
-                    placeholder='your nickname...'
-                    value={fullName}
-                    onChange={onFullNameChange} />
-            </div>
-            {errors?.fullName && createFormError(s.divError, icon, fullNameError, s.figure)}
-            <label htmlFor='aboutMe' className={s.textareaLabel}>Write something about yourself:</label>
-            <textarea {...register('aboutMe')}
-                className={`${s.textarea} ${errorAboutMeClass}`}
-                placeholder='describe yourself...'
-                value={aboutMe}
-                onChange={onAboutMeChange} />
-            {errors?.aboutMe && createFormError(s.divError, icon, aboutMeError, s.figure)}
-            </div>
-            <div className={s.jobInfoDiv}>
-            <div className={s.radio}>
-                <div className={s.jobDiv}>
-                    <label htmlFor='lookingForAJob' className={s.labelRadio}>I am looking for a job</label>
-                    <input {...register('lookingForAJob')}
-                        id='lookingForAJob'
-                        type='radio'
-                        name='lookingForAJob'
-                        checked
-                        className={s.radioButton}
-                        value={true} />
+                <div className={s.nicknameDiv}>
+                    <label htmlFor='fullName' className={s.label}>nickname:</label>
+                    <input {...register('fullName')}
+                        type='text'
+                        className={`${s.input} ${errorFullNameClass}`}
+                        placeholder='your nickname...'
+                        value={fullName}
+                        onChange={onFullNameChange} />
                 </div>
+                {errors?.fullName && createFormError(s.divError, icon, fullNameError, s.figure)}
+                <div className={s.avatarDiv}>
+                    <label htmlFor='avatar' className={s.label}>avatar:
+                        <Figure className={s.photo} icon={photoIcon} /></label>
+                        <input {...register('avatar')}
+                            type='file'
+                            id='photo'
+                            className={`${s.avatarInput} ${errorAvatarClass}`}
+                            onChange={onAvatarChanged}/>
+                </div>
+                <label htmlFor='aboutMe' className={s.textareaLabel}>Write something about yourself:</label>
+                <textarea {...register('aboutMe')}
+                    className={`${s.textarea} ${errorAboutMeClass}`}
+                    placeholder='describe yourself...'
+                    value={aboutMe}
+                    onChange={onAboutMeChange} />
+                {errors?.aboutMe && createFormError(s.divError, icon, aboutMeError, s.figure)}
+                </div>
+                <div className={s.jobInfoDiv}>
+                <div className={s.radio}>
+                    <div className={s.jobDiv}>
+                        <label htmlFor='lookingForAJob' className={s.labelRadio}>I am looking for a job</label>
+                        <input {...register('lookingForAJob')}
+                            id='lookingForAJob'
+                            type='radio'
+                            name='lookingForAJob'
+                            checked
+                            className={s.radioButton}
+                            value={true} />
+                    </div>
                 <div className={s.jobDiv}>
                     <label htmlFor='notLookingForAJob' className={s.labelRadio}>I don't need a job</label>
                     <input {...register('lookingForAJob')}

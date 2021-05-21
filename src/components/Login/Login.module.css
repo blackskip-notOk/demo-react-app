@@ -17,6 +17,7 @@
 }
 
 .loginDiv>p {
+    cursor: default;
     font-size: 18px;
     color: var(--text-color);
     line-height: 1.8rem;
@@ -24,6 +25,10 @@
 
 .loginDiv>p>span {
     text-transform: uppercase;
+}
+
+.loginDiv>p>span:hover {
+    text-decoration: none;
 }
 
 .createDiv {

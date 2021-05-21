@@ -42,6 +42,54 @@
     align-items: center;
 }
 
+
+.photoDiv > input {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.photo {
+    grid-area: photo;
+    transform: scale(2.5);
+    cursor:pointer;
+    border-radius: 100%;
+    color: var(--figure-color);
+}
+
+.avatarDiv {
+    display: flex;
+    grid-gap: 1rem;
+    margin: 20px 0px 10px 0px;
+    justify-self: flex-start;
+    align-items: center;
+    /* position: relative; */
+    /* left: 0%; */
+    /* top: -180% */
+}
+
+.avatarInput {
+    /* visibility: hidden; */
+    /* width: 0; */
+    /* height: 0; */
+}
+
+.photo {
+    padding: 0px 0px 0px 20px;
+    transform: scale(1.7);
+    cursor:pointer;
+    color: var(--figure-color);
+}
+
+.photo:hover {
+    text-shadow: 0px 0px 10px var(--button-shadow);
+}
+
+.photo:active {
+    color: var(--figure-color-active);
+    text-shadow: none;
+}
+
 .textareaLabel {
     justify-self: center;
     padding: 10px 0;

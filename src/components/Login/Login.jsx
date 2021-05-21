@@ -11,18 +11,12 @@ import s from './Login.module.css';
 import LoginForm from './LoginForm/LoginForm';
 
 const Login = (props) => {
-    //do know yet why this can be usefull
-    
-    // props.match.params.login = props.isAuth ?
-    //     'login=true' : 'login=false';
     return (
         <div className={s.loginDiv}>
             <h1>demo react app</h1>
             <p>
                 This is my <span>demo app</span>. Here I study how create,
                 develop and support app used on <span>React - Redux</span> technologies.
-                This app based  on video lessons course and server of it-kamasutra.com.
-                For which many thanks to the creator <span>Dmitriy Kuzyuberdin</span>.
             </p>
             <LoginForm {...props} />
             <div className={s.createDiv}>

@@ -47,16 +47,16 @@
     transform: scale(2.5);
     cursor:pointer;
     border-radius: 100%;
-    background-color: var(--page-back);
     color: var(--figure-color);
 }
 
 .photo:hover {
-    box-shadow: 0px 0px 10px var(--button-shadow);
+    text-shadow: 0px 0px 10px var(--button-shadow);
 }
 
 .photo:active {
     color: var(--figure-color-active);
+    text-shadow: none;
 }
 
 .nameH1 {
