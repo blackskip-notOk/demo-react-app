@@ -8,7 +8,7 @@ export const getFollowingInProgress = state => state.users.followingInProgress;
 //simple selectors
 const getPageSize = state => state.users.pageSize;
 const getTotalCount = state => state.users.totalCount;
-const getCurrentPage = state => state.users.currentPage;
+const getRequestPage = state => state.users.requestPage;
 const getPortionSize = state => state.users.portionSize;
 //created selectors
 const getPagesCount = createSelector(
@@ -22,12 +22,12 @@ const getPortionCount = createSelector(
 });
 
 export const getPagesInfo = createSelector(
-    getPagesCount, getPageSize, getCurrentPage, getPortionCount, getPortionSize,
-    (pagesCount, pageSize, currentPage, portionCount, portionSize) => {
+    getPagesCount, getPageSize, getRequestPage, getPortionCount, getPortionSize,
+    (pagesCount, pageSize, requestPage, portionCount, portionSize) => {
     const pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    return {pageSize, currentPage, pages, portionCount,
+    return {pageSize, requestPage, pages, portionCount,
         portionSize};
 });

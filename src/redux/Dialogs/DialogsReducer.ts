@@ -1,15 +1,25 @@
 import { ADD_MESSAGE, DELETE_MESSAGE } from "../Actions/actionsTypes";
 
-let initialState = {
+type ContactsType = {
+    id: number
+    name: string
+    avatar: {src: string | null, alt: string | null}
+}
+type DialogsType = {
+    id: number
+    message: string
+}
+const initialState = {
     contacts: [
         { id: 1, name: 'Fake Friend', avatar: {src: null, alt: 'Master Yoda avatar'} },
-    ],
+    ] as Array<ContactsType>,
     dialogs: [
         { id: 1, message: "диалоги в процессе разработки..." },
-    ]
+    ] as Array<DialogsType>
 }
+export type InitialStateType = typeof initialState
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
         case ADD_MESSAGE:
             let newDialog = {
@@ -31,10 +41,17 @@ const dialogsReducer = (state = initialState, action) => {
         default:
             return state;
     }
-};
+}
 
-
-export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
-export const deleteMessage = (messageId) => ({type: DELETE_MESSAGE, messageId});
+type AddMessageActionType = {
+    type: typeof ADD_MESSAGE
+    newMessageText: string
+}
+type DeleteMessageActionType = {
+    type: typeof DELETE_MESSAGE
+    messageId: number
+}
+export const addMessage = (newMessageText: string): AddMessageActionType => ({type: ADD_MESSAGE, newMessageText});
+export const deleteMessage = (messageId: number): DeleteMessageActionType => ({type: DELETE_MESSAGE, messageId});
 
 export default dialogsReducer;

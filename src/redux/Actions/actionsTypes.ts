@@ -1,13 +1,19 @@
+export enum Actions {
+    INITIALIZED_SUCCESS = 'my-app/app/INITIALIZED_SUCCESS',
+    SET_REQUEST_PAGE = 'my-app/users/SET_REQUEST_PAGE'
+}
+
 //AppReducer
-export const INITIALIZED_SUCCESS = 'my-app/app/INITIALIZED_SUCCESS';
+// export const INITIALIZED_SUCCESS = Actions.INITIALIZED_SUCCESS;
+// export const INITIALIZED_SUCCESS = 'my-app/app/INITIALIZED_SUCCESS';
 //AuthReducer
 export const SET_USER_DATA = 'my-app/auth/SET-USER-DATA';
 export const SET_ERROR_MESSAGE = 'my-app/auth/SET_ERROR_MESSAGE';
 export const GET_CAPTCHA_URL_SUCCESS = 'my-app/auth/GET_CAPTCHA_URL_SUCCESS';
 export const TOGGLE_LOGIN_PROGRESS = 'my-app/auth/TOGGLE_LOGIN_PROGRESS';
 //DialogsReducer
-export const ADD_MESSAGE = 'my-app/dialogs/ADD-MESSAGE';
-export const DELETE_MESSAGE = 'my-app/dialogs/DELETE_MESSAGE';
+export const ADD_MESSAGE:string = 'my-app/dialogs/ADD-MESSAGE';
+export const DELETE_MESSAGE:string = 'my-app/dialogs/DELETE_MESSAGE';
 //FindUsersReducer
 export const FIND_USER = 'my-app/users/FIND_USER';
 //ProfileReducer
@@ -34,7 +40,6 @@ export const SHOW_ACTIVE = 'my-app/todo/SHOW_ACTIVE';
 export const FOLLOW = 'my-app/users/FOLLOW';
 export const UNFOLLOW = 'my-app/users/UNFOLLOW';
 export const SET_USERS = 'my-app/users/SET_USERS';
-export const SET_CURRENT_PAGE = 'my-app/users/SET_CURRENT_PAGE';
 export const SET_TOTAL_COUNT = 'my-app/users/SET_TOTAL_COUNT';
 export const TOGGLE_IS_FETCHING = 'my-app/users/TOGGLE_IS_FETCHING';
 export const TOGGLE_IS_FOLLOWING_PROGRESS = 'my-app/users/TOGGLE_IS_FOLLOWING_PROGRESS';

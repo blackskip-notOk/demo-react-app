@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FunctionComponent, useState } from "react";
 import Figure from "../Figure/Figure";
 import s from './Search.module.css';
 
-const Search = React.memo(({search}) => {
+type SearchProps = {
+    search: string
+}
+const Search: FunctionComponent<SearchProps> = React.memo(({search}) => {
     const [searchValue, setSearchValue] = useState('');
     const [visibility, setVisibility] = useState(false);
 
@@ -10,7 +13,7 @@ const Search = React.memo(({search}) => {
         setVisibility(!visibility);
     };
 
-    const onSearchChange = (e) => {
+    const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.currentTarget.value);
     }
     return (

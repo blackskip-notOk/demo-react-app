@@ -10,8 +10,8 @@ import Users from './Users';
 const UsersContainer = React.memo(({requestUsers, isFetching, users, unfollow,
     follow, followingInProgress, pagesInfo, paginatorIcons}) => {
     useEffect(() => {
-        requestUsers(pagesInfo.currentPage, pagesInfo.pageSize)},
-        [pagesInfo.currentPage, pagesInfo.pageSize, requestUsers]);
+        requestUsers(pagesInfo.requestPage, pagesInfo.pageSize)},
+        [pagesInfo.requestPage, pagesInfo.pageSize, requestUsers]);
     return (
         <>
         {isFetching && <Preloader />}
@@ -20,7 +20,7 @@ const UsersContainer = React.memo(({requestUsers, isFetching, users, unfollow,
             follow={follow}
             followingInProgress={followingInProgress}
             isFetching={isFetching}
-            currentPage={pagesInfo.currentPage}
+            requestPage={pagesInfo.requestPage}
             pages={pagesInfo.pages}
             portionCount={pagesInfo.portionCount}
             portionSize={pagesInfo.portionSize}

@@ -4,13 +4,13 @@ import User from './User/User';
 import s from './Users.module.css';
 
 const Users = React.memo(({users, unfollow, follow, followingInProgress,
-    currentPage, pages, portionCount, portionSize, requestUsers,
+    requestPage, pages, portionCount, portionSize, requestUsers,
     pageSize, paginatorIcons}) => {
     let user = users.map(u => <User key={u.id} user={u} unfollow={unfollow}
         follow={follow} followingInProgress={followingInProgress} />);
         return (
             <div className={s.divUsers}>
-                <Paginator currentPage={currentPage}
+                <Paginator requestPage={requestPage}
                     pages={pages}
                     portionCount={portionCount}
                     portionSize={portionSize}
@@ -18,7 +18,7 @@ const Users = React.memo(({users, unfollow, follow, followingInProgress,
                     pageSize={pageSize}
                     paginatorIcons={paginatorIcons} />
                 {user}
-                <Paginator currentPage={currentPage}
+                <Paginator requestPage={requestPage}
                     pages={pages}
                     portionCount={portionCount}
                     portionSize={portionSize}

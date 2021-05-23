@@ -7,8 +7,8 @@ const instance = axios.create({
 });
 
 export const usersAPI = {
-    async getUsers(currentPage, pageSize) {
-        const response = await instance.get(`users?page=${currentPage}&count=${pageSize}`);
+    async getUsers(requestPage, pageSize) {
+        const response = await instance.get(`users?page=${requestPage}&count=${pageSize}`);
         return response.data;
     },
 

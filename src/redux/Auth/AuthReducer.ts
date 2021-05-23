@@ -2,19 +2,33 @@ import { authAPI, securityApi } from "../../API/API";
 import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
     SET_USER_DATA, TOGGLE_LOGIN_PROGRESS } from "../Actions/actionsTypes";
 
-let initialState = {
-    userId: null,
-    email: null,
-    login: null,
-    password: null,
+// export type InitialStateType = {
+//     userId: number | null,
+//     email: string | null,
+//     login: string | null,
+//     password: string | null,
+//     rememberMe: boolean,
+//     isAuth: boolean,
+//     loginInProgress: boolean,
+//     captcha: string | null,
+//     errorMessage: string | null
+// };
+
+const initialState = {
+    userId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
+    password: null as string | null,
     rememberMe: false,
     isAuth: false,
     loginInProgress: false,
-    captcha: null,
-    errorMessage: null
+    captcha: null as string | null,
+    errorMessage: null as string | null
 };
 
-const authReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const authReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
         case SET_USER_DATA:
         case GET_CAPTCHA_URL_SUCCESS:
@@ -37,16 +51,41 @@ const authReducer = (state = initialState, action) => {
     }
 };
 //action creators
-export const toggleLoginProgress = (loginInProgress) => ({
+type ToggleLoginProgressActionType = {
+    readonly type: typeof TOGGLE_LOGIN_PROGRESS
+    loginInProgress: boolean
+};
+export const toggleLoginProgress = (loginInProgress: boolean): ToggleLoginProgressActionType => ({
     type: TOGGLE_LOGIN_PROGRESS, loginInProgress});
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+
+type SetAuthUserDataActionPayloadType = {
+    userId: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean
+};
+type SetAuthUserDataActionType = {
+    readonly type: typeof SET_USER_DATA
+    payload: SetAuthUserDataActionPayloadType
+};
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataActionType => ({
     type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
-export const setErrormessage = (messages) => ({
+
+type SetErrormessageActionType = {
+    readonly type: typeof SET_ERROR_MESSAGE
+    messages: Array<string>
+};
+export const setErrormessage = (messages: Array<string>): SetErrormessageActionType => ({
     type: SET_ERROR_MESSAGE, messages});
-export const getCaptchaUrlSuccess = (captcha) => ({
+
+type GetCaptchaUrlSuccessActionType = {
+    readonly type: typeof GET_CAPTCHA_URL_SUCCESS
+    payload: { captcha: string }
+};
+export const getCaptchaUrlSuccess = (captcha: string): GetCaptchaUrlSuccessActionType => ({
     type:  GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
 //thunk creators
-export const login = (email, password, rememberMe, captcha) => async dispatch => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
     dispatch(toggleLoginProgress(true));
     const response = await authAPI.login(email, password, rememberMe, captcha);
     switch (response.resultCode) {
@@ -64,7 +103,7 @@ export const login = (email, password, rememberMe, captcha) => async dispatch =>
     }
     dispatch(toggleLoginProgress(false));
 }
-export const getAuthUserData = () => async dispatch => {
+export const getAuthUserData = () => async (dispatch: any) => {
     const response = await authAPI.getAuth();
     if (response.resultCode === 0) {
         const {id, email, login} = response.data;
@@ -73,16 +112,22 @@ export const getAuthUserData = () => async dispatch => {
         dispatch(setErrormessage(response.messages));
     }
 }
-export const logout = () => dispatch => {
+type ResponseType = {
+    data: {
+        resultCode: number
+    }
+}
+export const logout = () => (dispatch: any) => {
     return (
         authAPI.logout()
-            .then(response => {
+            .then(((response: ResponseType) => {
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserData(null, null, null, false));
                 }}
-            ));
+            ))
+    )
 }
-export const getCaptchaUrl = () => async dispatch => {
+export const getCaptchaUrl = () => async (dispatch: any) => {
     const response = securityApi.getCaptchaURL();
     dispatch(getCaptchaUrlSuccess(response.url));
 }

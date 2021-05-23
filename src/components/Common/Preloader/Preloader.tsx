@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import appLoader from '../../../image/preloader/common.gif';
 import profileLoader from '../../../image/preloader/common.gif';
 import loginLoader from '../../../image/preloader/common.gif';
 import s from './Preloader.module.css';
 
-const Preloader = React.memo((props) => {
+type PreloaderProps = {
+    type: string
+}
+const Preloader: FunctionComponent<PreloaderProps> = React.memo((props) => {
     let path = null;
     switch (props.type) {
         case 'app':
