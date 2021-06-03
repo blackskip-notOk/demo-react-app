@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FunctionComponent, useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import Figure from "../Figure/Figure";
 import s from './Search.module.css';
 
-type SearchProps = {
+type Props = {
     search: string
 }
-const Search: FunctionComponent<SearchProps> = React.memo(({search}) => {
+const Search: FC<Props> = React.memo(({search}) => {
     const [searchValue, setSearchValue] = useState('');
     const [visibility, setVisibility] = useState(false);
 

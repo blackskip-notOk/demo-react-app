@@ -1,14 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Page.module.css';
 
-type PageProps = {
+type Props = {
     path: string
     currentPage: number
     chosenPage: number
-    onPageChanged: any
+    onPageChanged: (pageNumber: number) => void
 }
-const Page: FunctionComponent<PageProps> = React.memo(({path, currentPage, chosenPage, onPageChanged}) => {
+const Page: FC<Props> = React.memo(({
+    path, currentPage, chosenPage, onPageChanged}) => {
     return (
         <NavLink to={path}>
             <li className={currentPage === chosenPage

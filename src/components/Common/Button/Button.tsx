@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 
-type ButtonType = {
+type Props = {
     autoFocus?: boolean
     disabled?: boolean
     form?: string
@@ -19,7 +19,7 @@ type ButtonType = {
     spanClass: string
 }
 
-const Button: FunctionComponent<ButtonType> = React.memo((props) => {
+const Button: FC<Props> = React.memo((props) => {
     return (
             <button
                 autoFocus={props.autoFocus}

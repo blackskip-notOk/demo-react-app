@@ -1,5 +1,5 @@
 import { profileAPI } from '../../API/API';
-import { PhotosType } from '../../Types/Types';
+import { IPhotos } from '../../Types/Interfaces';
 import { TOGGLE_IS_VISIBLE, SET_AUTH_USER_AVATAR } from '../Actions/actionsTypes';
 
 type IconHeader = {
@@ -17,7 +17,7 @@ const initialState = {
     ] as Array<IconHeader>,
     isVisible: false,
     authUserId: null as number | null,
-    authUserAvatar: {} as PhotosType
+    authUserAvatar: {} as IPhotos
 }
 export type InitialStateType = typeof initialState
 
@@ -46,9 +46,9 @@ export const toggleVisibility = (isVisible: boolean): ToggleVisibilityActionType
 
 type SetAuthUserAvatarActionType = {
     type: typeof SET_AUTH_USER_AVATAR
-    authUserAvatar: PhotosType
+    authUserAvatar: IPhotos
 }
-export const setAuthUserAvatar = (authUserAvatar: PhotosType): SetAuthUserAvatarActionType => ({
+export const setAuthUserAvatar = (authUserAvatar: IPhotos): SetAuthUserAvatarActionType => ({
     type: SET_AUTH_USER_AVATAR, authUserAvatar});
 //thunk creator
 export const getAuthUserAvatar = (authUserId: number) => async (dispatch: any) => {

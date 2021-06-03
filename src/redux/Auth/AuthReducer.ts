@@ -1,18 +1,8 @@
+import { AuthActions } from './../Actions/actionsTypes';
+import { AnyAction } from "redux";
 import { authAPI, securityApi } from "../../API/API";
-import { GET_CAPTCHA_URL_SUCCESS, SET_ERROR_MESSAGE,
-    SET_USER_DATA, TOGGLE_LOGIN_PROGRESS } from "../Actions/actionsTypes";
-
-// export type InitialStateType = {
-//     userId: number | null,
-//     email: string | null,
-//     login: string | null,
-//     password: string | null,
-//     rememberMe: boolean,
-//     isAuth: boolean,
-//     loginInProgress: boolean,
-//     captcha: string | null,
-//     errorMessage: string | null
-// };
+import {  } from "../Actions/actionsTypes";
+import { AppDispatch } from '../redux-store';
 
 const initialState = {
     userId: null as number | null,
@@ -26,22 +16,22 @@ const initialState = {
     errorMessage: null as string | null
 };
 
-export type InitialStateType = typeof initialState;
+export type InitialState = typeof initialState;
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+const authReducer = (state = initialState, action: AnyAction): InitialState => {
     switch(action.type) {
-        case SET_USER_DATA:
-        case GET_CAPTCHA_URL_SUCCESS:
+        case AuthActions.SET_USER_DATA:
+        case AuthActions.GET_CAPTCHA_URL_SUCCESS:
             return {
                 ...state,
                 ...action.payload,
             }
-        case SET_ERROR_MESSAGE:
+        case AuthActions.SET_ERROR_MESSAGE:
             return {
                 ...state,
                 errorMessage: action.messages[0]
             }
-        case TOGGLE_LOGIN_PROGRESS:
+        case AuthActions.TOGGLE_LOGIN_PROGRESS:
             return {
                 ...state,
                 loginInProgress: action.loginInProgress
@@ -51,41 +41,41 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 };
 //action creators
-type ToggleLoginProgressActionType = {
-    readonly type: typeof TOGGLE_LOGIN_PROGRESS
+type ToggleLoginProgressAction = {
+    readonly type: typeof AuthActions.TOGGLE_LOGIN_PROGRESS
     loginInProgress: boolean
 };
-export const toggleLoginProgress = (loginInProgress: boolean): ToggleLoginProgressActionType => ({
-    type: TOGGLE_LOGIN_PROGRESS, loginInProgress});
+export const toggleLoginProgress = (loginInProgress: boolean): ToggleLoginProgressAction => ({
+    type: AuthActions.TOGGLE_LOGIN_PROGRESS, loginInProgress});
 
-type SetAuthUserDataActionPayloadType = {
+type SetAuthUserDataActionPayload = {
     userId: number | null
     email: string | null
     login: string | null
     isAuth: boolean
 };
-type SetAuthUserDataActionType = {
-    readonly type: typeof SET_USER_DATA
-    payload: SetAuthUserDataActionPayloadType
+type SetAuthUserDataAction = {
+    readonly type: typeof AuthActions.SET_USER_DATA
+    payload: SetAuthUserDataActionPayload
 };
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataActionType => ({
-    type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataAction => ({
+    type: AuthActions.SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
-type SetErrormessageActionType = {
-    readonly type: typeof SET_ERROR_MESSAGE
+type SetErrormessageAction = {
+    readonly type: typeof AuthActions.SET_ERROR_MESSAGE
     messages: Array<string>
 };
-export const setErrormessage = (messages: Array<string>): SetErrormessageActionType => ({
-    type: SET_ERROR_MESSAGE, messages});
+export const setErrormessage = (messages: Array<string>): SetErrormessageAction => ({
+    type: AuthActions.SET_ERROR_MESSAGE, messages});
 
-type GetCaptchaUrlSuccessActionType = {
-    readonly type: typeof GET_CAPTCHA_URL_SUCCESS
+type GetCaptchaUrlSuccessAction = {
+    readonly type: typeof AuthActions.GET_CAPTCHA_URL_SUCCESS
     payload: { captcha: string }
 };
-export const getCaptchaUrlSuccess = (captcha: string): GetCaptchaUrlSuccessActionType => ({
-    type:  GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
+export const getCaptchaUrlSuccess = (captcha: string): GetCaptchaUrlSuccessAction => ({
+    type:  AuthActions.GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
 //thunk creators
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: AppDispatch) => {
     dispatch(toggleLoginProgress(true));
     const response = await authAPI.login(email, password, rememberMe, captcha);
     switch (response.resultCode) {
@@ -103,7 +93,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
     dispatch(toggleLoginProgress(false));
 }
-export const getAuthUserData = () => async (dispatch: any) => {
+export const getAuthUserData = () => async (dispatch: AppDispatch) => {
     const response = await authAPI.getAuth();
     if (response.resultCode === 0) {
         const {id, email, login} = response.data;
@@ -112,24 +102,24 @@ export const getAuthUserData = () => async (dispatch: any) => {
         dispatch(setErrormessage(response.messages));
     }
 }
-type ResponseType = {
+type Response = {
     data: {
         resultCode: number
     }
 }
-export const logout = () => (dispatch: any) => {
+export const logout = () => (dispatch: AppDispatch) => {
     return (
         authAPI.logout()
-            .then(((response: ResponseType) => {
+            .then(((response: Response) => {
                 if (response.data.resultCode === 0) {
                     dispatch(setAuthUserData(null, null, null, false));
                 }}
             ))
     )
 }
-export const getCaptchaUrl = () => async (dispatch: any) => {
+export const getCaptchaUrl = () => async (dispatch: AppDispatch) => {
     const response = securityApi.getCaptchaURL();
     dispatch(getCaptchaUrlSuccess(response.url));
 }
 
-export default authReducer;
+export default authReducer

@@ -1,14 +1,5 @@
-type FriendType = {
-    id: number,
-    fullname: string
-}
+import { LinkType, FriendType } from './../../Types/Types';
 
-type LinkType = {
-    id: number
-    pathway: string
-    target: string
-    notation:string
-}
 const initialState = {
     friends: [] as Array<FriendType>,
     links: [
@@ -19,8 +10,8 @@ const initialState = {
         { id: 5, pathway: '/settings', target: '_self', notation: 'Settings'}
     ] as Array<LinkType>
 }
-export type InitialStateType = typeof initialState
-const navbarReducer = (state = initialState, action: any): InitialStateType => {
+export type InitialState = typeof initialState
+const navbarReducer = (state = initialState): InitialState => {
     return state;
 }
 

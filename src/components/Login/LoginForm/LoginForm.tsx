@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React from 'react';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router';
 import { createFormError } from '../../../utils/form-helper';
@@ -8,15 +8,30 @@ import Button from '../../Common/Button/Button';
 import Preloader from '../../Common/Preloader/Preloader';
 import s from './LoginForm.module.css';
 
+type Props = {
+    login: (email: string, password: string, rememberMe: boolean,
+        captcha: string) => void
+    isAuth: boolean
+    icon: string
+    serverErrorMessage: string | null
+    captcha: string | null
+    loginInProgress: boolean
+}
 
-const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
+type FormData = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string
+}
+const LoginForm: FC<Props> = ({login, isAuth, icon, serverErrorMessage, captcha,
     loginInProgress}) => {
     const {register, handleSubmit, formState: {errors, touchedFields}
-    } = useForm({
+    } = useForm<FormData>({
         resolver: yupResolver(loginFormSchema)
     });
 
-    const onSubmit = data => {
+    const onSubmit = (data: FormData) => {
         login(data.email, data.password, data.rememberMe, data.captcha);
     }
 
@@ -73,8 +88,7 @@ const LoginForm = ({login, isAuth, icon, serverErrorMessage, captcha,
                     <span className={s.employerSpan}>Password: <b>free</b></span>
                 </div>
             }
-            {loginInProgress && <Preloader type='login'
-                className={s.preloaderDiv} imgClass={s.img} />}
+            {loginInProgress && <Preloader type='login' />}
         </form>
     )
 }

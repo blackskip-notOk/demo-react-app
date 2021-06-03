@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { LinkType } from '../../../Types/Types';
 import { createListFromArray } from '../../../utils/object-helpers';
 import NavbarLi from './NavbarLi/NavbarLi';
 import s from './NavbarUl.module.css';
 
-const NavbarUl = ({links}) => {
+type Props = {
+    links: Array<LinkType>
+}
+const NavbarUl: FC<Props> = ({links}) => {
     let link = createListFromArray(links, NavbarLi);
     return (
         <ul className={s.ul}>

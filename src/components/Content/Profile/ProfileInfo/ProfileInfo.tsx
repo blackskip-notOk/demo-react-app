@@ -1,23 +1,47 @@
-import React from "react";
+import React, { ChangeEvent, FC } from "react";
 import userAvatar from '../../../../image/avatars/noAvatar.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileInfoUl from "./ProfileInfoUl/ProfileInfoUl";
+import { IContactIcon, IContacts, IPhotos } from "../../../../Types/Interfaces";
 
-const ProfileInfo = React.memo(({savePhoto, photos, fullName, aboutMe, status,
+type Props = {
+    photos?: IPhotos | undefined
+    fullName: string
+    aboutMe: string
+    status: string
+    contacts: IContacts
+    errorIcon: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    jobIcons: Array<string>
+    isOwner: boolean
+    photoIcon: string
+    contactsIcons: Array<IContactIcon>
+    savePhoto: (avatarSrc: File) => void
+    updateUserStatus: (status: string) => void
+}
+
+const ProfileInfo: FC<Props> = React.memo(({savePhoto, photos, fullName, aboutMe, status,
     updateUserStatus, contacts, errorIcon, lookingForAJob, lookingForAJobDescription,
     jobIcons, isOwner, photoIcon, contactsIcons}) => {
 
-        const onUserAvatarChanged = (e) => {
+    const onUserAvatarChanged = (e: ChangeEvent<HTMLInputElement>) => {
         let avatarSrc = e.target.files;
-        if (avatarSrc.length) savePhoto(avatarSrc[0]);
+        if (avatarSrc?.length) savePhoto(avatarSrc[0]);
+    }
+    const ProfileInfoProps = {
+        contacts: contacts,
+        className: s.contactsUl,
+        contactsIcons: contactsIcons,
+        figureClass: s.contactIcon
     }
     return (
         <div className={s.div} >
             <div className={s.avatarDiv}>
-                <Avatar src={photos.large || userAvatar} alt='User Avatar'
+                <Avatar src={photos!.large || userAvatar} alt='User Avatar'
                     className={s.avatar} />
                 {isOwner &&
                     <div  className={s.photoDiv}>
@@ -56,10 +80,7 @@ const ProfileInfo = React.memo(({savePhoto, photos, fullName, aboutMe, status,
                 }
                 <div className={s.contactsDiv}>
                     <h2>My contacts:</h2>
-                    <ProfileInfoUl contacts={contacts}
-                    className={s.contactsUl}
-                    contactsIcons={contactsIcons}
-                    figureClass={s.contactIcon} />
+                    <ProfileInfoUl {...ProfileInfoProps} />
                 </div>
             </div>
         </div>

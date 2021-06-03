@@ -10,7 +10,7 @@ type SearchType = {
     name: string
     icon: string
 }
-type IconType = {
+export type IconType = {
     id: number
     name: string
     icon: string

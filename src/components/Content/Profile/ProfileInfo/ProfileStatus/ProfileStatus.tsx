@@ -1,17 +1,28 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, FC, KeyboardEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createFormError } from "../../../../../utils/form-helper";
 import { statusSchema } from "../../../../../utils/validators/validator";
 import Button from "../../../../Common/Button/Button";
 import s from './ProfileStatus.module.css';
 
-const ProfileStatus = React.memo(({updateUserStatus, errorIcon, isOwner, ...props}) => {
+interface Props {
+    updateUserStatus: (status: string) => void
+    errorIcon: string
+    isOwner: boolean
+    status: string
+}
+
+interface FormData {
+    status: string
+}
+
+const ProfileStatus: FC<Props> = React.memo(({updateUserStatus, errorIcon, isOwner, ...props}) => {
 
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
 
-    const {register, handleSubmit, formState: {errors, touchedFields}} = useForm({
+    const {register, handleSubmit, formState: {errors, touchedFields}} = useForm<FormData>({
         resolver: yupResolver(statusSchema)
     });
 
@@ -23,19 +34,24 @@ const ProfileStatus = React.memo(({updateUserStatus, errorIcon, isOwner, ...prop
         setEditMode(!editMode);
     }
 
-    const onStatusChange = (e) => {
+    const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value);
     }
 
-    const onSubmit = data => {
+    const onSubmit = (data: FormData) => {
             updateUserStatus(data.status);
             switchEditMode();
     };
 
-    const handleKeyDown = e => {
-        if (e.keyCode === 13) e.preventDefault();
-        if (e.keyCode === 27) switchEditMode()
-        console.log(e);
+    const handleKeyDown: KeyboardEventHandler<HTMLFormElement> = (e) => {
+        switch(e.key) {
+            case 'Enter':
+                e.preventDefault()
+                break;
+            case 'Escape':
+                switchEditMode()
+                break;
+        }
     }
 
     const errorStatusClass = touchedFields?.status && errors?.status && s.error;

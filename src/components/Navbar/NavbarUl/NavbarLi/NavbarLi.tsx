@@ -1,8 +1,13 @@
-import React from "react";
+import { FC } from "react";
 import { NavLink } from 'react-router-dom';
 import s from './NavbarLi.module.css';
 
-const NavbarLi = ({pathway, target, notation}) => {
+type Props = {
+    pathway: string
+    target: string
+    notation: string
+}
+const NavbarLi: FC<Props> = ({pathway, target, notation}) => {
     return (
         <li className={s.linkLi}>
             <NavLink className={s.link}

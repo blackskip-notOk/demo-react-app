@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import noAvatar from '../../../image/avatars/noAvatar.png';
 
-interface AvatarProps {
+type Props = {
     src: string
     alt: string
     className: string
 }
 
-const Avatar: FC<AvatarProps> = React.memo(({src, alt, className}: AvatarProps) => (
+const Avatar: FC<Props> = React.memo(({src, alt, className}) => (
     <img src={src || noAvatar} alt={alt} className={className} />
 ))
 

@@ -1,52 +1,40 @@
-import { Actions } from './../Actions/actionsTypes';
-// import { INITIALIZED_SUCCESS } from "../Actions/actionsTypes";
-import { getAuthUserData } from "../Auth/AuthReducer";
+import { AppActions } from './../Actions/actionsTypes'
+import { getAuthUserData } from "../Auth/AuthReducer"
+import { AppDispatch } from '../redux-store';
 
-export type InitialStateType = {
+export type InitialState = {
     initialized: boolean
 }
 
-const initialState: InitialStateType = {
-    initialized: false as boolean
+const initialState: InitialState = {
+    initialized: false
 };
 
-// interface InitializedAction {readonly type: typeof INITIALIZED_SUCCESS}
-// interface AppReducer {
-    // (state: InitialStateType, action: InitializedSuccessActionType): InitialStateType
-// };
-
-const appReducer = (state = initialState, action: InitializedSuccessActionType): InitialStateType => {
+const appReducer = (state = initialState, action: InitializedSuccessAction): InitialState => {
     switch(action.type) {
-        case Actions.INITIALIZED_SUCCESS:
+        case AppActions.INITIALIZED_SUCCESS:
             return {
                 ...state,
                 initialized: true
             }
         default:
-             return state;
+             return state
     }
 }
-// interface InitializedSuccess {
-    // (): {readonly type: typeof INITIALIZED_SUCCESS};
-// }
-
-type InitializedSuccessActionType = {
-    readonly type: typeof Actions.INITIALIZED_SUCCESS
-};
-
+type InitializedSuccessAction = {
+    readonly type: typeof AppActions.INITIALIZED_SUCCESS
+}
 //action creator
-export const initializedSuccess = (): InitializedSuccessActionType => ({type: Actions.INITIALIZED_SUCCESS});
+export const initializedSuccess = (): InitializedSuccessAction => ({
+    type: AppActions.INITIALIZED_SUCCESS})
 //thunk creator
-// interface InitializApp {
-    // (): {readonly type: typeof INITIALIZED_SUCCESS};
-// }
-export const initializeApp = () => (dispatch: any) => {
-    let promise = dispatch(getAuthUserData());
+export const initializeApp = () => (dispatch: AppDispatch) => {
+    let promise = dispatch(getAuthUserData())
 
     Promise.all([promise])
         .then(() => {
-            dispatch(initializedSuccess());
+            dispatch(initializedSuccess())
         })
 }
 
-export default appReducer;
+export default appReducer

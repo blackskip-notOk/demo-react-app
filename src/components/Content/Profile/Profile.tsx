@@ -1,10 +1,26 @@
-import React from "react";
+import React, { FC } from "react";
+import { IContactIcon, IPhotos, IPost, IProfile } from "../../../Types/Interfaces";
 import Preloader from "../../Common/Preloader/Preloader";
 import MyPosts from "./MyPosts/MyPosts";
 import s from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = React.memo(({photos, status, updateUserStatus, errorIcon,
+type Props = {
+    photos?: IPhotos | undefined
+    status: string
+    updateUserStatus: (status: string) => void
+    errorIcon: string
+    jobIcons: Array<string>
+    posts: Array<IPost>
+    addPost: (post: string) => void
+    profile: IProfile | null
+    isOwner: boolean
+    savePhoto: (avatarSrc: File) => void
+    photoIcon: string
+    contactsIcons: Array<IContactIcon>
+}
+
+const Profile: FC<Props> = React.memo(({photos, status, updateUserStatus, errorIcon,
     jobIcons, posts, addPost, profile, isOwner, savePhoto,
     photoIcon, contactsIcons}) => {
 

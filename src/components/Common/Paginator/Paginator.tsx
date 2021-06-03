@@ -1,28 +1,25 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import Button from "../Button/Button";
-import Page from "./Page/Page";
-import s from './Paginator.module.css';
+import React, { FC, useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
+import { IPaginatorIcons } from "../../../Types/Interfaces"
+import Button from "../Button/Button"
+import Page from "./Page/Page"
+import s from './Paginator.module.css'
 
-type PaginatorIconsType = {
-    prevPage: string
-    nextPage: string
-}
-
-type PaginatorProps = {
+type Props = {
     portionSize: number
-    requestUsers: any
     pageSize: number
-    pages: Array<number>
     requestPage: number
     portionCount: number
-    paginatorIcons: PaginatorIconsType
+    pages: Array<number>
+    paginatorIcons: IPaginatorIcons
+    requestUsers: (requestPage: number, pageSize: number) => void
 }
-const Paginator: FunctionComponent<PaginatorProps> = React.memo(({portionSize, requestUsers, pageSize, pages,
+const Paginator: FC<Props> = React.memo(({
+    portionSize, requestUsers, pageSize, pages,
     requestPage, portionCount, paginatorIcons}) => {
 
-    const [currentPage, setCurrentPage] = useState(requestPage);
-    const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage));
+    const [currentPage, setCurrentPage] = useState(requestPage)
+    const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage))
 
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('currentPage') || `${requestPage}`) as number
@@ -43,6 +40,16 @@ const Paginator: FunctionComponent<PaginatorProps> = React.memo(({portionSize, r
         setCurrentPage(pageNumber)
         requestUsers(pageNumber, pageSize);
     }
+
+    const page = pages.filter(p => p >= leftPortion && p <= rightPortion)
+        .map(p => <Page key={p}
+            path={`/users/page=${p}`}
+            currentPage={currentPage}
+            chosenPage={p}
+            onPageChanged ={onPageChanged}
+        />
+    );
+
     return (
         <div className={s.divPages}>
             <div className={s.backButtons}>
@@ -73,15 +80,7 @@ const Paginator: FunctionComponent<PaginatorProps> = React.memo(({portionSize, r
                     </NavLink>
                 }
             </div>
-            {pages
-                .filter(p => p >= leftPortion && p <= rightPortion)
-                .map(p => {return <Page key={p}
-                    path={`/users/page=${p}`}
-                    currentPage={currentPage}
-                    chosenPage={p}
-                    onPageChanged ={onPageChanged} />
-                })
-            }
+            {page}
             <div className={s.nextButtons}>
                 {currentPage < pages.length &&
                     <NavLink to={`/users/page=${currentPage + 1}`}
