@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { LinkType } from '../../../Types/Types';
+import { LinkType } from '../../../TypeScript/Types';
 import { createListFromArray } from '../../../utils/object-helpers';
 import NavbarLi from './NavbarLi/NavbarLi';
 import s from './NavbarUl.module.css';

@@ -1,48 +1,45 @@
 import React, { FC, useEffect } from 'react'
-import { connect, ConnectedProps } from "react-redux"
+import { connect, ConnectedProps, useSelector } from "react-redux"
 import { compose } from 'redux'
-import { getPaginatorIcons } from '../../../redux/Common/CommonSelectors'
 import { AppState } from '../../../redux/redux-store'
 import { follow, requestUsers, unfollow } from '../../../redux/Users/UsersReducer'
-import { getFollowingInProgress, getIsFetching, getUsers, getPagesInfo } from '../../../redux/Users/UsersSelectors'
+import { getPagesInfo } from '../../../redux/Users/UsersSelectors'
 import Preloader from '../../Common/Preloader/Preloader'
 import Users from './Users'
 
 type Props = ConnectedProps<typeof connector>
 
 const UsersContainer: FC<Props> = React.memo(({
-    requestUsers, isFetching, users, unfollow, follow,
-    followingInProgress, pagesInfo, paginatorIcons}) => {
+    requestUsers, unfollow, follow}) => {
+
+    //pageInfo wuth useSelector hook
+    const pagesInfo = useSelector(getPagesInfo);
+
     useEffect(() => {
         requestUsers(pagesInfo.requestPage, pagesInfo.pageSize)},
         [pagesInfo.requestPage, pagesInfo.pageSize, requestUsers]);
+
+        //try to use hooks instead of connect HOC
+        const isFetching = useSelector((state: AppState) => state.users.isFetching);
     return (
         <>
         {isFetching && <Preloader type='app' />}
-        <Users users={users}
+        <Users
             unfollow={unfollow}
             follow={follow}
-            followingInProgress={followingInProgress}
             requestPage={pagesInfo.requestPage}
             pages={pagesInfo.pages}
             portionCount={pagesInfo.portionCount}
             portionSize={pagesInfo.portionSize}
             requestUsers={requestUsers}
             pageSize={pagesInfo.pageSize}
-            paginatorIcons={paginatorIcons} />
+        />
         </>
     )
 });
 
-const mapStateToProps = (state: AppState) => {
-    return {
-        users: getUsers(state),
-        isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state),
-        pagesInfo: getPagesInfo(state),
-        paginatorIcons: getPaginatorIcons(state)
-    };
-}
-const connector = connect(mapStateToProps, {follow, unfollow, requestUsers})
+const connector = connect(
+    null,
+    {follow, unfollow, requestUsers})
 
 export default compose(connector)(UsersContainer)

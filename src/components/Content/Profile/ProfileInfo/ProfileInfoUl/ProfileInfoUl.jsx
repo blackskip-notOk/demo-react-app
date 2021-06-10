@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IContact, IContactIcon, IContacts } from "../../../../../Types/Interfaces";
+import { IContact, IContactIcon, IContacts } from "../../../../../TypeScript/Interfaces";
 import { addPropsInObject } from '../../../../../utils/object-helpers';
 import Figure from "../../../../Common/Figure/Figure";
 import s from './ProfileInfoUl.module.css';

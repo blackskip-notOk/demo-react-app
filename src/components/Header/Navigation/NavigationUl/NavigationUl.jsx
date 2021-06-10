@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { createListFromArray } from '../../../../utils/object-helpers';
 import Figure from '../../../Common/Figure/Figure';
@@ -6,9 +6,13 @@ import NavigationLi from './NavigationLi/NavigationLi';
 import UnderText from './NavigationLi/UnderText/UnderText';
 import s from './NavigationUl.module.css';
 import st from './NavigationLi/NavIcon/NavIcon.module.css';
+import { useSelector } from 'react-redux';
 
-const NavigationUl = React.memo(({iconsHeader, authUserId,
-    getProfileData, ...props}) => {
+
+const NavigationUl = React.memo(({getProfileData, ...props}) => {
+    const iconsHeader = useSelector((state) => state.common.iconsHeader);
+    const authUserId = useSelector((state) => state.header.authUserId);
+
     let li = createListFromArray(iconsHeader, NavigationLi);
 
     const refreshProfile = () => {

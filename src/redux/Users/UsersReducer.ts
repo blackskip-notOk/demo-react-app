@@ -1,19 +1,17 @@
-import { IUser } from './../../Types/Interfaces'
+import { IFollowSuccess, ISetRequestPage, ISetTotalCount, ISetUsers, IUnfollowSuccess, IToggleIsFetching, IUser, IToggleIsFollowingProgress } from '../../TypeScript/Interfaces'
 import { usersAPI } from "../../API/API"
 import { updateObjectInArray } from "../../utils/object-helpers"
 import { UsersActions } from "../Actions/actionsTypes"
-import { FollowSuccessAction, SetRequestPageAction, SetTotalCountAction,
-    SetUsersAction, UnfollowSuccessAction, UsersActionsTypes,
-    ToggleIsFetchingAction, ToggleIsFollowingProgressAction, UsersThunk, UsersDispatch } from '../../Types/Types';
+import { UsersActionsTypes, UsersThunk, UsersDispatch } from '../../TypeScript/Types';
 
 const initialState = {
-    users:[] as Array<IUser>,
+    users:[] as IUser[],
     pageSize: 10,
     totalCount: 0,
     requestPage: 1,
     portionSize: 10,
     isFetching: false,
-    followingInProgress: [] as Array<number> //Array of users ids
+    followingInProgress: [] as number[] //Array of users ids
 };
 type UsersInitialState = typeof initialState
 
@@ -64,26 +62,26 @@ const usersReducer = (state = initialState, action: UsersActionsTypes): UsersIni
     }
 }
 //action creators
-export const followSuccess = (userId: number): FollowSuccessAction => (
+export const followSuccess = (userId: number): IFollowSuccess => (
     {type: UsersActions.FOLLOW, userId})
 
-export const unfollowSuccess = (userId: number): UnfollowSuccessAction => (
+export const unfollowSuccess = (userId: number): IUnfollowSuccess => (
     {type: UsersActions.UNFOLLOW, userId})
 
-export const setUsers = (users: Array<IUser>): SetUsersAction => (
+export const setUsers = (users: Array<IUser>): ISetUsers => (
     {type: UsersActions.SET_USERS, users})
 
-export const setTotalCount = (totalCount: number): SetTotalCountAction => (
+export const setTotalCount = (totalCount: number): ISetTotalCount => (
     {type: UsersActions.SET_TOTAL_COUNT, totalCount})
 
-export const setRequestPage = (currentPage: number): SetRequestPageAction => (
+export const setRequestPage = (currentPage: number): ISetRequestPage => (
     {type: UsersActions.SET_REQUEST_PAGE, currentPage})
 
-export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingAction => (
+export const toggleIsFetching = (isFetching: boolean): IToggleIsFetching => (
     {type: UsersActions.TOGGLE_IS_FETCHING, isFetching})
 
 export const toggleIsFollowingProgress = (followingInProgress: boolean,
-    userId: number): ToggleIsFollowingProgressAction => ({
+    userId: number): IToggleIsFollowingProgress => ({
         type: UsersActions.TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress, userId})
 //thunk creators
 export const requestUsers  = (currentPage: number, pageSize: number): UsersThunk => async (dispatch) => {
@@ -98,7 +96,7 @@ export const requestUsers  = (currentPage: number, pageSize: number): UsersThunk
 }
 
 const followUnfollowFlow = async (dispatch: UsersDispatch, userId: number, apiMethod: any,
-    actionCreator: (userId: number) => FollowSuccessAction | UnfollowSuccessAction) => {
+    actionCreator: (userId: number) => IFollowSuccess | IUnfollowSuccess) => {
     dispatch(toggleIsFollowingProgress(true, userId))
     let response = await apiMethod(userId)
 

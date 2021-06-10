@@ -1,4 +1,4 @@
-import { LinkType, FriendType } from './../../Types/Types';
+import { LinkType, FriendType } from '../../TypeScript/Types';
 
 const initialState = {
     friends: [] as Array<FriendType>,

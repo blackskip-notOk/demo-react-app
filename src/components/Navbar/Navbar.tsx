@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FriendType, LinkType } from "../../Types/Types";
+import { FriendType, LinkType } from "../../TypeScript/Types";
 import { createListFromArray } from "../../utils/object-helpers";
 import Friend from './Friends/Friends';
 import s from './Navbar.module.css';

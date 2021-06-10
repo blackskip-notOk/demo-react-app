@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IContactIcon, IPhotos, IPost, IProfile } from "../../../Types/Interfaces";
+import { IContactIcon, IPhotos, IPost, IProfile } from "../../../TypeScript/Interfaces";
 import Preloader from "../../Common/Preloader/Preloader";
 import MyPosts from "./MyPosts/MyPosts";
 import s from './Profile.module.css';

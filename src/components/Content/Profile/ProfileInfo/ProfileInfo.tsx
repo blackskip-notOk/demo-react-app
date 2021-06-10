@@ -5,7 +5,7 @@ import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileInfoUl from "./ProfileInfoUl/ProfileInfoUl";
-import { IContactIcon, IContacts, IPhotos } from "../../../../Types/Interfaces";
+import { IContactIcon, IContacts, IPhotos } from "../../../../TypeScript/Interfaces";
 
 type Props = {
     photos?: IPhotos | undefined

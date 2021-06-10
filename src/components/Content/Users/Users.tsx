@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { IPaginatorIcons, IUser } from '../../../Types/Interfaces';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../redux/redux-store';
 import Paginator from '../../Common/Paginator/Paginator';
 import User from './User/User';
 import s from './Users.module.css';
@@ -9,20 +10,21 @@ type Props = {
     portionCount: number
     portionSize: number
     pageSize: number
-    users: Array<IUser>
     pages: Array<number>
-    followingInProgress: Array<number>
-    paginatorIcons: IPaginatorIcons
     unfollow: (id: number) => Promise<void> | undefined
     follow: (id: number) => Promise<void> | undefined
     requestUsers: (requestPage: number, pageSize: number) => void
 }
 
-const Users: FC<Props> = React.memo(({users, unfollow, follow, followingInProgress,
+const Users: FC<Props> = React.memo(({unfollow, follow,
     requestPage, pages, portionCount, portionSize, requestUsers,
-    pageSize, paginatorIcons}) => {
+    pageSize}) => {
+
+    //useSelect instead props
+    const users = useSelector((state: AppState) => state.users.users);
+
     let user = users.map(u => <User key={u.id} user={u} unfollow={unfollow}
-        follow={follow} followingInProgress={followingInProgress} />)
+        follow={follow} />)
         return (
             <div className={s.divUsers}>
                 <Paginator requestPage={requestPage}
@@ -31,15 +33,8 @@ const Users: FC<Props> = React.memo(({users, unfollow, follow, followingInProgre
                     portionSize={portionSize}
                     requestUsers={requestUsers}
                     pageSize={pageSize}
-                    paginatorIcons={paginatorIcons} />
+                />
                 {user}
-                <Paginator requestPage={requestPage}
-                    pages={pages}
-                    portionCount={portionCount}
-                    portionSize={portionSize}
-                    requestUsers={requestUsers}
-                    pageSize={pageSize}
-                    paginatorIcons={paginatorIcons} />
             </div>
     )
 })

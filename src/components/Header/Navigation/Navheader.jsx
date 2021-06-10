@@ -2,7 +2,7 @@ import React from "react";
 import HeaderLogin from "./HeaderLogin/HeaderLogin";
 import Logo from "../../Common/Logo/Logo";
 import s from './Navheader.module.css';
-import NavigationUl from "./NavigationUl/NavigationUl";
+import NavigationUl from "./NavigationUl/NavigationUl.jsx";
 
 const Navheader = React.memo(({iconsHeader, logout, userLogin, isVisible,
     toggleVisibility, authUserAvatar, authUserId, getAuthUserAvatar,

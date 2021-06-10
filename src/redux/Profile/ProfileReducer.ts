@@ -1,4 +1,4 @@
-import { IPhotos, IContactIcon, IProfile, IPost, IContacts } from './../../Types/Interfaces';
+import { IPhotos, IContactIcon, IProfile, IPost, IContacts } from '../../TypeScript/Interfaces';
 import { profileAPI } from "../../API/API";
 import { ProfileActions } from "../Actions/actionsTypes";
 import { AnyAction } from 'redux';

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IPhotos, IPost } from "../../../../Types/Interfaces";
+import { IPhotos, IPost } from "../../../../TypeScript/Interfaces";
 import { createReverseListFromArray } from "../../../../utils/object-helpers";
 import s from './MyPosts.module.css';
 import NewPostForm from "./NewPost/NewPostForm";

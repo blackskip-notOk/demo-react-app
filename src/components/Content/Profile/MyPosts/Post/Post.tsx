@@ -4,7 +4,7 @@ import Avatar from '../../../../Common/Avatar/Avatar';
 import Message from './Message';
 import Like from './Like';
 import userAvatar from '../../../../../image/avatars/noAvatar.png';
-import { IPhotos } from "../../../../../Types/Interfaces";
+import { IPhotos } from "../../../../../TypeScript/Interfaces";
 
 type Props = {
     photos: IPhotos
