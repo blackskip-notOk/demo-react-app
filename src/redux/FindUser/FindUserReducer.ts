@@ -1,4 +1,4 @@
-import { FIND_USER } from "../Actions/actionsTypes";
+import { FIND_USER } from "../../TypeScript/Actions/actionsTypes";
 
 const initialState = {name: ''};
 

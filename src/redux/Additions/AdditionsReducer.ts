@@ -1,6 +1,6 @@
 import { updateObjectInArray } from "../../utils/object-helpers";
 import { ADD_TODO, REMOVE_TODO, SET_VISIBILITY_FILTER,
-    TOOGLE_TODO, SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../Actions/actionsTypes";
+    TOOGLE_TODO, SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "../../TypeScript/Actions/actionsTypes";
 
 type TodoType = {
     id: number

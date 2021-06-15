@@ -20,20 +20,20 @@ export const getProfileInfo = (state: AppState) => {
     return profileInfo;
 }
 
-export const getPosts = (state: AppState) => state.profile.posts;
+// export const getPosts = (state: AppState) => state.profile.posts;
 
-export const getStatus = (state: AppState) => state.profile.status;
+// export const getStatus = (state: AppState) => state.profile.status;
 
-export const getIsOwner = (state: AppState) => state.profile.isOwner;
+// export const getIsOwner = (state: AppState) => state.profile.isOwner;
 
-export const getIsFetching = (state: AppState) => state.profile.isFetching;
+// export const getIsFetching = (state: AppState) => state.profile.isFetching;
 
-export const getProfileAvatar = (state: AppState) => state.profile?.profile?.photos;
+export const getProfileAvatar = (state: AppState) => state.profile.profile?.photos;
 
-export const getContactsIcons = (state: AppState) => state.profile.contactsIcons;
+// export const getContactsIcons = (state: AppState) => state.profile.contactsIcons;
 
 export const getisProfileUpdate = (state: AppState) => state.profile.isProfileUpdate;
 
-export const getServerErrorMessage = (state: AppState) => state.profile.errorMessage;
+// export const getServerErrorMessage = (state: AppState) => state.profile.errorMessage;
 
 export const getIsSettingsMode = (state: AppState) => state.profile.isSettingsMode

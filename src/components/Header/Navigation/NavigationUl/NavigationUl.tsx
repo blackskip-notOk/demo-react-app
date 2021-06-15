@@ -7,17 +7,21 @@ import UnderText from './NavigationLi/UnderText/UnderText';
 import s from './NavigationUl.module.css';
 import st from './NavigationLi/NavIcon/NavIcon.module.css';
 import { useSelector } from 'react-redux';
+import { AppState } from '../../../../redux/redux-store';
 
+type Props = {
+    getProfileData: (userId: number | null, authUserId: number | null) => Promise<void>
+}
 
-const NavigationUl = React.memo(({getProfileData, ...props}) => {
-    const iconsHeader = useSelector((state) => state.common.iconsHeader);
-    const authUserId = useSelector((state) => state.header.authUserId);
+const NavigationUl: FC<Props> = React.memo(({getProfileData}) => {
+
+    const iconsHeader = useSelector((state: AppState) => state.header.iconsHeader);
+    const authUserId = useSelector((state: AppState) => state.header.authUserId);
 
     let li = createListFromArray(iconsHeader, NavigationLi);
 
     const refreshProfile = () => {
         let userId = authUserId;
-            if (!userId) props.history.push('/login');
         getProfileData(userId, authUserId);
     }
     return (

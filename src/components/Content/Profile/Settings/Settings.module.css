@@ -1,0 +1,293 @@
+.formContainer {
+    display: grid;
+    width: 100%;
+    margin-top: 10px;
+    justify-items: center;
+}
+
+.form {
+    display: grid;
+    border: 1px solid var(--panels-border);
+    border-radius: 15px;
+    padding: 10px 50px 10px 50px;
+    background-color: var(--page-back);
+}
+
+.idSpan {
+    align-self: center;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 10px 0 30px 0;
+    font-family: var( --headers-font);
+    font-size: 36px;
+    color: var(--header-color);
+}
+
+.idSpan:hover {
+    cursor: default;
+}
+
+.aboutMeDiv {
+    display: grid;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--main-back-color);
+}
+
+.nicknameDiv {
+    display: flex;
+    grid-gap: 1rem;
+    justify-self: flex-start;
+    align-items: center;
+}
+
+
+.photoDiv > input {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.photo {
+    grid-area: photo;
+    transform: scale(2.5);
+    cursor:pointer;
+    border-radius: 100%;
+    color: var(--figure-color);
+}
+
+.avatarDiv {
+    display: flex;
+    grid-gap: 1rem;
+    margin: 20px 0px 10px 0px;
+    justify-self: flex-start;
+    align-items: center;
+    /* position: relative; */
+    /* left: 0%; */
+    /* top: -180% */
+}
+
+.avatarInput {
+    /* visibility: hidden; */
+    /* width: 0; */
+    /* height: 0; */
+}
+
+.photo {
+    padding: 0px 0px 0px 20px;
+    transform: scale(1.7);
+    cursor:pointer;
+    color: var(--figure-color);
+}
+
+.photo:hover {
+    text-shadow: 0px 0px 10px var(--button-shadow);
+}
+
+.photo:active {
+    color: var(--figure-color-active);
+    text-shadow: none;
+}
+
+.textareaLabel {
+    justify-self: center;
+    padding: 10px 0;
+    text-transform: lowercase;
+    font-family: var(--headers-font);
+    font-size: 24px;
+    color: var(--header-small-color);
+}
+
+.textarea {
+    align-self: center;
+    border: 1px solid var(--input-border);
+    border-radius: 15px;
+    padding: 10px 0px 10px 0px;
+    outline: none;
+    resize:none;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    font-family: var(--input-text-font);
+    font-size: 20px;
+    color: var(--input-text-color);
+    background-color: var(--input-back);
+}
+
+.textarea:focus {
+    border: 1px solid var(--input-border-focus);
+}
+
+.textarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+.jobInfoDiv {
+    display: grid;
+    margin-top: 20px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--main-back-color);
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px 20px 0;
+}
+
+.jobDiv {
+    display: grid;
+    justify-items: center;
+}
+
+.labelRadio {
+    margin-bottom: 20px;
+    font-family: var(--input-text-font);
+    font-size: 24px;
+    color: var(--header-small-color);
+}
+
+.radioButton {
+    transform: scale(2.5);
+    cursor: pointer;
+}
+
+.label {
+    word-wrap: break-word;
+    text-transform: lowercase;
+    font-family: var(--input-text-font);
+    font-size: 22px;
+    color: var(--input-text-color);
+}
+
+.inputDiv {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 0.7fr 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+    margin: 10px;
+}
+
+.input {
+    display: flex;
+    text-align: center;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+    font-family: var(--input-text-font);
+    font-size: 20px;
+    color: var(--input-text-color);
+    background-color: var(--input-back);
+}
+
+.input:focus {
+    border: 1px solid var(--input-border-focus);
+}
+
+.input::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+    text-transform: lowercase;
+}
+
+.error {
+    border: 1px solid var(--error-color);
+}
+
+.divError {
+    display: flex;
+    justify-content:center;
+    padding: 10px 0px 10px 0;
+    cursor: default;
+    font-family: var(--error-font);
+    font-size: 16px;
+    color: var(--error-color);
+}
+
+.figure {
+    margin-right: 5px;
+    color: var(--error-color);
+}
+
+
+.contactsDiv {
+    margin-top: 20px;
+    border: 1px solid var(--page-inner-border);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--main-back-color);
+}
+
+.contactsSpan {
+    align-self: center;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 10px 0px 20px 0;
+    font-family: var(--headers-font);
+    font-size: 26px;
+    color: var(--header-color);
+}
+
+.contactsSpan:hover {
+    cursor: default;
+}
+
+.sendButton {
+    justify-self: center;
+    width: max-content;
+    outline: none;
+    cursor: pointer;
+    margin: 20px 0px 10px 0;
+    border: 1px solid var(--button-border);
+    border-radius: 10px;
+    padding: 5px;
+    background-color: var(--button-back);
+}
+
+.sendButton:hover {
+    box-shadow: 0px 0px 10px var(--button-shadow);
+    border: 1px solid var(--button-border-hover);
+}
+
+.sendButton:active {
+    box-shadow: inset 0px 0px 5px var(--button-shadow);
+    border: 1px solid var(--button-border-active);
+}
+
+.sendButton:disabled {
+    background-color: var(--button-back-disable);
+    color: var(--button-text-color-disable);
+}
+
+.sendSpan {
+    text-align: center;
+    padding: 0px 5px;
+    text-transform: capitalize;
+    font-family: var(--button-text-font);
+    font-size: 24px;
+    color: var(--button-text-color);
+}
+
+.sendSpan:hover {
+    text-decoration: none;
+    color: var(--button-text-color-hover);
+}
+
+.sendSpan:active {
+    text-decoration: none;
+    color: var(--button-text-color-active);
+}
+
+.divServerError {
+    display: flex;
+    padding: 20px 0px 0px 0px;
+    cursor: default;
+    font-family: var(--error-font);
+    font-size: 16px;
+    color: var(--error-color);
+}

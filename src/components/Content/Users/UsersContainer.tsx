@@ -14,32 +14,22 @@ const UsersContainer: FC<Props> = React.memo(({
 
     //pageInfo wuth useSelector hook
     const pagesInfo = useSelector(getPagesInfo);
+    const { pageSize, requestPage } = pagesInfo;
 
     useEffect(() => {
-        requestUsers(pagesInfo.requestPage, pagesInfo.pageSize)},
-        [pagesInfo.requestPage, pagesInfo.pageSize, requestUsers]);
+        requestUsers(requestPage, pageSize)},
+        [requestPage, pageSize, requestUsers]);
 
         //try to use hooks instead of connect HOC
         const isFetching = useSelector((state: AppState) => state.users.isFetching);
     return (
         <>
         {isFetching && <Preloader type='app' />}
-        <Users
-            unfollow={unfollow}
-            follow={follow}
-            requestPage={pagesInfo.requestPage}
-            pages={pagesInfo.pages}
-            portionCount={pagesInfo.portionCount}
-            portionSize={pagesInfo.portionSize}
-            requestUsers={requestUsers}
-            pageSize={pagesInfo.pageSize}
-        />
+        <Users unfollow={unfollow} follow={follow} requestUsers={requestUsers} />
         </>
     )
 });
 
-const connector = connect(
-    null,
-    {follow, unfollow, requestUsers})
+const connector = connect(null, {follow, unfollow, requestUsers})
 
 export default compose(connector)(UsersContainer)

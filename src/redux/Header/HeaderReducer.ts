@@ -1,8 +1,8 @@
-import { IconHeader, ISetAuthUserAvatar, IToggleVisibility } from '../../TypeScript/Interfaces';
 import { profileAPI } from '../../API/API';
-import { IPhotos } from '../../TypeScript/Interfaces';
-import { HeaderActions } from '../Actions/actionsTypes';
+import { HeaderActions } from '../../TypeScript/Actions/actionsTypes';
 import { HeaderActionsTypes, HeaderThunk } from '../../TypeScript/Types';
+import { IconHeader, ISetAuthUserAvatar, IToggleVisibility } from '../../TypeScript/Interfaces/headerInterface';
+import { IPhotos } from '../../TypeScript/Interfaces/profileInterface';
 
 const initialState = {
     iconsHeader: [
@@ -12,7 +12,7 @@ const initialState = {
     ] as IconHeader[],
     isVisible: false,
     authUserId: null as number | null,
-    authUserAvatar: {} as IPhotos
+    authUserAvatar: {} as IPhotos | undefined
 }
 export type InitialStateType = typeof initialState
 
@@ -34,11 +34,10 @@ const headerReducer = (state = initialState, action: HeaderActionsTypes): Initia
 //action creator
 export const toggleVisibility = (isVisible: boolean): IToggleVisibility => ({
         type: HeaderActions.TOGGLE_IS_VISIBLE, isVisible})
-
-export const setAuthUserAvatar = (authUserAvatar: IPhotos): ISetAuthUserAvatar => ({
+export const setAuthUserAvatar = (authUserAvatar: IPhotos | undefined): ISetAuthUserAvatar => ({
     type: HeaderActions.SET_AUTH_USER_AVATAR, authUserAvatar});
 //thunk creator
-export const getAuthUserAvatar = (authUserId: number): HeaderThunk => async (dispatch) => {
+export const getAuthUserAvatar = (authUserId: number | null): HeaderThunk => async dispatch => {
     const response = await profileAPI.getUserProfile(authUserId);
     dispatch(setAuthUserAvatar(response.photos));}
 

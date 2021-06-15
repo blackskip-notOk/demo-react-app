@@ -1,18 +1,6 @@
-import {
-    IProfile,
-    IContacts,
-    IFollow,
-    IGetAuth,
-    IGetCaptchaURL,
-    IGetUsers,
-    ILogin,
-    ILogout,
-    ISavePhoto,
-    IUnfollow,
-    IUpdateProfileProperties,
-    IUpdateUserStatus
-} from '../TypeScript/Interfaces';
 import axios from "axios";
+import { IGetAuth, IGetCaptchaURL, IGetUsers, ILogin, ISavePhoto, IStandartResponse } from '../TypeScript/Interfaces/apiInterface';
+import { IContact, IProfile } from "../TypeScript/Interfaces/profileInterface";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -33,23 +21,26 @@ export const authAPI = {
         return response.data;
     },
 
-    logout() {return instance.delete<ILogout>(`auth/login`)}
+    async logout() {
+        const response = await instance.delete<IStandartResponse>('auth/login');
+        return response.data;
+    }
 };
 
 //Profile API
 export const profileAPI = {
-    getUserProfile(userId: number) {
+    getUserProfile(userId: number | null) {
         return instance.get<IProfile>(`profile/${userId}`)
             .then(response => response.data);
     },
 
-    getUserStatus(userId: number) {
+    getUserStatus(userId: number | null) {
         return instance.get(`profile/status/${userId}`)
             .then(response => response.data);
     },
 
     updateUserStatus(status: string) {
-        return instance.put<IUpdateUserStatus>(`profile/status`, {status})
+        return instance.put<IStandartResponse>(`profile/status`, {status})
             .then(response => response.data);
     },
 
@@ -61,10 +52,10 @@ export const profileAPI = {
             headers: {'Content-TYpe': 'multipart/form-data'}})
             .then(response => response.data);
     },
-    updateProfileProperties(userId: number, aboutMe: string,
+    updateProfileProperties(userId: number | null, aboutMe: string,
         lookingForAJob: boolean, lookingForAJobDescription: string,
-        fullName: string, contacts: IContacts) {
-        return instance.put<IUpdateProfileProperties>('profile', {
+        fullName: string, contacts: IContact) {
+        return instance.put<IStandartResponse>('profile', {
             userId, aboutMe, lookingForAJob, lookingForAJobDescription,
             fullName, contacts})
             .then(response => response.data);
@@ -79,12 +70,12 @@ export const usersAPI = {
     },
 
     unfollow(userId: number) {
-        return instance.delete<IUnfollow>(`follow/${userId}`)
+        return instance.delete<IStandartResponse>(`follow/${userId}`)
             .then(response => response.data);
     },
 
     async follow(userId: number) {
-        return instance.post<IFollow>(`follow/${userId}`)
+        return instance.post<IStandartResponse>(`follow/${userId}`)
             .then(response => response.data);
     },
 

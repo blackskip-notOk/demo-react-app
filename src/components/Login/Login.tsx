@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
+import { FC } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { login, logout, getCaptchaUrl } from '../../redux/Auth/AuthReducer';
-import { getCaptcha, getServerErrorMessage, getIsAuth,
-    getLoginInProgress } from '../../redux/Auth/AuthSelectors';
-import { getErrorIcon } from '../../redux/Common/CommonSelectors';
 import Button from '../Common/Button/Button';
 import s from './Login.module.css';
 import LoginForm from './LoginForm/LoginForm';
 
-const Login = (props) => {
+type Props = ConnectedProps<typeof connector>
+
+const Login: FC<Props> = (props) => {
     return (
         <div className={s.loginDiv}>
             <h1>demo react app</h1>
@@ -17,7 +17,6 @@ const Login = (props) => {
                 This is my <span>demo app</span>. Here I study how create,
                 develop and support app used on <span>React - Redux</span> technologies.
             </p>
-            {LoginForm}
             <LoginForm {...props} />
             <div className={s.createDiv}>
                 <h2>Or you can create account:</h2>
@@ -33,17 +32,6 @@ const Login = (props) => {
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isAuth: getIsAuth(state),
-        icon: getErrorIcon(state),
-        captcha: getCaptcha(state),
-        serverErrorMessage: getServerErrorMessage(state),
-        loginInProgress: getLoginInProgress(state)
-    };
-}
-const connector = connect(mapStateToProps, {
-    login, logout, getCaptchaUrl
-})
+const connector = connect(null, {login, logout, getCaptchaUrl});
 
 export default compose(connector, withRouter)(Login);

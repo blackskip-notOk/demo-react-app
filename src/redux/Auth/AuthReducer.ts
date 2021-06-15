@@ -1,9 +1,9 @@
-import { AuthActions } from './../Actions/actionsTypes';
-import { AnyAction } from "redux";
+import { AuthActions } from '../../TypeScript/Actions/actionsTypes';
 import { authAPI, securityApi } from "../../API/API";
-import {  } from "../Actions/actionsTypes";
-import { AppDispatch } from '../redux-store';
+import {  } from "../../TypeScript/Actions/actionsTypes";
 import { ResultCode, ResultCodeForCaptcha } from '../../TypeScript/Enums';
+import { AuthActionsTypes, AuthThunk } from '../../TypeScript/Types';
+import { IGetCaptchaUrlSuccess, ISetAuthUserData, ISetErrormessage, IToggleLoginProgress } from '../../TypeScript/Interfaces/authInterface';
 
 const initialState = {
     userId: null as number | null,
@@ -17,9 +17,9 @@ const initialState = {
     errorMessage: null as string | null
 };
 
-export type InitialState = typeof initialState;
+type InitialState = typeof initialState;
 
-const authReducer = (state = initialState, action: AnyAction): InitialState => {
+const authReducer = (state = initialState, action: AuthActionsTypes): InitialState => {
     switch(action.type) {
         case AuthActions.SET_USER_DATA:
         case AuthActions.GET_CAPTCHA_URL_SUCCESS:
@@ -42,41 +42,34 @@ const authReducer = (state = initialState, action: AnyAction): InitialState => {
     }
 };
 //action creators
-type ToggleLoginProgressAction = {
-    readonly type: typeof AuthActions.TOGGLE_LOGIN_PROGRESS
-    loginInProgress: boolean
-};
-export const toggleLoginProgress = (loginInProgress: boolean): ToggleLoginProgressAction => ({
+export const toggleLoginProgress = (loginInProgress: boolean): IToggleLoginProgress => ({
     type: AuthActions.TOGGLE_LOGIN_PROGRESS, loginInProgress});
 
-type SetAuthUserDataActionPayload = {
-    userId: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-};
-type SetAuthUserDataAction = {
-    readonly type: typeof AuthActions.SET_USER_DATA
-    payload: SetAuthUserDataActionPayload
-};
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataAction => ({
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): ISetAuthUserData => ({
     type: AuthActions.SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
-type SetErrormessageAction = {
-    readonly type: typeof AuthActions.SET_ERROR_MESSAGE
-    messages: Array<string>
-};
-export const setErrormessage = (messages: Array<string>): SetErrormessageAction => ({
+export const setErrormessage = (messages: string[]): ISetErrormessage => ({
     type: AuthActions.SET_ERROR_MESSAGE, messages});
 
-type GetCaptchaUrlSuccessAction = {
-    readonly type: typeof AuthActions.GET_CAPTCHA_URL_SUCCESS
-    payload: { captcha: string }
-};
-export const getCaptchaUrlSuccess = (captcha: string): GetCaptchaUrlSuccessAction => ({
+export const getCaptchaUrlSuccess = (captcha: string): IGetCaptchaUrlSuccess => ({
     type:  AuthActions.GET_CAPTCHA_URL_SUCCESS, payload: {captcha}});
 //thunk creators
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: AppDispatch) => {
+export const getAuthUserData = (): AuthThunk => async dispatch => {
+    const response = await authAPI.getAuth();
+    if (response.resultCode === ResultCode.Success) {
+        const {id, email, login} = response.data;
+        dispatch(setAuthUserData(id, email, login, true));
+    } else if (response.resultCode === ResultCode.Error) {
+        dispatch(setErrormessage(response.messages));
+    }
+}
+
+export const getCaptchaUrl = (): AuthThunk => async dispatch => {
+    const response = await securityApi.getCaptchaURL();
+    dispatch(getCaptchaUrlSuccess(response.url));
+}
+
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string): AuthThunk => async dispatch => {
     dispatch(toggleLoginProgress(true));
     const response = await authAPI.login(email, password, rememberMe, captcha);
     switch (response.resultCode) {
@@ -94,33 +87,12 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
     dispatch(toggleLoginProgress(false));
 }
-export const getAuthUserData = () => async (dispatch: AppDispatch) => {
-    const response = await authAPI.getAuth();
+
+export const logout = (): AuthThunk => async dispatch => {
+    const response = await authAPI.logout();
     if (response.resultCode === ResultCode.Success) {
-        const {id, email, login} = response.data;
-        dispatch(setAuthUserData(id, email, login, true));
-    } else if (response.resultCode === ResultCode.Error) {
-        dispatch(setErrormessage(response.messages));
-    }
-}
-type Response = {
-    data: {
-        resultCode: number
-    }
-}
-export const logout = () => (dispatch: AppDispatch) => {
-    return (
-        authAPI.logout()
-            .then(((response: Response) => {
-                if (response.data.resultCode === ResultCode.Success) {
-                    dispatch(setAuthUserData(null, null, null, false));
-                }}
-            ))
-    )
-}
-export const getCaptchaUrl = () => async (dispatch: AppDispatch) => {
-    const response = await securityApi.getCaptchaURL();
-    dispatch(getCaptchaUrlSuccess(response.url));
+        dispatch(setAuthUserData(null, null, null, false));
+        }
 }
 
 export default authReducer

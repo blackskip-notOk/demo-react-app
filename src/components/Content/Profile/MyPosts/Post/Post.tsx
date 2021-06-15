@@ -4,7 +4,7 @@ import Avatar from '../../../../Common/Avatar/Avatar';
 import Message from './Message';
 import Like from './Like';
 import userAvatar from '../../../../../image/avatars/noAvatar.png';
-import { IPhotos } from "../../../../../TypeScript/Interfaces";
+import { IPhotos } from "../../../../../TypeScript/Interfaces/profileInterface";
 
 type Props = {
     photos: IPhotos
@@ -15,9 +15,7 @@ type Props = {
 const Post: FC<Props> = ({photos, post, likes}) => {
     return (
         <article className={s.postArticle}>
-            <Avatar src={photos.small
-                ? photos.small
-                : userAvatar}
+            <Avatar src={ photos?.small ? photos.small : userAvatar }
                 className={s.avatar}
                 alt='User Avatar'/>
             <Message post={post} className={s.messageSpan} />

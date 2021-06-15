@@ -1,8 +1,9 @@
-import { IFollowSuccess, ISetRequestPage, ISetTotalCount, ISetUsers, IUnfollowSuccess, IToggleIsFetching, IUser, IToggleIsFollowingProgress } from '../../TypeScript/Interfaces'
 import { usersAPI } from "../../API/API"
 import { updateObjectInArray } from "../../utils/object-helpers"
-import { UsersActions } from "../Actions/actionsTypes"
+import { UsersActions } from "../../TypeScript/Actions/actionsTypes"
 import { UsersActionsTypes, UsersThunk, UsersDispatch } from '../../TypeScript/Types';
+import { IFollowSuccess, ISetRequestPage, ISetTotalCount, ISetUsers, IToggleIsFetching, IToggleIsFollowingProgress, IUnfollowSuccess, IUser } from "../../TypeScript/Interfaces/usersInterface";
+import { ResultCode } from "../../TypeScript/Enums";
 
 const initialState = {
     users:[] as IUser[],
@@ -68,7 +69,7 @@ export const followSuccess = (userId: number): IFollowSuccess => (
 export const unfollowSuccess = (userId: number): IUnfollowSuccess => (
     {type: UsersActions.UNFOLLOW, userId})
 
-export const setUsers = (users: Array<IUser>): ISetUsers => (
+export const setUsers = (users: IUser[]): ISetUsers => (
     {type: UsersActions.SET_USERS, users})
 
 export const setTotalCount = (totalCount: number): ISetTotalCount => (
@@ -84,11 +85,11 @@ export const toggleIsFollowingProgress = (followingInProgress: boolean,
     userId: number): IToggleIsFollowingProgress => ({
         type: UsersActions.TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress, userId})
 //thunk creators
-export const requestUsers  = (currentPage: number, pageSize: number): UsersThunk => async (dispatch) => {
+export const requestUsers  = (currentPage: number, pageSize: number): UsersThunk => async dispatch => {
     dispatch(toggleIsFetching(true))
     dispatch(setRequestPage(currentPage))
 
-    let response = await usersAPI.getUsers(currentPage, pageSize)
+    const response = await usersAPI.getUsers(currentPage, pageSize)
 
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(response.items))
@@ -100,19 +101,19 @@ const followUnfollowFlow = async (dispatch: UsersDispatch, userId: number, apiMe
     dispatch(toggleIsFollowingProgress(true, userId))
     let response = await apiMethod(userId)
 
-    if (response.resultCode === 0) {
+    if (response.resultCode === ResultCode.Success) {
         dispatch(actionCreator(userId))
     };
 
     dispatch(toggleIsFollowingProgress(false, userId))
 }
 
-export const follow = (userId: number): UsersThunk => async (dispatch) => {
+export const follow = (userId: number): UsersThunk => async dispatch => {
     followUnfollowFlow(dispatch, userId,
         usersAPI.follow.bind(usersAPI), followSuccess)
 }
 
-export const unfollow  = (userId: number): UsersThunk => async (dispatch) => {
+export const unfollow  = (userId: number): UsersThunk => async dispatch => {
     followUnfollowFlow(dispatch, userId,
         usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
 }

@@ -2,21 +2,19 @@ import React, { FC, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getPaginatorIcons } from "../../../redux/Common/CommonSelectors"
+import { getPagesInfo } from "../../../redux/Users/UsersSelectors"
 import Button from "../Button/Button"
 import Page from "./Page/Page"
 import s from './Paginator.module.css'
 
 type Props = {
-    portionSize: number
-    pageSize: number
-    requestPage: number
-    portionCount: number
-    pages: Array<number>
     requestUsers: (requestPage: number, pageSize: number) => void
 }
-const Paginator: FC<Props> = React.memo(({
-    portionSize, requestUsers, pageSize, pages,
-    requestPage, portionCount}) => {
+const Paginator: FC<Props> = React.memo(({ requestUsers }) => {
+
+    const pagesInfo = useSelector(getPagesInfo);
+
+    const { portionSize, pageSize, pages, requestPage, portionCount } = pagesInfo;
 
     const [currentPage, setCurrentPage] = useState(requestPage)
     const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage))

@@ -1,27 +1,20 @@
-import { ADD_MESSAGE, DELETE_MESSAGE } from "../Actions/actionsTypes";
+import { DialogsActionsTypes } from './../../TypeScript/Types';
+import { IAddMessage, IContacts, IDeleteMessage, IDialogs } from "../../TypeScript/Interfaces/dialogsInterface";
+import { DialogsActions } from '../../TypeScript/Actions/actionsTypes';
 
-type ContactsType = {
-    id: number
-    name: string
-    avatar: {src: string | null, alt: string | null}
-}
-type DialogsType = {
-    id: number
-    message: string
-}
 const initialState = {
     contacts: [
         { id: 1, name: 'Fake Friend', avatar: {src: null, alt: 'Master Yoda avatar'} },
-    ] as Array<ContactsType>,
+    ] as IContacts[],
     dialogs: [
         { id: 1, message: "диалоги в процессе разработки..." },
-    ] as Array<DialogsType>
+    ] as IDialogs[]
 }
 export type InitialStateType = typeof initialState
 
-const dialogsReducer = (state = initialState, action: any): InitialStateType => {
+const dialogsReducer = (state = initialState, action: DialogsActionsTypes): InitialStateType => {
     switch(action.type) {
-        case ADD_MESSAGE:
+        case DialogsActions.ADD_MESSAGE:
             let newDialog = {
                 id: state.dialogs.length + 1,
                 message: action.newMessageText,
@@ -31,7 +24,7 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
                 dialogs: [...state.dialogs, newDialog]
             }
 
-        case DELETE_MESSAGE: {
+        case DialogsActions.DELETE_MESSAGE: {
             return {
                 ...state,
                 dialogs: state.dialogs.filter(m => m.id !== action.messageId)
@@ -43,15 +36,7 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
     }
 }
 
-type AddMessageActionType = {
-    type: typeof ADD_MESSAGE
-    newMessageText: string
-}
-type DeleteMessageActionType = {
-    type: typeof DELETE_MESSAGE
-    messageId: number
-}
-export const addMessage = (newMessageText: string): AddMessageActionType => ({type: ADD_MESSAGE, newMessageText});
-export const deleteMessage = (messageId: number): DeleteMessageActionType => ({type: DELETE_MESSAGE, messageId});
+export const addMessage = (newMessageText: string): IAddMessage => ({type: DialogsActions.ADD_MESSAGE, newMessageText});
+export const deleteMessage = (messageId: number): IDeleteMessage => ({type: DialogsActions.DELETE_MESSAGE, messageId});
 
 export default dialogsReducer;

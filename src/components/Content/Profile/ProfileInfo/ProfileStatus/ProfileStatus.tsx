@@ -1,6 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { ChangeEvent, FC, KeyboardEventHandler, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { getErrorIcon } from "../../../../../redux/Common/CommonSelectors";
+import { AppState } from "../../../../../redux/redux-store";
 import { createFormError } from "../../../../../utils/form-helper";
 import { statusSchema } from "../../../../../utils/validators/validator";
 import Button from "../../../../Common/Button/Button";
@@ -8,34 +11,35 @@ import s from './ProfileStatus.module.css';
 
 interface Props {
     updateUserStatus: (status: string) => void
-    errorIcon: string
-    isOwner: boolean
-    status: string
 }
 
 interface FormData {
     status: string
 }
 
-const ProfileStatus: FC<Props> = React.memo(({updateUserStatus, errorIcon, isOwner, ...props}) => {
+const ProfileStatus: FC<Props> = React.memo(({updateUserStatus, ...props}) => {
+
+    const errorIcon = useSelector(getErrorIcon);
+    const isOwner = useSelector((state: AppState) => state.profile.isOwner);
+    const status = useSelector((state: AppState) => state.profile.status);
 
     const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
+    const [newStatus, setNewStatus] = useState(status);
 
     const {register, handleSubmit, formState: {errors, touchedFields}} = useForm<FormData>({
         resolver: yupResolver(statusSchema)
     });
 
     useEffect(() => {
-        setStatus(props.status);
-    }, [props.status, setStatus]);
+        setNewStatus(status);
+    }, [status, setNewStatus]);
 
     const switchEditMode = () => {
         setEditMode(!editMode);
     }
 
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setStatus(e.currentTarget.value);
+        setNewStatus(e.currentTarget.value);
     }
 
     const onSubmit = (data: FormData) => {
@@ -63,10 +67,9 @@ const ProfileStatus: FC<Props> = React.memo(({updateUserStatus, errorIcon, isOwn
             onSubmit={handleSubmit(onSubmit)}
             className={s.statusDiv}>
             {!editMode ?
-                <span onDoubleClick={isOwner ? switchEditMode : undefined}
-                        className={s.statusSpan}>
-                        {props.status || "No Status"}
-                    </span> :
+                <span onDoubleClick={isOwner ? switchEditMode : undefined} className={s.statusSpan}>
+                    {status || "No Status"}
+                </span> :
                 <>
                     <input {...register('status')}
                         type='text'
@@ -74,7 +77,7 @@ const ProfileStatus: FC<Props> = React.memo(({updateUserStatus, errorIcon, isOwn
                         placeholder="What's up?"
                         autoFocus={true}
                         onChange={onStatusChange}
-                        value={status}
+                        value={newStatus}
                         autoComplete='off' />
                     {errors?.status &&
                         createFormError(s.divError, errorIcon,

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import userAvatar from '../../../../image/avatars/noAvatar.png';
 import { AppState } from "../../../../redux/redux-store";
-import { IUser } from "../../../../TypeScript/Interfaces";
+import { IUser } from "../../../../TypeScript/Interfaces/usersInterface";
 import Avatar from "../../../Common/Avatar/Avatar";
 import Button from "../../../Common/Button/Button";
 import s from './User.module.css';

@@ -5,28 +5,28 @@ import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileInfoUl from "./ProfileInfoUl/ProfileInfoUl";
-import { IContactIcon, IContacts, IPhotos } from "../../../../TypeScript/Interfaces";
+import { IContacts, IPhotos } from "../../../../TypeScript/Interfaces/profileInterface";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../../redux/redux-store";
+import { getJobIcons, getPhotoIcon } from "../../../../redux/Common/CommonSelectors";
 
 type Props = {
     photos?: IPhotos | undefined
     fullName: string
     aboutMe: string
-    status: string
     contacts: IContacts
-    errorIcon: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
-    jobIcons: Array<string>
-    isOwner: boolean
-    photoIcon: string
-    contactsIcons: Array<IContactIcon>
     savePhoto: (avatarSrc: File) => void
     updateUserStatus: (status: string) => void
 }
 
-const ProfileInfo: FC<Props> = React.memo(({savePhoto, photos, fullName, aboutMe, status,
-    updateUserStatus, contacts, errorIcon, lookingForAJob, lookingForAJobDescription,
-    jobIcons, isOwner, photoIcon, contactsIcons}) => {
+const ProfileInfo: FC<Props> = React.memo(({savePhoto, photos, fullName, aboutMe,
+    updateUserStatus, contacts, lookingForAJob, lookingForAJobDescription}) => {
+
+    const isOwner = useSelector((state: AppState) => state.profile.isOwner);
+    const jobIcons = useSelector(getJobIcons);
+    const photoIcon = useSelector(getPhotoIcon);
 
     const onUserAvatarChanged = (e: ChangeEvent<HTMLInputElement>) => {
         let avatarSrc = e.target.files;
@@ -35,7 +35,6 @@ const ProfileInfo: FC<Props> = React.memo(({savePhoto, photos, fullName, aboutMe
     const ProfileInfoProps = {
         contacts: contacts,
         className: s.contactsUl,
-        contactsIcons: contactsIcons,
         figureClass: s.contactIcon
     }
     return (
@@ -54,10 +53,7 @@ const ProfileInfo: FC<Props> = React.memo(({savePhoto, photos, fullName, aboutMe
                 }
             </div>
             <h1 className={s.nameH1}>{fullName}</h1>
-            <ProfileStatus status={status}
-                updateUserStatus={updateUserStatus}
-                errorIcon={errorIcon}
-                isOwner={isOwner} />
+            <ProfileStatus updateUserStatus={updateUserStatus} />
             <div className={s.aboutMeDiv}>About me: {aboutMe ?
                 aboutMe : <span>no information</span>}</div>
             <div className={s.infoDiv}>

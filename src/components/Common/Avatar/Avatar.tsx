@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import noAvatar from '../../../image/avatars/noAvatar.png';
 
 type Props = {
-    src: string
+    src: string | null | undefined
     alt: string
     className: string
 }

@@ -1,7 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import { getErrorIcon } from '../../../redux/Common/CommonSelectors';
+import { AppState } from '../../../redux/redux-store';
 import { createFormError } from '../../../utils/form-helper';
 import { loginFormSchema } from '../../../utils/validators/validator';
 import Button from '../../Common/Button/Button';
@@ -9,13 +12,9 @@ import Preloader from '../../Common/Preloader/Preloader';
 import s from './LoginForm.module.css';
 
 type Props = {
-    login: (email: string, password: string, rememberMe: boolean,
-        captcha: string) => void
-    isAuth: boolean
-    icon: string
-    serverErrorMessage: string | null
-    captcha: string | null
-    loginInProgress: boolean
+    login: (email: string, password: string, rememberMe: boolean, captcha: string) => Promise<void>;
+    logout: () => Promise<void>
+    getCaptchaUrl: () => Promise<void>
 }
 
 type FormData = {
@@ -24,12 +23,17 @@ type FormData = {
     rememberMe: boolean
     captcha: string
 }
-const LoginForm: FC<Props> = ({login, isAuth, icon, serverErrorMessage, captcha,
-    loginInProgress}) => {
+const LoginForm: FC<Props> = ({login}) => {
     const {register, handleSubmit, formState: {errors, touchedFields}
     } = useForm<FormData>({
         resolver: yupResolver(loginFormSchema)
     });
+
+    const isAuth = useSelector((state: AppState) => state.auth.isAuth);
+    const icon = useSelector(getErrorIcon);
+    const captcha = useSelector((state: AppState) => state.auth.captcha);
+    const serverErrorMessage = useSelector((state: AppState) => state.auth.errorMessage);
+    const loginInProgress = useSelector((state: AppState) => state.auth.loginInProgress);
 
     const onSubmit = (data: FormData) => {
         login(data.email, data.password, data.rememberMe, data.captcha);

@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import s from './Logo.module.css';
 import logo from '../../../image/logo/logo.png';
+import { FC } from "react";
 
-const Logo = () => {
+const Logo: FC = () => {
     return (
         <NavLink to='/' target='_self'>
             <img className={s.img} src={logo} alt='site-logo' />

@@ -1,27 +1,12 @@
-import React, { FC } from "react";
-import { IContact, IContactIcon, IContacts } from "../../../../../TypeScript/Interfaces";
+import React from "react";
+import { useSelector } from "react-redux";
 import { addPropsInObject } from '../../../../../utils/object-helpers';
 import Figure from "../../../../Common/Figure/Figure";
 import s from './ProfileInfoUl.module.css';
 
-// type Props = {
-//     contacts: IContacts
-//     className: string
-//     contactsIcons: Array<IContactIcon>
-// }
+const ProfileInfoUl = React.memo(({contacts, className}) => {
 
-// type ContactType = {
-//     [propName: string]: string
-//     icon: string
-// }
-// type ContactsType = {
-//     readonly id: number
-//     contact: ContactType
-// }
-// interface AddPropsInObject {
-//     (contacts: IContacts, contactsIcons: Array<IContactIcon>): Array<ContactsType>
-// }
-const ProfileInfoUl = React.memo(({contacts, className, contactsIcons}) => {
+    const contactsIcons = useSelector((state) => state.profile.contactsIcons);
 
     const contactsArray = addPropsInObject(contacts, contactsIcons);
 
