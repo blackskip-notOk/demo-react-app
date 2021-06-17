@@ -1,10 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import { authAPI, instance } from '../../../API/API';
+import { getAuthUserData, getCaptchaUrl, setErrormessage, toggleLoginProgress } from '../../../redux/Auth/AuthReducer';
 import { getErrorIcon } from '../../../redux/Common/CommonSelectors';
 import { AppState } from '../../../redux/redux-store';
+import { ResultCode, ResultCodeForCaptcha } from '../../../TypeScript/Enums';
+import { ILogin } from '../../../TypeScript/Interfaces/apiInterface';
+import { AuthThunk } from '../../../TypeScript/Types';
 import { createFormError } from '../../../utils/form-helper';
 import { loginFormSchema } from '../../../utils/validators/validator';
 import Button from '../../Common/Button/Button';
@@ -23,11 +29,40 @@ type FormData = {
     rememberMe: boolean
     captcha: string
 }
-const LoginForm: FC<Props> = ({login}) => {
+const LoginForm: FC<Props> = (
+    // {login}
+    ) => {
     const {register, handleSubmit, formState: {errors, touchedFields}
     } = useForm<FormData>({
         resolver: yupResolver(loginFormSchema)
     });
+
+    const loginForm = async ({email, password, rememberMe, captcha}: FormData) => {
+        const response = await instance.post<ILogin>(`auth/login`, {
+            email, password, rememberMe, captcha});
+            console.log(response);
+            return response.data;
+    };
+
+    const  mutate = useMutation(loginForm);
+    console.log(mutate);
+
+    const onSubmit = async ({email, password, rememberMe, captcha}: FormData) => {
+        const data = await mutate.mutate({email, password, rememberMe, captcha})
+        console.log(data);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     const isAuth = useSelector((state: AppState) => state.auth.isAuth);
     const icon = useSelector(getErrorIcon);
@@ -35,9 +70,9 @@ const LoginForm: FC<Props> = ({login}) => {
     const serverErrorMessage = useSelector((state: AppState) => state.auth.errorMessage);
     const loginInProgress = useSelector((state: AppState) => state.auth.loginInProgress);
 
-    const onSubmit = (data: FormData) => {
-        login(data.email, data.password, data.rememberMe, data.captcha);
-    }
+    // const onSubmit = (data: FormData) => {
+    //     login(data.email, data.password, data.rememberMe, data.captcha);
+    // }
 
     const errorEmailClass = touchedFields?.email && errors?.email && s.error;
     const errorPasswordClass = touchedFields?.password && errors?.password && s.error;

@@ -16,11 +16,13 @@ import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
 import ProfileContainer from './components/Content/Profile/ProfileContainer';
 import { getIsAuth } from './redux/Auth/AuthSelectors';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const FriendsContainer = lazy(() => import('./components/Content/Friends/FriendsContainer'));
 const DialogsContainer = lazy(() => import('./components/Content/Dialogs/DialogsContainer'));
 const UsersContainer = lazy(() => import('./components/Content/Users/UsersContainer'));
 
+const queryClient = new QueryClient();
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
@@ -83,9 +85,11 @@ const AppCompose = compose(withRouter,
 const AppContainer = props => {
   return (
     <HashRouter basename={process.env.PUBLIC_URL}>
+    <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <AppCompose />
       </Provider>
+      </QueryClientProvider>
     </HashRouter>
   )
 }

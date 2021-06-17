@@ -69,7 +69,7 @@ export const getCaptchaUrl = (): AuthThunk => async dispatch => {
     dispatch(getCaptchaUrlSuccess(response.url));
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string): AuthThunk => async dispatch => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): AuthThunk => async dispatch => {
     dispatch(toggleLoginProgress(true));
     const response = await authAPI.login(email, password, rememberMe, captcha);
     switch (response.resultCode) {

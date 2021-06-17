@@ -26,3 +26,10 @@ export interface IGetCaptchaUrlSuccess {
     readonly type: typeof AuthActions.GET_CAPTCHA_URL_SUCCESS
     payload: { captcha: string }
 };
+
+export interface ILoginData {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string | null
+}

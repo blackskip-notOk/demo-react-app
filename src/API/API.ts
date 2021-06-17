@@ -2,7 +2,7 @@ import axios from "axios";
 import { IGetAuth, IGetCaptchaURL, IGetUsers, ILogin, ISavePhoto, IStandartResponse } from '../TypeScript/Interfaces/apiInterface';
 import { IContact, IProfile } from "../TypeScript/Interfaces/profileInterface";
 
-const instance = axios.create({
+export const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {'API-KEY': '22431eaf-1c01-407b-bce8-8cd8792b46d1'},
