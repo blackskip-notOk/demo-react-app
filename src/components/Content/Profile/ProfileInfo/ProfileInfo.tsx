@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC } from "react";
-import userAvatar from '../../../../image/avatars/noAvatar.png';
+import userAvatar from '../../../../images/avatars/noAvatar.png';
 import Avatar from "../../../Common/Avatar/Avatar";
 import Figure from "../../../Common/Figure/Figure";
 import s from './ProfileInfo.module.css';

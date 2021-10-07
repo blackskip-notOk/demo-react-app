@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import userAvatar from '../../../../image/avatars/noAvatar.png';
+import userAvatar from '../../../../images/avatars/noAvatar.png';
 import { AppState } from "../../../../redux/redux-store";
 import { IUser } from "../../../../TypeScript/Interfaces/usersInterface";
 import Avatar from "../../../Common/Avatar/Avatar";

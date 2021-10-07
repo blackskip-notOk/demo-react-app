@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import appLoader from '../../../image/preloader/common.gif';
-import profileLoader from '../../../image/preloader/common.gif';
-import loginLoader from '../../../image/preloader/common.gif';
+import appLoader from '../../../images/preloader/common.gif';
+import profileLoader from '../../../images/preloader/common.gif';
+import loginLoader from '../../../images/preloader/common.gif';
 import s from './Preloader.module.css';
 
 type Props = {

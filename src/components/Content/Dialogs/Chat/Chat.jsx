@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Avatar from '../../../Common/Avatar/Avatar';
 import s from './Chat.module.css';
-import userAvatar from '../../../../image/avatars/noAvatar.png';
+import userAvatar from '../../../../images/avatars/noAvatar.png';
 
 const Chat = React.memo(({id, avatar, name}) => {
     return (

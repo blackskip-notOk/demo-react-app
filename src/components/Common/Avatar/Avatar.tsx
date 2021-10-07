@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import noAvatar from '../../../image/avatars/noAvatar.png';
+import noAvatar from '../../../images/avatars/noAvatar.png';
 
 type Props = {
     src: string | null | undefined

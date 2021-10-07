@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from './Logo.module.css';
-import logo from '../../../image/logo/logo.png';
+import logo from '../../../images/logo/logo.png';
 import { FC } from "react";
 
 const Logo: FC = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import userAvatar from '../../../../image/avatars/noAvatar.png';
+import userAvatar from '../../../../images/avatars/noAvatar.png';
 import Avatar from '../../../Common/Avatar/Avatar';
 
 const Friend = (props) => {
